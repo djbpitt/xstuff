@@ -40,6 +40,8 @@ There are two principal differences between these two cases:
 
 ## Files
 
+### For case #2
+
 * `original.xml`: the original XML test file
 * `flatten.xsl`: converts `original.xml` to `flattened.xml` by flattening all elements except the root
 * `flattened.xml`: the result of the flattening operation
