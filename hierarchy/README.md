@@ -40,6 +40,10 @@ There are two principal differences between these two cases:
 
 ## Files
 
+### For case #1
+
+**TODO**
+
 ### For case #2
 
 * `original.xml`: the original XML test file
