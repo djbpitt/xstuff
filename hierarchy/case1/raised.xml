@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><novel><page>
+    <chapter type="start" n="d1e4"/>
+        <title type="start" n="d1e6"/>Title of Chapter 1<title type="end" n="d1e6"/>
+        <p type="start" n="d1e9"/>First paragraph </page><page>of chapter 1<p type="end" n="d1e9"/>
+        <p type="start" n="d1e14"/>Second paragraph of chapter 1<p type="end" n="d1e14"/>
+    <chapter type="end" n="d1e4"/>
+    <chapter type="start" n="d1e18"/>
+        <title type="start" n="d1e20"/>Title of Chapter 2<title type="end" n="d1e20"/>
+        <p type="start" n="d1e23"/>First </page><page>paragraph of chapter 2<p type="end" n="d1e23"/>
+        <p type="start" n="d1e28"/>Second paragraph of chapter 2<p type="end" n="d1e28"/>
+    <chapter type="end" n="d1e18"/>
+</page></novel>
