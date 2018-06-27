@@ -1,5 +1,24 @@
 # Flattening and raising XML hierarchies
 
+## Overview
+
+This report describes two different situations where XML hierarchies may need to be _flattened_ or _raised_.
+
+The term _flattening_ is used here to mean converting hierarchical XML into a form where the root element contains only `text()` nodes and empty elements, that is, where it contains no elements that themselves have content. We can flatten XML without loss of information by replacing all tags with empty elements, as long as we include in those elements information about 1) which were originally start-tags and which were originally end-tags, and 2) which of the new flattened (pseudo-)start-tags should be paired with which of the new flattened (pseudo-)end-tags.
+
+The term _raising_ is used here to mean reconstructing the original hierarchical XML from the flattened version described above.
+____
+
+**ALREADY DONE:** 
+____
+
+**TODO:** Describe the use of flattening and raising to deal with tesselated overlap, e.g., converting between a chapter/paragraph view of a prose text and a page/line view. This differs from the scenario described above in three ways:
+
+* The original document already contains a combination of _container_ elements (matched start- and end-tags that have content) and empty elements. This type of modeling is common in situations involving overlap, where it is not possible to convert all flattened representations to container elements without violating the well-formedness prohibition against overlap. For example, pages and paragraphs may overlap in ways that cannot be modeled completely with container elements in well-formed XML.
+* The flattened hierarchy uses empty elements as milestones, rather than as paired start- and end-tags. Not every empty element is a milestone; what we mean by the terms is that, as with traditional roadway milestones, a single item marks simultaneously the end of one unit (e.g., a labeled mile of distance or a numbered page in a book) and the beginning of the next. This tesselation allows us to use a different paradigm for raising a hierarchy from flattened XML, one that employs `<xsl:for-each-group>` with the `@group-starting-with` attribute.
+
+____
+
 ## Files
 
 * `original.xml`: the original XML test file
