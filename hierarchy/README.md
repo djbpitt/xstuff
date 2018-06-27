@@ -2,11 +2,9 @@
 
 David J. Birnbaum (<http://www.obdurodon.org>)
 
-This document is part of <https://github.com/djbpitt/xstuff/tree/master/hierarchy>.
-
 ## Abstract
 
-This report describes two different situations where we use XSLT to _flatten_ or _raise_ XML hierarchies. In Case #1 we have overlapping hierarchies, one of which is initially encoded with regular XML start- and end-tags and the other which is encoded with empty milestone tags. In Case #2, we flatten all markup and then raise it again (completely or selectively); in this case there is no overlap, since the starting point is well-formed XML.
+This report describes two different situations where we use XSLT to _flatten_ or _raise_ XML hierarchies. In Case #1 we have overlapping hierarchies, one of which is initially encoded with regular XML start- and end-tags and the other with empty milestone tags. In Case #2, we flatten all markup and then raise it again (completely or selectively); in this case there is no overlap, since the starting point is well-formed XML.
 
 ## Terminology
 
@@ -191,3 +189,6 @@ There are three templates that do the actual processing of the innermost element
 * **start-tag:** We match elements with a `@type` value of `'start'` that have an `@n` value equal to the `@n` value of their first following sibling element that has a `@type` value of `'end'` (line 29). This, then, matches only start-tags that contain nothing but `text()` nodes and elements that have already been raised (from which the `@type` attributes that were present in the input have been discarded). In other words, it matches only the innermost flattened elements, those that do not contain any other empty flattened elements. We process these hits by creating a container element with the same generic identifier as the start-tag and copying all following-sibling nodes that precede the end-tag that matches the start-tag we’re processing at the moment (lines 31–36). In other words, we copy the content of the newly raised element into it.
 * **nodes inside the new container:** Since we have already copied the content of the newly raised element inside it, we don’t want to process those nodes again, since that would create duplicates. For that reason, we match all nodes between the start- and end-tags that we’re processing at the moment and suppress them by matching them inside an empty `<xsl:template>` element (lines 39–40).
 * **end-tag:** Since we create real start- and end-tags when we match the flattened start-tag, we have no more use for the flattened end-tag, so we suppress it by matching it, too, inside an empty `<xsl:template>` element (lines 42–43).
+
+____
+This document is part of <https://github.com/djbpitt/xstuff/tree/master/hierarchy>.
