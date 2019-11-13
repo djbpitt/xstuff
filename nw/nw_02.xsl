@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:djb="http://www.obdurodon.org"
-    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:html="http://www.w3.org/1999/xhtml" xmlns:saxon="http://saxon.sf.net/"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="#all"
     version="3.0">
 
@@ -1715,21 +1715,21 @@
             <!-- origin -->
             <cell row="0" col="0" diag="0">0</cell>
             <!-- left side -->
-            <xsl:for-each select="$s1">
+            <xsl:for-each select="$s1" saxon:threads="12">
                 <cell row="{position()}" col="0" diag="{position()}" source="u" left_string="{.}">
                     <xsl:value-of select="position() * $gap"/>
                 </cell>
             </xsl:for-each>
             <!-- top row -->
-            <xsl:for-each select="$s2">
+            <xsl:for-each select="$s2" saxon:threads="12">
                 <cell row="0" col="{position()}" source="l" diag="{position()}" top_string="{.}">
                     <xsl:value-of select="position() * $gap"/>
                 </cell>
             </xsl:for-each>
-            <xsl:for-each select="$s1">
+            <xsl:for-each select="$s1" saxon:threads="12">
                 <xsl:variable name="left_string" as="xs:string" select="."/>
                 <xsl:variable name="row" as="xs:integer" select="position()"/>
-                <xsl:for-each select="$s2">
+                <xsl:for-each select="$s2" saxon:threads="12">
                     <xsl:variable name="top_string" as="xs:string" select="."/>
                     <xsl:variable name="col" as="xs:integer" select="position()"/>
                     <xsl:variable name="diag" as="xs:integer" select="$row + $col"/>
@@ -1790,7 +1790,7 @@
                 </xsl:document>
             </xsl:variable>
             <xsl:variable name="new_cells" as="element(cell)+">
-                <xsl:for-each select="cell">
+                <xsl:for-each select="cell" saxon:threads="12">
                     <!-- compute scores for three neighbors -->
                     <xsl:variable name="scores" as="element(score)+">
                         <score source="u">
@@ -2008,7 +2008,7 @@
                 </section>
                 <h2>Alignment table</h2>
                 <xsl:variable name="tops" as="element(html:td)+">
-                    <xsl:for-each select="$alignment">
+                    <xsl:for-each select="$alignment" saxon:threads="12">
                         <td
                             data-match="{
                                     if (@source eq 'd') then
@@ -2026,7 +2026,7 @@
                     </xsl:for-each>
                 </xsl:variable>
                 <xsl:variable name="lefts" as="element(html:td)+">
-                    <xsl:for-each select="$alignment">
+                    <xsl:for-each select="$alignment" saxon:threads="12">
                         <td
                             data-match="{
                             if (@source eq 'd') then
@@ -2055,7 +2055,7 @@
                     <tr>
                         <th>&#xa0;</th>
                         <th>&#xa0;</th>
-                        <xsl:for-each select="$s2">
+                        <xsl:for-each select="$s2" saxon:threads="12">
                             <th>
                                 <xsl:value-of select="."/>
                             </th>
@@ -2074,7 +2074,7 @@
                                     </th>
                                 </xsl:when>
                             </xsl:choose>
-                            <xsl:for-each select="current-group()">
+                            <xsl:for-each select="current-group()" saxon:threads="12">
                                 <td>
                                     <!-- TODO: name attributes with data- prefix initially
                                         to avoid the expense of renaming for HTML output -->

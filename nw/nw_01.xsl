@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:djb="http://www.obdurodon.org"
-    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:html="http://www.w3.org/1999/xhtml" xmlns:saxon="http://saxon.sf.net/"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="#all"
     version="3.0">
 
@@ -1718,7 +1718,7 @@
                     <row>
                         <cell>&#xa0;</cell>
                         <cell>&#xa0;</cell>
-                        <xsl:for-each select="$s1">
+                        <xsl:for-each select="$s1" saxon:threads="12">
                             <cell>
                                 <xsl:value-of select="."/>
                             </cell>
@@ -1727,7 +1727,7 @@
                     <row>
                         <cell>&#xa0;</cell>
                         <cell>0</cell>
-                        <xsl:for-each select="$s1">
+                        <xsl:for-each select="$s1" saxon:threads="12">
                             <cell cell_from="l" cell_arrow="→" top_string="{.}">
                                 <xsl:value-of select="$gap * position()"/>
                             </cell>
@@ -1784,7 +1784,7 @@
                                 <score source="d" value="{$cell_diag + xs:integer($string_match)}"/>
                             </xsl:variable>
                             <xsl:variable name="best_scores" as="element(score)+">
-                                <xsl:for-each select="$scores[@value = max($scores/@value)]">
+                                <xsl:for-each select="$scores[@value = max($scores/@value)]" saxon:threads="12">
                                     <!-- Select by value, then sort by @xml:id 
                                         (conveniently, preference corresponds to alphabetical)
                                     -->
@@ -2094,7 +2094,7 @@
     <xsl:template match="cell" mode="html" xmlns="http://www.w3.org/1999/xhtml">
         <xsl:element
             name="{if (count(preceding::row) lt 2 or count(preceding-sibling::cell) lt 2) then 'th' else 'td'}">
-            <xsl:for-each select="@*">
+            <xsl:for-each select="@*" saxon:threads="12">
                 <xsl:attribute name="{concat('data-', name())}" select="."/>
             </xsl:for-each>
             <xsl:apply-templates mode="html"/>
