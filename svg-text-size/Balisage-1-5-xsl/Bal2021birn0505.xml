@@ -15,10 +15,40 @@
                 <surname>Birnbaum</surname>
             </personname>
             <personblurb>
-                <para>BLAH BLAH BLAH</para>
+                <para>David J. Birnbaum is Professor of Slavic Languages and Literatures at the
+                    University of Pittsburgh. He has been involved in the study of electronic text
+                    technology since the mid-1980s, has delivered presentations at a variety of
+                    digital humanities and electronic text technology conferences, and has served on
+                    the board of the Association for Computers and the Humanities, the editorial
+                    board of <emphasis role="ital">Markup languages: theory and practice</emphasis>,
+                    and the Text Encoding Initiative Technical Council. Much of his electronic text
+                    work intersects with his research in medieval Slavic manuscript studies, but he
+                    also often writes about issues in the philosophy of markup. For the past ten
+                    years he has been teaching an XML-oriented course in the University Honors
+                    College at the University of Pittsburgh entitled <quote>Computational methods in
+                        the humanities</quote> (<link>http://dh.obdurodon.org</link>).</para>
             </personblurb>
+            <affiliation>
+                <orgname>University of Pittsburgh</orgname>
+            </affiliation>
             <email>djbpitt@gmail.com</email>
             <link>http://www.obdurodon.org</link>
+        </author>
+        <author>
+            <personname>
+                <!-- Middle  name? Other name parts or shapes? -->
+                <firstname>Charlie</firstname>
+                <surname>Taylor</surname>
+            </personname>
+            <personblurb>
+                <para>BLAH BLAH BLAH</para>
+            </personblurb>
+            <affiliation>
+                <!-- job title is optional -->
+                <orgname>University of Pittsburgh</orgname>
+            </affiliation>
+            <email>[ADD EMAIL]</email>
+            <link>[ADD LINK(s)?]</link>
         </author>
         <keywordset role="author">
             <keyword>SVG</keyword>
@@ -51,15 +81,12 @@
                         <code>&lt;verb&gt;</code>, etc.) in a small corpus of Poe’s poetry, adding
                     an attribute <code>@value</code> to those elements with values of
                         <code>"open"</code> and <code>"closed"</code> according to whether the
-                    tagged words could be associated with openness or closedness. An initial version
-                    of this particular graph was developed by Charlie Taylor as part of our<quote>
-                        Computational methods in the humanities</quote> course at the University of
-                    Pittsburgh, which we taught together in spring 2021.</para>
+                    tagged words could be associated with openness or closedness.</para>
             </footnote></para>
         <figure xml:id="figure-01" xreflabel="Sample bar graph">
             <mediaobject>
                 <imageobject>
-                    <imagedata fileref="Bal2021birn0505_svg-01.svg"/>
+                    <imagedata fileref="includes/Bal2021birn0505_svg-01.svg"/>
                 </imageobject>
             </mediaobject>
         </figure>
