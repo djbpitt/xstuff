@@ -16,6 +16,7 @@ font = args.ttf
 size = args.size
 
 # TODO: Validate on input
+# https://stackoverflow.com/questions/15203829/python-argparse-file-extension-checking
 installed_fonts = font_manager.findSystemFonts()
 if font not in installed_fonts:
     print("Requested font is not installed: " + font)
