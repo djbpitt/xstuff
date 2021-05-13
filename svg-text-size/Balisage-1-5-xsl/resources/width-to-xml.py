@@ -5,6 +5,7 @@
 from fontTools.ttLib import TTFont
 from fontTools.ttLib.tables._c_m_a_p import CmapSubtable
 from xml.dom import minidom
+from matplotlib import font_manager
 
 import argparse
 parser = argparse.ArgumentParser()
@@ -13,6 +14,12 @@ parser.add_argument("size", help="size in points (defaults to 16pt)", type=int, 
 args = parser.parse_args()
 font = args.ttf
 size = args.size
+
+# TODO: Validate on input
+installed_fonts = font_manager.findSystemFonts()
+if font not in installed_fonts:
+    print("Requested font is not installed: " + font)
+    quit()
 
 # from StackOverflow
 # font = TTFont('/Users/djb/Library/Fonts/RomanCyrillic_Std.ttf')
