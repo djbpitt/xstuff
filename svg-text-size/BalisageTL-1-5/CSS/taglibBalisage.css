@@ -1,0 +1,1458 @@
+
+/****************************************************************
+** 0.  Initialization, imports, setup
+****************************************************************/
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
+@import url(http://fonts.googleapis.com/css?family=Fira+Mono:400,700);
+
+
+:root {
+    --Text: black; 
+    --Background: white; 
+    --Light: #B6CCEF;
+    --Dark: #0C2349; 
+    --GrayLight: #B6CCEF;
+    --DarkDark: #0C2349;
+    --AlternateRow: #B6CCEF;
+    --NavBackground: #778db0;
+    --Link: #0C2349;
+    --LinkBackground: inherit;
+    --LinkHover: white;
+    --LinkHoverBackground: #0C2349;
+    --TocLink: #0C2349;
+    --TocLinkBackground: inherit;
+    --TocLinkHover: #0C2349;
+    --TocLinkHoverBackground: #B6CCEF;
+    
+    --HedTop: 1.5em;
+    --HedBot: 0em;
+    --PHedTop: 0.0em;
+    --PHedBot: var(--HedBot); 
+    --FoldedTop: calc(var(--HedTop) / 4); 
+    --FoldedBot: 0em;
+    --ExtTop: calc(var(--HedTop) / 4); 
+    --ExtBot: 0em;
+
+    --NavButtonWidth: 2.0em;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/****************************************************************
+** 1.  Overall page structure
+****************************************************************/
+
+/* Setup page geometry */
+
+body.main {
+    height: 95vh;
+    background-color: var(--NavBackground);
+    font-family: Lucida, "Lucida Bright", Georgia, serif;
+    line-height: 1.3; /* do not use a percentage or absolute unit */
+    color: var(--Text);
+    margin-left: 0;
+    margin-top: 0;
+    padding-top: 0;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+    
+div#nav {
+    width: 23%;
+    height: 80%; /* fallback */
+    height: calc(100% - 1.5em);
+    float: left;
+    position: fixed;
+    top: 1.5em; /* leave room for switcher */
+    overflow-y: auto; /* scroll when needd */
+    background: var(--NavBackground);
+    background-image: url("../texture.png");
+    color: var(--Text);
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 700;
+    border-right: 1px solid var(--Dark);
+}
+
+/* If the hider is checked, hide the
+ * nav bar. 
+ */
+input#bchider:checked ~ div#nav {
+    display: none;
+}
+
+div#text {
+    width: 77%;
+    float: right;
+    background: var(--Background);
+    padding-left: 0.5em;
+}
+
+
+input#bchider ~ div#text {
+    transition: width 0.2s;
+}
+
+input#bchider:checked ~ div#text {
+    width: 100%;
+    box-shadow: none;
+}
+
+label[for="bchider"]:hover ~ div#text {
+    /* box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/****************************************************************
+** 1.1 Tag library title page (index.html)
+*/
+/* div.titlepage is child of div#text in index.html */
+div.titlepage {
+    background-color: var(--Light);
+    text-align: center;
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 2em;
+    padding-top: 4em;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-bottom: 2em
+}
+
+h3.sponsor {
+    margin-top: 3em;
+    font-style: italic;
+    font-size: 140%
+}
+
+div.developer {
+    margin-top: 3em;
+}
+
+div.vershistory {
+    text-align: left
+}
+
+
+/****************************************************************
+** 1.2 Nav bar and skipnav section
+** (a) skipnav, (b) input#bchider, (c) label [for='bchider'] and 
+** its complicated subtree, (d) client-side search form (inside
+** of div#nav), (e) div#nav and its other descendants.
+*/
+/****************************************************************
+** 1.2a skipnav
+*/
+
+div.skipnav {
+    background: var(--NavBackground)>;
+    color: var(--Text);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+}
+
+div.skipnav a {
+    position: fixed;
+    left: -10000px;
+    top: 1.5em;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+div.skipnav a:focus, div.skipnav a:active {
+    background: var(--NavBackground)>;
+    color: var(--Text);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+    position: fixed;
+    left: 2em; /* skip "hide nav" box */
+    top: 1.5em;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    text-decoration: underline;
+    z-index: 14;
+}
+
+/****************************************************************
+** 1.2b input#bchider (for hiding nav bar)
+*/
+
+
+input#bchider {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+
+
+input#bchider:checked ~ [role="complimentary"] {
+    display: none;
+}
+
+
+
+/****************************************************************
+** 1.2c label [for='bchider'] and its descendants
+*/
+
+label[for="bchider"] {
+    display: block;
+    padding-right: 1px;
+    font-weight: 900;
+    border-radius: 0 0 5px 0;
+    // padding-left: calc(23% - 4.45em);
+    /* Logically, it ought to be
+       23% - the width of the two sup
+       elements, i.e. 2 * 2.6 = 5.2,
+       but 23% - 5.2em is not wide enough.
+       */
+    position: fixed;
+    top: 0;
+    width: 23%;
+    height: auto;
+    text-align: right;
+    background-color: var(--NavBackground);
+    // color: #333;
+    color: var(--Dark)
+    line-height: 1.5em;
+}
+
+label[for="bchider"]:hover {
+    box-shadow: inset -10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+input#bchider:checked ~ label[for="bchider"] {
+    border: none;
+    border-radius: 0 0 5px 0;
+    padding-left: 0;
+    width: 1em;
+    text-align: left;
+    width: 60%;
+}
+
+
+/****************************************************************
+** 1.2c1 first span, with actual label for input#bchider 
+*/
+label[for="bchider"] span:nth-of-type(1) {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+
+/****************************************************************
+** 1.2c2 second span, #searchinfogoeshere
+*/
+span#searchinfogoeshere {
+    text-align: right;
+}
+
+/* When the hider is checked, make the second span
+ * (span#searchinfogoeshere) invisible.
+ */
+input#bchider:checked ~ label[for="bchider"] span#searchinfogoeshere {
+    display: none;
+    visibility: hidden;
+}
+
+
+/****************************************************************
+** 1.2c2a/b sup elements within #searchinfogoeshere
+** 1.2c2a sup#phew button w squiggly left arrow for unexpanding nav bar
+** 1.2c2b sup#ffew button w left triangle for hiding nav bar (controls
+**      input#bchider)
+*/
+
+span#searchinfogoeshere sup {
+    /* the close and unexpand buttons */
+    display: inline-block;
+    // width: 2.6em;
+    font-size: 100%;
+    width: var(--NavButtonWidth);
+    /* N.B. if width of these elements changes, the
+    padding-left rule for [for="bchider"] may need
+    tweaking. */
+    text-align: center;
+    /* padding: 0.4em; */
+    margin-right: 0em; 
+    margin-left: 0;
+    border: 1px dotted #AAA;
+}
+
+/* When we hover over the unexpand and hide controls,
+ * we want some change to make clear that they are controls
+ */
+#searchinfogoeshere sup:hover {
+    /* box-shadow: -10px 10px 10px rgba(0,0,0,0.2); */
+    /* box-shadow: inset -10px 10px 10px rgba(0,0,0,0.2);  */
+    box-shadow: inset 0px -8px 8px rgba(0,0,0,0.2); 
+}
+
+
+/****************************************************************
+** 1.2c2c i element with search help (added dynamically by Javascript)
+*/
+i.searchhelp {
+    width: 1.5em;
+    height: 1.5em;
+    overflow: hidden;
+    display: inline-block;
+    color: var(--Dark);
+    background: var(--NavBackground)>;
+    font-style: normal;
+    position: fixed;
+    left: calc(23% - 1px - 1.5em);
+    text-align: left;
+    line-height: 1.2em;
+    padding-top: 0.3em;
+}
+
+i.searchhelp:hover, i.searchhelp:focus {
+    z-index: 21;
+    font-style: normal;
+    font-weight: normal;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+    /* stacking order means the pop-up can end
+     * up under the nav pane; avoid that by
+     * moving it to the right:
+     */
+    // border-left: 1em solid #006400;
+    border-left: 1em solid var(--Dark);
+    padding-left: 1em;
+}
+
+/* The first i child of i.searchhelp contains the
+** b element which contains the circled question mark.
+*/
+i.searchhelp i:nth-of-type(1) {
+    display: inline-block;
+    line-height: 1em;
+    margin-top: 0;
+    margin-left: 0;
+    font-style: normal;
+}
+
+i.searchhelp i:nth-of-type(1) b { /* the "?" */
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0.25em;
+    margin-left: 0.3em; /* space away from the close symbol */
+    color: var(--Dark);
+    border: 1px solid var(--Dark);
+    border-radius: 0.5em;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 80%;
+    font-weight: 900;
+    width: 1em; /* make a circle */
+    text-align: center; /* for the "?" */
+}
+
+
+i.searchhelp i {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0.25em;
+    font-style: normal;
+    margin-left: 1.5em;
+}
+
+i.searchhelp i.left {
+    margin-left: 0.5em;
+}
+
+
+/****************************************************************
+** 1.2c3 third span #fieu, w right triangle for re-showing nav bar 
+**     (also controls input#bchider)
+*/
+label[for="bchider"] span#fieu {
+    display: none;
+    visibility: hidden;
+}
+
+/* When the hider is checked, make the 3d span (fieu) visible. */
+input#bchider:checked ~ label[for="bchider"] span#fieu {
+    display: block;
+    visibility: visible;
+}
+
+
+/****************************************************************
+** 1.2d client-side search form
+*/
+
+#nav input#Searchbar {
+    z-index: 7; /* on top of the label */
+    line-height: 1.5; /* relative unit */
+    top: 0em;
+    position: fixed;
+    background: var(--NavBackground)>;
+    color: var(--Text);
+    // width: 18%; /* narrower than the column */
+    width: calc(23% - 7em); /* column width minus widgets */
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+
+ul.ui-autocomplete {
+    background: var(--NavBackground)>;
+    color: var(--Text);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+    margin-left: 1em;
+}
+
+ul.ui-autocomplete li.ui-state-focus {
+    color: var(--NavBackground)>;
+    background: var(--Text);
+    font-weight: 700; /* bold */
+}
+
+
+/****************************************************************
+** 1.2e main contents of div#nav
+** (for div#nav itself, see sec. 1)
+*/
+
+/* nav tree, see: http://www.thecssninja.com/css/css-tree-menu */
+
+/* 1.2e1 ordered lists within #nav */
+/* all ordered lists within #nav */
+#nav ol {
+    padding: 0;
+}
+
+/* nested ordered lists within #nav */
+#nav li input ~ ol {
+    margin-left: 0;
+    // color: black;
+    color: var(--Text);
+    list-style: none;
+}
+
+/* nested ordered lists within #nav when expand is checked */
+#nav li input:checked ~ ol {
+    /* background: url(folder-minus.png) 40px 0 no-repeat; */
+    height: auto;
+    margin-left: 2em;
+    // color: green;
+    color: var(--Dark);
+}
+
+/* 1.2e2 list items within #nav */
+/* all list items within #nav */
+#nav li {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin-left: 0.5em;
+}
+
+#nav li.file {
+    /* margin-left: -1px !important; */
+}
+
+#nav li input ~ ol > li {
+    display: none;
+}
+
+#nav li input:checked ~ ol > li {
+    display: block; margin: 0 0 0.125em;  /* 2px */
+}
+
+#nav li input:checked ~ ol > li:last-child {
+    margin: 0 0 0.063em; /* 1px */
+}
+
+#nav li label input:checked ~  ol > li  {
+    display: block;
+    margin: 0 0 0.125em;  /* 2px */
+}
+
+/* 1.2e3 anchors within #nav */
+/* anchors within li.file within #nav */
+#nav li.file a {
+    display: block;
+    width: 90%; /* fallback */
+    width: calc(100% - 1em);
+    margin-left: 1em;
+    background-size: 20px 20px;
+}
+
+/* a within label within nav */
+#nav label a {
+}
+
+#nav li li.file a {
+    margin-left: 0;
+}
+
+#nav li li.file a.index-letter-in-nav-panel {
+    display: inline-block;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    width: 1.5em; /* to get alignment in cols */
+    text-align: center; /* alignment */
+    margin-right: 0.5em;
+}
+
+#nav a:link {
+    color: var(--TocLink);
+}
+
+#nav a:visited {
+    color:var(--TocLink);
+}
+
+#nav a:hover {
+    color:var(--TocLinkHover);
+    background-color: var(--Light);
+}
+
+#nav a:active {
+    // color:white;
+    color: var(--Background)
+    background-color: var(--Dark);
+}
+
+
+/* 1.2e4 input widgets within #nav (for expand/unexpand behavior) */
+/* input widgets in li in #nav */
+#nav li input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+/* 1.2e5 labels within #nav */
+/* label within li within nav */
+#nav li label {
+    cursor: pointer;
+    display: block;
+}
+
+#nav li label:before {
+    content: "▶ "; /* Rightwards Black Triangle  */
+    font-weight: 900;
+    color: var(--Dark);
+    width: 1em;
+}
+
+#nav li input:checked ~ label:before {
+    content: "▼ "; /* down pointing triangle */
+    font-weight: 900;
+    color: var(--Dark);
+    width: 1em;
+}
+
+   
+/****************************************************************
+** 1.3 Page header
+*/
+div.pageheader {
+    background-color: var(--Dark);
+    color: var(--Background);
+    /*
+      border-top: thin solid;
+      border-bottom: none;
+      border-left: thin solid;
+      border-right: thin solid;
+   */
+    padding: 0.25em 1em 0 0.25em;
+}
+
+input#bchider ~ div.pageheader {
+    padding-left: 23%;
+}
+
+input#bchider:checked ~ div.pageheader {
+    padding-left: 1em;
+}
+
+
+div.pageheader h1.headname {
+    text-align: right;
+    border-top: none;
+    font-size: 120%;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 0em;
+    margin-bottom: 0em 
+}
+
+div.pageheader h2.sponsor {
+    text-align: right;
+    border-top: none;
+    font-size: 80%;
+    margin-top: 0em;
+    margin-bottom: 0.5em 
+}
+
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+/****************************************************************
+** 1.4 Page footer
+*/
+div.pagefooter {
+    background-color: var(--Dark);
+    color: var(--Background);
+    margin-top: 1em;
+    margin-top: 1em;
+    padding-top: 0.25em;
+    padding-bottom: 3em;
+    clear: both;
+    /* extend the background all the way to the left: */
+    margin-left: -1em;
+    padding-left: 1em;
+}
+
+div.pagefooter a {
+    color: var(--Background);
+}
+
+.pagefooter div.headname {
+    border-top: none;
+    font-size: 90%;
+    font-weight: bold;
+    margin-top: 0em;
+    margin-bottom: 0em 
+}
+
+.pagefooter div.sponsor {
+    border-top: none;
+    font-size: 70%;
+    font-weight: normal;
+    margin-top: 0em;
+    margin-bottom: 0em 
+}
+
+.pagefooter  div.pubdate {
+    border-top: none;
+    font-size: 70%;
+    font-weight: normal;
+    margin-top: 0em;
+    margin-bottom: 0em 
+}
+
+.pagefooter div.developer {
+    border-top: none;
+    font-size: 90%;
+    margin-top: 0em;
+    margin-bottom: 0em 
+}
+
+div.backtotop {
+    margin-top:0;
+    padding-top:0;
+    padding-right:1em;
+}
+
+span.devlabel {
+    font-style: italic 
+}
+
+div.copyright {
+    font-style: italic;
+    font-weight: normal;
+    border-top: none;
+    font-size: 80%;
+    margin-top: 0em;
+    margin-bottom: 0em 
+}
+
+/****************************************************************
+** 1.5 Controls for opening and closing details elements.
+*/
+/* Put the open/close controls to the right, out 
+   of the way. */
+div.openclose {
+    float: right;
+    font-weight:bold;
+    // cursor: pointer;
+    font-size: larger;
+}
+
+/* Give them some breathing room (for sloppy mouse
+   location) and make them turn the cursor to a 
+   pointer so the user knows they are active (and
+   when the mouse is in position)
+   */
+span.opendetailelements, 
+span.closedetailelements {
+    padding-right:  1.0em;
+    padding-left:  1.0em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-right:  0em;
+    margin-left:  0em;
+    cursor:  pointer;
+    font-size: larger;
+}
+
+span.opendetailelements {
+    margin-right: 0.1em;
+    padding-right: 0.45em;
+    padding-left: 1.0em;
+}
+
+span.closedetailelements {
+    padding-left: 0.45em;
+    padding-right: 1.0em;    
+}
+
+span.opendetailelements:hover, 
+span.closedetailelements:hover {
+    color: var(--Dark);
+    background-color: var(--Light);
+}
+
+
+
+/****************************************************************
+** 2.  Sections and section headings
+****************************************************************/
+
+/****************************************************************
+** 2.1 Section (divs of various kinds)
+*/
+div.deflist {
+    padding-left: 0;
+    padding-right: 0.25em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    margin: 1.0em 0em;		
+}
+
+details {
+    max-width: 50em; 
+}   
+
+ 
+
+/* one-em indent for children of top-level blocks */
+div.div2 > *,
+details.div2 > * {
+    margin-left: 1em;
+}
+
+/* but not for the headings of those blocks */
+div.div2 > h2,
+details.div2 > summary {
+    margin-left: 0em;
+}
+
+
+/****************************************************************
+** 2.2 Specialized sections for element, attribute, pe pages
+*/
+div.definition {
+}
+
+/* Since closed details don't have space above them,
+   they often look, when preceded by text, as if they 
+   were part of the non-foldable section before them.
+   With the normal settings for folding, this means
+   we can fix the problem by adding space at the end
+   of remarks. */
+div.remarks {
+    margin-bottom: 1em;
+}
+
+/* Experimental Color Highlight on Best Practice */
+div.best-practice {
+    // background-color: #CCE6CC;
+    background-color: var(--Light);
+    background-image: url(../texture.png);
+    padding: 0em 0.5em 0.2em 0.5em;
+}
+
+div.best-practice h3 {
+    padding-top: 0.5em;
+}
+
+div.unaffiliatedattrlist {
+    padding-top: 0.5em;
+}
+
+div.namedattrgroup,
+div.unaffiliatedattrlist {
+    padding-left: 3em;
+}
+
+div.elementlist {
+    margin-left: 1em;
+}
+
+div.attrvalues {
+    /* background-color: var(--Light); */
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em
+}
+
+div.revhistory {
+    font-size: 100%;
+    font-style: italic;
+    border-top: thin ridge 
+}
+
+div.mod {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    border-left: thin solid;
+    padding-left: 0.5em 
+}
+
+details.models > div.elementcontext {
+    margin-left: 1em;
+    // background-color: yellow;
+}
+
+/****************************************************************
+** 2.3 Other specialized divs
+*/
+div.letterindex {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    margin-bottom: 1.5em;
+    margin-top: 0em
+}
+
+/****************************************************************
+** styles for index 
+*/
+span[class~="index.alternative"][class~="only"] {
+    display: inline;
+    margin-left: 0em
+}
+
+span[class~="index.alternative"] {
+    display: block;
+    margin-left: 2em
+}
+
+p[class~="index.index"] {
+    background-color: var(--Light);
+    margin-top: 1em 
+}
+
+
+
+/****************************************************************
+** 2.4 Headings
+*/
+
+/*...............................................................
+** 2.4.0 All headings
+*/
+h1, h2, h3, h4, h5, h6, details > summary {
+    font-family: sans-serif;
+    font-size-adjust: 0.6;
+    color:  var(--DarkDark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /* margin-left: 0.5em; */
+    margin-top: var(--HedTop);
+    margin-bottom: var(--HedBot);
+}
+
+/* details/summary:  format as a heading */
+details > summary {
+    margin-top: var(--FoldedTop);
+    margin-bottom: var(--FoldedBot);
+}
+
+/* If the details element follows a normal paragraph 
+** or div, give it some space. */
+div + details > summary,
+p + details > summary {
+     margin-top: var(--HedTop);
+}
+
+/* headings in the page header have their own color scheme. */
+h1.headname, h2.sponsor {
+    color: unset;
+    background-color: unset;
+}
+
+
+/*...............................................................
+** 2.4.1 Top of page:  h1 and phrase-level elements inside it
+*/
+
+h1 {
+    font-size: x-large;
+    margin-top: var(--PHedTop);
+    margin-bottom: var(--PHedBot);
+}
+
+h1.elem-info > span.elementtag,
+h1.attr-info > span.attrtag,
+h1.pe-info > span.petag {
+    display: inline-block;
+    // margin-top: var(--PHedTop);
+    // margin-bottom: var(--PHedBot);
+    font-family: "Fira Mono", monospace;
+    font-size: x-large;
+}
+
+h1.attr-info > span.attrtag:before {
+    content: "@";
+    font-size: 80%;
+    
+    position: relative; /* enable relative motion */
+    top: -0.1em; /* raise the @ slightly */
+}
+
+h1.attr-info > span.attrname,
+h1.elem-info > span.elementname,
+h1.pe-info > span > pename {
+    font-family: sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    display: inline;
+}
+
+/*...............................................................
+** 2.4.2 h2
+*/
+
+h2, summary.DL2 {
+    font-size: larger;
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* special cases of second-level headings */
+/* special case: annotation on element or attribute */
+h2.elemannotation, h2.attribannotation {
+    display: inline;
+    font-weight: normal;
+    font-size: inherit
+}
+
+h2.elemannotation:before, h2.attribannotation:before {
+    content: " (";
+    display: inline
+}
+
+h2.elemannotation:after, h2.attribannotation:after {
+    content: ")";
+    display: inline
+}
+
+/*...............................................................
+** 2.4.3 h3, h4, h5, ...
+*/
+h3, summary.DL3 {
+    font-size: 90%;
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* level 4 (just in case) */
+/* div.remarks details > details > summary,
+div.relatedresources details > details > summary */
+h4, summary.DL4 {
+    font-size: 90%;
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* level 5 (getting a little paranoid here) */
+/* div.remarks details > details > summary,
+div.relatedresources details > details > summary */
+h5, summary.DL5 {
+    font-size: 90%;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: underline;
+}
+
+
+/* N.B. It is tempting to set top and bottom margins for
+   details>summary to depend in part on whether they are open or not.
+   When they are closed, we want very little space, but when they are
+   open, it feels natural to give them more space.  (And it looks
+   funny, at least statically, if we don't.)
+
+   That turns out to be a bad idea: if we do that, then when we
+   click on the heading, it moves up and down.
+
+   For static headings, whitespace above the heading helps set if off
+   so the eye can find it.  For details/summary, when the user 
+   clicks on the summary to open it, the eye is already right 
+   there.  The space above is not needed to guide the eye.
+*/
+
+
+/* Special rules for links to external subsections: */
+/* Heading 'Subsidiary sections'. */
+div.header.subsidiaries {
+    margin-top: var(--HedTop);
+    font-size-adjust: 0.6;
+    font-family:  sans-serif;
+    font-size: larger;
+    font-style: italic;
+    background-color: var(--GrayLight);
+    padding: 0.2em;
+}
+
+/* Pointers to subsidiary sections */
+/* not just h4 */
+.header.external {
+    margin-top: var(--FoldedTop);
+    margin-bottom: var(--FoldedBot);
+    // background-color: orange;
+}
+
+
+/****************************************************************
+** 3.  Paragraphs and paragraph-level chunks
+****************************************************************/
+
+/****************************************************************
+** 3.1 Paragraphs (p and div.para)
+*/
+div.para {
+    margin-top: 0.25em;
+    margin-bottom: 0.5em;
+    max-width: 50em;
+}
+
+/* div.pbr:  para with extra vertical space */
+div.pbr {
+    margin-top:0.25em;
+}
+
+p {
+    margin-top: 0.25em;
+    margin-bottom: 0em;
+    font-weight: normal;
+}
+
+p.index-entry {
+    margin-left: 0.5em;
+}
+
+p.moduledefined {
+    font-family: "Fira Mono", monospace;
+    font-weight: bold 
+}
+
+p.moddesc {
+    font-style: italic 
+}
+
+p.modpara {
+    margin-left: 0.5em 
+}
+
+/* p within revision history */
+div.mod p {
+    font-size: 80%;
+    font-family: sans-serif;
+    margin-top: 0em;
+    margin-bottom: 0em 
+}
+
+
+/****************************************************************
+** 3.2 Lists and list items
+*/
+ul {
+    margin-top: 0em;
+    margin-bottom: 0em
+}
+
+li {
+    margin-top: 4px;
+}
+
+dt {
+    font-weight: bold 
+}
+
+dd p {
+    margin-top: 0em;
+    margin-bottom: 0.5em 
+}
+
+
+/****************************************************************
+** 3.3 Examples and code blocks
+*/
+pre.contentdesc,
+p.contentdesc {
+    font-family: "Fira Mono", monospace;
+    background-color: var(--Light);
+    background-image: url(../texture.png);
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em
+}
+
+pre.taggedtext {
+    background-color: var(--Light);
+    background-image: url(../texture.png);
+    padding-left: 0.5em;
+    padding-right: 0.5em
+}
+
+pre.taggedtext strong {
+    display: inline;
+    /* background-color: var(--Background); */
+    color: var(--Dark)
+}
+
+div.codeblock {
+    margin-left: 1em;
+}
+
+/****************************************************************
+** 3.4 Tables
+*/
+/* Table formatting */
+td, th {
+    padding: 0px;
+}
+
+
+td p {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+tr {
+    vertical-align: top
+}
+
+tr.row0 {
+}
+
+tr.row1 {
+    background-color: var(--AlternateRow);
+}
+
+table.attrtable {
+    margin-top: 0.5em
+}
+
+table.attrtable td {
+    border-top: thin ridge;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0em;
+}
+
+table.attrtable th {
+    font-family: sans-serif;
+    /* font-size: 80%; */
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0em;
+}
+
+td.attrvalue {
+    text-align: right;
+}
+
+th.attrvalue {
+    text-align: right;
+    font-weight: bold
+}
+
+th.attrmeaning {
+    text-align: left;
+    font-weight: bold
+}
+
+td.attrrestricthead {
+    text-align: right;
+    color: var(--Dark); /* to make clear it is not a value */
+}
+
+td.attrrestrict {
+    text-align: left;
+}
+
+
+table.deflisttable {
+    border-collapse: collapse;
+}
+
+tr.defitem {
+    vertical-align: top;
+    margin-top: 0.5em;
+}
+
+th.termhead {
+    text-align: right;
+    border-bottom: 1px dotted;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    padding-right: 1em;
+    font-weight: bold;
+    font-style: italic;
+}
+
+th.defhead {
+    border-bottom: 1px dotted;
+    font-style: italic;
+}
+
+/* th.dterm */
+.dterm {
+    text-align: right;
+    padding-right: 0.75em;
+    font-weight: normal;
+}
+
+/* td.ddef */
+.ddef {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+/* "Context table" styles */
+table.contexttable {
+    margin-bottom: 1.5em;
+}
+
+table.contexttable tr th {
+    text-align: left;
+}
+
+td.containedcellname {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    vertical-align: top;
+}
+
+td.containedcelltag,
+td.containingcelltag,
+td.notcontained,
+td.containingcellname,
+td.contextcelltag {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    vertical-align: top;
+}
+
+.intable {
+    font-size: 0.66em;
+}
+
+
+/****************************************************************
+** 4.  Phrase-level elements
+****************************************************************/
+
+/* If we are coloring heads, we need to color
+   labels and pseudo-heads.
+*/
+strong {
+    color: var(--DarkDark);
+}
+
+hr {
+    display:none 
+}
+
+img {
+    border: none 
+}
+
+span.elementname,
+span.attrname {
+    font-family: Lucida, "Lucida Bright", Georgia, serif;
+}
+
+span.modlabel {
+    font-style: italic 
+}
+
+span.tt {
+    font-family: "Fira Mono", monospace;
+}
+
+div.modeldesc span.annotation {
+    font-style: italic 
+}
+
+h1 > span.elementname, 
+h2 > span.elementname,
+h3 > span.elementname,
+h4 > span.elementname,
+summary > span.elementname {
+    font-family: unset;
+}
+
+span.elementtag,
+span.attrtag,
+span.petag {
+    font-family: "Fira Mono", monospace;
+    font-size:100%;
+}
+
+/****************************************************************
+** 4.1 Anchor elements (a)
+** (For a within #nav and div.skipnav, see special rules above.)
+*/
+body.main a {
+    color: var(--Link);
+    text-decoration: none
+}
+
+body.main a:hover {
+    background-color: var(--LinkHoverBackground);
+    color: var(--LinkHover);
+}
+
+div.pagefooter a {
+    color: var(--LinkHover);
+}
+
+div.pagefooter a:hover {
+    color: var(--TocLinkHoverBackground);
+}
+
+/* decorate (links to) attribute names with '@' */
+a.attrname:before {
+    content: "@";
+    font-size: 80%;
+    opacity: 0.4;
+    
+    position: relative; /* enable relative motion */
+    top: -0.1em; /* raise the @ slightly */
+}
+
+/* for anchors see also specialized rules under skipnav above */
+
+
+/****************************************************************
+** 5.  media print (for printing from the HTML)
+****************************************************************/
+@media print {  
+    div.nav, 
+    div#nav, 
+    div.skipnav ,
+    span#searchinfogoeshere,
+    input#bchider ,
+    label#bchiderlabel , 
+    div.backtotop, 
+    div#horiznav,
+    div#nav,
+    #nav {
+        display: none;  
+    }
+    
+    pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        word-wrap: anywhere;
+        color: black;
+    }
+
+    span.focus, 
+    body.main a {
+        color:black;
+    }
+
+    * {
+        color:black;
+    }
+
+
+    #nav {
+        width: 1%;
+        border-right: 0px solid white;
+    }
+
+    #text {
+        width: 95%;
+        float: right;
+        background: white;
+        padding-left: 0.5em;
+    }
+
+    div#text {
+        border-top: 1px solid black;
+	width: 95%;
+    }
+    
+    h1.attrtag:before {
+        color: black
+    }
+
+    a.attrname:before {
+        color: black
+    }
+
+    td.attrrestricthead {
+        color: black    
+    }
+
+    input#bchider ~ div.pageheader {
+	padding-left: 0;
+    }
+
+    div.openclose {
+	display: none;
+    }
+
+}
+
+/* ******** End of CSS for Print Tag Library CSS file ******** */
+
+/****************************************************************
+** end
+****************************************************************/
+
+				
+

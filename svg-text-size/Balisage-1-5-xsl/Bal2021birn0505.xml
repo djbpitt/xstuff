@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="balisage-author.css"?>
+<?xml-model href="../Balisage-1-5-rng/balisage-1-5.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.0-subset Balisage-1.5">
+    <title>How long is my SVG <code>&lt;text&gt;</code> element?</title>
+    <info>
+        <abstract>
+            <para>BLAH BLAH BLAH</para>
+        </abstract>
+        <author>
+            <personname>
+                <firstname>David</firstname>
+                <othername>J.</othername>
+                <surname>Birnbaum</surname>
+            </personname>
+            <personblurb>
+                <para>BLAH BLAH BLAH</para>
+            </personblurb>
+            <email>djbpitt@gmail.com</email>
+            <link>http://www.obdurodon.org</link>
+        </author>
+        <keywordset role="author">
+            <keyword>SVG</keyword>
+            <keyword>font metrics</keyword>
+        </keywordset>
+    </info>
+    <section xml:id="intro">
+        <title>The problem</title>
+        <para>SVG layout requires that the developer be in control of the dimensions of the objects
+            that must be placed in the coordinate space. It is easy to specify (or compute based on
+            other specifications) the size (bounding box height and width) of many SVG objects
+            (rectangles, circles, lines), identifying the bounding box for text is challenging
+            because SVG text does not know its own length. Developers are able to specify a
+            font-size, which corresponds to the height of the font (from baseline to baseline)<footnote>
+                <para>If the user does not specify a font size, the default is 16 pixels, which
+                    corresponds to specifying the value <code>"medium"</code> for a
+                        <code>@font-size</code> attribute on the SVG <code>&lt;text&gt;</code>
+                    element. The <code>@font-size</code> setting may be modified before rendering
+                    with the global SVG <code>@transform</code> attribute.</para>
+            </footnote>, but the length of a string of characters depends on the widths of the
+            individual characters, and those widths are not exposed in any convenient, accessible
+            way in a regular XML development environment.</para>
+        <para>Our test case for exploring and addressing this challenge is an SVG bar graph like the following:<footnote>
+                <para>This graph is based on XML originally prepared by Matthew Borbonus, Kyle
+                    Huber, and Ethan Moser as part of their <emphasis role="ital">Tracking language
+                        of catch and release in the poetical corpus of Edgar Allan Poe</emphasis>
+                        (<link>http://poe.obdurodon.org/</link>,
+                        <link>https://github.com/Ethandaniel47/EdgarAllanPoeProject</link>). The
+                    developers tagged parts of speech (e.g., <code>&lt;noun&gt;</code>,
+                        <code>&lt;verb&gt;</code>, etc.) in a small corpus of Poe’s poetry, adding
+                    an attribute <code>@value</code> to those elements with values of
+                        <code>"open"</code> and <code>"closed"</code> according to whether the
+                    tagged words could be associated with openness or closedness. An initial version
+                    of this particular graph was developed by Charlie Taylor as part of our<quote>
+                        Computational methods in the humanities</quote> course at the University of
+                    Pittsburgh, which we taught together in spring 2021.</para>
+            </footnote></para>
+        <figure xml:id="figure-01" xreflabel="Sample bar graph">
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="Bal2021birn0505_svg-01.svg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>In this graph the bars rest on the X axis, and they bear individual slanted labels
+            below. Under those labels we label the X axis itself. The challenge involves determining
+            the Y position of the <quote>Poem</quote> label for the X axis, since that position will
+            depend on the length of the longest bar label, and will therefore vary according to the
+            specific poem titles. If you are like us, you place that label with a combination of
+            guesswork with trial and error and then hard-code a magic number, which—predictably and
+            understandably—breaks as soon as you try to reuse the code with new input.<footnote>
+                <para>Placing the X axis label more precisely in a way that takes into account the
+                    lengths and positions of all of the bar labels is a version of the same type of
+                    task, although it is a much more complicated version. For example, if the
+                    leftmost and rightmost bar labels are the longest, a human designer might choose
+                    to label the X axis, if it is short enough, slightly between them, instead of
+                    fully below them. Similarly, a human designer might choose, if the bar labels
+                    happen to be longer on one side of the graph than the other, to place the axis
+                    label on the shorter side, below the bar labels on that side, but not below the
+                    longest label (on the other side).</para>
+                <para>Our modest goal is simply to place the general label for the X axis with
+                    reliable precision below the longest bar label. Whether the more exact placement
+                    described above would be worth the extra effort is less clear, but, as will be
+                    clear from the description below, it can be implemented as an extension of our
+                    simpler solution to the simpler task.</para>
+            </footnote></para>
+    </section>
+    <section xml:id="solutions">
+        <title>Solutions</title>
+        <para> This presentation explores two strategies for working around the difficulty of
+            knowing the length of an SVG <code>&lt;text></code> element:</para>
+
+        <orderedlist>
+            <listitem>
+                <para>As a preprocessing step before undertaking the transformation that outputs the
+                    SVG bar graph, create a mapping between characters and their individual widths
+                    by extracting font metrics. We can then import that mapping into the XSLT that
+                    generates the SVG and it to compute the length of text strings. If the text
+                    strings are horizontal or vertical, the length is one of the dimensions of the
+                    bounding box, and the other dimension is the font size. If the text is rotated,
+                    we can use the length combined with the angle of rotation to compute the
+                    dimensions of the bounding box. </para>
+            </listitem>
+            <listitem>
+                <para>Output SVG components that must be stacked vertically as separate
+                        <code>&lt;svg&gt;</code> elements with no height specified. These would
+                    wind up with a default height in a browser that would be wrong initially. We
+                    then use CSS Flexbox to stack the <code>&lt;svg&gt;</code> elements vertically,
+                    and employ the JavaScript <code>element.getBBox()</code> function to compute the
+                    dimensions of the bounding box for each of the vertically stacked
+                        <code>&lt;svg&gt;</code> elements. We can then write the computed height
+                    values into those elements in the DOM, effectively assigning a height after
+                    loading the SVG into the browser, instead of when creating it with XSLT.</para>
+            </listitem>
+        </orderedlist>
+        <para>These two approaches are described in more detail and illustrated below.<footnote>
+                <para>We are grateful to the developers who participated in the discussion we opened
+                    about this topic in the xml.com Slack workspace, and especially Gerrit Imsieke
+                    and Liam Quin. Slack postings are ephemeral, but although that conversation will
+                    not be preserved, we are happy to be able to acknowledge it, more persistently,
+                    here.</para>
+            </footnote></para>
+        <section>
+            <title>An XSLT approach</title>
+            <para>BLAH BLAH BLAH</para>
+        </section>
+        <section>
+            <title>A JavaScript approach</title>
+            <para>BLAH BLAH BLAH</para>
+        </section>
+    </section>
+    <section>
+        <title>Loose ends and future directions</title>
+        <para>Our XSLT approach assumes that the font metrics that can be extracted from the font
+            files are sufficient to compute the length of an SVG line of text. Our implementation
+            does attempt to access kerning information, and it has not been tested on writing
+            systems that involve character substitution (including positional glyph variation or
+            ligation) or glyph reordering. It is not impacted negatively by zero-width characters as
+            long as the font metrics for those glyphs correctly report a width of zero.</para>
+        <para>Font availability on a user system is not fully predictable, especially over time, so
+            supplying a webfont is more robust then trusting that every browser will use, for
+            example, a Times New Roman font with the same font metrics.</para>
+        <para>Saxon-JS</para>
+        <para>More exact positioning</para>
+    </section>
+    <section>
+        <title>Conclusion</title>
+    </section>
+    <bibliography>
+        <title>Works cited</title>
+        <bibliomixed/>
+    </bibliography>
+</article>

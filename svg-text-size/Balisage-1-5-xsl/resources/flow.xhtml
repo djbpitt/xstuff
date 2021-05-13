@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>test</title>
+        <style type="text/css">
+            body {
+                display: flow;
+                flow-direction: column;
+            }
+            svg {
+                display: block;
+            }</style>
+        <script type="text/javascript">
+            window.addEventListener('DOMContentLoaded', init, false);
+            function init() {
+                const svgs = document.querySelectorAll('svg');
+                for (var i = 0; i &lt; svgs.length; i++) {
+                    h = svgs[i].getBBox().height;
+                    svgs[i].setAttribute('height', h);
+                }
+            }</script>
+    </head>
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" height="100px">
+            <rect width="100" height="100" fill="blue"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <text dominant-baseline="hanging" font-size="large" fill="red">Hi, Mom!</text>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <text dominant-baseline="hanging" fill="red">Hi, Dad</text>
+        </svg>
+    </body>
+</html>
