@@ -82,7 +82,8 @@
                     an attribute <code>@value</code> to those elements with values of
                         <code>"open"</code> and <code>"closed"</code> according to whether the
                     tagged words could be associated with openness or closedness. We have adapted
-                    the XML and schema from the original project for this report.</para>
+                    the XML and schema from the original project for this report, and the SVG
+                    visualizations are our own.</para>
             </footnote></para>
         <figure xml:id="figure-01" xreflabel="Sample bar graph">
             <mediaobject>
