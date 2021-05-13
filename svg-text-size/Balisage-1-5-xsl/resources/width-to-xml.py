@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # https://stackoverflow.com/questions/4190667/how-to-get-width-of-a-truetype-font-character-in-1200ths-of-an-inch-with-python
 # https://fonttools.readthedocs.io/en/latest/index.html
 # https://www.geeksforgeeks.org/create-xml-documents-using-python/
@@ -5,8 +6,17 @@ from fontTools.ttLib import TTFont
 from fontTools.ttLib.tables._c_m_a_p import CmapSubtable
 from xml.dom import minidom
 
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("ttf", help="path to TrueType (TTF) file (required)")
+parser.add_argument("size", help="size in points (defaults to 16pt)", type=int, nargs="?", default=16)
+args = parser.parse_args()
+font = args.ttf
+size = args.size
+
 # from StackOverflow
-font = TTFont('/Users/djb/Library/Fonts/RomanCyrillic_Std.ttf')
+# font = TTFont('/Users/djb/Library/Fonts/RomanCyrillic_Std.ttf')
+font = TTFont(font)
 cmap = font['cmap']
 t = cmap.getcmap(3,1).cmap # map of decimal values to glyph names
 s = font.getGlyphSet()
@@ -30,7 +40,7 @@ root.appendChild(xml)
 c_dict = dict()
 for num_dec in range(65535): # entire BMP; decimal Unicode value
     char = chr(num_dec) # character as string
-    c_dict[char]= getTextWidth(char, 16) # default SVG font-size is 16 (medium)
+    c_dict[char]= getTextWidth(char, size) # default SVG font-size is 16 (medium)
 
 for item in c_dict.items(): # string-value : width
     char = item[0] # string value of character
