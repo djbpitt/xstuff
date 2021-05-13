@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>TO ——</title>
+    </meta>
+    <stanza>
+        <lb/>I heed not that my earthly lot
+        <lb/>Hath <det value="closed">little</det> of Earth in it,
+        <lb/>That years of love have been <verb value="closed">forgot</verb>
+        <lb/>In the <noun value="closed">hatred</noun> of a minute:
+    </stanza>
+    <stanza>
+        <lb/>I mourn not that the desolate
+        <lb/>Are <adj value="open">happier</adj>, sweet, than I,
+        <lb/>But that you <verb value="closed">sorrow</verb> for my fate
+        <lb/>Who am a <noun value="closed">passer-by</noun>.
+    </stanza>
+</poem>

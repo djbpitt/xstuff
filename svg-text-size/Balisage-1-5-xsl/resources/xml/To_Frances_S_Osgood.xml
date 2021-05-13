@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>TO FRANCES S. OSGOOD </title>
+        <date>1845</date>
+    </meta>
+  
+        <stanza>
+            <lb/>Thou wouldst be loved?--then <verb value="open">let</verb> thy heart
+            <lb/><prep value="open">From</prep> its present pathway part not;
+            <lb/>Being everything which now thou art,
+            <lb/>Be nothing which thou art not.
+            <lb/>So with the world thy gentle ways,
+            <lb/>Thy grace, thy more than beauty,
+            <lb/>Shall be an endless theme of <noun value="open">praise</noun>.
+            <lb/>And love a simple duty.
+        </stanza>
+    
+</poem>

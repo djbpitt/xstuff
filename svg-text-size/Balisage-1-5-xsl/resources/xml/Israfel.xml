@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Desktop/EdgarAllanPoeProject/schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>ISRAFEL</title>
+        <date>1836</date>
+    </meta>
+
+    
+        <stanza>
+            <lb/><prep value="closed">In</prep> <noun value="open">Heaven</noun> a spirit doth dwell
+            <lb/>"Whose heart-strings are a lute;"
+            <lb/>None sing so wildly well
+            <lb/>As the <noun value="closed">angel</noun> <ref value="biblical">Israfel</ref>,
+            <lb/>And the giddy Stars (so legends tell),
+            <lb/><verb value="closed">Ceasing</verb> their hymns, attend the spell
+            <lb/>Of his voice, all mute.
+        </stanza>
+
+        <stanza>
+            <lb/>Tottering <prep value="open">above</prep>
+            <lb/>In her <adj value="open">highest</adj> noon,
+            <lb/>The enamoured Moon
+            <lb/>Blushes with love,
+            <lb/>While, to listen, the red levin
+            <lb/>(With the rapid <ref value="astrological">Pleiads</ref>, even,
+            <lb/>Which were seven),
+            <lb/>Pauses <prep value="closed">in</prep> <noun value="open">Heaven</noun>.
+        </stanza>
+
+        <stanza>
+            <lb/>And they say (the starry choir
+            <lb/>And the other listening things)
+            <lb/>That <ref value="biblical">Israfeli's</ref> fire
+            <lb/>Is owing to that lyre
+            <lb/>By which he sits and sings--
+            <lb/>The trembling living wire
+            <lb/>Of those unusual strings.
+        </stanza>
+
+        <stanza>
+            <lb/>But the skies that <noun value="open">angel</noun> trod,
+            <lb/>Where <adj value="closed">deep</adj> thoughts are a duty--
+            <lb/>Where Love's a grow-up <noun value="open">God</noun>--
+            <lb/>Where the <ref value="religious">Houri</ref> glances are
+            <lb/>Imbued with all the beauty
+            <lb/>Which we worship <prep value="closed">in</prep> a <noun value="open">star</noun>.
+        </stanza>
+
+        <stanza>
+            <lb/>Therefore, thou art not wrong,
+            <lb/><ref value="biblical">Israfeli</ref>, who despisest
+            <lb/>An unimpassioned song;
+            <lb/>To thee the laurels belong,
+            <lb/>Best bard, because the wisest!
+            <lb/>Merrily live and long!
+        </stanza>
+
+        <stanza>
+            <lb/>The ecstasies <prep value="open">above</prep>
+            <lb/>With thy burning measures suit--
+            <lb/>Thy grief, thy joy, thy hate, thy love,
+            <lb/>With the fervor of thy lute--
+            <lb/>Well may the <noun value="open">stars</noun> be mute!
+        </stanza>
+
+        <stanza>
+            <lb/>Yes, <noun value="open">Heaven</noun> is thine; but this
+            <lb/>Is a world of sweets and sours;
+            <lb/>Our flowers are merely--flowers,
+            <lb/>And the shadow of thy perfect bliss
+            <lb/>Is the sunshine of ours.
+        </stanza>
+
+        <stanza>
+            <lb/>If I could dwell
+            <lb/>Where <ref value="biblical">Israfel</ref>
+            <lb/>Hath dwelt, and he where I,
+            <lb/>He might not sing so wildly well
+            <lb/>A mortal melody,
+            <lb/>While a bolder note than this might <verb value="open">swell</verb>
+            <lb/>From my lyre <prep value="closed">within</prep> the sky.
+        </stanza>
+    
+</poem>

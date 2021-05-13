@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>Dreams</title>
+    </meta>
+    
+    <stanza>
+        <lb/>Oh! that my young life were a lasting dream!
+        <lb/>My spirit not <verb value="open">awakening</verb>, till the beam
+        <lb/>Of an Eternity should bring the morrow.
+        <lb/>Yes! though that long dream were of <adj value="closed">hopeless</adj> sorrow,
+        <lb/>'Twere better than the cold reality
+        <lb/>Of <verb value="open">waking</verb> life, to him whose heart must be,
+        <lb/>And hath been still, upon the lovely earth,
+        <lb/>A <noun value="closed">chaos</noun> of deep passion, from his birth.
+        <lb/>But should it be—that dream eternally
+        <lb/>Continuing—as dreams have been to me
+        <lb/>In my young boyhood—should it thus be given,
+        <lb/>'Twere folly still to hope for higher <noun value="open">Heaven</noun>.
+        <lb/>For I have revelled when the sun was bright
+        <lb/>I' the summer <noun value="open">sky</noun>, in dreams of <adj value="open">living</adj> light
+        <lb/>And loveliness,—have left my very heart
+        <lb/>Inclines of my imaginary apart
+        <lb/>From mine own home, with beings that have been
+        <lb/>Of mine own thought—what more could I have seen?
+        <lb/>'Twas once—and only once—and the <adj value="open">wild</adj> hour
+        <lb/>From my remembrance shall not pass—some power
+        <lb/>Or spell had <verb value="closed">bound</verb> me—'twas the chilly wind
+        <lb/>Came <verb value="closed">o'er</verb> me in the night, and left behind
+        <lb/>Its image on my spirit—or the moon
+        <lb/>Shone on my slumbers in her lofty noon
+        <lb/>Too coldly—or the stars—howe'er it was
+        <lb/>That dream was that that night-wind—let it pass.
+        <lb/>I have been <adj value="open">happy</adj>, though in a dream.
+        <lb/>I have been <adj value="open">happy</adj>—and I love the theme:
+        <lb/>Dreams! in their vivid coloring of <noun value="open">life</noun>
+        <lb/>As in that fleeting, <adj value="closed">shadowy</adj>, <adj value="closed">misty</adj> strife
+        <lb/>Of semblance with reality which brings
+        <lb/>To the delirious eye, more lovely things
+        <lb/>Of <noun value="open">Paradise</noun> and <noun value="open">Love</noun>—and all my own!—
+        <lb/>Than young Hope in his sunniest hour hath known.
+   </stanza>
+</poem>

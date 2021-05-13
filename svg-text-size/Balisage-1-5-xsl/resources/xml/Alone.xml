@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem><meta><title>Alone</title>
+    <date>March 17, 1829</date></meta>
+<stanza><lb/><prep value="open">From</prep> childhood's hour I have not been
+<lb/>As others were—I have not seen
+<lb/>As others saw—I could not bring
+<lb/>My passions <prep value="open">from</prep> a common spring—
+<lb/><prep value="open">From</prep> the same source I have not taken
+<lb/>My <noun value="closed">sorrow</noun>—I could not <verb value="open">awaken</verb>
+<lb/>My heart to joy at the same tone—
+<lb/>And all I loved—I loved alone—
+<lb/>Thou—<prep value="closed">in</prep> my childhood—<prep value="closed">in</prep> the <noun value="open">dawn</noun>
+<lb/>Of a most stormy life—was drawn
+<lb/>From every <noun value="closed">depth</noun> of good and ill
+<lb/>The mystery which <verb value="closed">binds</verb> me still—
+<lb/>From the <noun value="open">torrent</noun>, or the <noun value="open">fountain</noun>—
+<lb/>From the red <noun value="open">cliff</noun> of the <noun value="open">mountain</noun>—
+<lb/>From the <noun value="open">sun</noun> that <adv value="closed">round</adv> me roll'd
+<lb/>In its autumn tint of gold—
+<lb/><prep value="open">From</prep> the lightning <prep value="closed">in</prep> the <noun value="open">sky</noun>
+<lb/>As it passed me <verb value="open">flying</verb> by—
+<lb/><prep value="open">From</prep> the <noun value="open">thunder</noun> and the <noun value="open">storm</noun>—
+<lb/>And the <noun value="open">cloud</noun> that took the form
+<lb/>(When the rest of <noun value="open">Heaven</noun> was blue)
+<lb/>Of a demon <prep value="closed">in</prep> my view.
+</stanza>
+</poem>

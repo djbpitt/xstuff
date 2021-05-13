@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>TO F--</title>
+        <date>1845</date>
+    </meta>
+   
+        <stanza>
+            <lb/>Beloved! <prep value="closed">amid</prep> the earnest woes
+            <lb/>That crowd <prep value="closed">around</prep> my earthly path--
+            <lb/>(Drear path, alas! where grows
+            <lb/>Not even one <adj value="closed">lonely</adj> rose)--
+            <lb/>My <noun value="open">soul</noun> at least a <noun value="open">solace</noun> hath
+            <lb/><prep value="closed">In</prep> <noun value="open">dreams</noun> of thee, and <prep value="closed">therein</prep> knows
+            <lb/>An Eden of bland repose.
+        </stanza>
+
+        <stanza>
+            <lb/>And thus thy memory is to me
+            <lb/>Like some <adj value="open">enchanted</adj> <adj value="closed">far-off</adj> isle
+            <lb/><prep value="closed">In</prep> some tumultuous sea--
+            <lb/>Some ocean <verb value="closed">throbbing</verb> <adj value="closed">far</adj> and <adj value="open">free</adj>
+            <lb/>With storm--but where meanwhile
+            <lb/>Serenest skies continually
+            <lb/>Just <prep value="open">o'er</prep> that one bright inland smile.
+        </stanza>
+    
+</poem>

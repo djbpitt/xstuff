@@ -81,7 +81,8 @@
                         <code>&lt;verb&gt;</code>, etc.) in a small corpus of Poe’s poetry, adding
                     an attribute <code>@value</code> to those elements with values of
                         <code>"open"</code> and <code>"closed"</code> according to whether the
-                    tagged words could be associated with openness or closedness.</para>
+                    tagged words could be associated with openness or closedness. We have adapted
+                    the XML and schema from the original project for this report.</para>
             </footnote></para>
         <figure xml:id="figure-01" xreflabel="Sample bar graph">
             <mediaobject>
@@ -150,11 +151,59 @@
             </footnote></para>
         <section>
             <title>An XSLT approach</title>
-            <para>BLAH BLAH BLAH</para>
+            <section>
+                <title>Overview</title>
+                <para>BLAH BLAH BLAH</para>
+            </section>
+            <section>
+                <title>Implementation</title>
+                <para>BLAH BLAH BLAH</para>
+            </section>
+            <section>
+                <title>Discussion</title>
+                <para>Pro: Output does not depend on viewing in a browser or other
+                    DOM-and-JavaScript-aware environment. For example, can be included as an image
+                    in a Balisage (Docbook-based) document. Requires only XML-based programming; in
+                    particular, does not require JavaScript knowledge.</para>
+                <para>Con: Requires preparation of font metric information, an extra step both
+                    initially and with scaling consequences (e.g., user cannot safely override
+                    supplied font information). For improved robustness, requires webfont. Requires
+                    additional logic to deal with font effects (e.g., ligatures, positional glyph
+                    variants) and transformations.</para>
+            </section>
         </section>
         <section>
             <title>A JavaScript approach</title>
-            <para>BLAH BLAH BLAH</para>
+            <section>
+                <title>Overview</title>
+                <para>BLAH BLAH BLAH</para>
+            </section>
+            <section>
+                <title>Implementation</title>
+                <para>BLAH BLAH BLAH</para>
+                <para><code>getBBox()</code> is not sensitive to transformations that have been
+                    applied to an object, and <xref linkend="primer-getBoundingClientRect"/>
+                    proposes the use of <code>getCTM()</code> to work around this limitation. We
+                    find it simpler to wrap the transformed object(s) in an SVG
+                        <code>&lt;g&gt;</code> or <code>&lt;svg&gt;</code> element; because those
+                    objects are not themselves transformed, <code>getBBox()</code> reports their
+                    actual coordinates correctly even when they contain descendant elements that
+                    have undergone transformation with the SVG <code>@transform</code> attribute,
+                    such as scaling, rotation, translation, or skewing.</para>
+            </section>
+            <section>
+                <title>Discussion</title>
+                <para>Pro: Does not require preparation of font metric information in advance (a
+                    benefit both initially and with respect to scalability). Adapts to viewing
+                    environment, and therefore supports user overrides of default. Does not require
+                    webfont. Does not require additional logic to deal with font effects (e.g.,
+                    ligatures, positional glyph variants) or transformations</para>
+                <para>Con: Requires JavaScript programming knowledge. Works only in
+                    DOM-and-JavaScript-aware environments (e.g., works in a web browser, but not as
+                    an included image in a Balisage (Docbook-based) document. Not all JavaScript
+                    methods (including <code>getBBox()</code>) are sensitive to transformations that
+                    have been performed on an object.</para>
+            </section>
         </section>
     </section>
     <section>
@@ -169,13 +218,35 @@
             supplying a webfont is more robust then trusting that every browser will use, for
             example, a Times New Roman font with the same font metrics.</para>
         <para>Saxon-JS</para>
-        <para>More exact positioning</para>
+        <para>Saxon-JS relies on a JavaScript implementation of the XSLT engine that is designed to
+            perform transformations inside the browser. Insofar as Saxon-JS incorporates both XSLT
+            and JavaScript functionality, it may provide a cleaner integration of the two
+            approaches.</para>
     </section>
     <section>
         <title>Conclusion</title>
+        <para>BLAH BLAH BLAH</para>
     </section>
     <bibliography>
         <title>Works cited</title>
-        <bibliomixed/>
+        <bibliomixed xml:id="getBoundingClientRect" xreflabel="MDN getBoundingClientRect()"
+                ><quote>Element.getBoundingClientRect()</quote>, MDN Web Docs,
+                <link>https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</link>
+        </bibliomixed>
+        <bibliomixed xml:id="getBBox" xreflabel="MDN getBBox()"
+                ><quote>SVGGraphicsElement.getBBox()</quote>, MDN Web Docs,
+                <link>https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox</link>
+        </bibliomixed>
+        <bibliomixed xml:id="primer-getBoundingClientRect"
+            xreflabel="MDN getBoundingClientRect() (Primer)"><quote>getBBox</quote>. <emphasis
+                role="ital">An SVG primer for today’s browsers. W3C Working Draft — September
+                2010</emphasis>, ed. David Dailey.
+                <link>https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox</link>
+        </bibliomixed>
+        <bibliomixed xml:id="primer-getCTM" xreflabel="MDN getCTM() (Primer)"
+                ><quote>getCTM()</quote>. <emphasis role="ital">An SVG primer for today’s browsers.
+                W3C Working Draft — September 2010</emphasis>, ed. David Dailey.
+                <link>https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM</link>
+        </bibliomixed>
     </bibliography>
 </article>

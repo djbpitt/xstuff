@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem><meta><title>Bridal Ballad</title></meta>
+    
+<stanza><lb/>The ring is on my hand, 
+<lb/>And the wreath is on my brow;
+<lb/>Satins and jewels grand
+<lb/>Are all at my command.
+<lb/>And I am happy now. </stanza>
+
+<stanza><lb/>And my lord he loves me well; 
+<lb/>But, when first he breathed his vow,
+<lb/>I felt my bosom <verb value="open">swell</verb>—
+<lb/>For the words <verb value="open">rang</verb> as a knell,
+<lb/>And the voice seemed his who <verb value="open">fell</verb>
+<lb/><prep value="closed">In</prep> the battle <prep value="closed">down</prep> the <noun value="closed">dell</noun>,
+<lb/>And who is happy now. </stanza>
+
+<stanza><lb/>But he spoke to reassure me,
+<lb/>And he kissed my pallid brow,
+<lb/>While a <noun value="open">reverie</noun> came <prep value="open">o'er</prep> me,
+<lb/>And to the churchyard bore me,
+<lb/>And I sighed to him before me,
+<lb/>Thinking him <adj value="closed">dead</adj> D'Elormie,
+<lb/>"Oh, I am happy now!" </stanza>
+
+<stanza><lb/>And thus the words were spoken,
+<lb/>And thus the plighted vow, 
+<lb/>And, though my faith be broken,
+<lb/>And, though my heart be broken, 
+<lb/>Behold the golden <noun value="open">keys</noun>
+<lb/>That proves me happy now! </stanza>
+
+<stanza><lb/>Would to God I could <verb value="open">awaken</verb>
+<lb/>For I <verb value="open">dream</verb> I know not how,
+<lb/>And my soul is sorely shaken
+<lb/>Lest an evil step be taken,—
+<lb/>Lest the <noun value="closed">dead</noun> who is forsaken 
+<lb/>May not be happy now.</stanza>
+</poem>

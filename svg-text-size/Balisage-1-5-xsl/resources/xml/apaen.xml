@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>A Pæan</title>
+    </meta>
+    <stanza>
+         <lb/>How shall the <verb value="closed">burial</verb> rite be read?
+         <lb/>The solemn song be sung?
+         <lb/>The requiem for the loveliest <noun value="open">dead</noun>,
+         <lb/>That ever <verb value="open">died</verb> so young?
+    </stanza>
+    <stanza>
+        <lb/>Her friends are gazing on her,
+        <lb/>And on her gaudy bier,
+        <lb/>And weep!—oh! to dishonor
+        <lb/><noun value="closed">Dead</noun> beauty with a tear!
+    </stanza>
+    <stanza>
+        <lb/>They loved her for her wealth—
+        <lb/>And they hated her for her pride—
+        <lb/>But she <verb value="open">grew</verb> in feeble health,
+        <lb/>And they love her—that she died.
+    </stanza>
+    <stanza>
+        <lb/>They tell me (while they speak
+        <lb/>Of her "costly broider'd pall")
+        <lb/>That my voice is <verb value="open">growing</verb> weak—
+        <lb/>That I should not sing at all—
+    </stanza>
+    <stanza>
+        <lb/>Or that my tone should be
+        <lb/>Tun'd to such solemn song
+        <lb/>So mournfully—so mournfully,
+        <lb/>That the <noun value="open">dead</noun> may feel no wrong.
+    </stanza>
+    
+    <stanza>
+        <lb/>But she is gone <adv value="open">above</adv>,
+        <lb/>With young <noun value="open">Hope</noun> at her side,
+        <lb/>And I am drunk with love
+        <lb/>Of the dead, who is my bride.—
+    </stanza>
+    <stanza>
+        <lb/>Of the <noun value="open">dead</noun>—<noun value="open">dead</noun> who <verb value="closed">lies</verb>
+        <lb/>All perfum'd there,
+        <lb/>With the <noun value="open">death</noun> upon her eyes.
+        <lb/>And the <noun value="open">life</noun> upon her hair.
+    </stanza>
+    <stanza>
+        <lb/>Thus on the <noun value="closed">coffin</noun> loud and long
+        <lb/>I strike—the murmur sent
+        <lb/>Through the gray chambers to my song,
+        <lb/>Shall be the accompaniment.
+    </stanza>
+    <stanza>
+        <lb/>Thou <verb value="open">diedst</verb> in thy life's June—
+        <lb/>But thou didst not <verb value="open">die</verb> too fair:
+        <lb/>Thou didst not <verb value="open">die</verb> too soon,
+        <lb/>Nor with too calm an air.
+    </stanza>
+    <stanza>
+        <lb/>From more than friends on earth,
+        <lb/>Thy life and love are riven,
+        <lb/>To join the untainted <foreign lang="deu">mirth</foreign>
+        <lb/>Of more than thrones in <noun value="open">heaven</noun>.—
+    </stanza>
+    <stanza>
+        <lb/>Therefore, to thee this night
+        <lb/>I will no requiem <verb value="open">raise</verb>,
+        <lb/>But waft thee on thy <verb value="open">flight</verb>,
+        <lb/>With a <foreign lang="gr">Pæan</foreign> of old days.
+    </stanza>
+</poem>

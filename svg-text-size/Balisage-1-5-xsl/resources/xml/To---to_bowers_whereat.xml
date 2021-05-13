@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Desktop/EdgarAllanPoeProject/schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>TO----</title>
+        <date>1829</date>
+    </meta>
+
+ 
+        <stanza>
+            <lb/>The bowers whereat, <prep value="closed">in</prep> dreams, I see
+            <lb/>The wantonest singing birds,
+        </stanza>
+
+        <stanza>
+            <lb/>Are lips--and all thy melody
+            <lb/>Of lip-begotten words--
+        </stanza>
+
+        <stanza>
+            <lb/>Thine eyes, <prep value="closed">in</prep> <noun value="open">Heaven</noun> of heart enshrined
+            <lb/>Then <adv value="closed">desolately</adv> <verb value="closed">fall</verb>,
+            <lb/>O <noun value="open">God</noun>! on my <adj value="closed">funereal</adj> mind
+            <lb/>Like starlight on a pall--
+        </stanza>
+
+        <stanza>
+            <lb/>Thy heart--thy heart!--I wake and sigh,
+            <lb/>And sleep to dream till day
+            <lb/>Of the truth that gold can never buy--
+            <lb/>Of the baubles that it may.
+        </stanza>
+    
+</poem>

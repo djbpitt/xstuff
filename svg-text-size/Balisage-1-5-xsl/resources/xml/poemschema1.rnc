@@ -1,0 +1,71 @@
+# Preliminary schema
+# created by Matt
+start = poem
+poem = element poem { meta, stanza+ }
+meta = element meta { title, date? }
+title = element title { text }
+date = element date { xsd:gYear }
+stanza =
+    element stanza {
+        (lb,
+         mixed { (noun | verb | adj | adv | ref | prep | conj | inter | pron | foreign | det)* })+
+    }
+lb = element lb { empty }
+# The line
+# l = element l{mixed{(noun | verb | adj | adv | ref | prep | conj | inter | pron | foreign| det)*}}
+
+# The parts of speech (and ref)
+noun =
+    element noun {
+        pvalue,
+        mixed { lb? }
+    }
+verb =
+    element verb {
+        pvalue,
+        mixed { lb? }
+    }
+adj =
+    element adj {
+        pvalue,
+        mixed { lb? }
+    }
+adv =
+    element adv {
+        pvalue,
+        mixed { lb? }
+    }
+prep =
+    element prep {
+        pvalue,
+        mixed { lb? }
+    }
+conj =
+    element conj {
+        pvalue,
+        mixed { lb? }
+    }
+inter =
+    element inter {
+        pvalue,
+        mixed { lb? }
+    }
+pron =
+    element pron {
+        pvalue,
+        mixed { lb? }
+    }
+det =
+    element det {
+        pvalue,
+        mixed { lb? }
+    }
+ref =
+    element ref {
+        rvalue,
+        mixed { lb? }
+    }
+rvalue = attribute value { text }
+pvalue = attribute value { "open" | "closed" }
+foreign = element foreign { lang, text }
+lang = attribute lang { text }

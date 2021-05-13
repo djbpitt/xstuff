@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>A DREAM WITHIN A DREAM</title>
+        <date>1849</date>
+    </meta>
+
+    
+        <stanza>
+            <lb/>Take this kiss <prep value="open">upon</prep> the brow!
+            <lb/>And, <prep value="closed">in</prep> <verb value="open">parting</verb> from you now,
+            <lb/>Thus much let me avow--
+            <lb/>You are not wrong, who deem
+            <lb/>That my days have been a dream:
+            <lb/>Yet if hope has <verb value="open">flown</verb> <prep value="open">away</prep>
+            <lb/><prep value="closed">In</prep> a night, or <prep value="closed">in</prep> a day,
+            <lb/><prep value="closed">In</prep> a vision or <prep value="closed">in</prep> none,
+            <lb/>Is it therefore the less gone?
+            <lb/>All that we see or seem
+            <lb/>Is but a dream <prep value="closed">within</prep> a dream.
+        </stanza>
+
+        <stanza>
+            <lb/>I stand amid the roar
+            <lb/>Of a surf-tormented shore,
+            <lb/>And I hold <prep value="closed">within</prep> my hand
+            <lb/>Grains of the golden sand--
+            <lb/>How few! yet how they creep
+            <lb/>Through my fingers to the <noun value="closed">deep</noun>
+            <lb/>While I weep--while I weep!
+            <lb/>O <noun value="open">God</noun>! can I not <verb value="closed">grasp</verb>
+            <lb/>Them with a <adj value="closed">tighter</adj> <noun value="closed">clasp</noun>?
+            <lb/>O <noun value="open">God</noun>! can I not save
+            <lb/>One from the pitiless wave?
+            <lb/>Is all that we see or seem
+            <lb/>But a dream <prep value="open">within</prep> a dream?
+        </stanza>
+    
+</poem>

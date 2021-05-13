@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem><meta><title>The Village Street</title></meta>
+
+<stanza><lb/><prep value="closed">In</prep> these rapid, restless <noun value="closed">shadows</noun>,
+<lb/>Once I walked at eventide, 
+<lb/>When a gentle, <adj value="closed">silent</adj> maiden,
+<lb/>Walked in beauty at my side. 
+<lb/>She alone there walked beside me 
+<lb/>All in beauty, like a bride.</stanza> 
+
+<stanza><lb/>Pallidly the <noun value="open">moon</noun> was shining
+<lb/><prep value="closed">On</prep> the dewy <noun value="open">meadows</noun> nigh; 
+<lb/><prep value="closed">On</prep> the silvery, <adj value="closed">silent</adj> rivers,
+<lb/><prep value="closed">On</prep> the <noun value="open">mountains</noun> far and high,—
+<lb/><prep value="closed">On</prep> the <noun value="open">ocean</noun>'s <noun value="open">star</noun>-lit waters,
+<lb/>Where the winds a-weary <verb value="closed">die</verb>.</stanza> 
+
+<stanza><lb/>Slowly, <adv value="closed">silently</adv> we <verb value="open">wandered</verb>
+<lb/><prep value="open">From</prep> the <adj value="open">open</adj> cottage <noun value="open">door</noun>, 
+<lb/><prep value="closed">Underneath</prep> the elm's long branches
+<lb/>To the pavement bending o'er; 
+<lb/><prep value="closed">Underneath</prep> the mossy willow
+<lb/>And the <adj value="closed">dying</adj> sycamore.</stanza> 
+
+<stanza><lb/>With the myriad <noun value="open">stars</noun> in beauty
+<lb/>All bedight, the <noun value="open">heavens</noun> were seen, 
+<lb/><adj value="open">Radiant</adj> hopes were <adj value="open">bright</adj> <adv value="closed">around</adv> me,
+<lb/>Like the <noun value="open">light</noun> of <noun value="open">stars</noun> serene; 
+<lb/>Like the mellow <noun value="closed">midnight</noun> splendor
+<lb/>Of the Night's <verb value="open">irradiate</verb> queen.</stanza> 
+
+<stanza><lb/>Audibly the elm-leaves whispered 
+<lb/>Peaceful, pleasant melodies,
+<lb/>Like the <adj value="open">distant</adj> murmured music 
+<lb/>Of unquiet, lovely <noun value="open">seas</noun>;
+<lb/>While the winds were hushed in <noun value="closed">slumber</noun> 
+<lb/>In the fragrant flowers and trees.</stanza> 
+
+<stanza><lb/>Wondrous and unwonted beauty 
+<lb/>Still adorning all did seem,
+<lb/>While I told my love in fables 
+<lb/><prep value="closed">'Neath</prep> the willows by the stream;
+<lb/>Would the heart have <verb value="closed">kept</verb> unspoken 
+<lb/>Love that was its rarest dream!</stanza>
+
+<stanza><lb/>Instantly away we wandered
+<lb/>In the shadowy twilight tide, 
+<lb/>She, the <adj value="closed">silent</adj>, scornful maiden,
+<lb/>Walking calmly at my side, 
+<lb/>With a step serene and stately,
+<lb/>All in beauty, all in pride.</stanza> 
+
+<stanza><lb/>Vacantly I walked beside her. 
+<lb/><prep value="closed">On</prep> the earth mine eyes were cast;
+<lb/>Swift and keen there came unto me 
+<lb/>Bitter memories of the past—
+<lb/><prep value="closed">On</prep> me, like the rain in Autumn 
+<lb/><prep value="closed">On</prep> the <adj value="closed">dead</adj> leaves, cold and fast.</stanza> 
+
+<stanza><lb/><prep value="closed">Underneath</prep> the elms we parted, 
+<lb/>By the lowly cottage <noun value="open">door</noun>;
+<lb/>One brief word alone was uttered—
+<lb/>Never <prep value="closed">on</prep> our lips before; 
+<lb/>And <adv value="open">away</adv> I walked forlornly,
+<lb/>Broken-hearted evermore.</stanza> 
+
+<stanza><lb/>Slowly, <adv value="closed">silently</adv> I loitered, 
+<lb/>Homeward, in the <noun value="closed">night</noun>, alone;
+<lb/>Sudden anguish <verb value="closed">bound</verb> my spirit, 
+<lb/>That my youth had never known;
+<lb/>Wild unrest, like that which cometh 
+<lb/>When the <noun value="closed">Night</noun>'s first dream hath <verb value="open">flown</verb>.</stanza> 
+
+<stanza><lb/>Now, to me the elm-leaves whisper 
+<lb/>Mad, discordant melodies,
+<lb/>And keen melodies like <noun value="closed">shadows</noun> 
+<lb/>Haunt the moaning willow trees,
+<lb/>And the sycamores with laughter 
+<lb/>Mock me in the <adj value="closed">nightly</adj> breeze.</stanza> 
+<stanza>
+<lb/><adj value="closed">Sad</adj> and pale the Autumn moonlight
+<lb/>Through the sighing foliage streams; 
+<lb/>And each <noun value="open">morning</noun>, <noun value="closed">midnight</noun> <noun value="closed">shadow</noun>,
+<lb/><noun value="closed">Shadow</noun> of my sorrow seems; 
+<lb/>Strive, O heart, forget thine idol!
+<lb/>And, O soul, forget thy dreams!</stanza>
+</poem>

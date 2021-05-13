@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem><meta><title>The Haunted Palace</title></meta>
+
+<stanza><lb/><prep value="open">In</prep> the greenest of our <noun value="closed">valleys</noun>
+<lb/>By good <noun value="open">angels</noun> tenanted,
+<lb/>Once a fair and stately palace—
+<lb/>Radiant palace—reared its head.
+<lb/><prep value="open">in</prep> the monarch Thought's dominion—
+<lb/>It stood there!
+<lb/>Never seraph spread a pinion 
+<lb/>Over fabric half so fair!</stanza>
+
+<stanza><lb/>Banners yellow, glorious, golden,
+<lb/><prep value="closed">On</prep> its <noun value="closed">roof</noun> did <verb value="open">float</verb> and <verb value="open">flow</verb>,
+<lb/>(This—all this—was <prep value="closed">in</prep> the olden 
+<lb/>Time long ago),
+<lb/>And every gentle air that dallied,
+<lb/><prep value="closed">in</prep> that sweet day,
+<lb/>Along the ramparts plumed and pallid, 
+<lb/>A <adj value="open">winged</adj> odor went away. </stanza>
+
+<stanza><lb/>Wanderers <prep value="closed">in</prep> that happy <noun value="closed">valley</noun>,
+<lb/>Through two luminous <noun value="open">windows</noun>, saw
+<lb/>Spirits moving musically, 
+<lb/>To a lute's well-tunëd law,
+<lb/><verb value="open">Bound</verb> about a throne where, sitting
+<lb/>(Porphyrogene!)
+<lb/><prep value="closed">in</prep> state his glory well befitting,
+<lb/>The ruler of the realm was seen. </stanza>
+
+<stanza><lb/>And all with pearl and ruby glowing 
+<lb/>Was the fair palace <noun value="open">door</noun>,
+<lb/><prep value="open">Through</prep> which came <verb value="open">flowing</verb>, <verb value="open">flowing</verb>, <verb value="open">flowing</verb>,
+<lb/>And sparkling evermore,
+<lb/>A troop of <ref value="myth">Echoes</ref>, whose sweet duty
+<lb/>Was but to sing,
+<lb/><prep value="closed">in</prep> voices of surpassing beauty,
+<lb/>The wit and wisdom of their king. </stanza>
+
+<stanza><lb/>But evil things, <prep value="closed">in</prep> <noun value="closed">robes</noun> of sorrow,
+<lb/>Assailed the monarch's high estate.
+<lb/>(Ah, let us mourn!—for never morrow 
+<lb/>Shall dawn <prep value="closed">upon</prep> him desolate !)
+<lb/>And round about his home the glory
+<lb/>That blushed and <verb value="open">bloomed</verb>,
+<lb/>Is but a dim-remembered story 
+<lb/>Of the old time <verb value="closed">entombed</verb>.</stanza>
+<stanza>
+<lb/>And travellers, now, <prep value="closed">within</prep> that valley,
+<lb/><prep value="open">Through</prep> the red-litten <noun value="open">windows</noun> see
+<lb/><adj value="open">Vast</adj> forms, that <verb value="open">move</verb> fantastically
+<lb/>To a discordant melody,
+<lb/>While, like a ghastly rapid river,
+<lb/><prep value="open">Through</prep> the pale <noun value="open">door</noun>
+<lb/>A hideous throng rush <adv value="open">out</adv> forever
+<lb/>And laugh—but smile no more.</stanza>
+</poem>

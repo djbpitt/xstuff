@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem><meta><title>To One in Paradise</title></meta>
+    
+<stanza><lb/>Thou wast that all to me, love,
+<lb/>For which my soul did pine—
+<lb/>A green isle in the <noun value="open">sea</noun>, love,
+<lb/>A fountain and a shrine,
+<lb/>All wreathed with fairy fruits and flowers,
+<lb/>And all the flowers were mine.</stanza>
+
+<stanza><lb/>Ah, dream too bright to last! 
+<lb/>Ah, starry Hope! that didst <verb value="open">arise</verb>
+<lb/>But to be <adj value="closed">overcast</adj>! 
+<lb/>A voice <prep value="open">from</prep> <adv value="open">out</adv> the Future cries,
+<lb/>"On! on!"—but o'er the Past 
+<lb/>(Dim gulf!) my spirit hovering <verb value="closed">lies</verb>
+<lb/>Mute, motionless, aghast!</stanza>
+
+<stanza><lb/>For, alas! alas! with me 
+<lb/>The light of Life is <adv value="closed">o'er</adv>!
+<lb/>"No more—no more—no more"—
+<lb/>(Such language holds the solemn <noun value="open">sea</noun> 
+<lb/>To the sands upon the shore)
+<lb/>Shall <verb value="open">bloom</verb> the thunder-blasted tree,
+<lb/>Or the stricken eagle <verb value="open">soar</verb>! </stanza>
+
+<stanza><lb/>And all my days are trances, 
+<lb/>And all my nightly dreams
+<lb/>Are where thy dark eye glances,
+<lb/>And where thy footstep gleams—
+<lb/>In what ethereal dances,
+<lb/>By what eternal streams!</stanza>
+
+<stanza><lb/>Alas! for that accursed time
+<lb/>They <verb value="closed">bore</verb> thee o'er the billow,
+<lb/>From love to titled age and crime,
+<lb/>And an unholy pillow!
+<lb/>From me, and from our misty clime,
+<lb/>Where weeps the silver willow!</stanza>
+</poem>

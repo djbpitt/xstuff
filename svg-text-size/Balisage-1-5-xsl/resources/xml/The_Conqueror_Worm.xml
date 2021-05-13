@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta><title>The Conqueror Worm</title>
+        <date>1838</date></meta>
+
+<stanza><lb/>Lo! 'tis a gala <noun value="closed">night</noun> 
+<lb/>Within the <adj value="closed">lonesome</adj> latter years!
+<lb/>An <noun value="open">angel</noun> throng, bewinged, bedight 
+<lb/>In <noun value="closed">veils</noun>, and <verb value="closed">drowned</verb> in tears,
+<lb/>Sit in a theatre, to see 
+<lb/>A play of hopes and fears,
+<lb/>While the orchestra <verb value="open">breathes</verb> fitfully 
+<lb/>The music of the spheres.</stanza> 
+
+<stanza><lb/>Mimes, in the form of God on high, 
+<lb/>Mutter and mumble low,
+<lb/>And hither and thither <verb value="open">fly</verb>—
+<lb/>Mere puppets they, who come and go
+<lb/>At bidding of <adj value="open">vast</adj> formless things 
+<lb/>That shift the scenery to and fro,
+<lb/>Flapping <prep value="open">from</prep> <adv value="open">out</adv> their Condor wings 
+<lb/>Invisible Wo!</stanza> 
+
+<stanza><lb/>That motley drama—oh, be sure 
+<lb/>It shall not be forgot!
+<lb/>With its Phantom chased for evermore, 
+<lb/>By a crowd that <verb value="closed">seize</verb> it not,
+<lb/><prep value="open">Through</prep> a <noun value="closed">circle</noun> that ever returneth <prep value="closed">in</prep> 
+<lb/>To the self-same spot,
+<lb/>And much of Madness, and more of Sin, 
+<lb/>And Horror the soul of the plot.</stanza> 
+<stanza> <lb/>But see, <prep value="closed">amid</prep> the mimic rout 
+<lb/>A crawling shape <verb value="closed">intrude</verb>!
+<lb/>A blood-red thing that writhes <prep value="open">from</prep> <adv value="open">out</adv> 
+<lb/>The scenic <noun value="closed">solitude</noun>!
+<lb/>It writhes!—it writhes!—with mortal pangs 
+<lb/>The mimes become its food,
+<lb/>And the angels sob at vermin fangs 
+<lb/><prep value="closed">In</prep> human gore imbued.</stanza> 
+
+<stanza><lb/>Out—out are the lights—out all! 
+<lb/>And, <prep value="closed">over</prep> each quivering form,
+<lb/>The <noun value="closed">curtain</noun>, a funeral <noun value="closed">pall</noun>, 
+<lb/>Comes <adv value="closed">down</adv> with the rush of a storm,
+<lb/>And the <noun value="open">angels</noun>, all pallid and wan, 
+<lb/><verb value="open">Uprising</verb>, <verb value="open">unveiling</verb>, affirm
+<lb/>That the play is the tragedy, "Man," 
+<lb/>And its hero the Conqueror Worm.</stanza>
+</poem>

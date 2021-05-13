@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta><title>Hymn</title>
+    <date>1885</date></meta>
+
+    <stanza>
+        <lb/>At morn—at noon—at twilight <adj value="closed">dim</adj>—
+        <lb/><ref value="rel">Maria</ref>! thou hast heard my hymn!
+        <lb/>In joy and wo—in good and ill—
+        <lb/><ref value="rel">Mother of God</ref>, be with me still!
+        <lb/>When the Hours flew brightly by,
+        <lb/>And not a <noun value="closed">cloud</noun>
+            <verb value="closed">obscured</verb> the <noun value="open">sky</noun>,
+        <lb/>My soul, lest it should <adj value="open">truant</adj> be,
+        <lb/>Thy grace did guide to thine and thee
+        <lb/>Now, when <noun value="closed">storms</noun> of Fate <verb value="closed"
+                >o'ercast</verb>
+        <lb/><adj value="closed">Darkly</adj> my Present and my Past,
+        <lb/>Let my future <adj value="open">radiant</adj>
+            <verb value="open">shine</verb>
+        <lb/>With sweet hopes of thee and thine!
+    </stanza>
+
+
+    
+</poem>

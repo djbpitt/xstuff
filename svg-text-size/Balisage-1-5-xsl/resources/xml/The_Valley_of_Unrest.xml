@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Desktop/EdgarAllanPoeProject/schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>THE VALLEY OF UNREST</title>
+        <date>1831</date>
+    </meta>
+
+  
+        <stanza>
+            <lb/>Once it smiled a silent dell
+            <lb/>Where the people did not dwell;
+            <lb/>They had <verb value="closed">gone</verb> unto the wars,
+            <lb/>Trusting to the mild-eyed stars,
+            <lb/>Nightly, from their azure <noun value="closed">towers</noun>,
+            <lb/>To keep watch <prep value="open">above</prep> the flowers,
+            <lb/><prep value="closed">In</prep> the midst of which all day
+            <lb/>The red sun-light lazily lay,
+            <lb/>Now each visitor shall <verb value="open">confess</verb>
+            <lb/>The sad <noun value="closed">valley</noun>'s restlessness.
+            <lb/>Nothing there is motionless--
+            <lb/>Nothing save the airs that <verb value="closed">brood</verb>
+            <lb/><prep value="open">Over</prep> the magic <noun value="closed">solitude</noun>.
+            <lb/>Ah, by no wind are stirred those trees
+            <lb/>That palpitate like the chill seas
+            <lb/>Around the misty <ref value="location">Hebrides</ref>!
+            <lb/>Ah, by no wind those clouds are <verb value="closed">driven</verb>
+            <lb/>That rustle through the unquiet <noun value="open">Heaven</noun>
+            <lb/><adv value="closed">Unceasingly</adv>, from morn till even,
+            <lb/><prep value="open">Over</prep> the violets there that <verb value="closed">lie</verb>
+            <lb/><prep value="closed">In</prep> myriad types of the human eye--
+            <lb/><prep value="open">Over</prep> the lilies that wave
+            <lb/>And weep above a nameless <noun value="closed">grave</noun>!
+            <lb/>They wave:--from <prep value="open">out</prep> their fragrant tops
+            <lb/><adj value="open">Eternal</adj> dews come <prep value="closed">down</prep> in drops.
+            <lb/>They weep:--from <prep value="open">off</prep> their delicate stems
+            <lb/>Perennial tears <verb value="closed">descend</verb> in gems.
+        </stanza>
+    
+</poem>

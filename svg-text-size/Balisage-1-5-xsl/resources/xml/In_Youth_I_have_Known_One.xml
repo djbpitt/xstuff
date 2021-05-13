@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta><title>"In Youth I have Known One"</title>
+</meta>
+    <stanza>
+        <lb/>How often we forget all time, when lone
+        <lb/>Admiring Nature's universal throne;
+        <lb/>Her <noun value="open">woods</noun>—her <noun value="open">wilds</noun>—her <noun value="open">mountains</noun>—the intense
+        <lb/>Reply of Hers to Our intelligence!
+    </stanza>
+    <stanza>
+        <lb/>In youth I have known one with whom the Earth
+        <lb/>In secret communing held—as he with it,
+        <lb/>In <noun value="open">daylight</noun>, and in beauty, from his birth:
+        <lb/>Whose fervid, flickering torch of life was lit
+        <lb/>From the <noun value="open">sun</noun> and <noun value="open">stars</noun>, whence he had drawn forth
+        <lb/>A passionate <noun value="open">light</noun> such for his spirit was fit—
+        <lb/>And yet that spirit knew—not in the hour
+        <lb/>Of its own fervor—what had <prep value="closed">o'er</prep> it power.
+    </stanza>
+    <stanza>
+        <lb/>Perhaps it may be that my mind is wrought
+        <lb/>To a ferver by the moonbeam that hangs <prep value="closed">o'er</prep>,
+        <lb/>But I will half believe that wild <noun value="open">light</noun> fraught
+        <lb/>With more of sovereignty than ancient lore
+        <lb/>Hath ever told—or is it of a thought
+        <lb/>The <adj value="open">unembodied</adj> essence, and no more
+        <lb/>That with a quickening spell doth <prep value="closed">o'er</prep> us pass
+        <lb/>As dew of the <noun value="closed">night-time</noun>, <prep value="closed">o'er</prep> the summer grass?
+    </stanza>
+    <stanza>
+        <lb/>Doth <prep value="closed">o'er</prep> us pass, when, as th' <verb value="open">expanding</verb> eye
+        <lb/>To the loved object—so the tear to the <noun value="closed">lid</noun>
+        <lb/>Will start, which lately <verb value="closed">slept</verb> in apathy?
+        <lb/>And yet it need not be—(that object) <adj value="closed">hid</adj>
+        <lb/>From us in life—but common—which doth <verb value="closed">lie</verb>
+        <lb/>Each hour before us—but then only bid
+        <lb/>With a strange sound, as of a harp-string broken
+        <lb/>T' <verb value="open">awake</verb> us—'Tis a symbol and a token—
+    </stanza>
+    <stanza>
+        <lb/>Of what in other worlds shall be—and given
+        <lb/>In beauty by our <ref value="rel">God</ref>, to those alone
+        <lb/>Who otherwise would <verb value="closed">fall</verb> from life and <noun value="open">Heaven</noun>
+        <lb/>Drawn by their heart's passion, and that tone,
+        <lb/>That <adj value="open">high</adj> tone of the spirit which hath striven
+        <lb/>Though not with Faith—with godliness—whose throne
+        <lb/>With desperate energy 't hath beaten <adv value="closed">down</adv>;
+        <lb/>Wearing its own <adj value="closed">deep</adj> feeling as a crown.
+    </stanza>
+</poem>

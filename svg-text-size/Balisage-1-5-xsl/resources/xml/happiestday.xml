@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>   
+    <meta>
+        <title>"The Happiest Day"</title>
+        <date>1827</date>
+    </meta>
+    
+    <stanza>
+        <lb/>The <adj value="open">happiest</adj> day—the <adj value="open">happiest</adj> hour
+        <lb/>My seared and <verb value="closed">blighted</verb> heart hath known,
+        <lb/>The <adj value="open">highest</adj> hope of pride and power,
+        <lb/>I feel hath <verb value="open">flown</verb>.
+    </stanza>
+    <stanza>
+        <lb/>Of <noun value="open">power</noun>! said I? Yes! such I ween
+        <lb/>But they have <verb value="closed">vanished</verb> long, alas!
+        <lb/>The visions of my youth have been—
+        <lb/>But let them pass.
+    </stanza>
+    <stanza>
+        <lb/>And pride, what have I now with thee?
+        <lb/>Another brow may ev'n inherit
+        <lb/>The venom thou hast <verb value="closed">poured</verb> on me—
+        <lb/>Be still my spirit!
+    </stanza>
+    <stanza>
+        <lb/>The <adj value="open">happiest</adj> day—the <adj value="open">happiest</adj> hour
+        <lb/>Mine eyes shall see—have ever seen
+        <lb/>The brightest glance of pride and power
+        <lb/>I feel have been:
+    </stanza>
+    <stanza>
+        <lb/>But were that hope of pride and <noun value="closed">power</noun>
+        <lb/>Now offered with the <noun value="closed">pain</noun>
+        <lb/>Ev'n then I felt—that brightest hour
+        <lb/>I would not live again:
+    </stanza>
+    <stanza>
+        <lb/>For on its wing was dark alloy
+        <lb/>And as it fluttered—<verb value="closed">fell</verb>
+        <lb/>An essence—powerful to <verb value="closed">destroy</verb>
+        <lb/>A soul that knew it well.
+    </stanza>    
+</poem>

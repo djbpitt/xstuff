@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta><title>Silence</title>
+        <date>1840</date>
+    </meta>
+    <stanza>
+        <lb/>There are some qualities—some incorporate things,
+        <lb/>That have a double life, which thus is made
+        <lb/>A type of that twin entity which springs
+        <lb/><prep value="open">From</prep> matter and <noun value="open">light</noun>, <verb value="open">evinced</verb> in <noun value="closed">solid</noun> and <noun value="closed">shade</noun>.
+        <lb/>There is a twofold <noun value="closed">Silence</noun>—<noun value="open">sea</noun> and <noun value="open">shore</noun>—
+        <lb/>Body and soul. One dwells in <adj value="closed">lonely</adj> places,
+        <lb/>Newly with grass <adj value="closed">o'ergrown</adj>; some solemn graces,
+        <lb/>Some human memories and tearful lore,
+        <lb/>Render him terrorless: his name's "No More."
+        <lb/>He is the corporate <noun value="closed">Silence</noun>: dread him not!
+        <lb/>No power hath he of evil <prep value="closed">in</prep> himself;
+        <lb/>But should some urgent fate (untimely lot!)
+        <lb/>Bring thee to meet his shadow (nameless elf,
+        <lb/>That haunteth the lone regions where hath trod
+        <lb/>No foot of man), commend thyself to God!
+    </stanza>
+
+    
+</poem>

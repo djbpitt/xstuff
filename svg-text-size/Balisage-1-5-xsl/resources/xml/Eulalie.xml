@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>EULALIE</title>
+        <date>1845</date>
+    </meta>
+  
+        <stanza>
+            <lb/>I <verb value="closed">dwelt</verb>
+                <adv value="closed">alone</adv>
+            <lb/><prep value="closed">In</prep> a world of moan,
+            <lb/>And my <noun value="open">soul</noun> was a <adj value="closed"
+                    >stagnant</adj> tide,
+            <lb/>Till the fair and gentle Eulalie became my blushing
+                bride--
+            <lb/>Till the yellow-haired young Eulalie became my smiling
+                bride.
+            <lb/>Ah, less--less bright
+            <lb/>The <noun value="open">stars</noun> of the night
+            <lb/>Than the eyes of the <adj value="open">radiant</adj> girl!
+            <lb/>And never a flake
+            <lb/>That the vapor can make
+            <lb/>With the moon-tints of purple and pearl,
+            <lb/>Can vie with the modest Eulalie's most unregarded
+                curl--
+            <lb/>Can compare with the bright-eyed Eulalie's most humble
+                and careless curl.
+            <lb/>Now <noun value="closed">Doubt</noun>--now <noun value="closed">Pain</noun>
+            <lb/><verb value="closed">Come</verb> never again,
+            <lb/>For her <noun value="open">soul</noun> <verb value="open">gives</verb> me sigh for sigh,
+            <lb/>And all day long
+            <lb/><verb value="open">Shines</verb>, bright and <adj value="open">strong</adj>,
+            <lb/>Astarté <prep value="closed">within</prep> the <noun value="open">sky</noun>,
+            <lb/>While ever to her dear Eulalie <verb value="open">upturns</verb> her matron eye--
+            <lb/>While ever to her young Eulalie <verb value="open">upturns</verb> her violet eye.
+        </stanza>
+    
+</poem>

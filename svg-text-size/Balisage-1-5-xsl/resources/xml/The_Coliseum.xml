@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem><meta><title>The Coliseum</title></meta>
+
+<stanza><lb/>Type of the antique Rome! Rich reliquary
+<lb/>Of <adj value="open">lofty</adj> contemplation left to Time
+<lb/>By <adj value="closed">buried</adj> centuries of pomp and power!
+<lb/>At length—at length—after so many days
+<lb/>Of weary pilgrimage and burning thirst,
+<lb/>(Thirst for the springs of lore that in thee <verb value="closed">lie</verb>,)
+<lb/>I kneel, an altered and an humble man,
+<lb/><prep value="closed">Amid</prep> thy shadows, and so drink within
+<lb/>My very soul thy <noun value="open">grandeur</noun>, <noun value="closed">gloom</noun>, and glory!</stanza>
+
+<stanza><lb/><noun value="open">Vastness</noun>! and Age! and Memories of Eld!
+<lb/><noun value="closed">Silence</noun>! and <noun value="closed">Desolation</noun>! and <adj value="closed">dim</adj> <noun value="closed">Night</noun>!
+<lb/>I feel ye now—I feel ye in your strength—
+<lb/>O spells more sure than e'er <ref value="religious">Judæan king</ref>
+<lb/>Taught in the <ref value="place">gardens of Gethsemane</ref>!
+<lb/>O charms more potent than the rapt <ref value="nation">Chaldee</ref>
+<lb/>Ever drew <adv value="closed">down</adv> <prep value="open">from</prep> <adv value="open">out</adv> the quiet <noun value="open">stars</noun>!</stanza>
+
+<stanza><lb/>Here, where a hero <verb value="closed">fell</verb>, a column <verb value="closed">falls</verb>!
+<lb/>Here, where the mimic eagle glared in gold,
+<lb/>A <noun value="closed">midnight</noun> vigil holds the swarthy bat!
+<lb/>Here, where the dames of Rome their gilded hair
+<lb/>Waved to the wind, now wave the reed and thistle!
+<lb/>Here, where <prep value="closed">on</prep> golden throne the monarch lolled,
+<lb/>Glides, spectre-like, unto his marble home,
+<lb/>Lit by the wan light of the horned <noun value="open">moon</noun>,
+<lb/>The swift and silent lizard of the stones!</stanza>
+
+<stanza><lb/>But stay! these <noun value="closed">walls</noun>—these ivy-clad <noun value="closed">arcades</noun>—
+<lb/>These mouldering plinths—these sad and blackened shafts—
+<lb/>These vague entablatures—this crumbling frieze—
+<lb/>These shattered cornices—this wreck—this ruin—
+<lb/>These stones—alas! these gray stones—are they all—
+<lb/>All of the famed, and the colossal left
+<lb/>By the corrosive Hours to Fate and me?</stanza>
+
+<stanza><lb/>"Not all"—the Echoes answer me—"not all!
+<lb/>Prophetic sounds and loud, <verb value="open">arise</verb> forever
+<lb/>From us, and from all Ruin, unto the wise,
+<lb/>As melody from <ref value="myth">Memnon</ref> to the <noun value="open">Sun</noun>.
+<lb/>We rule the hearts of mightiest men—we rule
+<lb/>With a despotic sway all giant minds.
+<lb/>We are not impotent—we pallid stones.
+<lb/>Not all our power is gone—not all our fame—
+<lb/>Not all the magic of our high renown—
+<lb/>Not all the wonder that <verb value="closed">encircles</verb> us—
+<lb/>Not all the mysteries that <prep value="closed">in</prep> us <verb value="closed">lie</verb>—
+<lb/>Not all the memories that hang <prep value="closed">upon</prep>
+<lb/>And cling around about us as a garment,
+<lb/>Clothing us in a robe of more than glory."</stanza>
+</poem>

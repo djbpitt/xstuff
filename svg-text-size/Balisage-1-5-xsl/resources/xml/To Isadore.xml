@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem><meta><title>To Isadore
+</title></meta>
+<stanza><lb/><prep value="closed">Beneath</prep> the vine-clad <noun value="closed">eaves</noun>, 
+<lb/>Whose <noun value="closed">shadows</noun> <verb value="closed">fall</verb> before 
+<lb/>Thy lowly cottage <noun value="open">door</noun>—
+<lb/><prep value="closed">Under</prep> the lilac's tremulous leaves—
+<lb/><prep value="closed">Within</prep> thy snowy <verb value="closed">clasped</verb> hand 
+<lb/>The purple flowers it bore.
+<lb/>Last eve in dreams, I saw thee stand,
+<lb/>Like queenly nymph from <noun value="open">Fairy-land</noun>—
+<lb/>Enchantress of the flowery wand, 
+<lb/>Most beauteous Isadore!</stanza>
+<stanza><lb/>And when I bade the dream 
+<lb/><prep value="closed">Upon</prep> thy spirit <verb value="open">flee</verb>, 
+<lb/>Thy violet eyes to me
+<lb/>Upturned, did <verb value="open">overflowing</verb> seem
+<lb/>With the <adj value="closed">deep</adj>, untold delight 
+<lb/>Of Love's serenity;
+<lb/>Thy classic brow, like lilies white
+<lb/>And pale as the Imperial <noun value="closed">Night</noun>
+<lb/><prep value="closed">Upon</prep> her throne, with <noun value="open">stars</noun> bedight, 
+<lb/>Enthralled my soul to thee!</stanza>
+<stanza><lb/>Ah! ever I behold 
+<lb/>Thy dreamy, passionate eyes,
+<lb/>Blue as the languid <noun value="open">skies</noun> 
+<lb/>Hung with the <noun value="closed">sunset</noun>'s fringe of gold;
+<lb/>Now strangely clear thine image <verb value="open">grows</verb>, 
+<lb/>And olden memories
+<lb/>Are startled <prep value="open">from</prep> their long <noun value="closed">repose</noun>
+<lb/>Like <noun value="closed">shadows</noun> <prep value="closed">on</prep> the <adj value="closed">silent</adj> snows
+<lb/>When suddenly the <noun value="closed">night</noun>-wind blows 
+<lb/>Where quiet <noun value="open">moonlight</noun> lies.</stanza>
+<stanza><lb/>Like music heard in dreams, 
+<lb/>Like strains of harps unknown, 
+<lb/>Of <noun value="open">birds</noun> for ever <verb value="open">flown</verb>,—
+<lb/>Audible as the voice of <noun value="open">streams</noun>
+<lb/>That murmur in some leafy <noun value="open">dell</noun>, 
+<lb/>I hear thy gentlest tone,
+<lb/>And <noun value="closed">Silence</noun> cometh with her spell
+<lb/>Like that which <prep value="closed">on</prep> my tongue doth dwell,
+<lb/>When tremulous <prep value="closed">in</prep> dreams I tell 
+<lb/>My love to thee alone!</stanza>
+<stanza><lb/>In every <noun value="open">valley</noun> heard, 
+<lb/><verb value="open">Floating</verb> <prep value="open">from</prep> tree to tree, 
+<lb/>Less beautiful to me,
+<lb/>The music of the <adj value="open">radiant</adj> <noun value="open">bird</noun>,
+<lb/>Than artless accents such as thine 
+<lb/>Whose echoes never <verb value="open">flee</verb>!
+<lb/>Ah! how for thy sweet voice I pine:—
+<lb/>For uttered <prep value="closed">in</prep> thy tones benign
+<lb/>(Enchantress!) this rude name of mine 
+<lb/>Doth seem a melody!</stanza>
+</poem>

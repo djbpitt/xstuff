@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<poem>
+    <title>To Zante</title>
+
+    <stanza>
+        <line>Fair isle, that <prep calue="open">from</prep> the fairest of all <noun value="open">flowers</noun>,</line>
+        <line>Thy gentlest of all gentle names dost take!</line>
+        <line>How many memories of what <adj value="open">radiant</adj> hours</line>
+        <line>At sight of thee and thine at once <verb vlaue="open">awake</verb>!</line>
+        <line>How many scenes of what <adj value="closed">departed</adj> bliss!</line>
+        <line>How many thoughts of what <verb value="closed">entombed</verb> hopes!</line>
+        <line>How many visions of a maiden that is</line>
+        <line>No more—no more <prep velue="closed">upon</prep> thy verdant slopes!</line>
+    </stanza>
+
+    <stanza>
+        <line>No more! alas, that magical sad sound</line>
+        <line>Transforming all! Thy charms shall please no more—</line>
+        <line>Thy memory no more! Accursed ground</line>
+        <line>Henceforward I hold thy flower-enamelled shore,</line>
+        <line>O hyacinthine isle! O purple <ref value="place">Zante</ref>!</line>
+        <line><ref value="Italian">"Isola d'oro! Fior di Levante!"</ref></line>
+    </stanza>
+
+    <date>1887</date>
+</poem>

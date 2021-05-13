@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>Evening Star</title>
+        <date>1827</date>
+    </meta>
+    <stanza>
+        <lb/>'Twas noontide of summer,
+        <lb/>And midtime of night,
+        <lb/>And stars, in their <noun value="closed">orbits</noun>,
+        <lb/>Shone pale, through the light
+        <lb/>Of the brighter, cold moon.
+        <lb/>'Mid planets her <noun value="closed">slaves</noun>,
+        <lb/>Herself in the <noun value="open">Heavens</noun>,
+        <lb/>Her beam <prep value="closed">on</prep> the waves.
+    </stanza>
+    <stanza>
+        <lb/>I gazed awhile
+        <lb/><prep value="closed">On</prep> her cold smile;
+        <lb/>Too cold—too cold for me—
+        <lb/>There passed, as a shroud,
+        <lb/>A fleecy cloud,
+        <lb/>And I turned away to thee,
+        <lb/>Proud Evening Star,
+        <lb/>In thy glory afar
+        <lb/>And dearer thy beam shall be;
+        <lb/>For joy to my heart
+        <lb/>Is the proud part
+        <lb/>Thou bearest in <noun value="open">Heaven</noun> at night,
+        <lb/>And more I admire
+        <lb/>Thy distant fire,
+        <lb/>Than that colder, <adj value="closed">lowly</adj> light.
+    </stanza>
+</poem>
+    
+    

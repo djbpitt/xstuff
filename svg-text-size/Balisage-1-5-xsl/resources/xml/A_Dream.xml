@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Desktop/EdgarAllanPoeProject/schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>A DREAM</title>
+        <date>1837</date>
+    </meta>
+
+   
+        <stanza>
+            <lb/><prep value="closed">In</prep> visions of the dark night
+            <lb/>I have dreamed of joy <verb value="open">departed</verb>--
+            <lb/>But a waking dream of life and light
+            <lb/>Hath <verb value="open">left</verb> me <adj value="open">broken</adj>-hearted.
+        </stanza>
+
+        <stanza>
+            <lb/>Ah! what is not a dream by day
+            <lb/>To him whose eyes are cast
+            <lb/>On things around him with a ray
+            <lb/>Turned back <prep value="open">upon</prep> the past?
+        </stanza>
+
+        <stanza>
+            <lb/>That holy dream--that holy dream,
+            <lb/>While all the world were chiding,
+            <lb/>Hath cheered me as a lovely beam,
+            <lb/>A <adj value="closed">lonely</adj> spirit guiding.
+        </stanza>
+
+        <stanza>
+            <lb/>What though that light, thro' storm and night,
+            <lb/>So trembled from afar--
+            <lb/>What could there be more purely bright
+            <lb/>In Truth's day <noun value="open">star</noun>?
+        </stanza>
+    
+</poem>

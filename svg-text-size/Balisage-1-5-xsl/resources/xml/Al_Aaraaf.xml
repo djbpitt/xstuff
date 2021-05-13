@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Desktop/EdgarAllanPoeProject/schema/Al_Aaraaf_Schema.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>AL AARAAF</title>
+        <date>1839</date>
+    </meta>
+    <head part="I">PART I</head>
+    <part value="I">
+        <stanza>
+            <lb/> O! nothing earthly save the ray <lb/> (Thrown <prep value="closed">back</prep>
+            from flowers) of Beauty's eye, <lb/> As <prep value="closed">in</prep> those gardens
+            where the day <lb/>
+            <verb value="open">Springs</verb> from the gems of <ref value="location"
+            >Circassy</ref>-- <lb/> O! nothing earthly save the thrill <lb/> Of melody <prep
+                value="closed">in</prep> woodland rill-- <lb/> Or (music of the passion-hearted)
+            <lb/> Joy's voice so peacefully <verb value="open">departed</verb>
+            <lb/> That like the murmur <prep value="closed">in</prep> the shell, <lb/> Its echo
+            dwelleth and will dwell-- <lb/> O! nothing of the dross of ours-- <lb/> Yet all the
+            beauty--all the flowers <lb/> That list our Love, and deck our bowers-- <lb/> Adorn yon
+            world afar, afar-- <lb/> The wandering star.</stanza>
+        <stanza><lb/> 'Twas a sweet time for Nesace--for there <lb/> Her world lay lolling on the
+            golden air, <lb/> Near four bright <noun value="open">suns</noun>--a temporary <noun
+                value="closed">rest</noun>-- <lb/> An <noun value="open">oasis</noun>
+            <prep value="closed">in</prep> desert of the blest. <lb/> Away away--'mid seas of rays
+            that roll <lb/> Empyrean splendor <prep value="open">o'er</prep> th' <adj value="closed"
+                >unchained</adj> soul-- <lb/> The soul that scarce (the billows are so dense) <lb/>
+            Can struggle to its destin'd eminence-- <lb/> To distant spheres, from time to time, she
+            rode, <lb/> And late to ours, the favour'd one of <noun value="open">God</noun>-- <lb/>
+            But, now, the ruler of an <adj value="closed">anchor'd</adj> realm, <lb/> She throws
+            aside the sceptre--leaves the helm, <lb/> And, amid incense and <adj value="open"
+                >high</adj> spiritual hymns, <lb/> Laves <prep value="closed">in</prep> quadruple
+            light her <noun value="open">angel</noun> limbs.</stanza>
+        <stanza><lb/> Now happiest, loveliest <prep value="closed">in</prep> yon lovely Earth, <lb/>
+            Whence <verb value="open">sprang</verb> the "Idea of Beauty" <prep value="closed"
+                >into</prep> birth, <lb/> (<verb value="closed">Falling</verb>
+            <prep value="closed">in</prep> wreaths thro' many a startled <noun value="open"
+                >star</noun>, <lb/> Like woman's hair 'mid pearls, until, afar, <lb/> It lit on
+            hills <ref value="location">Achaian</ref>, and there dwelt), <lb/> She look'd <prep
+                value="closed">into</prep> Infinity--and knelt. <lb/> Rich clouds, for canopies,
+            about her curled-- <lb/> Fit emblems of the model of her world-- <lb/> Seen but <prep
+                value="closed">in</prep> beauty--not <verb value="closed">impeding</verb> sight--
+            <lb/> Of other beauty glittering thro' the light-- <lb/> A wreath that twined each
+            starry form around, <lb/> And all the opal'd air <prep value="closed">in</prep> color
+                <verb value="closed">bound</verb>.</stanza>
+        <stanza><lb/> All hurriedly she knelt upon a bed <lb/> Of flowers: of lilies such as rear'd
+            the head <lb/> On the fair <ref value="literary">Capo Deucato</ref>, and sprang <lb/> So
+            eagerly around about to hang <lb/> Upon the <adj value="open">flying</adj> footsteps
+                of--<adj value="closed">deep</adj> pride-- <lb/> Of her who lov'd a mortal--and so
+                <verb value="closed">died</verb>. <lb/> The <ref value="unknown">Sephalica</ref>,
+            budding with young bees, <lb/>
+            <verb value="open">Uprear'd</verb> its purple stem around her knees: <lb/> And gemmy
+            flower, of <ref value="historical">Trebizond</ref> misnam'd [4]-- <lb/>
+            <noun value="closed">Inmate</noun> of <adj value="open">highest</adj>
+            <noun value="open">stars</noun>, where erst it sham'd <lb/> All other loveliness: its
+            honied dew <lb/> (The fabled nectar that the heathen knew) <lb/> Deliriously sweet, was
+                <verb value="closed">dropp'd</verb> from <noun value="open">Heaven</noun>, <lb/> And
+                <verb value="closed">fell</verb> on gardens of the <adj value="closed"
+                >unforgiven</adj>
+            <lb/>
+            <prep value="closed">In</prep>
+            <ref value="historical">Trebizond</ref>--and on a sunny flower <lb/> So like its own
+                <prep value="open">above</prep> that, to this hour, <lb/> It still remaineth, <verb
+                value="closed">torturing</verb> the bee <lb/> With madness, and unwonted reverie: <lb/>
+            <prep value="closed">In</prep>
+            <noun value="open">Heaven</noun>, and all its environs, the leaf <lb/> And blossom of
+            the fairy plant, <prep value="closed">in</prep>
+            <noun value="closed">grief</noun>
+            <lb/> Disconsolate linger--<noun value="closed">grief</noun> that hangs her head, <lb/>
+            Repenting follies that full long have <verb value="open">fled</verb>, <lb/> Heaving her
+            white breast to the balmy air, <lb/> Like guilty beauty, chasten'd, and more fair: <lb/>
+            <ref value="botanical">Nyctanthes</ref> too, as <adj value="open">sacred</adj> as the
+            light <lb/> She fears to perfume, perfuming the night: <lb/> And <ref
+                value="mythological">Clytia</ref> pondering between many a sun, <lb/> While pettish
+            tears adown her petals run: <lb/> And that aspiring flower that <verb value="open"
+                >sprang</verb> on Earth-- <lb/> And <verb value="closed">died</verb>, ere scarce
+                <verb value="open">exalted</verb>
+            <prep value="closed">into</prep> birth, <lb/>
+            <verb value="open">Bursting</verb> its odorous heart <prep value="closed">in</prep>
+            spirit to wing <lb/> Its way to <noun value="open">Heaven</noun>, from garden of a king:
+            <lb/> And <ref value="botanical">Valisnerian</ref> lotus thither <verb value="open"
+                >flown</verb>
+            <lb/> From struggling with the waters of the <ref value="location">Rhone</ref>: <lb/>
+            And thy most lovely purple perfume, <ref value="location">Zante</ref>! <lb/>
+            <foreign lang="Italian">Isola d'oro!--Fior di Levante</foreign>! <lb/> And the <ref
+                value="botanical">Nelumbo</ref> bud that floats for ever <lb/> With Indian <ref
+                value="mythological">Cupid</ref>
+            <prep value="closed">down</prep> the holy river-- <lb/> Fair flowers, and fairy! to
+            whose care is given <lb/> To <verb value="closed">bear</verb> the Goddess' song, <prep
+                value="closed">in</prep> odors, <prep value="open">up</prep> to <noun value="open"
+                >Heaven</noun>:</stanza>
+        <stanza><lb/> "Spirit! that dwellest where, <lb/>
+            <prep value="closed">In</prep> the <adj value="closed">deep</adj> sky, <lb/> The
+            terrible and fair, <lb/>
+            <prep value="closed">In</prep> beauty vie! <lb/> Beyond the line of blue-- <lb/> The
+                <noun value="closed">boundary</noun> of the star <lb/> Which turneth at the view
+            <lb/> Of thy <noun value="closed">barrier</noun> and thy <noun value="closed"
+            >bar</noun>-- <lb/> Of the <noun value="closed">barrier</noun>
+            <verb value="open">overgone</verb>
+            <lb/> By the comets who were cast <lb/> From their pride, and from their throne <lb/> To
+            be drudges till the last-- <lb/> To be carriers of fire <lb/> (The red fire of their
+            heart) <lb/> With speed that may not tire <lb/> And with pain that shall not part--
+            <lb/> Who livest--that we know-- <lb/>
+            <prep value="closed">In</prep>
+            <noun value="open">Eternity</noun>--we feel-- <lb/> But the shadow of whose brow <lb/>
+            What spirit shall <verb value="open">reveal</verb>? <lb/> Tho' the beings whom thy
+            Nesace, <lb/> Thy messenger hath known <lb/> Have dream'd for thy <noun value="open"
+                >Infinity</noun>
+            <lb/> A model of their own- <lb/> Thy will is done, O God! <lb/> The star hath ridden
+                <prep value="open">high</prep>
+            <lb/> Thro' many a tempest, but she rode <lb/>
+            <prep value="closed">Beneath</prep> thy burning eye; <lb/> And here, <prep
+                value="closed">in</prep> thought, to thee-- <lb/>
+            <prep value="closed">In</prep> thought that can <adj value="closed">alone</adj>
+            <lb/>
+            <verb value="open">Ascend</verb> thy empire and so be <lb/> A partner of thy throne--
+            <lb/> By winged Fantasy, <lb/> My embassy is given, <lb/> Till secrecy shall knowledge
+            be <lb/>
+            <prep value="closed">In</prep> the environs of <noun value="open"
+            >Heaven</noun>."</stanza>
+        <stanza><lb/> She <verb value="closed">ceas'd</verb>--and <verb value="closed">buried</verb>
+            then her burning cheek <lb/> Abash'd, amid the lilies there, to seek <lb/> A shelter
+            from the fervor of His eye; <lb/> For the stars trembled at the Deity. <lb/> She stirr'd
+            not--breath'd not--for a voice was there <lb/> How solemnly pervading the calm air!
+            <lb/> A sound of silence on the startled ear <lb/> Which dreamy poets name "the music of
+            the sphere." <lb/> Ours is a world of words: Quiet we call <lb/> "Silence"--which is the
+            merest word of all.</stanza>
+        <stanza><lb/> All Nature speaks, and ev'n ideal things <lb/> Flap shadowy sounds from the
+            visionary wings-- <lb/> But ah! not so when, thus, <prep value="closed">in</prep> realms
+            on <adj value="open">high</adj>
+            <lb/> The <adj value="open">eternal</adj> voice of <noun value="open">God</noun> is
+            passing by, <lb/> And the red winds are withering <prep value="closed">in</prep> the
+            sky! <lb/> "What tho' <prep value="closed">in</prep> worlds which sightless cycles run, <lb/>
+            <verb value="closed">Link'd</verb> to a little system, and one sun-- <lb/> Where all my
+            love is folly, and the crowd <lb/> Still think my terrors but the thunder cloud, <lb/>
+            The storm, the earthquake, and the ocean-wrath <lb/> (Ah! will they cross me <prep
+                value="closed">in</prep> my angrier path?) <lb/> What tho' <prep value="closed"
+                >in</prep> worlds which own a single sun <lb/> The sands of time grow dimmer as they
+            run, <lb/> Yet thine is my resplendency, so given <lb/> To <verb value="closed"
+                >bear</verb> my secrets thro' the <adj value="open">upper</adj>
+            <noun value="open">Heaven</noun>. <lb/>
+            <verb value="open">Leave</verb> tenantless thy crystal home, and <verb value="open"
+                >fly</verb>, <lb/> With all thy train, athwart the moony sky-- <lb/> Apart--like
+            fire-flies in Sicilian night, <lb/> And wing to other worlds another light! <lb/>
+            <verb value="open">Divulge</verb> the secrets of thy embassy <lb/> To the proud orbs
+            that twinkle--and so be <lb/> To ev'ry heart a <noun value="closed">barrier</noun> and a
+                <noun value="closed">ban</noun>
+            <lb/> Lest the stars totter <prep value="closed">in</prep> the guilt of man!"</stanza>
+        <stanza>
+            <lb/>
+            <prep value="open">Up</prep>
+            <verb value="open">rose</verb> the maiden <prep value="closed">in</prep> the yellow
+            night, <lb/> The single-mooned eve!-on earth we plight <lb/> Our faith to one love--and
+            one moon adore-- <lb/> The birth-place of young Beauty had no more. <lb/> As sprang that
+            yellow star from downy hours, <lb/>
+            <prep value="open">Up</prep>
+            <verb value="open">rose</verb> the maiden from her shrine of flowers, <lb/> And bent
+                <prep value="open">o'er</prep> sheeny mountain and dim plain <lb/> Her way--but left
+            not yet her <ref value="astrological">Therasæan</ref> reign.</stanza></part>
+    <head part="II">PART II</head>
+    <part value="II"><stanza><lb/><adj value="open">High</adj> on a mountain of enamell'd head-- <lb/> Such as the drowsy
+            shepherd on his bed <lb/> Of giant pasturage lying at his ease, <lb/> Raising his heavy
+            eyelid, starts and sees <lb/> With many a mutter'd "hope to be forgiven" <lb/> What time
+            the moon is quadrated <prep value="closed">in</prep> <noun value="open">Heaven</noun>-- <lb/> Of rosy head, that towering far away <lb/> <prep value="closed">Into</prep>
+            the sunlit ether, caught the ray <lb/> Of <adj value="closed">sunken</adj> suns at eve--at noon of night, <lb/>
+            While the moon danc'd with the fair stranger light-- <lb/> Uprear'd upon such height
+            <verb value="open">arose</verb> a pile <lb/> Of gorgeous columns on th' uuburthen'd air, <lb/> Flashing from
+            Parian marble that twin smile <lb/> Far <prep value="closed">down</prep> upon the wave that sparkled there, <lb/>
+            And nursled the young mountain <prep value="closed">in</prep> its <noun value="closed">lair</noun>. <lb/> Of molten stars their pavement, such
+            as <verb value="closed">fall</verb> <lb/> Thro' the ebon air, besilvering the pall <lb/> Of their own
+            dissolution, while they <verb value="closed">die</verb>-- <lb/> Adorning then the dwellings of the sky. <lb/> A
+            dome, by linked light from <noun value="open">Heaven</noun> let <prep value="closed">down</prep>, <lb/> Sat gently on these columns as a
+            crown-- <lb/> A window of one circular diamond, there, <lb/> Look'd <prep value="open">out</prep> <prep value="open">above</prep> <prep value="closed">into</prep> the
+            purple air <lb/> And rays from <noun value="open">God</noun> shot <prep value="closed">down</prep> that meteor chain <lb/> And hallow'd all
+            the beauty twice again, <lb/> Save when, between th' <ref value="historical">Empyrean</ref> and that ring, <lb/> Some
+            eager spirit flapp'd his dusky wing. <lb/> But on the pillars Seraph eyes have seen
+            <lb/> The dimness of this world: that grayish green <lb/> That Nature loves the best for
+            Beauty's <noun value="closed">grave</noun> <lb/> Lurk'd <prep value="closed">in</prep> each cornice, round each architrave-- <lb/> And every
+            sculptured cherub thereabout <lb/> That from his marble dwelling peered out, <lb/>
+            Seem'd earthly <prep value="closed">in</prep> the shadow of his niche-- <lb/> <ref value="historical">Achaian</ref> statues <prep value="closed">in</prep> a world so rich?
+            <lb/> Friezes from <ref value="historical">Tadmor</ref> and <ref value="historical">Persepolis</ref>-- <lb/> From <ref value="historical">Balbec</ref>, and the stilly, clear
+            <noun value="closed">abyss</noun> <lb/> Of beautiful <ref value="biblical">Gomorrah</ref>! Oh, the wave <lb/> Is now upon thee--but too
+            late to save! <lb/> Sound loves to revel <prep value="closed">in</prep> a summer night: <lb/> Witness the murmur of
+            the gray twilight <lb/> That stole upon the ear, in <ref value="historical">Eyraco</ref>, <lb/> Of many a wild
+            star-gazer long ago-- <lb/> That stealeth ever on the ear of him <lb/> Who, musing,
+            gazeth on the distance dim, <lb/> And sees the darkness coming as a cloud-- <lb/> Is not
+            its form--its voice--most palpable and loud? <lb/> But what is this?--it
+            cometh--and it brings <lb/> A music with it--'tis the rush of wings-- <lb/> A pause--and
+            then a sweeping, <verb value="closed">falling</verb> strain, <lb/> And Nesace is <prep value="closed">in</prep> her halls again. <lb/> From the
+            wild energy of wanton haste <lb/> Her cheeks were flushing, and her lips apart; <lb/>
+            The zone that <verb value="closed">clung</verb> around her gentle waist <lb/> Had <verb value="open">burst</verb> <prep value="closed">beneath</prep> the heaving of her
+            heart. <lb/> <prep value="closed">Within</prep> the centre of that hall to breathe <lb/> She paus'd and panted,
+            Zanthe! all beneath, <lb/> The fairy light that kiss'd her golden hair <lb/> And long'd
+            to rest, yet could but sparkle there!</stanza>
+        <stanza><lb/> Young flowers were whispering <prep value="closed">in</prep> melody <lb/> To happy flowers that
+            night--and tree to tree; <lb/> Fountains were gushing music as they <verb value="closed">fell</verb> <lb/> <prep value="closed">In</prep> many a
+            star-lit grove, or moon-light dell; <lb/> Yet silence came upon material things-- <lb/>
+            Fair flowers, bright waterfalls and <noun value="open">angel</noun> wings-- <lb/> And sound alone that from the
+            spirit sprang <lb/> <verb value="closed">Bore</verb> burthen to the charm the maiden sang:</stanza>
+        <stanza><lb/> "Neath blue-bell or streamer-- <lb/> Or tufted wild spray <lb/> That keeps,
+            from the dreamer, <lb/> The moonbeam away-- <lb/> Bright beings! that ponder, <lb/>
+            With half-<adj value="closed">closing</adj> eyes, <lb/> On the stars which your wonder <lb/> Hath drawn from the
+            skies, <lb/> Till they glance thro' the shade, and <lb/> Come <prep value="closed">down</prep> to your brow <lb/>
+            Like--eyes of the maiden <lb/> Who calls on you now-- <lb/> <verb value="open">Arise</verb>! from your dreaming
+            <lb/> <prep value="closed">In</prep> violet bowers, <lb/> To duty beseeming <lb/> These star-litten hours-- <lb/>
+            And shake from your tresses <lb/> <verb value="closed">Encumber'd</verb> with dew</stanza>
+        <stanza><lb/> The breath of those kisses <lb/> That cumber them too-- <lb/> (O! how, without
+            you, Love! <lb/> Could <noun value="open">angels</noun> be blest?) <lb/> Those kisses of true love <lb/> That
+            <verb value="closed">lull'd</verb> ye to rest! <lb/> <prep value="open">Up</prep>! shake from your wing <lb/> Each <adj value="closed">hindering</adj> thing: <lb/> The
+            dew of the night-- <lb/> It would weigh <prep value="closed">down</prep> your <noun value="open">flight</noun>; <lb/> And true love caresses--
+            <lb/> O! leave them apart! <lb/> They are light on the tresses, <lb/> But lead on the
+            heart.</stanza>
+        <stanza><lb/> Ligeia! Ligeia! <lb/> My beautiful one! <lb/> Whose harshest idea <lb/> Will
+            to melody run, <lb/> O! is it thy will <lb/> On the breezes to toss? <lb/> Or,
+            capriciously still, <lb/> Like the lone Albatross, <lb/> Incumbent on night <lb/>
+            (As she on the air) <lb/> To keep watch with delight <lb/> On the harmony
+            there?</stanza>
+        <stanza><lb/> Ligeia! wherever <lb/> Thy image may be, <lb/> No magic shall <verb value="open">sever</verb> <lb/> Thy
+            music from thee. <lb/> Thou hast <verb value="closed">bound</verb> many eyes <lb/> <prep value="closed">In</prep> a dreamy sleep-- <lb/> But the
+            strains still <verb value="open">arise</verb> <lb/> Which thy vigilance keep--</stanza>
+        <stanza><lb/> The sound of the rain <lb/> Which leaps <prep value="closed">down</prep> to the flower, <lb/> And dances
+            again <lb/> <prep value="closed">In</prep> the rhythm of the shower-- <lb/> The murmur that springs <lb/> From
+            the growing of grass <lb/> Are the music of things-- <lb/> But are modell'd, alas! <lb/>
+            Away, then, my dearest, <lb/> O! hie thee away <lb/> To springs that lie clearest <lb/>
+            <prep value="closed">Beneath</prep> the moon-ray-- <lb/> To lone lake that smiles, <lb/> <prep value="closed">In</prep> its dream of <adj value="closed">deep</adj> rest,
+            <lb/> At the many star-isles <lb/> That enjewel its breast-- <lb/> Where wild flowers,
+            creeping, <lb/> Have mingled their shade, <lb/> On its margin is sleeping <lb/> Full
+            many a maid-- <lb/> Some have left the cool glade, and <lb/> Have slept with the
+            bee-- <lb/> Arouse them, my maiden, <lb/> On moorland and lea--</stanza>
+            ><stanza><lb/> Go! breathe on their slumber, <lb/> All softly <prep value="closed">in</prep> ear, <lb/> The musical
+            number <lb/> They slumber'd to hear-- <lb/> For what can awaken <lb/> An <noun value="open">angel</noun> so soon
+            <lb/> Whose sleep hath been taken <lb/> <prep value="closed">Beneath</prep> the cold moon, <lb/> As the spell which
+            no slumber <lb/> Of witchery may test, <lb/> The rhythmical number <lb/> Which <verb value="closed">lull'd</verb>
+            him to rest?"</stanza>
+        <stanza><lb/> Spirits <prep value="closed">in</prep> wing, and <noun value="open">angels</noun> to the view, <lb/> A thousand <noun value="open">seraphs</noun> <verb value="open">burst</verb> th'
+            <ref value="historical">Empyrean</ref> thro', <lb/> Young dreams still hovering on their drowsy <noun value="open">flight</noun>-- <lb/> <noun value="open">Seraphs</noun>
+            <prep value="closed">in</prep> all but "Knowledge," the keen light <lb/> That <verb value="closed">fell</verb>, refracted, thro' thy bounds
+            afar, <lb/> O <noun value="closed">death</noun>! from eye of <noun value="open">God</noun> upon that star; <lb/> Sweet was that error--sweeter
+            still that <noun value="closed">death</noun>-- <lb/> Sweet was that error--ev'n with us the breath <lb/> Of
+            Science dims the mirror of our joy-- <lb/> To them 'twere the Simoom, and would
+            destroy-- <lb/> For what (to them) availeth it to know <lb/> That Truth is Falsehood--or
+            that Bliss is Woe? <lb/> Sweet was their <noun value="closed">death</noun>--with them to <verb value="closed">die</verb> was rife <lb/> With the
+            last ecstasy of satiate life-- <lb/> Beyond that <noun value="closed">death</noun> no <noun value="open">immortality</noun>-- <lb/> But sleep
+            that pondereth and is not "to be"-- <lb/> And there--oh! may my weary spirit dwell--
+            <lb/> Apart from <noun value="open">Heaven</noun>'s <noun value="open">Eternity</noun>--and yet how far from <noun value="closed">Hell</noun>!</stanza>
+        <stanza><lb/> What guilty spirit, <prep value="closed">in</prep> what shrubbery dim <lb/> Heard not the stirring summons
+            of that hymn? <lb/> But two: they <verb value="closed">fell</verb>: for <noun value="open">heaven</noun> no grace imparts <lb/> To those who
+            hear not for their beating hearts. <lb/> A maiden-<noun value="open">angel</noun> and her <noun value="open">seraph</noun>-lover-- <lb/> O!
+            where (and ye may seek the wide skies <prep value="open">over</prep>) <lb/> Was Love, the blind, near sober Duty
+            known? <lb/> Unguided Love hath <verb value="closed">fallen</verb>--'mid "tears of perfect moan."</stanza>
+        <stanza><lb/> He was a goodly spirit--he who <verb value="closed">fell</verb>: <lb/> A wanderer by mossy-mantled well--
+            <lb/> A gazer on the lights that shine <prep value="open">above</prep>-- <lb/> A dreamer <prep value="closed">in</prep> the moonbeam by his
+            love: <lb/> What wonder? for each star is eye-like there, <lb/> And looks so sweetly
+            down on Beauty's hair-- <lb/> And they, and ev'ry mossy spring were holy <lb/> To his
+            love-haunted heart and melancholy. <lb/> The night had found (to him a night of wo)
+            <lb/> Upon a mountain crag, young Angelo-- <lb/> Beetling it bends athwart the solemn
+            sky, <lb/> And scowls on starry worlds that <prep value="closed">down</prep> <prep value="closed">beneath</prep> it lie. <lb/> Here sate he with
+            his love--his dark eye bent <lb/> With eagle gaze along the firmament: <lb/> Now turn'd
+            it upon her--but ever then <lb/> It trembled to the orb of EARTH again.</stanza>
+        <stanza><lb/> "Ianthe, dearest, see! how dim that ray! <lb/> How lovely 'tis to look so far
+            away! <lb/> She seemed not thus upon that autumn eve <lb/> I left her gorgeous
+            halls--nor mourned to leave, <lb/> That eve--that eve--I should remember well-- <lb/>
+            The sun-ray dropped, <prep value="closed">in</prep> <ref value="location">Lemnos</ref> with a spell <lb/> On th' Arabesque carving of a gilded
+            hall <lb/> Wherein I sate, and on the draperied wall-- <lb/> And on my eyelids--O, the
+            heavy light! <lb/> How drowsily it weighed them <prep value="closed">into</prep> night! <lb/> On flowers, before,
+            and mist, and love they ran <lb/> With Persian <ref value="literary">Saadi</ref> in his Gulistan: <lb/> But O, that
+            light!--I slumbered--<noun value="closed">Death</noun>, the while, <lb/> Stole <prep value="open">o'er</prep> my senses <prep value="closed">in</prep> that lovely isle
+            <lb/> So softly that no single silken hair <lb/> Awoke that slept--or knew that he was
+            there.</stanza>
+        <stanza>
+            <lb/> "The last spot of Earth's orb I trod upon <lb/> Was a proud temple called the
+            Parthenon; <lb/> More beauty clung around her columned wall <lb/> Then even thy
+            glowing bosom beats withal, <lb/> And when old Time my wing did disenthral <lb/>
+            Thence sprang I--as the eagle from his tower, <lb/> And years I left behind me <prep value="closed">in</prep> an
+            hour. <lb/> What time upon her airy bounds I hung, <lb/> One half the garden of her
+            globe was flung <lb/> Unrolling as a chart unto my view-- <lb/> Tenantless cities of the
+            desert too! <lb/> Ianthe, beauty crowded on me then, <lb/> And half I wished to be again
+            of men."</stanza>
+        <stanza>
+            <lb/> "My Angelo! and why of them to be? <lb/> A brighter dwelling-place is here for
+            thee-- <lb/> And greener fields than <prep value="closed">in</prep> yon world <prep value="open">above</prep>, <lb/> And woman's
+            loveliness--and passionate love." <lb/> "But list, Ianthe! when the air so soft <lb/>
+            Failed, as my pennoned spirit leapt <adj value="open">aloft</adj>, <lb/> Perhaps my brain grew dizzy--but
+            the world <lb/> I left so late was <prep value="closed">into</prep> chaos hurled, <lb/> Sprang from her station, on
+            the winds apart, <lb/> And rolled a flame, the fiery <noun value="open">Heaven</noun> athwart. <lb/> Methought, my
+            sweet one, then I <verb value="closed">ceased</verb> to soar, <lb/> And <verb value="closed">fell</verb>--not swiftly as I <verb value="open">rose</verb> before, <lb/>
+            But with a <adj value="closed">downward</adj>, tremulous motion thro' <lb/> Light, brazen rays, this golden star
+            unto! <lb/> Nor long the measure of my <adj value="closed">falling</adj> hours, <lb/> For nearest of all stars was
+            thine to ours-- <lb/> Dread star! that came, amid a night of mirth, <lb/> A red
+            Daedalion on the timid Earth."</stanza>
+        <stanza><lb/> "We came--and to thy Earth--but not to us <lb/> Be given our lady's bidding to
+            discuss: <lb/> We came, my love; around, <prep value="open">above</prep>, <prep value="closed">below</prep>, <lb/> Gay fire-fly of the night
+            we come and go, <lb/> Nor ask a reason save the <noun value="open">angel</noun>-nod <lb/> She grants to us as
+            granted by her <noun value="open">God</noun>-- <lb/> But, Angelo, than thine gray Time unfurled <lb/> Never his
+            fairy wing <prep value="open">o'er</prep> fairer world! <lb/> Dim was its little disk, and angel eyes <lb/> Alone
+            could see the phantom <prep value="closed">in</prep> the skies, <lb/> When first Al Aaraaf knew her course to be
+            <lb/> Headlong thitherward <prep value="open">o'er</prep> the starry sea-- <lb/> But when its glory swelled upon
+            the sky, <lb/> As glowing Beauty's bust <prep value="closed">beneath</prep> man's eye, <lb/> We paused before the
+            heritage of men, <lb/> And thy star trembled--as doth Beauty then!"</stanza>
+        <stanza>
+            <lb/> Thus <prep value="closed">in</prep> discourse, the lovers whiled away <lb/> The night that waned and waned and
+            brought no day. <lb/> They <verb value="closed">fell</verb>: for <noun value="open">Heaven</noun> to them no hope imparts <lb/> Who hear not
+            for the beating of their hearts.</stanza>
+    </part>
+</poem>

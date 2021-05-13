@@ -1,0 +1,623 @@
+<!DOCTYPE HTML>
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Balisage: How long is my SVG &lt;text&gt; element?</title>
+      <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&amp;display=swap" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/JavaScript">
+      var detailsElement = document.createElement("details");
+      if (!("open" in detailsElement)) {
+          document.write('<script src="..//js/bower_components/better-dom/dist/better-dom.js"><\/script>');
+          document.write('<script src="..//js/bower_components/better-details-polyfill/dist/better-details-polyfill.js"><\/script>');
+          document.write('<script src="..//js/classname.js"><\/script>');
+      }
+      /* Enable CSS styling of figure elements in IE:
+       * https://xopus.com/devblog/2008/style-unknown-elements.html
+       */
+      var IEfix = document.createElement('figure');
+    </script><style type="text/css" id="inverter" media="none">
+      html {
+        filter: invert(100%);
+      }
+
+      * {
+        background-color: inherit;
+      }
+
+      /* do not invert SVG images */
+      img:not([src*=".svg"]),
+      [style*="url("] {
+        filter: invert(100%);
+      }
+    </style>
+      <link rel="stylesheet" href="balisage-proceedings.css" type="text/css">
+      <meta name="keywords" content="SVG, font metrics">
+      <link id="favicon" rel="shortcut icon" type="image/png" href="http://balisage.net/favicon.ico">
+      <!--balisage-html.xsl--></head>
+   <body>
+      <div class="skipnav"><a href="#main">Skip to contents.</a></div>
+      <div id="balisage-header" role="banner">
+         <h1><!--* balisage-html.xsl 519.38 *--><i>Balisage:</i>&nbsp;<small>The Markup Conference</small></h1>
+      </div>
+      <html lang="en">
+         <head>
+            <title>Balisage: How long is my SVG &lt;text&gt; element?</title>
+            <link rel="stylesheet" href="balisage-proceedings.css" type="text/css">
+            <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&amp;display=swap" rel="stylesheet">
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1"><script type="text/JavaScript">
+      var detailsElement = document.createElement("details");
+      if (!("open" in detailsElement)) {
+          document.write('<script src="..//js/bower_components/better-dom/dist/better-dom.js"><\/script>');
+          document.write('<script src="..//js/bower_components/better-details-polyfill/dist/better-details-polyfill.js"><\/script>');
+          document.write('<script src="..//js/classname.js"><\/script>');
+      }
+      /* Enable CSS styling of figure elements in IE:
+       * https://xopus.com/devblog/2008/style-unknown-elements.html
+       */
+      var IEfix = document.createElement('figure');
+    </script><style type="text/css" id="inverter" media="none">
+      html {
+        filter: invert(100%);
+      }
+
+      * {
+        background-color: inherit;
+      }
+
+      /* do not invert SVG images */
+      img:not([src*=".svg"]),
+      [style*="url("] {
+        filter: invert(100%);
+      }
+    </style>
+            <!--balisage-proceedings.xsl-->
+            <meta name="generator" content="Balisage Conference Proceedings XSLT (v1.2)">
+            <link id="favicon" rel="shortcut icon" type="image/png" href="http://balisage.net/favicon.ico"><script type="text/javascript">
+
+   function hidecite(citeID) {
+     cite = document.getElementById(citeID);
+     cite.style.display = "none";
+     return;
+   }
+   
+   function showcite(citeID,anchorID) {
+     cite = document.getElementById(citeID);
+
+     citeLeft = cite.style.left;
+     citeTop = cite.style.top;
+     
+     if (citeLeft != (getLeft(anchorID)+"px") ||
+         citeTop != (getTop(anchorID)+"px")) {
+       cite.style.display = "none";
+     }
+     
+     if (cite.style.display != "table-cell") {
+        movebox(citeID, anchorID);
+        cite.style.display = "table-cell";
+     }
+     else {
+       cite.style.display = "none";
+     };
+     return;
+   }
+
+   function movebox(citeID, anchorID) {
+
+     cite = document.getElementById(citeID);
+     
+     // alert(cite.offsetWidth + " by " + cite.offsetHeight)
+     
+     horizontalOffset = getLeft(anchorID);
+     // horizontalOffset = (inMain(anchorID)) ?
+     // (horizontalOffset - 260) : (horizontalOffset + 20)
+     // (horizontalOffset - (20 + cite.offsetWidth)) : (horizontalOffset + 20)
+
+     verticalOffset = getTop(anchorID);
+     // verticalOffset = (inMain(anchorID)) ?
+     // (verticalOffset - 20) : (verticalOffset + 20)
+     // (verticalOffset - (20 + cite.offsetHeight)) : (verticalOffset + 20)
+
+     /*
+     horizontalOffset = getAbsoluteLeft(anchorID) - getScrollLeft(anchorID) + 20;
+     if (inMain(anchorID)) {
+       horizontalOffset = horizontalOffset - 300;
+     }
+     verticalOffset = getAbsoluteTop(anchorID) - getScrollTop(anchorID) - 40;
+     if (inMain(anchorID)) {
+       verticalOffset = verticalOffset - 300;
+     }
+     */
+     
+     cite.style.left = horizontalOffset + "px";
+     cite.style.top = verticalOffset + "px";
+   }
+   
+   function getLeft(objectID) {
+     var left = getAbsoluteLeft(objectID) - getScrollLeft(objectID);
+     left = (inMain(objectID)) ? (left - 260) : (left + 20)    
+     return left;
+   }
+   
+   function getTop(objectID) {
+     var top = getAbsoluteTop(objectID) - getScrollTop(objectID);
+     top = (inMain(objectID)) ? (top - 50) : (top + 20)
+     return top;     
+   }
+   
+   function getAbsoluteLeft(objectId) {
+   // Get an object left position from the upper left viewport corner
+     o = document.getElementById(objectId)
+     oLeft = o.offsetLeft            // Get left position from the parent object
+     while(o.offsetParent!=null) {   // Parse the parent hierarchy up to the document element
+       oParent = o.offsetParent    // Get parent object reference
+       oLeft += oParent.offsetLeft // Add parent left position
+       o = oParent
+      }
+    return oLeft
+    }
+
+    function getAbsoluteTop(objectId) {
+    // Get an object top position from the upper left viewport corner
+      o = document.getElementById(objectId)
+      oTop = o.offsetTop            // Get top position from the parent object
+      while(o.offsetParent!=null) { // Parse the parent hierarchy up to the document element
+        oParent = o.offsetParent  // Get parent object reference
+        oTop += oParent.offsetTop // Add parent top position
+        o = oParent
+      }
+    return oTop
+    }
+
+   function getScrollLeft(objectId) {
+     // Get a left scroll position
+     o = document.getElementById(objectId)
+     oLeft = o.scrollLeft            // Get left position from the parent object
+     while(o.offsetParent!=null) {   // Parse the parent hierarchy up to the document element
+       oParent = o.offsetParent    // Get parent object reference
+       oLeft += oParent.scrollLeft // Add parent left position
+       o = oParent
+      }
+    return oLeft
+    }
+
+    function getScrollTop(objectId) {
+    // Get a right scroll position
+      o = document.getElementById(objectId)
+      oTop = o.scrollTop            // Get top position from the parent object
+      while(o.offsetParent!=null) { // Parse the parent hierarchy up to the document element
+        oParent = o.offsetParent  // Get parent object reference
+        oTop += oParent.scrollTop // Add parent top position
+        o = oParent
+      }
+    return oTop
+    }
+
+    function inMain(objectId) {
+    // returns true if in div#main
+      o = document.getElementById(objectId)
+      while(o.parentNode != null) { // Parse the parent hierarchy up to div#main
+        oParent = o.parentNode
+        if (o.id == "main") { return true; }
+        o = oParent;
+      }
+    return false;
+    }
+
+
+   /*
+   function showcite(citeID) {
+      cite = document.getElementById(citeID);
+      if (cite.style.display != "table-cell") {
+        cite.style.display = "table-cell";
+      }
+      else {
+        cite.style.display = "none";
+      };
+      return;
+    }
+    */
+
+      </script></head>
+         <body>
+            <div class="skipnav"><a href="#main">Skip to contents.</a></div>
+            <div id="balisage-header" role="banner" aria-label="Logo and breadcrumb links"><a class="quiet" href="http://www.balisage.net"><img style="float:right;border:none" alt="Balisage logo" height="130" src="icons/BalisageSeries-logo.png"></a><h2 class="page-header">Balisage: The Markup Conference</h2>
+               <h1 class="page-header">Proceedings preview</h1>
+            </div>
+            <nav id="main-menu" role="navigation">
+               <details>
+                  <summary tabindex="0"><svg role="img" viewBox="0 0 20 20" height="20" width="20">
+                        <title>Menu</title>
+                        <path d="m0-0v4h20v-4h-20zm0 8v4h20v-4h-20zm0 8v4h20v-4h-20z" fill="currentColor"></path></svg> Menu
+                     </summary>
+                  <div class="menu">
+                     <div id="navbar"></div>
+                     <div id="index-mast">
+                        <div class="content">
+                           <h1 class="article-title" id="d3e4">Balisage Paper: How long is my SVG <code class="code">&lt;text&gt;</code> element?</h1>
+                           <details class="mast-box">
+                              <summary class="title">David J. Birnbaum</summary>
+                              <div class="affiliation">
+                                 <p class="orgname">University of Pittsburgh</p>
+                              </div>
+                              <h5 class="author-email"><code class="email">&lt;<a class="email" href="mailto:djbpitt@gmail.com">djbpitt@gmail.com</a>&gt;</code></h5>
+                              <div class="personblurb">
+                                 <p id="d3e17">David J. Birnbaum is Professor of Slavic Languages and Literatures at the
+                                    University of Pittsburgh. He has been involved in the study of electronic text
+                                    technology since the mid-1980s, has delivered presentations at a variety of
+                                    digital humanities and electronic text technology conferences, and has served on
+                                    the board of the Association for Computers and the Humanities, the editorial
+                                    board of <span class="ital">Markup languages: theory and practice</span>,
+                                    and the Text Encoding Initiative Technical Council. Much of his electronic text
+                                    work intersects with his research in medieval Slavic manuscript studies, but he
+                                    also often writes about issues in the philosophy of markup. For the past ten
+                                    years he has been teaching an XML-oriented course in the University Honors
+                                    College at the University of Pittsburgh entitled <q>Computational methods in
+                                       the humanities</q> (<a href="http://dh.obdurodon.org" class="link" target="_new">http://dh.obdurodon.org</a>).</p>
+                              </div>
+                           </details>
+                           <details class="mast-box">
+                              <summary class="title">Charlie Taylor</summary>
+                              <div class="affiliation">
+                                 <p class="orgname">University of Pittsburgh</p>
+                              </div>
+                              <h5 class="author-email"><code class="email">&lt;<a class="email" href="mailto:[ADD EMAIL]">[ADD EMAIL]</a>&gt;</code></h5>
+                              <div class="personblurb">
+                                 <p id="d3e38">BLAH BLAH BLAH</p>
+                              </div>
+                           </details>
+                           <details class="abstract">
+                              <summary>
+                                 <h2 class="inline-heading">Abstract</h2>
+                              </summary>
+                              <p id="d3e10">BLAH BLAH BLAH</p>
+                           </details>
+                           <details class="toc">
+                              <summary>
+                                 <h2 class="inline-heading">Table of Contents</h2>
+                              </summary>
+                              <dl>
+                                 <dt><span class="section"><a href="#intro" class="toc">The problem</a></span></dt>
+                                 <dt><span class="section"><a href="#solutions" class="toc">Solutions</a></span></dt>
+                                 <dd>
+                                    <dl>
+                                       <dt><span class="section"><a href="#d3e126" class="toc">An XSLT approach</a></span></dt>
+                                       <dd>
+                                          <dl>
+                                             <dt><span class="section"><a href="#d3e128" class="toc">Overview</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e131" class="toc">Implementation</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e134" class="toc">Discussion</a></span></dt>
+                                          </dl>
+                                       </dd>
+                                       <dt><span class="section"><a href="#d3e138" class="toc">A JavaScript approach</a></span></dt>
+                                       <dd>
+                                          <dl>
+                                             <dt><span class="section"><a href="#d3e140" class="toc">Overview</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e143" class="toc">Implementation</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e162" class="toc">Discussion</a></span></dt>
+                                          </dl>
+                                       </dd>
+                                    </dl>
+                                 </dd>
+                                 <dt><span class="section"><a href="#d3e169" class="toc">Loose ends and future directions</a></span></dt>
+                                 <dt><span class="section"><a href="#d3e175" class="toc">Conclusion</a></span></dt>
+                              </dl>
+                           </details>
+                        </div>
+                     </div>
+                  </div>
+               </details>
+            </nav>
+            <nav id="index-mast" class="wide-mode" role="navigation">
+               <div class="content">
+                  <h1 class="article-title" id="d3e4">Balisage Paper: How long is my SVG <code class="code">&lt;text&gt;</code> element?</h1>
+                  <details class="mast-box">
+                     <summary class="title">David J. Birnbaum</summary>
+                     <div class="affiliation">
+                        <p class="orgname">University of Pittsburgh</p>
+                     </div>
+                     <h5 class="author-email"><code class="email">&lt;<a class="email" href="mailto:djbpitt@gmail.com">djbpitt@gmail.com</a>&gt;</code></h5>
+                     <div class="personblurb">
+                        <p id="d3e17">David J. Birnbaum is Professor of Slavic Languages and Literatures at the
+                           University of Pittsburgh. He has been involved in the study of electronic text
+                           technology since the mid-1980s, has delivered presentations at a variety of
+                           digital humanities and electronic text technology conferences, and has served on
+                           the board of the Association for Computers and the Humanities, the editorial
+                           board of <span class="ital">Markup languages: theory and practice</span>,
+                           and the Text Encoding Initiative Technical Council. Much of his electronic text
+                           work intersects with his research in medieval Slavic manuscript studies, but he
+                           also often writes about issues in the philosophy of markup. For the past ten
+                           years he has been teaching an XML-oriented course in the University Honors
+                           College at the University of Pittsburgh entitled <q>Computational methods in
+                              the humanities</q> (<a href="http://dh.obdurodon.org" class="link" target="_new">http://dh.obdurodon.org</a>).</p>
+                     </div>
+                  </details>
+                  <details class="mast-box">
+                     <summary class="title">Charlie Taylor</summary>
+                     <div class="affiliation">
+                        <p class="orgname">University of Pittsburgh</p>
+                     </div>
+                     <h5 class="author-email"><code class="email">&lt;<a class="email" href="mailto:[ADD EMAIL]">[ADD EMAIL]</a>&gt;</code></h5>
+                     <div class="personblurb">
+                        <p id="d3e38">BLAH BLAH BLAH</p>
+                     </div>
+                  </details>
+                  <details class="abstract">
+                     <summary>
+                        <h2 class="inline-heading">Abstract</h2>
+                     </summary>
+                     <p id="d3e10">BLAH BLAH BLAH</p>
+                  </details>
+                  <details class="toc">
+                     <summary>
+                        <h2 class="inline-heading">Table of Contents</h2>
+                     </summary>
+                     <dl>
+                        <dt><span class="section"><a href="#intro" class="toc">The problem</a></span></dt>
+                        <dt><span class="section"><a href="#solutions" class="toc">Solutions</a></span></dt>
+                        <dd>
+                           <dl>
+                              <dt><span class="section"><a href="#d3e126" class="toc">An XSLT approach</a></span></dt>
+                              <dd>
+                                 <dl>
+                                    <dt><span class="section"><a href="#d3e128" class="toc">Overview</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e131" class="toc">Implementation</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e134" class="toc">Discussion</a></span></dt>
+                                 </dl>
+                              </dd>
+                              <dt><span class="section"><a href="#d3e138" class="toc">A JavaScript approach</a></span></dt>
+                              <dd>
+                                 <dl>
+                                    <dt><span class="section"><a href="#d3e140" class="toc">Overview</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e143" class="toc">Implementation</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e162" class="toc">Discussion</a></span></dt>
+                                 </dl>
+                              </dd>
+                           </dl>
+                        </dd>
+                        <dt><span class="section"><a href="#d3e169" class="toc">Loose ends and future directions</a></span></dt>
+                        <dt><span class="section"><a href="#d3e175" class="toc">Conclusion</a></span></dt>
+                     </dl>
+                  </details>
+               </div>
+            </nav>
+            <main id="main" role="main" aria-label="Main Content">
+               <div class="article">
+                  <h1 class="article-title" id="d3e4">Balisage Paper: How long is my SVG <code class="code">&lt;text&gt;</code> element?</h1>
+                  <div class="section" id="intro">
+                     <h2 class="title" style="clear: both">The problem</h2>
+                     <p id="d3e50">SVG layout requires that the developer be in control of the dimensions of the objects
+                        that must be placed in the coordinate space. It is easy to specify (or compute based
+                        on
+                        other specifications) the size (bounding box height and width) of many SVG objects
+                        (rectangles, circles, lines), identifying the bounding box for text is challenging
+                        because SVG text does not know its own length. Developers are able to specify a
+                        font-size, which corresponds to the height of the font (from baseline to baseline)<sup class="fn-label"><a href="#d3e52" class="footnoteref" id="d3e52-ref">[1]</a></sup>, but the length of a string of characters depends on the widths of the
+                        individual characters, and those widths&nbsp;are not exposed in any convenient,&nbsp;accessible
+                        way in a regular XML development environment.</p>
+                     <p id="d3e66">Our test case for exploring and addressing this challenge is an SVG bar graph like
+                        the following:<sup class="fn-label"><a href="#d3e68" class="footnoteref" id="d3e68-ref">[2]</a></sup></p>
+                     <figure id="figure-01">
+                        <p class="title">Sample bar graph</p>
+                        <div class="figure-contents">
+                           <div class="mediaobject" id="d3e92"><img alt="" src="includes/Bal2021birn0505_svg-01.svg"></div>
+                        </div>
+                     </figure>
+                     <p id="d3e95">In this graph the bars rest on the X axis, and they bear individual slanted labels
+                        below. Under those labels we label the X axis itself. The challenge involves determining
+                        the Y position of the <q>Poem</q> label for the X axis, since that position will
+                        depend on the length of the longest bar label, and will therefore vary according to
+                        the
+                        specific poem titles. If you are like us, you place that label with a combination
+                        of
+                        guesswork with trial and error and then hard-code a magic number, which—predictably
+                        and
+                        understandably—breaks as soon as you try to reuse the code with new input.<sup class="fn-label"><a href="#d3e99" class="footnoteref" id="d3e99-ref">[3]</a></sup></p>
+                  </div>
+                  <div class="section" id="solutions">
+                     <h2 class="title" style="clear: both">Solutions</h2>
+                     <p id="d3e104"> This presentation explores two strategies for working around the difficulty of
+                        knowing the length of an SVG <code class="code">&lt;text&gt;</code> element:</p>
+                     <div class="orderedlist" id="d3e108">
+                        <ol style="list-style-type: decimal;">
+                           <li id="d3e109">
+                              <p id="d3e110">As a preprocessing step before undertaking the transformation that outputs the
+                                 SVG bar graph, create a mapping between characters and their individual widths
+                                 by extracting font metrics. We can then import that mapping into the XSLT that
+                                 generates the SVG and it to compute the length of text strings. If the text
+                                 strings are horizontal or vertical, the length is one of the dimensions of the
+                                 bounding box, and the other dimension is the font size. If the text is rotated,
+                                 we can use the length combined with the angle of rotation to compute the
+                                 dimensions of the bounding box. </p>
+                           </li>
+                           <li id="d3e111">
+                              <p id="d3e112">Output SVG components that must be stacked vertically as separate
+                                 <code class="code">&lt;svg&gt;</code> elements with no height specified. These would
+                                 wind&nbsp;up with a default height in a browser that would be wrong initially. We
+                                 then use CSS Flexbox to stack the <code class="code">&lt;svg&gt;</code> elements vertically,
+                                 and employ the JavaScript <code class="code">element.getBBox()</code> function to compute the
+                                 dimensions of the bounding box for each of the vertically stacked
+                                 <code class="code">&lt;svg&gt;</code> elements. We can then write the computed height
+                                 values into those elements in the DOM, effectively assigning a height after
+                                 loading the SVG into the browser, instead of when creating it with XSLT.</p>
+                           </li>
+                        </ol>
+                     </div>
+                     <p id="d3e122">These two approaches are described in more detail and illustrated below.<sup class="fn-label"><a href="#d3e124" class="footnoteref" id="d3e124-ref">[4]</a></sup></p>
+                     <div class="section" id="d3e126">
+                        <h3 class="title" style="clear: both">An XSLT approach</h3>
+                        <div class="section" id="d3e128">
+                           <h4 class="title" style="clear: both">Overview</h4>
+                           <p id="d3e130">BLAH BLAH BLAH</p>
+                        </div>
+                        <div class="section" id="d3e131">
+                           <h4 class="title" style="clear: both">Implementation</h4>
+                           <p id="d3e133">BLAH BLAH BLAH</p>
+                        </div>
+                        <div class="section" id="d3e134">
+                           <h4 class="title" style="clear: both">Discussion</h4>
+                           <p id="d3e136">Pro: Output does not depend on viewing in a browser or other
+                              DOM-and-JavaScript-aware environment. For example, can be included as an image
+                              in a Balisage (Docbook-based) document. Requires only XML-based programming; in
+                              particular, does not require JavaScript knowledge.</p>
+                           <p id="d3e137">Con: Requires preparation of font metric information, an extra step both
+                              initially and with scaling consequences (e.g., user cannot safely override
+                              supplied font information). For improved robustness, requires webfont. Requires
+                              additional logic to deal with font effects (e.g., ligatures, positional glyph
+                              variants) and transformations.</p>
+                        </div>
+                     </div>
+                     <div class="section" id="d3e138">
+                        <h3 class="title" style="clear: both">A JavaScript approach</h3>
+                        <div class="section" id="d3e140">
+                           <h4 class="title" style="clear: both">Overview</h4>
+                           <p id="d3e142">BLAH BLAH BLAH</p>
+                        </div>
+                        <div class="section" id="d3e143">
+                           <h4 class="title" style="clear: both">Implementation</h4>
+                           <p id="d3e145">BLAH BLAH BLAH</p>
+                           <p id="d3e146"><code class="code">getBBox()</code> is not sensitive to transformations that have been
+                              applied to an object, and <a class="xref" id="d3e149" href="javascript:showcite('cite-primer-getBoundingClientRect','d3e149')">MDN getBoundingClientRect() (Primer)</a>
+                              proposes the use of <code class="code">getCTM()</code> to work around this limitation. We
+                              find it simpler to wrap the transformed object(s) in an SVG
+                              <code class="code">&lt;g&gt;</code> or <code class="code">&lt;svg&gt;</code> element; because those
+                              objects are not themselves transformed, <code class="code">getBBox()</code> reports their
+                              actual coordinates correctly even when they contain descendant elements that
+                              have undergone transformation with the SVG <code class="code">@transform</code> attribute,
+                              such as scaling, rotation, translation, or skewing.</p>
+                        </div>
+                        <div class="section" id="d3e162">
+                           <h4 class="title" style="clear: both">Discussion</h4>
+                           <p id="d3e164">Pro: Does not require preparation of font metric information in advance (a
+                              benefit both initially and with respect to scalability). Adapts to viewing
+                              environment, and therefore supports user overrides of default. Does not require
+                              webfont. Does not require additional logic to deal with font effects (e.g.,
+                              ligatures, positional glyph variants) or transformations</p>
+                           <p id="d3e165">Con: Requires JavaScript programming knowledge. Works only in
+                              DOM-and-JavaScript-aware environments (e.g., works in a web browser, but not as
+                              an included image in a Balisage (Docbook-based) document. Not all JavaScript
+                              methods (including <code class="code">getBBox()</code>) are sensitive to transformations that
+                              have been performed on an object.</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="section" id="d3e169">
+                     <h2 class="title" style="clear: both">Loose ends and future directions</h2>
+                     <p id="d3e171">Our XSLT approach assumes that the font metrics that can be extracted from the font
+                        files are sufficient to compute the length of an SVG line of text. Our implementation
+                        does attempt to access kerning information, and it has not been tested on writing
+                        systems that involve character substitution (including positional glyph variation
+                        or
+                        ligation) or glyph reordering. It is not impacted negatively by zero-width characters
+                        as
+                        long as the font metrics for those glyphs correctly report a width of zero.</p>
+                     <p id="d3e172">Font availability on a user system is not fully predictable, especially over time,
+                        so
+                        supplying a webfont is more robust then trusting that every browser will use, for
+                        example, a Times New Roman font with the same font metrics.</p>
+                     <p id="d3e173">Saxon-JS</p>
+                     <p id="d3e174">Saxon-JS relies on a JavaScript implementation of the XSLT engine that is designed
+                        to
+                        perform transformations inside the browser. Insofar as Saxon-JS incorporates both
+                        XSLT
+                        and JavaScript functionality, it may provide a cleaner integration of the two
+                        approaches.</p>
+                  </div>
+                  <div class="section" id="d3e175">
+                     <h2 class="title" style="clear: both">Conclusion</h2>
+                     <p id="d3e177">BLAH BLAH BLAH</p>
+                  </div>
+                  <div class="bibliography" id="d3e178">
+                     <h2 class="title">References</h2>
+                     <p class="bibliomixed" id="getBoundingClientRect">[MDN getBoundingClientRect()] <q>Element.getBoundingClientRect()</q>, MDN Web Docs,
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</a>
+                        </p>
+                     <p class="bibliomixed" id="getBBox">[MDN getBBox()] <q>SVGGraphicsElement.getBBox()</q>, MDN Web Docs,
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox</a>
+                        </p>
+                     <p class="bibliomixed" id="primer-getBoundingClientRect"><a href="#d3e149">[MDN getBoundingClientRect() (Primer)] </a><q>getBBox</q>. <span class="ital">An SVG primer for today’s browsers. W3C Working Draft — September
+                           2010</span>, ed. David Dailey.
+                        <a href="https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox" class="link" target="_new">https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox</a>
+                        </p>
+                     <p class="bibliomixed" id="primer-getCTM">[MDN getCTM() (Primer)] <q>getCTM()</q>. <span class="ital">An SVG primer for today’s browsers.
+                           W3C Working Draft — September 2010</span>, ed. David Dailey.
+                        <a href="https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM" class="link" target="_new">https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM</a>
+                        </p>
+                  </div>
+                  <div class="footnotes"><br><hr width="100" align="left">
+                     <div id="d3e52" class="footnote">
+                        <p><sup class="fn-label"><a href="#d3e52-ref" class="footnoteref">[1]</a></sup> If the user does not specify a font size, the default is 16 pixels, which
+                           corresponds to specifying the value <code class="code">"medium"</code> for a
+                           <code class="code">@font-size</code> attribute on the SVG <code class="code">&lt;text&gt;</code>
+                           element. The <code class="code">@font-size</code> setting may be modified before rendering
+                           with the global SVG <code class="code">@transform</code> attribute.</p>
+                     </div>
+                     <div id="d3e68" class="footnote">
+                        <p><sup class="fn-label"><a href="#d3e68-ref" class="footnoteref">[2]</a></sup> This graph is based on XML originally prepared by Matthew Borbonus, Kyle
+                           Huber, and Ethan Moser as part of their <span class="ital">Tracking language
+                              of catch and release in the poetical corpus of Edgar Allan Poe</span>
+                           (<a href="http://poe.obdurodon.org/" class="link" target="_new">http://poe.obdurodon.org/</a>,
+                           <a href="https://github.com/Ethandaniel47/EdgarAllanPoeProject" class="link" target="_new">https://github.com/Ethandaniel47/EdgarAllanPoeProject</a>). The
+                           developers tagged parts of speech (e.g., <code class="code">&lt;noun&gt;</code>,
+                           <code class="code">&lt;verb&gt;</code>, etc.) in a small corpus of Poe’s poetry, adding
+                           an attribute <code class="code">@value</code> to those elements with values of
+                           <code class="code">"open"</code> and <code class="code">"closed"</code> according to whether the
+                           tagged words could be associated with openness or closedness. We have adapted
+                           the XML and schema from the original project for this report.</p>
+                     </div>
+                     <div id="d3e99" class="footnote">
+                        <p><sup class="fn-label"><a href="#d3e99-ref" class="footnoteref">[3]</a></sup> Placing the X axis label more precisely in a way that takes into account the
+                           lengths and positions of all of the bar labels is a version of the same type of
+                           task, although it is a much more complicated version. For example, if the
+                           leftmost and rightmost bar labels are the longest, a human designer might choose
+                           to label the X axis, if it is short enough, slightly between them, instead of
+                           fully below them. Similarly, a human designer might choose, if the bar labels
+                           happen to be longer on one side of the graph than the other, to place the axis
+                           label on the shorter side, below the bar labels on that side, but not below the
+                           longest label (on the other side).</p>
+                        <p id="d3e101">Our modest goal is simply to place the general label for the X axis with
+                           reliable precision below the longest bar label. Whether the more exact placement
+                           described above would be worth the extra effort is less clear, but, as will be
+                           clear from the description below, it can be implemented as an extension of our
+                           simpler solution to the simpler task.</p>
+                     </div>
+                     <div id="d3e124" class="footnote">
+                        <p><sup class="fn-label"><a href="#d3e124-ref" class="footnoteref">[4]</a></sup> We are grateful to the developers who participated in the discussion we opened
+                           about this topic in the xml.com Slack workspace, and especially Gerrit Imsieke
+                           and Liam Quin. Slack postings are ephemeral, but although that conversation will
+                           not be preserved, we are happy to be able to acknowledge it, more persistently,
+                           here.</p>
+                     </div>
+                  </div>
+                  <div class="inline-citation" id="cite-getBoundingClientRect"><a class="quiet" href="javascript:hidecite('cite-getBoundingClientRect')" aria-label="Close Citation Box">×</a><p><q>Element.getBoundingClientRect()</q>, MDN Web Docs,
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</a>
+                        </p>
+                  </div>
+                  <div class="inline-citation" id="cite-getBBox"><a class="quiet" href="javascript:hidecite('cite-getBBox')" aria-label="Close Citation Box">×</a><p><q>SVGGraphicsElement.getBBox()</q>, MDN Web Docs,
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox</a>
+                        </p>
+                  </div>
+                  <div class="inline-citation" id="cite-primer-getBoundingClientRect"><a class="quiet" href="javascript:hidecite('cite-primer-getBoundingClientRect')" aria-label="Close Citation Box">×</a><p><q>getBBox</q>. <span class="ital">An SVG primer for today’s browsers. W3C Working Draft — September
+                           2010</span>, ed. David Dailey.
+                        <a href="https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox" class="link" target="_new">https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox</a>
+                        </p>
+                  </div>
+                  <div class="inline-citation" id="cite-primer-getCTM"><a class="quiet" href="javascript:hidecite('cite-primer-getCTM')" aria-label="Close Citation Box">×</a><p><q>getCTM()</q>. <span class="ital">An SVG primer for today’s browsers.
+                           W3C Working Draft — September 2010</span>, ed. David Dailey.
+                        <a href="https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM" class="link" target="_new">https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM</a>
+                        </p>
+                  </div>
+               </div>
+               <div id="author-keywords">
+                  <h5 class="keywords">Author's keywords for this paper:</h5> <span class="keyword">SVG</span>; <span class="keyword">font metrics</span></div>
+               <div id="balisage-footer">
+                  <h3>Balisage Series on Markup Technologies</h3>
+               </div>
+            </main>
+         </body>
+      </html>
+      <div id="balisage-footer">
+         <h3><!--* balisage-html.xsl 519.38 *--><i>Balisage:</i>&nbsp;<small>The Markup Conference</small></h3>
+      </div>
+   </body>
+</html>

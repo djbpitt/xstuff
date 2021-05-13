@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>TO SCIENCE
+            A PROLOGUE TO "AL AARAAF"</title>
+    </meta>
+    <stanza>
+        <lb/>Science! true daughter of Old Time thou art,
+        <lb/>Who alterest all things with thy peering eyes.
+        <lb/>Why <verb value="closed">preyest</verb> thou thus <prep value="closed">upon</prep> the poet's heart,
+        <lb/>Vulture, whose wings are dull realities?
+        <lb/>How should he love thee? or how deem thee wise,
+        <lb/>Who wouldst not leave him in his wandering
+        <lb/>To seek for treasure in the jewelled <noun value="open">skies</noun>,
+        <lb/>Albeit he <verb value="open">soared</verb> with an undaunted wing?
+        <lb/>Hast thou not <verb value="closed">dragged</verb> Diana from her car,
+        <lb/>And driven the Hamadryad from the wood
+        <lb/>To seek a <noun value="closed">shelter</noun> in some happier star?
+        <lb/>Hast thou not <verb value="open">torn</verb> the Naiad from her flood,
+        <lb/>The Elfin from the green grass, and from me
+        <lb/>The summer dream <prep value="closed">beneath</prep> the tamarind-tree?
+    </stanza>
+</poem>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Desktop/EdgarAllanPoeProject/schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+    <meta>
+        <title>TAMERLANE</title>
+        <date>1829</date>
+    </meta>
+
+    
+        <stanza>
+            <lb/>Kind <noun value="open">solace</noun> <prep value="closed">in</prep> a <adj value="closed">dying</adj> hour!
+            <lb/>Such, father, is not (now) my theme--
+            <lb/>I will not madly deem that power
+            <lb/>Of Earth may <verb value="closed">shrive</verb> me of the sin
+            <lb/>Unearthly pride hath revelled <prep value="closed">in</prep>--
+            <lb/>I have no time to dote or dream:
+            <lb/>You call it hope--that fire of fire!
+            <lb/>It is but <noun value="closed">agony</noun> of desire:
+            <lb/>If I can hope--O <noun value="open">God</noun>! I can--
+            <lb/>Its fount is holier--more divine--
+            <lb/>I would not call thee fool, old man,
+            <lb/>But such is not a gift of thine.
+        </stanza>
+
+        <stanza>
+            <lb/>Know thou the <noun value="closed">secret</noun> of a spirit
+            <lb/>Bowed from its wild pride <prep value="closed">into</prep> shame
+            <lb/>O yearning heart! I did <verb value="open">inherit</verb>
+            <lb/>Thy <adj value="closed">withering</adj> portion with the fame,
+            <lb/>The searing glory which hath shone
+            <lb/>Amid the Jewels of my throne,
+            <lb/>Halo of <noun value="closed">Hell</noun>! and with a pain
+            <lb/>Not <noun value="closed">Hell</noun> shall make me fear again--
+            <lb/>O craving heart, for the <adj value="closed">lost</adj> flowers
+            <lb/>And sunshine of my summer hours!
+            <lb/>The <adj value="open">undying</adj> voice of that <adj value="closed">dead</adj> time,
+            <lb/>With its interminable chime,
+            <lb/>Rings, <prep value="closed">in</prep> the spirit of a spell,
+            <lb/>Upon thy <noun value="closed">emptiness</noun>--a knell.
+        </stanza>
+
+        <stanza>
+            <lb/>I have not always been as now:
+            <lb/>The fevered diadem on my brow
+            <lb/>I claimed and <verb value="open">won</verb> <adv value="open">usurpingly</adv>--
+            <lb/>Hath not the same fierce heirdom given
+            <lb/><ref value="location">Rome</ref> to the <ref value="historical">Cæsar</ref>--this to me?
+            <lb/>The heritage of a kingly mind,
+            <lb/>And a proud spirit which hath <verb value="open">striven</verb>
+            <lb/>Triumphantly with human kind.
+            <lb/>On mountain soil I first drew <noun value="open">life</noun>:
+            <lb/>The mists of the <ref value="location">Taglay</ref> have <verb value="open">shed</verb>
+            <lb/>Nightly their dews <prep value="open">upon</prep> my head,
+            <lb/>And, I believe, the winged strife
+            <lb/>And tumult of the headlong air
+            <lb/>Have nestled <prep value="closed">in</prep> my very hair.
+        </stanza>
+
+        <stanza>
+            <lb/>So late from <noun value="open">Heaven</noun>--that dew--it <verb value="closed">fell</verb>
+            <lb/>('Mid dreams of an unholy night)
+            <lb/><prep value="open">Upon</prep> me with the touch of <noun value="closed">Hell</noun>,
+            <lb/>While the red flashing of the light
+            <lb/>From clouds that hung, like banners, <prep value="open">o'er</prep>,
+            <lb/>Appeared to my half-<adj value="closed">closing</adj> eye
+            <lb/>The pageantry of monarchy;
+            <lb/>And the <adj value="closed">deep</adj> trumpet-thunder's roar
+            <lb/>Came hurriedly <prep value="open">upon</prep> me, telling
+            <lb/>Of human battle, where my voice,
+            <lb/>My own voice, silly child!--was <verb value="open">swelling</verb>
+            <lb/>(O! how my spirit would rejoice,
+            <lb/>And leap <prep value="closed">within</prep> me at the cry)
+            <lb/>The battle-cry of Victory!
+        </stanza>
+
+        <stanza>
+            <lb/>The rain came <prep value="closed">down</prep> <prep value="open">upon</prep> my head
+            <lb/>Unsheltered--and the heavy wind
+            <lb/>Rendered me mad and <adj value="closed">deaf</adj> and <adj value="closed">blind</adj>.
+            <lb/>It was but man, I thought, who <verb value="open">shed</verb>
+            <lb/>Laurels upon me: and the rush--
+            <lb/>The torrent of the chilly air
+            <lb/>Gurgled <prep value="closed">within</prep> my ear the <verb value="closed">crush</verb>
+            <lb/>Of empires--with the <noun value="closed">captive</noun>'s prayer--
+            <lb/>The hum of suitors--and the tone
+            <lb/>Of flattery 'round a sovereign's throne.
+        </stanza>
+
+        <stanza>
+            <lb/>My passions, from that hapless hour,
+            <lb/><verb value="open">Usurped</verb> a <noun value="closed">tyranny</noun> which men
+            <lb/>Have deemed since I have reached to power,
+            <lb/>My innate nature--be it so:
+            <lb/>But, father, there lived one who, then,
+            <lb/>Then--<prep value="closed">in</prep> my boyhood--when their fire
+            <lb/>Burned with a still intenser <noun value="open">glow</noun>
+            <lb/>(For passion must, with youth, <verb value="closed">expire</verb>)
+            <lb/>E'en then who knew this iron heart
+            <lb/><prep value="closed">In</prep> woman's weakness had a part.
+        </stanza>
+
+        <stanza>
+            <lb/>I have no words--alas!--to tell
+            <lb/>The loveliness of loving well!
+            <lb/>Nor would I now attempt to trace
+            <lb/>The more than beauty of a face
+            <lb/>Whose lineaments, <prep value="open">upon</prep> my mind,
+            <lb/>Are--shadows on th' unstable wind:
+            <lb/>Thus I remember having dwelt
+            <lb/>Some page of early lore <prep value="open">upon</prep>,
+            <lb/>With loitering eye, till I have felt
+            <lb/>The letters--with their meaning--melt
+            <lb/>To fantasies--with none.
+        </stanza>
+
+        <stanza>
+            <lb/>O, she was worthy of all love!
+            <lb/>Love as <prep value="closed">in</prep> infancy was mine--
+            <lb/>'Twas such as <noun value="open">angel</noun> minds <prep value="open">above</prep>
+            <lb/>Might <verb value="closed">envy</verb>; her young heart the shrine
+            <lb/>On which my every hope and thought
+            <lb/>Were incense--then a goodly gift,
+            <lb/>For they were childish and upright--
+            <lb/>Pure--as her young example taught:
+            <lb/>Why did I leave it, and, adrift,
+            <lb/>Trust to the fire <prep value="closed">within</prep>, for light?
+        </stanza>
+
+        <stanza>
+            <lb/>We grew <prep value="closed">in</prep> age--and love--together--
+            <lb/>Roaming the forest, and the wild;
+            <lb/>My breast her shield <prep value="closed">in</prep> wintry weather--
+            <lb/>And, when the friendly sunshine smiled.
+            <lb/>And she would mark the <adj value="open">opening</adj> skies,
+            <lb/>I saw no <noun value="open">Heaven</noun>--but <prep value="closed">in</prep> her eyes.
+            <lb/>Young Love's first lesson is----the heart:
+            <lb/>For 'mid that sunshine, and those smiles,
+            <lb/>When, from our little cares apart,
+            <lb/>And laughing at her girlish wiles,
+            <lb/>I'd throw me on her throbbing breast,
+            <lb/>And pour my spirit <prep value="open">out</prep> <prep value="closed">in</prep> tears--
+            <lb/>There was no need to speak the rest--
+            <lb/>No need to quiet any fears
+            <lb/>Of her--who asked no reason why,
+            <lb/>But turned on me her quiet eye!
+        </stanza>
+
+        <stanza>
+            <lb/>Yet more than worthy of the love
+            <lb/>My spirit struggled with, and strove
+            <lb/>When, on the <noun value="open">mountain peak</noun>, <adj value="closed">alone</adj>,
+            <lb/>Ambition lent it a new tone--
+            <lb/>I had no being--but <prep value="closed">in</prep> thee:
+            <lb/>The world, and all it did <verb value="closed">contain</verb>
+            <lb/><prep value="closed">In</prep> the earth--the air--the sea--
+            <lb/>Its joy--its little lot of pain
+            <lb/>That was new pleasure--the ideal,
+            <lb/>Dim, vanities of dreams by night--
+            <lb/>And dimmer nothings which were real--
+            <lb/>(Shadows--and a more shadowy light!)
+            <lb/><verb value="open">Parted</verb> upon their misty wings,
+            <lb/>And, so, confusedly, became
+            <lb/>Thine image and--a name--a name!
+            <lb/>Two separate--yet most intimate things.
+        </stanza>
+
+        <stanza>
+            <lb/>I was ambitious--have you known
+            <lb/>The passion, father? You have not:
+            <lb/>A cottager, I marked a throne
+            <lb/>Of half the world as all my own,
+            <lb/>And murmured at such <adj value="closed">lowly</adj> lot--
+            <lb/>But, just like any other dream,
+            <lb/>Upon the vapor of the dew
+            <lb/>My own had past, did not the beam
+            <lb/>Of beauty which did while it thro'
+            <lb/>The minute--the hour--the day--<verb value="closed">oppress</verb>
+            <lb/>My mind with double loveliness.
+        </stanza>
+
+        <stanza>
+            <lb/>We walked together on the crown
+            <lb/>Of a <adj value="open">high</adj> <noun value="open">mountain</noun> which looked <prep value="closed">down</prep>
+            <lb/>Afar from its proud natural <noun value="open">towers</noun>
+            <lb/>Of rock and forest, on the hills--
+            <lb/>The dwindled hills! begirt with bowers
+            <lb/>And shouting with a thousand rills.
+        </stanza>
+
+        <stanza>
+            <lb/>I spoke to her of power and pride,
+            <lb/>But mystically--<prep value="closed">in</prep> such <noun value="closed">guise</noun>
+            <lb/>That she might deem it nought beside
+            <lb/>The moment's converse; <prep value="closed">in</prep> her eyes
+            <lb/>I read, perhaps too carelessly--
+            <lb/>A mingled feeling with my own--
+            <lb/>The flush on her bright cheek, to me
+            <lb/>Seemed to become a queenly throne
+            <lb/>Too well that I should let it be
+            <lb/>Light <prep value="closed">in</prep> the wilderness <adj value="closed">alone</adj>.
+        </stanza>
+
+        <stanza>
+            <lb/>I <verb value="closed">wrapped</verb> myself <prep value="closed">in</prep> grandeur then,
+            <lb/>And donned a visionary crown--
+            <lb/>Yet it was not that Fantasy
+            <lb/>Had thrown her mantle <prep value="open">over</prep> me--
+            <lb/>But that, among the rabble--men,
+            <lb/>Lion ambition is <verb value="closed">chained</verb> <prep value="closed">down</prep>--
+            <lb/>And crouches to a keeper's hand--
+            <lb/>Not so <prep value="closed">in</prep> deserts where the grand--
+            <lb/>The wild--the terrible <verb value="closed">conspire</verb>
+            <lb/>With their own breath to fan his fire.
+        </stanza>
+
+        <stanza>
+            <lb/>Look 'round thee now on <ref value="location">Samarcand</ref>!--
+            <lb/>Is she not queen of Earth? her pride
+            <lb/><prep value="open">Above</prep> all cities? <prep value="closed">in</prep> her hand
+            <lb/>Their destinies? <prep value="closed">in</prep> all beside
+            <lb/>Of glory which the world hath known
+            <lb/>Stands she not nobly and <adj value="closed">alone</adj>?
+            <lb/><verb value="closed">Falling</verb>--her veriest stepping-stone
+            <lb/>Shall form the pedestal of a throne--
+            <lb/>And who her sovereign? <ref value="historical">Timour</ref>--he
+            <lb/>Whom the astonished people saw
+            <lb/>Striding <prep value="open">o'er</prep> empires haughtily
+            <lb/>A diademed outlaw!
+        </stanza>
+
+        <stanza>
+            <lb/>O, human love! thou spirit given,
+            <lb/>On Earth, of all we hope <prep value="closed">in</prep> <noun value="open">Heaven</noun>!
+            <lb/>Which <verb value="closed">fall'st</verb> <prep value="closed">into</prep> the soul like rain
+            <lb/>Upon the <ref value="location">Siroc</ref>-<adj value="closed">withered</adj> plain,
+            <lb/>And, <verb value="closed">failing</verb> <prep value="closed">in</prep> thy power to bless,
+            <lb/>But leav'st the heart a wilderness!
+            <lb/>Idea! which <verb value="closed">bindest</verb> life around
+            <lb/>With music of so strange a sound
+            <lb/>And beauty of so wild a birth--
+            <lb/><noun value="open">Farewell</noun>! for I have <verb value="open">won</verb> the Earth.
+        </stanza>
+
+        <stanza>
+            <lb/>When Hope, the eagle that <verb value="open">towered</verb>, could see
+            <lb/>No cliff beyond him <prep value="closed">in</prep> the sky,
+            <lb/>His pinions were <verb value="closed">bent</verb> <adv value="closed">droopingly</adv>--
+            <lb/>And homeward turned his softened eye.
+            <lb/>'Twas sunset: When the sun will part
+            <lb/>There comes a sullenness of heart
+            <lb/>To him who still would look <prep value="open">upon</prep>
+            <lb/>The glory of the summer sun.
+            <lb/>That soul will hate the ev'ning mist
+            <lb/>So often lovely, and will list
+            <lb/>To the sound of the coming darkness (known
+            <lb/>To those whose spirits hearken) as one
+            <lb/>Who, <prep value="closed">in</prep> a dream of night, would <verb value="open">fly</verb>,
+            <lb/>But cannot, from a <noun value="closed">danger</noun> nigh.
+        </stanza>
+
+        <stanza>
+            <lb/>What tho' the moon--tho' the white moon
+            <lb/><verb value="open">Shed</verb> all the splendor of her noon,
+            <lb/>Her smile is chilly--and her beam,
+            <lb/><prep value="closed">In</prep> that time of dreariness, will seem
+            <lb/>(So like you gather <prep value="closed">in</prep> your breath)
+            <lb/>A portrait <verb value="closed">taken</verb> after <noun value="closed">death</noun>.
+            <lb/>And boyhood is a summer sun
+            <lb/>Whose <verb value="closed">waning</verb> is the dreariest one--
+            <lb/>For all we live to know is known,
+            <lb/>And all we seek to keep hath <verb value="open">flown</verb>--
+            <lb/>Let <noun value="open">life</noun>, then, as the day-flower, <verb value="closed">fall</verb>
+            <lb/>With the noon-day beauty--which is all.
+            <lb/>I reached my home--my home no more--
+            <lb/>For all had <verb value="open">flown</verb> who made it so.
+            <lb/>I passed from <prep value="open">out</prep> its mossy door,
+            <lb/>And, tho' my tread was soft and <adj value="closed">low</adj>,
+            <lb/>A voice came from the threshold stone
+            <lb/>Of one whom I had earlier known--
+            <lb/>O, I defy thee, <noun value="closed">Hell</noun>, to show
+            <lb/>On beds of fire that burn <prep value="closed">below</prep>,
+            <lb/>An humbler heart--a <adj value="closed">deeper</adj> woe.
+        </stanza>
+
+        <stanza>
+            <lb/>Father, I firmly do believe--
+            <lb/>I know--for <noun value="closed">Death</noun> who comes for me
+            <lb/>From regions of the blest afar,
+            <lb/>Where there is nothing to <verb value="closed">deceive</verb>,
+            <lb/>Hath left his iron gate <adj value="open">ajar</adj>.
+            <lb/>And rays of truth you cannot see
+            <lb/>Are flashing thro' <noun value="open">Eternity</noun>----
+            <lb/>I do believe that <ref value="religious">Eblis</ref> hath
+            <lb/>A <noun value="closed">snare</noun> <prep value="closed">in</prep> every human path--
+            <lb/>Else how, when <prep value="closed">in</prep> the holy <noun value="open">grove</noun>
+            <lb/>I wandered of the idol, Love,--
+            <lb/>Who daily scents his snowy wings
+            <lb/>With incense of burnt-offerings
+            <lb/>From the most unpolluted things,
+            <lb/>Whose pleasant bowers are yet so riven
+            <lb/>Above with trellised rays from Heaven
+            <lb/>No mote may shun--no tiniest fly--
+            <lb/>The light'ning of his eagle eye--
+            <lb/>How was it that Ambition crept,
+            <lb/><adj value="closed">Unseen</adj>, amid the revels there,
+            <lb/>Till growing bold, he laughed and leapt
+            <lb/><prep value="closed">In</prep> the tangles of Love's very hair!
+        </stanza>
+    
+</poem>

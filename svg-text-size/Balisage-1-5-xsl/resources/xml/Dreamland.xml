@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schema/poemschema1.rnc" type="application/relax-ng-compact-syntax"?>
+<poem>
+<meta><title>Dreamland</title>
+    <date>1844</date></meta>
+
+<stanza>
+<lb/>By a route obscure and lonely,
+<lb/>Haunted by ill <noun value="open">angels</noun> only,
+<lb/>Where an Eidolon, named <noun value="closed">Night</noun>,
+<lb/>On a black throne reigns upright,
+<lb/>I have reached these lands but newly
+<lb/>From an ultimate dim Thule—
+<lb/>From a wild weird clime that <verb value="closed">lieth</verb>, sublime,
+<lb/>Out of Space—out of Time.
+</stanza> 
+
+<stanza>
+<lb/>Bottomless vales and boundless floods,
+<lb/>And chasms, and caves, and Titan woods,
+<lb/>With forms that no man can discover
+<lb/>For the dews that drip all over;
+<lb/>Mountains toppling evermore
+<lb/>Into seas without a shore;
+<lb/>Seas that restlessly aspire,
+<lb/>Surging, unto skies of fire;
+<lb/>Lakes that endlessly outspread
+<lb/>Their lone waters—lone and dead,
+<lb/>Their still waters—still and chilly
+<lb/>With the snows of the lolling lily.
+</stanza> 
+
+<stanza>
+<lb/>By the lakes that thus outspread
+<lb/>Their lone waters, lone and dead,—
+<lb/>Their sad waters, sad and chilly
+<lb/>With the snows of the lolling lily,—
+</stanza>
+
+<stanza>
+<lb/>By the mountains—near the river
+<lb/>Murmuring lowly, murmuring ever,—
+<lb/>By the gray woods,—by the swamp
+<lb/>Where the toad and the newt encamp,—
+<lb/>By the dismal tarns and pools 
+<lb/>Where dwell the Ghouls,—
+<lb/>By each spot the most unholy—
+<lb/>In each nook most melancholy,—
+</stanza>
+
+<stanza>
+<lb/>There the traveller meets aghast
+<lb/>Sheeted Memories of the past—
+<lb/>Shrouded forms that start and sigh
+<lb/>As they pass the wanderer by—
+<lb/>White-robed forms of friends long given,
+<lb/>In agony, to the Earth—and Heaven.
+</stanza> 
+
+<stanza>
+<lb/>For the heart whose woes are legion
+<lb/>'Tis a peaceful, soothing region—
+<lb/>For the spirit that walks in shadow
+<lb/>'Tis—oh, 'tis an Eldorado!
+<lb/>But the traveller, travelling through it,
+<lb/>May not—dare not openly view it;
+<lb/>Never its mysteries are exposed
+<lb/>To the weak human eye unclosed;
+<lb/>So wills its King, who hath forbid
+<lb/>The uplifting of the fringed lid;
+<lb/>And thus the sad Soul that here passes
+<lb/>Beholds it but through darkened glasses.
+</stanza> 
+
+<stanza>
+<lb/>By a route obscure and lonely,
+<lb/>Haunted by ill angels only. 
+<lb/>Where an Eidolon, named Night,
+<lb/>On a black throne reigns upright,
+<lb/>I have wandered home but newly
+<lb/>From this ultimate dim Thule.
+</stanza>
+    
+
+</poem>
