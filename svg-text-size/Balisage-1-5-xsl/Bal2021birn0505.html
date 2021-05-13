@@ -301,6 +301,7 @@
                                  </dd>
                                  <dt><span class="section"><a href="#d3e169" class="toc">Loose ends and future directions</a></span></dt>
                                  <dt><span class="section"><a href="#d3e175" class="toc">Conclusion</a></span></dt>
+                                 <dt><span class="appendix"><a href="#extract-widths" class="toc">Script to extract font widths as XML. Script to extract font widths as XML</a></span></dt>
                               </dl>
                            </details>
                         </div>
@@ -377,6 +378,7 @@
                         </dd>
                         <dt><span class="section"><a href="#d3e169" class="toc">Loose ends and future directions</a></span></dt>
                         <dt><span class="section"><a href="#d3e175" class="toc">Conclusion</a></span></dt>
+                        <dt><span class="appendix"><a href="#extract-widths" class="toc">Script to extract font widths as XML. Script to extract font widths as XML</a></span></dt>
                      </dl>
                   </details>
                </div>
@@ -452,7 +454,9 @@
                         </div>
                         <div class="section" id="d3e131">
                            <h4 class="title" style="clear: both">Implementation</h4>
-                           <p id="d3e133">BLAH BLAH BLAH</p>
+                           <p id="d3e133">Because this method requires knowing the widths of the individual glyphs while
+                              coonstructing the SVG, we firxt extract width information from TrueType TTF
+                              files and format them as XML using the script in </p>
                         </div>
                         <div class="section" id="d3e134">
                            <h4 class="title" style="clear: both">Discussion</h4>
@@ -527,7 +531,77 @@
                      <h2 class="title" style="clear: both">Conclusion</h2>
                      <p id="d3e177">BLAH BLAH BLAH</p>
                   </div>
-                  <div class="bibliography" id="d3e178">
+                  <div class="appendix" id="extract-widths">
+                     <h2 class="title" style="clear: both">Script to extract font widths as XML. Script to extract font widths as XML</h2>
+                     <p id="d3e180">The following Python script exports the widths of all glyphs in a TrueType font. The
+                        script has two positional arguments, a required path to the font and an optional point
+                        size (defaults to 16, which is the size of SVG text that either does not specify a
+                        <code class="code">@font-size</code> or specifies a size of <code class="code">"medium"</code>.</p>
+                     <pre class="programlisting" id="d3e186"><!--language: python-->#!/usr/bin/env python
+# https://stackoverflow.com/questions/4190667/how-to-get-width-of-a-truetype-font-character-in-1200ths-of-an-inch-with-python
+# https://fonttools.readthedocs.io/en/latest/index.html
+# https://www.geeksforgeeks.org/create-xml-documents-using-python/
+from fontTools.ttLib import TTFont
+from fontTools.ttLib.tables._c_m_a_p import CmapSubtable
+from xml.dom import minidom
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("ttf", help="path to TrueType (TTF) file (required)")
+parser.add_argument("size", help="size in points (defaults to 16pt)", type=int, nargs="?", default=16)
+args = parser.parse_args()
+font = args.ttf
+size = args.size
+
+# from StackOverflow
+font = TTFont(font) # path to font
+cmap = font['cmap']
+t = cmap.getcmap(3,1).cmap # map of decimal values to glyph names
+s = font.getGlyphSet()
+units_per_em = font['head'].unitsPerEm
+
+def getTextWidth(text,pointSize):
+    total = 0
+    for c in text:
+        if ord(c) in t and t[ord(c)] in s:
+            total += s[t[ord(c)]].width
+        else:
+            total += s['.notdef'].width
+    total = total*float(pointSize)/units_per_em;
+    return total
+
+# from minidom documentation
+root = minidom.Document()
+xml = root.createElement('root')
+root.appendChild(xml)
+
+c_dict = dict()
+for num_dec in range(65535): # entire BMP; decimal Unicode value
+    char = chr(num_dec) # character as string
+    c_dict[char]= getTextWidth(char, size) # default SVG font-size is 16 (medium)
+
+for item in c_dict.items(): # string-value : width
+    char = item[0] # string value of character
+    num_dec = ord(char) # Unicode value (decimal)
+    num_hex = hex(num_dec) # Unicode value (hex)
+    width = item[1] # glyph width
+    if num_dec in t: # not all values are present in font
+        name = t[num_dec] # look up name by decimal value
+        e = root.createElement('character')
+        e.setAttribute('str', str(char)) # attribute have to be set as strings
+        e.setAttribute('dec', str(num_dec))
+        e.setAttribute('hex', str(num_hex))
+        e.setAttribute('width', str(width))
+        e.setAttribute('name', name)
+        xml.appendChild(e)
+
+xml_str = root.toprettyxml(indent="  ")
+print(xml_str)</pre>
+                     <p id="d3e188">Sample output is a sequence of <code class="code">&lt;character&gt;</code> elements inside a root
+                        element called <code class="code">&lt;root&gt;</code>:</p>
+                     <pre class="programlisting" id="d3e194"><!--language: xml-->&lt;character dec="65" hex="0x41" name="A" str="A" width="11.456"/&gt;</pre>
+                  </div>
+                  <div class="bibliography" id="d3e196">
                      <h2 class="title">References</h2>
                      <p class="bibliomixed" id="getBoundingClientRect">[MDN getBoundingClientRect()] <q>Element.getBoundingClientRect()</q>, MDN Web Docs,
                         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</a>
