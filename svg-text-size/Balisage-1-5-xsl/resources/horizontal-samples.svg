@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+   <g transform="translate(10, 10)">
+      <text x="0" y="16" font-family="Times New Roman" font-size="16">Length: 67.9921875</text>
+      <text x="0"
+            y="32"
+            font-family="Times New Roman"
+            font-size="16"
+            kerning="0">Test string</text>
+      <line x1="0"
+            y1="36"
+            x2="67.9921875"
+            y2="36"
+            stroke="black"
+            stroke-width="1"/>
+   </g>
+   <g transform="translate(10, 10)">
+      <text x="0" y="64" font-family="Times New Roman" font-size="16">Length: 69.328125</text>
+      <text x="0"
+            y="80"
+            font-family="Times New Roman"
+            font-size="16"
+            kerning="0">AVAVAV</text>
+      <line x1="0"
+            y1="84"
+            x2="69.328125"
+            y2="84"
+            stroke="black"
+            stroke-width="1"/>
+   </g>
+   <g transform="translate(10, 10)">
+      <text x="0" y="112" font-family="Times New Roman" font-size="16">Length: 0</text>
+      <text x="0"
+            y="128"
+            font-family="Times New Roman"
+            font-size="16"
+            kerning="0"/>
+      <line x1="0"
+            y1="132"
+            x2="0"
+            y2="132"
+            stroke="black"
+            stroke-width="1"/>
+   </g>
+   <g transform="translate(10, 10)">
+      <text x="0" y="160" font-family="Times New Roman" font-size="16">Length: 297.703125</text>
+      <text x="0"
+            y="176"
+            font-family="Times New Roman"
+            font-size="16"
+            kerning="0">The quick brown fox jumps over the lazy dog!</text>
+      <line x1="0"
+            y1="180"
+            x2="297.703125"
+            y2="180"
+            stroke="black"
+            stroke-width="1"/>
+   </g>
+</svg>

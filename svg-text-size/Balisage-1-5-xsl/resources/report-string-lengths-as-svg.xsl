@@ -14,9 +14,7 @@
         <input>Test string</input>
         <input>AVAVAV</input>
         <input/>
-        <input>m</input>
-        <input>mm</input>
-        <input>The quick brown fox jumps over the lazy dog … and the lazier wombat!</input>
+        <input>The quick brown fox jumps over the lazy dog!</input>
     </xsl:variable>
     <!-- ================================================================ -->
     <!-- Read in mapping and make accessible in key (one per font/size)   -->
@@ -46,12 +44,26 @@
     <!-- ================================================================ -->
     <xsl:template name="xsl:initial-template">
         <svg>
-            <xsl:apply-templates select="$inputs"/>
+            <xsl:result-document href="horizontal-samples.svg" method="xml" indent="yes">
+                <svg>
+                    <xsl:apply-templates select="$inputs" mode="horizontal"/>
+                </svg>
+            </xsl:result-document>
+            <xsl:result-document href="vertical-samples.svg" method="xml" indent="yes">
+                <svg>
+                    <xsl:apply-templates select="$inputs" mode="vertical"/>
+                </svg>
+            </xsl:result-document>
+            <xsl:result-document href="diagonal-samples.svg" method="xml" indent="yes">
+                <svg>
+                    <xsl:apply-templates select="$inputs" mode="diagonal"/>
+                </svg>
+            </xsl:result-document>
         </svg>
     </xsl:template>
-    <xsl:template match="input">
+    <xsl:template match="input" mode="horizontal">
         <xsl:variable name="offset" as="xs:integer" select="position()"/>
-        <g transform="translate(10)">
+        <g transform="translate(10, 10)">
             <!-- ======================================================== -->
             <!-- Horizontal                                               -->
             <!-- ======================================================== -->
@@ -67,7 +79,10 @@
             <line x1="0" y1="{$y-pos + 20}" x2="{$length}" y2="{$y-pos + 20}" stroke="black"
                 stroke-width="1"/>
         </g>
-        <g transform="translate(10, {count($inputs) * $font-size * 3})">
+    </xsl:template>
+    <xsl:template match="input" mode="vertical">
+        <xsl:variable name="offset" as="xs:integer" select="position()"/>
+        <g transform="translate(10, 10)">
             <!-- ======================================================== -->
             <!-- Vertical                                                 -->
             <!-- ======================================================== -->
@@ -80,8 +95,10 @@
             <line x1="{$x-pos - $font-size div 2}" y1="0" x2="{$x-pos - $font-size div 2}"
                 y2="{$length}" stroke="black" stroke-width="1"/>
         </g>
-        <g
-            transform="translate(10, {count($inputs) * $font-size * 3 + max($inputs ! djb:get-text-length(.)) + 20})">
+    </xsl:template>
+    <xsl:template match="input" mode="diagonal">
+        <xsl:variable name="offset" as="xs:integer" select="position()"/>
+        <g transform="translate(10, 10)">
             <!-- ======================================================== -->
             <!-- Diagonal                                                 -->
             <!--                                                          -->
@@ -106,7 +123,6 @@
             </text>
             <rect x="{$x-pos}" y="0" width="{$width}" height="{$height}" stroke="black"
                 stroke-width="1" fill="none"/>
-            <xsl:message select="$height, $width, $hypotenuse, $angle-degrees, $angle-radians"/>
         </g>
     </xsl:template>
 </xsl:stylesheet>

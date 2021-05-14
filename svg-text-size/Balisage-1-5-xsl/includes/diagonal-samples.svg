@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="275" width="500">
+      <g transform="translate(10, 10)">
+            <text x="16" y="0" font-family="Times New Roman" font-size="16" writing-mode="tb"
+                  transform="rotate(-30, 16, 0)">Test string</text>
+            <rect x="16" y="0" width="33.99609374999999" height="58.882961633874764" stroke="black"
+                  stroke-width="1" fill="none"/>
+      </g>
+      <g transform="translate(10, 10)">
+            <text x="64" y="0" font-family="Times New Roman" font-size="16" writing-mode="tb"
+                  transform="rotate(-30, 64, 0)">AVAVAV</text>
+            <rect x="64" y="0" width="34.66406249999999" height="60.03991744674304" stroke="black"
+                  stroke-width="1" fill="none"/>
+      </g>
+      <g transform="translate(10, 10)">
+            <text x="112" y="0" font-family="Times New Roman" font-size="16" writing-mode="tb"
+                  transform="rotate(-30, 112, 0)"/>
+            <rect x="112" y="0" width="0" height="0" stroke="black" stroke-width="1" fill="none"/>
+      </g>
+      <g transform="translate(10, 10)">
+            <text x="160" y="0" font-family="Times New Roman" font-size="16" writing-mode="tb"
+                  transform="rotate(-30, 160, 0)">The quick brown fox jumps over the lazy
+                  dog!</text>
+            <rect x="160" y="0" width="148.85156249999997" height="257.8184690360142" stroke="black"
+                  stroke-width="1" fill="none"/>
+      </g>
+</svg>

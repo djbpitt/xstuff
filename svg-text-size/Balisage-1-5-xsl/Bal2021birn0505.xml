@@ -154,15 +154,120 @@
             <title>An XSLT approach</title>
             <section>
                 <title>Overview</title>
-                <para>BLAH BLAH BLAH</para>
+                <para>The XSLT approach computes the dimensions of the text as it creates the SVG
+                    and positions other elements in relation to <code>&lt;text&gt;</code> elements
+                    accordingly. For horizontal or vertical text this requires computing the length
+                    of the <code>&lt;text&gt;</code> and using it to position other elements at a
+                    specific distance from the end of the text. This approach is less precise than
+                    the JavaScript method described below, but because we normally want to include a
+                    small amount of padding around our <code>&lt;text&gt;</code> elements in any
+                    case, we do not require high precision.<footnote>
+                        <para>In extreme and unnatural cases, such as with text like
+                                <code>"AVAVAV"</code>, which is very heavily kerned where kerning is
+                            applied, the imprecision of the length computed with our XSLT method,
+                            which does not have access to kerning information, becomes noticeable.
+                            We regard this largely as a hypothetical complication, that is, one that
+                            is unlikely to create noticeable distractions with the text strings we
+                            would expect to encounter when processing real data.</para>
+                    </footnote></para>
+                <para>In the sample SVG below, we compute the length of the text using the method
+                    described here and employ it to draw a line parallel to horizontal or vertical
+                    text, so that we can assess the accuracy of our measurements visually. In the
+                    case of diagonal text we draw a bounding rectangle. The third of the four
+                    examples in each figure is a null string:</para>
+                <figure xml:id="horizontal-sample" xreflabel="Sample horizontal text">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/horizontal-samples.svg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+                <figure xml:id="vertical-sample" xreflabel="Sample vertical text">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/vertical-samples.svg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+                <figure xml:id="diagonal-sample" xreflabel="Sample diagonal text">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/diagonal-samples.svg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+                <para>The examples show the following results:<itemizedlist>
+                        <listitem>
+                            <para>The overall precision is quite high.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Because we did not access kerning information, the example with
+                                    <code>"Test string"</code> is imprecise as a result of kerning
+                                applied to the <code>"Te"</code> sequence. The deleterious effect of
+                                kerning on the accuracy of our measurement is pronounced with the
+                                artificial <code>"AVAVAV"</code> example.</para>
+                        </listitem>
+                        <listitem>
+                            <para>A null string is correctly matched by a zero-length line.</para>
+                        </listitem>
+                    </itemizedlist></para>
+                <para>In the horizontal butterfly chart below, the bars are labeled on the Y axis on
+                    the right side, and a general label for the Y axis must be positioned to the
+                    right of—but not too far to the right of—the longest bar label. Because we can
+                    compute the lengths of the bar labels, we can find the length of the longest
+                    bar, augment it with a predetermined amount of padding, and use that figure to
+                    place the general Y axis label.</para>
+                <figure xml:id="figure-01" xreflabel="REPLACE WITH REAL IMAGE">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/Bal2021birn0505_svg-01.svg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+                <para>The vertical butterfly chart below illustrates a variant of the same task. In
+                    this case we set <code>@writing-mode</code> to <code>"tb"</code> (top to bottom)
+                    to create vertical text and use the longest bar label to compute the position
+                    the general X axis label:</para>
+                <figure xml:id="figure-01" xreflabel="REPLACE WITH REAL IMAGE">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/Bal2021birn0505_svg-01.svg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+                <para>The strategy for positioning objects at a specific distance from rotated text
+                    is similar, except that instead of using the length of the <emphasis role="ital"
+                        >diagonal</emphasis> text, we need to compute the <emphasis role="ital"
+                        >vertical</emphasis> space it occupies. We again start with vertical text
+                    and transform it by rotating it away from the vertical with
+                        <code>transform="rotate()"</code>. <code>rotate()</code> takes three
+                    arguments: the angle of rotation (in degrees) and the X and Y coordinates of the
+                    center of rotation, which we map to the X and Y coordinates of the
+                        <code>&lt;text&gt;</code> element.<footnote>
+                        <para>This approach rotates what was originally left-to-right text around
+                            its left edge and vertical center, so that the upper left corner of the
+                            diagonal rendering protrudes slightly to the left and top of the center
+                            of rotation, and the lower right corner behaves similarly. Because we do
+                            not require high precision, we ignore these protrusions.</para>
+                    </footnote> If we regard the length of the text as the hypotenuse of a right
+                    angle, the vertical height of the text is the adjacent side, which we can
+                    compute as <emphasis role="ital">hypotenuse * cosθ</emphasis> .<footnote>
+                        <para>Inconveniently, SVG rotation requires that angles be expressed in
+                            degrees, while XPath trigonometic functions in the <code>math:</code>
+                            namespace require that they be expressed in radians. We convert degrees
+                            to radians with <emphasis role="ital">radians = degrees *
+                                π/180</emphasis>. The width of the text, should we need it, is side
+                            opposite the angle, and its length can be determined as <emphasis
+                                role="ital">opposite = hypotenuse * sinθ</emphasis>.</para>
+                    </footnote></para>
             </section>
             <section>
                 <title>Implementation</title>
                 <para>Because this method requires knowing the widths of the individual glyphs while
                     constructing the SVG, we first extract width information from TrueType TTF files
                     and format them as XML using the script in <xref linkend="extract-widths"/>.<footnote>
-                        <para>In its current form the script currently processes only TTF fonts; it
-                            fails on, for example, TTC and OTF.</para>
+                        <para>In its current form our script to extract glyph widths currently
+                            processes only TTF fonts; it fails on, for example, TTC and OTF.</para>
                     </footnote> The output is an XML document that looks like the following:</para>
                 <programlisting language="xml" xml:space="preserve">&lt;metrics>
   &lt;metadata 
@@ -173,9 +278,18 @@
   &lt;character dec="33" hex="0x21" name="exclam" str="!" width="5.328125"/>
   &lt;!-- more characters -->
 &lt;/metrics></programlisting>
-                <para>We import this document into the XSLT that creates our SVG and compute the
-                    length (in SVG units) of the text strings with the following XSLT
-                    function:</para>
+                <para>We use the XPath <code>doc()</code> function to access this document inside
+                    the XSLT (assigned to the variable <code>$times-new-roman-16-mapping</code> in
+                    this case) that creates our SVG, and we compute the length (in SVG units) of the
+                    text strings with the following XSLT function:</para>
+                <programlisting>xsl:function name="djb:get-text-length" as="xs:double">
+    xsl:param name="in" as="xs:string"/>
+    xsl:sequence select="
+            string-to-codepoints($in)
+            ! codepoints-to-string(.)
+            ! key('lengthByChar', ., $times-new-roman-16-mapping)/@width
+            => sum()"/>
+/xsl:function></programlisting>
             </section>
             <section>
                 <title>Discussion</title>
