@@ -286,21 +286,21 @@
                                           <dl>
                                              <dt><span class="section"><a href="#d3e128" class="toc">Overview</a></span></dt>
                                              <dt><span class="section"><a href="#d3e131" class="toc">Implementation</a></span></dt>
-                                             <dt><span class="section"><a href="#d3e134" class="toc">Discussion</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e142" class="toc">Discussion</a></span></dt>
                                           </dl>
                                        </dd>
-                                       <dt><span class="section"><a href="#d3e138" class="toc">A JavaScript approach</a></span></dt>
+                                       <dt><span class="section"><a href="#d3e146" class="toc">A JavaScript approach</a></span></dt>
                                        <dd>
                                           <dl>
-                                             <dt><span class="section"><a href="#d3e140" class="toc">Overview</a></span></dt>
-                                             <dt><span class="section"><a href="#d3e143" class="toc">Implementation</a></span></dt>
-                                             <dt><span class="section"><a href="#d3e162" class="toc">Discussion</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e148" class="toc">Overview</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e151" class="toc">Implementation</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e170" class="toc">Discussion</a></span></dt>
                                           </dl>
                                        </dd>
                                     </dl>
                                  </dd>
-                                 <dt><span class="section"><a href="#d3e169" class="toc">Loose ends and future directions</a></span></dt>
-                                 <dt><span class="section"><a href="#d3e175" class="toc">Conclusion</a></span></dt>
+                                 <dt><span class="section"><a href="#d3e177" class="toc">Loose ends and future directions</a></span></dt>
+                                 <dt><span class="section"><a href="#d3e183" class="toc">Conclusion</a></span></dt>
                                  <dt><span class="appendix"><a href="#extract-widths" class="toc">Script to extract font widths as XML. Script to extract font widths as XML</a></span></dt>
                               </dl>
                            </details>
@@ -363,21 +363,21 @@
                                  <dl>
                                     <dt><span class="section"><a href="#d3e128" class="toc">Overview</a></span></dt>
                                     <dt><span class="section"><a href="#d3e131" class="toc">Implementation</a></span></dt>
-                                    <dt><span class="section"><a href="#d3e134" class="toc">Discussion</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e142" class="toc">Discussion</a></span></dt>
                                  </dl>
                               </dd>
-                              <dt><span class="section"><a href="#d3e138" class="toc">A JavaScript approach</a></span></dt>
+                              <dt><span class="section"><a href="#d3e146" class="toc">A JavaScript approach</a></span></dt>
                               <dd>
                                  <dl>
-                                    <dt><span class="section"><a href="#d3e140" class="toc">Overview</a></span></dt>
-                                    <dt><span class="section"><a href="#d3e143" class="toc">Implementation</a></span></dt>
-                                    <dt><span class="section"><a href="#d3e162" class="toc">Discussion</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e148" class="toc">Overview</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e151" class="toc">Implementation</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e170" class="toc">Discussion</a></span></dt>
                                  </dl>
                               </dd>
                            </dl>
                         </dd>
-                        <dt><span class="section"><a href="#d3e169" class="toc">Loose ends and future directions</a></span></dt>
-                        <dt><span class="section"><a href="#d3e175" class="toc">Conclusion</a></span></dt>
+                        <dt><span class="section"><a href="#d3e177" class="toc">Loose ends and future directions</a></span></dt>
+                        <dt><span class="section"><a href="#d3e183" class="toc">Conclusion</a></span></dt>
                         <dt><span class="appendix"><a href="#extract-widths" class="toc">Script to extract font widths as XML. Script to extract font widths as XML</a></span></dt>
                      </dl>
                   </details>
@@ -455,16 +455,25 @@
                         <div class="section" id="d3e131">
                            <h4 class="title" style="clear: both">Implementation</h4>
                            <p id="d3e133">Because this method requires knowing the widths of the individual glyphs while
-                              coonstructing the SVG, we firxt extract width information from TrueType TTF
-                              files and format them as XML using the script in </p>
+                              constructing the SVG, we first extract width information from TrueType TTF files
+                              and format them as XML using the script in <a class="xref" href="#extract-widths" id="d3e135">Script to extract font widths as XML</a>.<sup class="fn-label"><a href="#d3e137" class="footnoteref" id="d3e137-ref">[5]</a></sup> The output is an XML document that looks like the following:</p>
+                           <pre class="programlisting" id="d3e140"><!--language: xml-->&lt;metrics&gt;
+  &lt;metadata 
+    fontName="Times New Roman" 
+    fontPath="/System/Library/Fonts/Supplemental/Times New Roman.ttf" 
+    fontSize="16"/&gt;
+  &lt;character dec="32" hex="0x20" name="space" str=" " width="4.0"/&gt;
+  &lt;character dec="33" hex="0x21" name="exclam" str="!" width="5.328125"/&gt;
+  &lt;!-- more characters --&gt;
+&lt;/metrics&gt;</pre>
                         </div>
-                        <div class="section" id="d3e134">
+                        <div class="section" id="d3e142">
                            <h4 class="title" style="clear: both">Discussion</h4>
-                           <p id="d3e136">Pro: Output does not depend on viewing in a browser or other
+                           <p id="d3e144">Pro: Output does not depend on viewing in a browser or other
                               DOM-and-JavaScript-aware environment. For example, can be included as an image
                               in a Balisage (Docbook-based) document. Requires only XML-based programming; in
                               particular, does not require JavaScript knowledge.</p>
-                           <p id="d3e137">Con: Requires preparation of font metric information, an extra step both
+                           <p id="d3e145">Con: Requires preparation of font metric information, an extra step both
                               initially and with scaling consequences (e.g., user cannot safely override
                               supplied font information). For improved robustness, requires webfont. Requires
                               additional logic to deal with font effects (e.g., ligatures, positional glyph
@@ -472,17 +481,17 @@
                               others).</p>
                         </div>
                      </div>
-                     <div class="section" id="d3e138">
+                     <div class="section" id="d3e146">
                         <h3 class="title" style="clear: both">A JavaScript approach</h3>
-                        <div class="section" id="d3e140">
+                        <div class="section" id="d3e148">
                            <h4 class="title" style="clear: both">Overview</h4>
-                           <p id="d3e142">BLAH BLAH BLAH</p>
+                           <p id="d3e150">BLAH BLAH BLAH</p>
                         </div>
-                        <div class="section" id="d3e143">
+                        <div class="section" id="d3e151">
                            <h4 class="title" style="clear: both">Implementation</h4>
-                           <p id="d3e145">BLAH BLAH BLAH</p>
-                           <p id="d3e146"><code class="code">getBBox()</code> is not sensitive to transformations that have been
-                              applied to an object, and <a class="xref" id="d3e149" href="javascript:showcite('cite-primer-getBoundingClientRect','d3e149')">MDN getBoundingClientRect() (Primer)</a>
+                           <p id="d3e153">BLAH BLAH BLAH</p>
+                           <p id="d3e154"><code class="code">getBBox()</code> is not sensitive to transformations that have been
+                              applied to an object, and <a class="xref" id="d3e157" href="javascript:showcite('cite-primer-getBoundingClientRect','d3e157')">MDN getBoundingClientRect() (Primer)</a>
                               proposes the use of <code class="code">getCTM()</code> to work around this limitation. We
                               find it simpler to wrap the transformed object(s) in an SVG
                               <code class="code">&lt;g&gt;</code> or <code class="code">&lt;svg&gt;</code> element; because those
@@ -491,14 +500,14 @@
                               have undergone transformation with the SVG <code class="code">@transform</code> attribute,
                               such as scaling, rotation, translation, or skewing.</p>
                         </div>
-                        <div class="section" id="d3e162">
+                        <div class="section" id="d3e170">
                            <h4 class="title" style="clear: both">Discussion</h4>
-                           <p id="d3e164">Pro: Does not require preparation of font metric information in advance (a
+                           <p id="d3e172">Pro: Does not require preparation of font metric information in advance (a
                               benefit both initially and with respect to scalability). Adapts to viewing
                               environment, and therefore supports user overrides of default. Does not require
                               webfont. Does not require additional logic to deal with font effects (e.g.,
                               ligatures, positional glyph variants) or transformations</p>
-                           <p id="d3e165">Con: Requires JavaScript programming knowledge. Works only in
+                           <p id="d3e173">Con: Requires JavaScript programming knowledge. Works only in
                               DOM-and-JavaScript-aware environments (e.g., works in a web browser, but not as
                               an included image in a Balisage (Docbook-based) document. Not all JavaScript
                               methods (including <code class="code">getBBox()</code>) are sensitive to transformations that
@@ -506,9 +515,9 @@
                         </div>
                      </div>
                   </div>
-                  <div class="section" id="d3e169">
+                  <div class="section" id="d3e177">
                      <h2 class="title" style="clear: both">Loose ends and future directions</h2>
-                     <p id="d3e171">Our XSLT approach assumes that the font metrics that can be extracted from the font
+                     <p id="d3e179">Our XSLT approach assumes that the font metrics that can be extracted from the font
                         files are sufficient to compute the length of an SVG line of text. Our implementation
                         does attempt to access kerning information, and it has not been tested on writing
                         systems that involve character substitution (including positional glyph variation
@@ -516,46 +525,71 @@
                         ligation) or glyph reordering. It is not impacted negatively by zero-width characters
                         as
                         long as the font metrics for those glyphs correctly report a width of zero.</p>
-                     <p id="d3e172">Font availability on a user system is not fully predictable, especially over time,
+                     <p id="d3e180">Font availability on a user system is not fully predictable, especially over time,
                         so
                         supplying a webfont is more robust then trusting that every browser will use, for
                         example, a Times New Roman font with the same font metrics.</p>
-                     <p id="d3e173">Saxon-JS</p>
-                     <p id="d3e174">Saxon-JS relies on a JavaScript implementation of the XSLT engine that is designed
+                     <p id="d3e181">Saxon-JS</p>
+                     <p id="d3e182">Saxon-JS relies on a JavaScript implementation of the XSLT engine that is designed
                         to
                         perform transformations inside the browser. Insofar as Saxon-JS incorporates both
                         XSLT
                         and JavaScript functionality, it may provide a cleaner integration of the two
                         approaches.</p>
                   </div>
-                  <div class="section" id="d3e175">
+                  <div class="section" id="d3e183">
                      <h2 class="title" style="clear: both">Conclusion</h2>
-                     <p id="d3e177">BLAH BLAH BLAH</p>
+                     <p id="d3e185">BLAH BLAH BLAH</p>
                   </div>
                   <div class="appendix" id="extract-widths">
                      <h2 class="title" style="clear: both">Script to extract font widths as XML. Script to extract font widths as XML</h2>
-                     <p id="d3e180">The following Python script exports the widths of all glyphs in a TrueType font. The
+                     <p id="d3e188">The following Python script exports the widths of all glyphs in a TrueType font. The
                         script has two positional arguments, a required path to the font and an optional point
                         size (defaults to 16, which is the size of SVG text that either does not specify a
                         <code class="code">@font-size</code> or specifies a size of <code class="code">"medium"</code>.</p>
-                     <pre class="programlisting" id="d3e186"><!--language: python-->#!/usr/bin/env python
+                     <pre class="programlisting" id="d3e194"><!--language: python-->#!/usr/bin/env python
 # https://stackoverflow.com/questions/4190667/how-to-get-width-of-a-truetype-font-character-in-1200ths-of-an-inch-with-python
 # https://fonttools.readthedocs.io/en/latest/index.html
 # https://www.geeksforgeeks.org/create-xml-documents-using-python/
+# https://stackoverflow.com/questions/678236/how-to-get-the-filename-without-the-extension-from-a-path-in-python
 from fontTools.ttLib import TTFont
 from fontTools.ttLib.tables._c_m_a_p import CmapSubtable
 from xml.dom import minidom
-
+from matplotlib import font_manager
+from pathlib import Path
 import argparse
+
+import pprint
+pp = pprint.PrettyPrinter(indent=2)
+
+# Validate fontname
+# https://stackoverflow.com/questions/15203829/python-argparse-file-extension-checking
+def validateFont(fontName):
+    """Find full font system path from bare name (without extensions)"""
+    installed_fonts = {Path(item).stem: item for item in font_manager.findSystemFonts()}
+    return installed_fonts.get(fontName) # returns None on KeyError
+
+def allInstalledFonts():
+    """Report all available fonts if user supplies erroneous value"""
+    installed_fonts = {Path(item).stem: item for item in font_manager.findSystemFonts()}
+    return sorted(installed_fonts.keys())
+
+# Handle command line arguments: font name and optional size
 parser = argparse.ArgumentParser()
-parser.add_argument("ttf", help="path to TrueType (TTF) file (required)")
+parser.add_argument("ttf", help="TrueType font name without extension (quote names with spaces)")
 parser.add_argument("size", help="size in points (defaults to 16pt)", type=int, nargs="?", default=16)
 args = parser.parse_args()
-font = args.ttf
+fontName = args.ttf
 size = args.size
+fontPath = validateFont(fontName) # returns None for erroneous value
+
+if not fontPath: # bail out if font not found
+    print(f"Font '{fontName}' not found. Legal fontnames are:")
+    pp.pprint(allInstalledFonts())
+    quit()
 
 # from StackOverflow
-font = TTFont(font) # path to font
+font = TTFont(fontPath, fontNumber=0) # BUG: breaks on ttc, even with fontNumber; table is different?
 cmap = font['cmap']
 t = cmap.getcmap(3,1).cmap # map of decimal values to glyph names
 s = font.getGlyphSet()
@@ -573,8 +607,12 @@ def getTextWidth(text,pointSize):
 
 # from minidom documentation
 root = minidom.Document()
-xml = root.createElement('root')
+xml = root.createElement('metrics')
 root.appendChild(xml)
+metadata = root.createElement('metadata')
+metadata.setAttribute('fontName', fontName)
+metadata.setAttribute('fontPath', fontPath)
+xml.appendChild(metadata)
 
 c_dict = dict()
 for num_dec in range(65535): # entire BMP; decimal Unicode value
@@ -596,16 +634,24 @@ for item in c_dict.items(): # string-value : width
         e.setAttribute('name', name)
         xml.appendChild(e)
 
+# serialize and render XML
 xml_str = root.toprettyxml(indent="  ")
 print(xml_str)</pre>
-                     <p id="d3e188">Sample output is a sequence of <code class="code">&lt;character&gt;</code> elements inside a root
-                        element called <code class="code">&lt;root&gt;</code>:</p>
-                     <pre class="programlisting" id="d3e194"><!--language: xml-->&lt;character dec="65" hex="0x41" name="A" str="A" width="11.456"/&gt;</pre>
-                     <p id="d3e196">The strategy described here uses the <code class="code">@str</code> value to retrieve the
-                        <code class="code">@width</code> value. The <code class="code">@dec</code> (decimal) and <code class="code">@hex</code>
-                        (hexadecimal) values are not currently usdd.</p>
+                     <p id="d3e196">The output is an XML document that looks like the following:</p>
+                     <pre class="programlisting" id="d3e197"><!--language: xml-->&lt;metrics&gt;
+  &lt;metadata 
+    fontName="Times New Roman" 
+    fontPath="/System/Library/Fonts/Supplemental/Times New Roman.ttf" 
+    fontSize="16"/&gt;
+  &lt;character dec="32" hex="0x20" name="space" str=" " width="4.0"/&gt;
+  &lt;character dec="33" hex="0x21" name="exclam" str="!" width="5.328125"/&gt;
+  &lt;!-- more characters --&gt;
+&lt;/metrics&gt;</pre>
+                     <p id="d3e199">The SVG layout strategy described here uses the <code class="code">@str</code> value to retrieve
+                        the <code class="code">@width</code> value. The <code class="code">@dec</code> (decimal) and <code class="code">@hex</code>
+                        (hexadecimal) values are not currently used.</p>
                   </div>
-                  <div class="bibliography" id="d3e206">
+                  <div class="bibliography" id="d3e209">
                      <h2 class="title">References</h2>
                      <p class="bibliomixed" id="getBoundingClientRect">[MDN getBoundingClientRect()] <q>Element.getBoundingClientRect()</q>, MDN Web Docs,
                         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</a>
@@ -613,7 +659,7 @@ print(xml_str)</pre>
                      <p class="bibliomixed" id="getBBox">[MDN getBBox()] <q>SVGGraphicsElement.getBBox()</q>, MDN Web Docs,
                         <a href="https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox</a>
                         </p>
-                     <p class="bibliomixed" id="primer-getBoundingClientRect"><a href="#d3e149">[MDN getBoundingClientRect() (Primer)] </a><q>getBBox</q>. <span class="ital">An SVG primer for today’s browsers. W3C Working Draft — September
+                     <p class="bibliomixed" id="primer-getBoundingClientRect"><a href="#d3e157">[MDN getBoundingClientRect() (Primer)] </a><q>getBBox</q>. <span class="ital">An SVG primer for today’s browsers. W3C Working Draft — September
                            2010</span>, ed. David Dailey.
                         <a href="https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox" class="link" target="_new">https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox</a>
                         </p>
@@ -666,6 +712,10 @@ print(xml_str)</pre>
                            and Liam Quin. Slack postings are ephemeral, but although that conversation will
                            not be preserved, we are happy to be able to acknowledge it, more persistently,
                            here.</p>
+                     </div>
+                     <div id="d3e137" class="footnote">
+                        <p><sup class="fn-label"><a href="#d3e137-ref" class="footnoteref">[5]</a></sup> In its current form the script currently processes only TTF fonts; it
+                           fails on TTC and OTF.</p>
                      </div>
                   </div>
                   <div class="inline-citation" id="cite-getBoundingClientRect"><a class="quiet" href="javascript:hidecite('cite-getBoundingClientRect')" aria-label="Close Citation Box">×</a><p><q>Element.getBoundingClientRect()</q>, MDN Web Docs,

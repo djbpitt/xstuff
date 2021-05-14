@@ -159,8 +159,23 @@
             <section>
                 <title>Implementation</title>
                 <para>Because this method requires knowing the widths of the individual glyphs while
-                    coonstructing the SVG, we firxt extract width information from TrueType TTF
-                    files and format them as XML using the script in </para>
+                    constructing the SVG, we first extract width information from TrueType TTF files
+                    and format them as XML using the script in <xref linkend="extract-widths"/>.<footnote>
+                        <para>In its current form the script currently processes only TTF fonts; it
+                            fails on, for example, TTC and OTF.</para>
+                    </footnote> The output is an XML document that looks like the following:</para>
+                <programlisting language="xml" xml:space="preserve">&lt;metrics>
+  &lt;metadata 
+    fontName="Times New Roman" 
+    fontPath="/System/Library/Fonts/Supplemental/Times New Roman.ttf" 
+    fontSize="16"/>
+  &lt;character dec="32" hex="0x20" name="space" str=" " width="4.0"/>
+  &lt;character dec="33" hex="0x21" name="exclam" str="!" width="5.328125"/>
+  &lt;!-- more characters -->
+&lt;/metrics></programlisting>
+                <para>We import this document into the XSLT that creates our SVG and compute the
+                    length (in SVG units) of the text strings with the following XSLT
+                    function:</para>
             </section>
             <section>
                 <title>Discussion</title>
@@ -241,20 +256,45 @@
 # https://stackoverflow.com/questions/4190667/how-to-get-width-of-a-truetype-font-character-in-1200ths-of-an-inch-with-python
 # https://fonttools.readthedocs.io/en/latest/index.html
 # https://www.geeksforgeeks.org/create-xml-documents-using-python/
+# https://stackoverflow.com/questions/678236/how-to-get-the-filename-without-the-extension-from-a-path-in-python
 from fontTools.ttLib import TTFont
 from fontTools.ttLib.tables._c_m_a_p import CmapSubtable
 from xml.dom import minidom
-
+from matplotlib import font_manager
+from pathlib import Path
 import argparse
+
+import pprint
+pp = pprint.PrettyPrinter(indent=2)
+
+# Validate fontname
+# https://stackoverflow.com/questions/15203829/python-argparse-file-extension-checking
+def validateFont(fontName):
+    """Find full font system path from bare name (without extensions)"""
+    installed_fonts = {Path(item).stem: item for item in font_manager.findSystemFonts()}
+    return installed_fonts.get(fontName) # returns None on KeyError
+
+def allInstalledFonts():
+    """Report all available fonts if user supplies erroneous value"""
+    installed_fonts = {Path(item).stem: item for item in font_manager.findSystemFonts()}
+    return sorted(installed_fonts.keys())
+
+# Handle command line arguments: font name and optional size
 parser = argparse.ArgumentParser()
-parser.add_argument("ttf", help="path to TrueType (TTF) file (required)")
+parser.add_argument("ttf", help="TrueType font name without extension (quote names with spaces)")
 parser.add_argument("size", help="size in points (defaults to 16pt)", type=int, nargs="?", default=16)
 args = parser.parse_args()
-font = args.ttf
+fontName = args.ttf
 size = args.size
+fontPath = validateFont(fontName) # returns None for erroneous value
+
+if not fontPath: # bail out if font not found
+    print(f"Font '{fontName}' not found. Legal fontnames are:")
+    pp.pprint(allInstalledFonts())
+    quit()
 
 # from StackOverflow
-font = TTFont(font) # path to font
+font = TTFont(fontPath, fontNumber=0) # BUG: breaks on ttc, even with fontNumber; table is different?
 cmap = font['cmap']
 t = cmap.getcmap(3,1).cmap # map of decimal values to glyph names
 s = font.getGlyphSet()
@@ -272,8 +312,12 @@ def getTextWidth(text,pointSize):
 
 # from minidom documentation
 root = minidom.Document()
-xml = root.createElement('root')
+xml = root.createElement('metrics')
 root.appendChild(xml)
+metadata = root.createElement('metadata')
+metadata.setAttribute('fontName', fontName)
+metadata.setAttribute('fontPath', fontPath)
+xml.appendChild(metadata)
 
 c_dict = dict()
 for num_dec in range(65535): # entire BMP; decimal Unicode value
@@ -295,14 +339,22 @@ for item in c_dict.items(): # string-value : width
         e.setAttribute('name', name)
         xml.appendChild(e)
 
+# serialize and render XML
 xml_str = root.toprettyxml(indent="  ")
 print(xml_str)</programlisting>
-        <para>Sample output is a sequence of <code>&lt;character&gt;</code> elements inside a root
-            element called <code>&lt;root&gt;</code>:</para>
-        <programlisting language="xml" xml:space="preserve">&lt;character dec="65" hex="0x41" name="A" str="A" width="11.456"/&gt;</programlisting>
-        <para>The strategy described here uses the <code>@str</code> value to retrieve the
-                <code>@width</code> value. The <code>@dec</code> (decimal) and <code>@hex</code>
-            (hexadecimal) values are not currently usdd.</para>
+        <para>The output is an XML document that looks like the following:</para>
+        <programlisting language="xml" xml:space="preserve">&lt;metrics>
+  &lt;metadata 
+    fontName="Times New Roman" 
+    fontPath="/System/Library/Fonts/Supplemental/Times New Roman.ttf" 
+    fontSize="16"/>
+  &lt;character dec="32" hex="0x20" name="space" str=" " width="4.0"/>
+  &lt;character dec="33" hex="0x21" name="exclam" str="!" width="5.328125"/>
+  &lt;!-- more characters -->
+&lt;/metrics></programlisting>
+        <para>The SVG layout strategy described here uses the <code>@str</code> value to retrieve
+            the <code>@width</code> value. The <code>@dec</code> (decimal) and <code>@hex</code>
+            (hexadecimal) values are not currently used.</para>
     </appendix>
     <bibliography>
         <title>Works cited</title>
