@@ -2,29 +2,43 @@
 # https://stackoverflow.com/questions/4190667/how-to-get-width-of-a-truetype-font-character-in-1200ths-of-an-inch-with-python
 # https://fonttools.readthedocs.io/en/latest/index.html
 # https://www.geeksforgeeks.org/create-xml-documents-using-python/
+# https://stackoverflow.com/questions/678236/how-to-get-the-filename-without-the-extension-from-a-path-in-python
 from fontTools.ttLib import TTFont
 from fontTools.ttLib.tables._c_m_a_p import CmapSubtable
 from xml.dom import minidom
 from matplotlib import font_manager
+from pathlib import Path
+import pprint
+pp = pprint.PrettyPrinter(indent=2)
+
+
+# TODO: be flexible about .ttf filename extension
+# Validate fontname
+# https://stackoverflow.com/questions/15203829/python-argparse-file-extension-checking
+def validateFont(fontName):
+    installed_fonts = {Path(item).stem: item for item in font_manager.findSystemFonts()}
+    return installed_fonts.get(fontName) # returns None on KeyError
+
+def allInstalledFonts():
+    installed_fonts = {Path(item).stem: item for item in font_manager.findSystemFonts()}
+    return sorted(installed_fonts.keys())
+
 
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument("ttf", help="path to TrueType (TTF) file (required)")
+parser.add_argument("ttf", help="TrueType font name without extension (quote names with spaces)")
 parser.add_argument("size", help="size in points (defaults to 16pt)", type=int, nargs="?", default=16)
 args = parser.parse_args()
-font = args.ttf
+fontName = args.ttf
 size = args.size
+fontPath = validateFont(fontName)
 
-# TODO: Validate on input
-# https://stackoverflow.com/questions/15203829/python-argparse-file-extension-checking
-installed_fonts = font_manager.findSystemFonts()
-if font not in installed_fonts:
-    print("Requested font is not installed: " + font)
+if not fontPath: # bail out if font not found
+    print(f"Font '{fontName}' not found. Legal fontnames are:")
+    pp.pprint(allInstalledFonts())
     quit()
 
-# from StackOverflow
-# font = TTFont('/Users/djb/Library/Fonts/RomanCyrillic_Std.ttf')
-font = TTFont(font)
+font = TTFont(fontPath, fontNumber=0) # breaks on ttc, even with fontNumber; table is different?
 cmap = font['cmap']
 t = cmap.getcmap(3,1).cmap # map of decimal values to glyph names
 s = font.getGlyphSet()
@@ -44,6 +58,10 @@ def getTextWidth(text,pointSize):
 root = minidom.Document()
 xml = root.createElement('root')
 root.appendChild(xml)
+metadata = root.createElement('metadata')
+metadata.setAttribute('fontName', fontName)
+metadata.setAttribute('fontPath', fontPath)
+xml.appendChild(metadata)
 
 c_dict = dict()
 for num_dec in range(65535): # entire BMP; decimal Unicode value
