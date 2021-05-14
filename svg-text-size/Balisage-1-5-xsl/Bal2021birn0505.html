@@ -286,21 +286,21 @@
                                           <dl>
                                              <dt><span class="section"><a href="#d3e128" class="toc">Overview</a></span></dt>
                                              <dt><span class="section"><a href="#d3e131" class="toc">Implementation</a></span></dt>
-                                             <dt><span class="section"><a href="#d3e142" class="toc">Discussion</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e143" class="toc">Discussion</a></span></dt>
                                           </dl>
                                        </dd>
-                                       <dt><span class="section"><a href="#d3e146" class="toc">A JavaScript approach</a></span></dt>
+                                       <dt><span class="section"><a href="#d3e154" class="toc">A JavaScript approach</a></span></dt>
                                        <dd>
                                           <dl>
-                                             <dt><span class="section"><a href="#d3e148" class="toc">Overview</a></span></dt>
-                                             <dt><span class="section"><a href="#d3e151" class="toc">Implementation</a></span></dt>
-                                             <dt><span class="section"><a href="#d3e170" class="toc">Discussion</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e156" class="toc">Overview</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e159" class="toc">Implementation</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e178" class="toc">Discussion</a></span></dt>
                                           </dl>
                                        </dd>
                                     </dl>
                                  </dd>
-                                 <dt><span class="section"><a href="#d3e177" class="toc">Loose ends and future directions</a></span></dt>
-                                 <dt><span class="section"><a href="#d3e183" class="toc">Conclusion</a></span></dt>
+                                 <dt><span class="section"><a href="#d3e185" class="toc">Loose ends and future directions</a></span></dt>
+                                 <dt><span class="section"><a href="#d3e191" class="toc">Conclusion</a></span></dt>
                                  <dt><span class="appendix"><a href="#extract-widths" class="toc">Script to extract font widths as XML. Script to extract font widths as XML</a></span></dt>
                               </dl>
                            </details>
@@ -363,21 +363,21 @@
                                  <dl>
                                     <dt><span class="section"><a href="#d3e128" class="toc">Overview</a></span></dt>
                                     <dt><span class="section"><a href="#d3e131" class="toc">Implementation</a></span></dt>
-                                    <dt><span class="section"><a href="#d3e142" class="toc">Discussion</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e143" class="toc">Discussion</a></span></dt>
                                  </dl>
                               </dd>
-                              <dt><span class="section"><a href="#d3e146" class="toc">A JavaScript approach</a></span></dt>
+                              <dt><span class="section"><a href="#d3e154" class="toc">A JavaScript approach</a></span></dt>
                               <dd>
                                  <dl>
-                                    <dt><span class="section"><a href="#d3e148" class="toc">Overview</a></span></dt>
-                                    <dt><span class="section"><a href="#d3e151" class="toc">Implementation</a></span></dt>
-                                    <dt><span class="section"><a href="#d3e170" class="toc">Discussion</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e156" class="toc">Overview</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e159" class="toc">Implementation</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e178" class="toc">Discussion</a></span></dt>
                                  </dl>
                               </dd>
                            </dl>
                         </dd>
-                        <dt><span class="section"><a href="#d3e177" class="toc">Loose ends and future directions</a></span></dt>
-                        <dt><span class="section"><a href="#d3e183" class="toc">Conclusion</a></span></dt>
+                        <dt><span class="section"><a href="#d3e185" class="toc">Loose ends and future directions</a></span></dt>
+                        <dt><span class="section"><a href="#d3e191" class="toc">Conclusion</a></span></dt>
                         <dt><span class="appendix"><a href="#extract-widths" class="toc">Script to extract font widths as XML. Script to extract font widths as XML</a></span></dt>
                      </dl>
                   </details>
@@ -466,32 +466,34 @@
   &lt;character dec="33" hex="0x21" name="exclam" str="!" width="5.328125"/&gt;
   &lt;!-- more characters --&gt;
 &lt;/metrics&gt;</pre>
+                           <p id="d3e142">We import this document into the XSLT that creates our SVG and compute the
+                              length (in SVG units) of the text strings with the following XSLT
+                              function:</p>
                         </div>
-                        <div class="section" id="d3e142">
+                        <div class="section" id="d3e143">
                            <h4 class="title" style="clear: both">Discussion</h4>
-                           <p id="d3e144">Pro: Output does not depend on viewing in a browser or other
+                           <p id="d3e145">Pro: Output does not depend on viewing in a browser or other
                               DOM-and-JavaScript-aware environment. For example, can be included as an image
                               in a Balisage (Docbook-based) document. Requires only XML-based programming; in
                               particular, does not require JavaScript knowledge.</p>
-                           <p id="d3e145">Con: Requires preparation of font metric information, an extra step both
+                           <p id="d3e146">Con: Requires preparation of font metric information, an extra step both
                               initially and with scaling consequences (e.g., user cannot safely override
                               supplied font information). For improved robustness, requires webfont. Requires
-                              additional logic to deal with font effects (e.g., ligatures, positional glyph
-                              variants) and transformations. Currently works only with TTF (not OTF, TTC, or
-                              others).</p>
+                              additional logic to deal with font effects (e.g., kerning<sup class="fn-label"><a href="#d3e148" class="footnoteref" id="d3e148-ref">[6]</a></sup>, ligatures, positional glyph variants) and transformations.
+                              Currently works only with TTF (not OTF, TTC, or others).</p>
                         </div>
                      </div>
-                     <div class="section" id="d3e146">
+                     <div class="section" id="d3e154">
                         <h3 class="title" style="clear: both">A JavaScript approach</h3>
-                        <div class="section" id="d3e148">
+                        <div class="section" id="d3e156">
                            <h4 class="title" style="clear: both">Overview</h4>
-                           <p id="d3e150">BLAH BLAH BLAH</p>
+                           <p id="d3e158">BLAH BLAH BLAH</p>
                         </div>
-                        <div class="section" id="d3e151">
+                        <div class="section" id="d3e159">
                            <h4 class="title" style="clear: both">Implementation</h4>
-                           <p id="d3e153">BLAH BLAH BLAH</p>
-                           <p id="d3e154"><code class="code">getBBox()</code> is not sensitive to transformations that have been
-                              applied to an object, and <a class="xref" id="d3e157" href="javascript:showcite('cite-primer-getBoundingClientRect','d3e157')">MDN getBoundingClientRect() (Primer)</a>
+                           <p id="d3e161">BLAH BLAH BLAH</p>
+                           <p id="d3e162"><code class="code">getBBox()</code> is not sensitive to transformations that have been
+                              applied to an object, and <a class="xref" id="d3e165" href="javascript:showcite('cite-primer-getBoundingClientRect','d3e165')">MDN getBoundingClientRect() (Primer)</a>
                               proposes the use of <code class="code">getCTM()</code> to work around this limitation. We
                               find it simpler to wrap the transformed object(s) in an SVG
                               <code class="code">&lt;g&gt;</code> or <code class="code">&lt;svg&gt;</code> element; because those
@@ -500,14 +502,14 @@
                               have undergone transformation with the SVG <code class="code">@transform</code> attribute,
                               such as scaling, rotation, translation, or skewing.</p>
                         </div>
-                        <div class="section" id="d3e170">
+                        <div class="section" id="d3e178">
                            <h4 class="title" style="clear: both">Discussion</h4>
-                           <p id="d3e172">Pro: Does not require preparation of font metric information in advance (a
+                           <p id="d3e180">Pro: Does not require preparation of font metric information in advance (a
                               benefit both initially and with respect to scalability). Adapts to viewing
                               environment, and therefore supports user overrides of default. Does not require
                               webfont. Does not require additional logic to deal with font effects (e.g.,
                               ligatures, positional glyph variants) or transformations</p>
-                           <p id="d3e173">Con: Requires JavaScript programming knowledge. Works only in
+                           <p id="d3e181">Con: Requires JavaScript programming knowledge. Works only in
                               DOM-and-JavaScript-aware environments (e.g., works in a web browser, but not as
                               an included image in a Balisage (Docbook-based) document. Not all JavaScript
                               methods (including <code class="code">getBBox()</code>) are sensitive to transformations that
@@ -515,9 +517,9 @@
                         </div>
                      </div>
                   </div>
-                  <div class="section" id="d3e177">
+                  <div class="section" id="d3e185">
                      <h2 class="title" style="clear: both">Loose ends and future directions</h2>
-                     <p id="d3e179">Our XSLT approach assumes that the font metrics that can be extracted from the font
+                     <p id="d3e187">Our XSLT approach assumes that the font metrics that can be extracted from the font
                         files are sufficient to compute the length of an SVG line of text. Our implementation
                         does attempt to access kerning information, and it has not been tested on writing
                         systems that involve character substitution (including positional glyph variation
@@ -525,29 +527,29 @@
                         ligation) or glyph reordering. It is not impacted negatively by zero-width characters
                         as
                         long as the font metrics for those glyphs correctly report a width of zero.</p>
-                     <p id="d3e180">Font availability on a user system is not fully predictable, especially over time,
+                     <p id="d3e188">Font availability on a user system is not fully predictable, especially over time,
                         so
                         supplying a webfont is more robust then trusting that every browser will use, for
                         example, a Times New Roman font with the same font metrics.</p>
-                     <p id="d3e181">Saxon-JS</p>
-                     <p id="d3e182">Saxon-JS relies on a JavaScript implementation of the XSLT engine that is designed
+                     <p id="d3e189">Saxon-JS</p>
+                     <p id="d3e190">Saxon-JS relies on a JavaScript implementation of the XSLT engine that is designed
                         to
                         perform transformations inside the browser. Insofar as Saxon-JS incorporates both
                         XSLT
                         and JavaScript functionality, it may provide a cleaner integration of the two
                         approaches.</p>
                   </div>
-                  <div class="section" id="d3e183">
+                  <div class="section" id="d3e191">
                      <h2 class="title" style="clear: both">Conclusion</h2>
-                     <p id="d3e185">BLAH BLAH BLAH</p>
+                     <p id="d3e193">BLAH BLAH BLAH</p>
                   </div>
                   <div class="appendix" id="extract-widths">
                      <h2 class="title" style="clear: both">Script to extract font widths as XML. Script to extract font widths as XML</h2>
-                     <p id="d3e188">The following Python script exports the widths of all glyphs in a TrueType font. The
+                     <p id="d3e196">The following Python script exports the widths of all glyphs in a TrueType font. The
                         script has two positional arguments, a required path to the font and an optional point
                         size (defaults to 16, which is the size of SVG text that either does not specify a
                         <code class="code">@font-size</code> or specifies a size of <code class="code">"medium"</code>.</p>
-                     <pre class="programlisting" id="d3e194"><!--language: python-->#!/usr/bin/env python
+                     <pre class="programlisting" id="d3e202"><!--language: python-->#!/usr/bin/env python
 # https://stackoverflow.com/questions/4190667/how-to-get-width-of-a-truetype-font-character-in-1200ths-of-an-inch-with-python
 # https://fonttools.readthedocs.io/en/latest/index.html
 # https://www.geeksforgeeks.org/create-xml-documents-using-python/
@@ -637,8 +639,8 @@ for item in c_dict.items(): # string-value : width
 # serialize and render XML
 xml_str = root.toprettyxml(indent="  ")
 print(xml_str)</pre>
-                     <p id="d3e196">The output is an XML document that looks like the following:</p>
-                     <pre class="programlisting" id="d3e197"><!--language: xml-->&lt;metrics&gt;
+                     <p id="d3e204">The output is an XML document that looks like the following:</p>
+                     <pre class="programlisting" id="d3e205"><!--language: xml-->&lt;metrics&gt;
   &lt;metadata 
     fontName="Times New Roman" 
     fontPath="/System/Library/Fonts/Supplemental/Times New Roman.ttf" 
@@ -647,19 +649,25 @@ print(xml_str)</pre>
   &lt;character dec="33" hex="0x21" name="exclam" str="!" width="5.328125"/&gt;
   &lt;!-- more characters --&gt;
 &lt;/metrics&gt;</pre>
-                     <p id="d3e199">The SVG layout strategy described here uses the <code class="code">@str</code> value to retrieve
+                     <p id="d3e207">The SVG layout strategy described here uses the <code class="code">@str</code> value to retrieve
                         the <code class="code">@width</code> value. The <code class="code">@dec</code> (decimal) and <code class="code">@hex</code>
                         (hexadecimal) values are not currently used.</p>
                   </div>
-                  <div class="bibliography" id="d3e209">
+                  <div class="bibliography" id="d3e217">
                      <h2 class="title">References</h2>
+                     <p class="bibliomixed" id="chase2019">[Chase 2019] Chase, William R. <q>Font height
+                           differences between Windows and Mac.</q> 2019.
+                        <a href="https://www.williamrchase.com/post/font-height-differences-between-windows-and-mac/" class="link" target="_new">https://www.williamrchase.com/post/font-height-differences-between-windows-and-mac/</a></p>
+                     <p class="bibliomixed" id="deOliveira2017">[De Oliveira 2017] De Oliveira, Vincent.
+                        <q>Deep dive CSS: font metrics, line-height and vertical-align.</q> 2017.
+                        <a href="https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align" class="link" target="_new">https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align</a></p>
                      <p class="bibliomixed" id="getBoundingClientRect">[MDN getBoundingClientRect()] <q>Element.getBoundingClientRect()</q>, MDN Web Docs,
                         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</a>
                         </p>
                      <p class="bibliomixed" id="getBBox">[MDN getBBox()] <q>SVGGraphicsElement.getBBox()</q>, MDN Web Docs,
                         <a href="https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox</a>
                         </p>
-                     <p class="bibliomixed" id="primer-getBoundingClientRect"><a href="#d3e157">[MDN getBoundingClientRect() (Primer)] </a><q>getBBox</q>. <span class="ital">An SVG primer for today’s browsers. W3C Working Draft — September
+                     <p class="bibliomixed" id="primer-getBoundingClientRect"><a href="#d3e165">[MDN getBoundingClientRect() (Primer)] </a><q>getBBox</q>. <span class="ital">An SVG primer for today’s browsers. W3C Working Draft — September
                            2010</span>, ed. David Dailey.
                         <a href="https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox" class="link" target="_new">https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox</a>
                         </p>
@@ -667,6 +675,10 @@ print(xml_str)</pre>
                            W3C Working Draft — September 2010</span>, ed. David Dailey.
                         <a href="https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM" class="link" target="_new">https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM</a>
                         </p>
+                     <p class="bibliomixed" id="svg-2-kerning"><a href="#d3e151">[SVG 2.0, Kerning] </a>Scalable Vector Graphics
+                        (SVG) 2 W3C Candidate Recommendation 04 October 2018. §11.10.1.4. The ‘kerning’
+                        property.
+                        <a href="https://www.w3.org/TR/SVG2/text.html#KerningProperty" class="link" target="_new">https://www.w3.org/TR/SVG2/text.html#KerningProperty</a></p>
                   </div>
                   <div class="footnotes"><br><hr width="100" align="left">
                      <div id="d3e52" class="footnote">
@@ -715,8 +727,20 @@ print(xml_str)</pre>
                      </div>
                      <div id="d3e137" class="footnote">
                         <p><sup class="fn-label"><a href="#d3e137-ref" class="footnoteref">[5]</a></sup> In its current form the script currently processes only TTF fonts; it
-                           fails on TTC and OTF.</p>
+                           fails on, for example, TTC and OTF.</p>
                      </div>
+                     <div id="d3e148" class="footnote">
+                        <p><sup class="fn-label"><a href="#d3e148-ref" class="footnoteref">[6]</a></sup> Kerning is currently deprecated in SVG, and scheduled for removal in
+                           SVG 2.0. See <a class="xref" id="d3e151" href="javascript:showcite('cite-svg-2-kerning','d3e151')">SVG 2.0, Kerning</a>.</p>
+                     </div>
+                  </div>
+                  <div class="inline-citation" id="cite-chase2019"><a class="quiet" href="javascript:hidecite('cite-chase2019')" aria-label="Close Citation Box">×</a><p>Chase, William R. <q>Font height
+                           differences between Windows and Mac.</q> 2019.
+                        <a href="https://www.williamrchase.com/post/font-height-differences-between-windows-and-mac/" class="link" target="_new">https://www.williamrchase.com/post/font-height-differences-between-windows-and-mac/</a></p>
+                  </div>
+                  <div class="inline-citation" id="cite-deOliveira2017"><a class="quiet" href="javascript:hidecite('cite-deOliveira2017')" aria-label="Close Citation Box">×</a><p>De Oliveira, Vincent.
+                        <q>Deep dive CSS: font metrics, line-height and vertical-align.</q> 2017.
+                        <a href="https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align" class="link" target="_new">https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align</a></p>
                   </div>
                   <div class="inline-citation" id="cite-getBoundingClientRect"><a class="quiet" href="javascript:hidecite('cite-getBoundingClientRect')" aria-label="Close Citation Box">×</a><p><q>Element.getBoundingClientRect()</q>, MDN Web Docs,
                         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</a>
@@ -735,6 +759,11 @@ print(xml_str)</pre>
                            W3C Working Draft — September 2010</span>, ed. David Dailey.
                         <a href="https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM" class="link" target="_new">https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM</a>
                         </p>
+                  </div>
+                  <div class="inline-citation" id="cite-svg-2-kerning"><a class="quiet" href="javascript:hidecite('cite-svg-2-kerning')" aria-label="Close Citation Box">×</a><p>Scalable Vector Graphics
+                        (SVG) 2 W3C Candidate Recommendation 04 October 2018. §11.10.1.4. The ‘kerning’
+                        property.
+                        <a href="https://www.w3.org/TR/SVG2/text.html#KerningProperty" class="link" target="_new">https://www.w3.org/TR/SVG2/text.html#KerningProperty</a></p>
                   </div>
                </div>
                <div id="author-keywords">

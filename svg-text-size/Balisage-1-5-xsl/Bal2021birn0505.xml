@@ -186,9 +186,11 @@
                 <para>Con: Requires preparation of font metric information, an extra step both
                     initially and with scaling consequences (e.g., user cannot safely override
                     supplied font information). For improved robustness, requires webfont. Requires
-                    additional logic to deal with font effects (e.g., ligatures, positional glyph
-                    variants) and transformations. Currently works only with TTF (not OTF, TTC, or
-                    others).</para>
+                    additional logic to deal with font effects (e.g., kerning<footnote>
+                        <para>Kerning is currently deprecated in SVG, and scheduled for removal in
+                            SVG 2.0. See <xref linkend="svg-2-kerning"/>.</para>
+                    </footnote>, ligatures, positional glyph variants) and transformations.
+                    Currently works only with TTF (not OTF, TTC, or others).</para>
             </section>
         </section>
         <section>
@@ -358,6 +360,12 @@ print(xml_str)</programlisting>
     </appendix>
     <bibliography>
         <title>Works cited</title>
+        <bibliomixed xml:id="chase2019" xreflabel="Chase 2019">Chase, William R. <quote>Font height
+                differences between Windows and Mac.</quote> 2019.
+                <link>https://www.williamrchase.com/post/font-height-differences-between-windows-and-mac/</link></bibliomixed>
+        <bibliomixed xml:id="deOliveira2017" xreflabel="De Oliveira 2017">De Oliveira, Vincent.
+                <quote>Deep dive CSS: font metrics, line-height and vertical-align.</quote> 2017.
+                <link>https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align</link></bibliomixed>
         <bibliomixed xml:id="getBoundingClientRect" xreflabel="MDN getBoundingClientRect()"
                 ><quote>Element.getBoundingClientRect()</quote>, MDN Web Docs,
                 <link>https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</link>
@@ -377,5 +385,9 @@ print(xml_str)</programlisting>
                 W3C Working Draft — September 2010</emphasis>, ed. David Dailey.
                 <link>https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM</link>
         </bibliomixed>
+        <bibliomixed xml:id="svg-2-kerning" xreflabel="SVG 2.0, Kerning">Scalable Vector Graphics
+            (SVG) 2 W3C Candidate Recommendation 04 October 2018. §11.10.1.4. The ‘kerning’
+            property.
+            <link>https://www.w3.org/TR/SVG2/text.html#KerningProperty</link></bibliomixed>
     </bibliography>
 </article>
