@@ -22,7 +22,7 @@
                 <!-- Ruling lines and labels for "positive," good health values -->
                 <xsl:for-each select="0 to 4">
                     <xsl:variable name="pos" as="xs:double" select=". * ($half_height div 4 )"/>
-                    <text y="{$pos + 2}" x="-30" font-size="10" text-anchor="middle">
+                    <text x="-30" y="{$pos + 2}" font-size="10" text-anchor="middle">
                         <xsl:value-of select="$pos div $yscale"/>
                     </text>
                     <line x1="0" x2="-15" y1="{$pos}" y2="{$pos}" stroke="black"/>
@@ -42,11 +42,11 @@
                 </xsl:for-each>
 
                 <!-- Y Axis labels -->
-                <text y="{$half_height div 2}" x="-50" font-size="14" text-anchor="middle"
+                <text x="-50" y="{$half_height div 2}" font-size="14" text-anchor="middle"
                     font-weight="300" writing-mode="tb">
                     <xsl:text>"Unstress"/Good Health</xsl:text>
                 </text>
-                <text y="-{$half_height div 2}" x="-50" font-size="14" text-anchor="middle"
+                <text x="-50" y="-{$half_height div 2}" font-size="14" text-anchor="middle"
                     font-weight="300" writing-mode="tb">
                     <xsl:text>"Stress"/Bad Health</xsl:text>
                 </text>
@@ -56,36 +56,36 @@
                 </text>
 
                 <!-- X Axis label -->
-                <text y="{$half_height + 115}" x="{$max_width div 2}" text-anchor="middle"
+                <text x="{$max_width div 2}" y="{$half_height + 115}" text-anchor="middle"
                     font-size="16">Location at time of writing</text>
 
                 <!-- Generate bars -->
                 <xsl:for-each-group select="$letters//location" group-by=".">
                     <xsl:variable name="xpos" as="xs:double"
                         select="$spacing + (position() - 1) * ($bar_width + $spacing)"/>
-                    <line y1="-{$half_height}" y2="{$half_height}" x1="{$xpos + $spacing}"
-                        x2="{$xpos + $spacing}" stroke="black" opacity=".5" stroke-dasharray="5,5"/>
+                    <line x1="{$xpos + $spacing}"
+                        x2="{$xpos + $spacing}" y1="-{$half_height}" y2="{$half_height}" stroke="black" opacity=".5" stroke-dasharray="5,5"/>
 
                     <!-- Generate "positive," good health bars -->
                     <xsl:variable name="good_length" as="xs:double"
                         select="sum(ancestor::letter/descendant::unstress/count(.)) + sum(ancestor::letter/descendant::good_health/count(.))"/>
-                    <rect y="0" height="{$good_length * $yscale}" x="{$xpos}" width="{$bar_width}"
+                    <rect x="{$xpos}" width="{$bar_width}" y="0" height="{$good_length * $yscale}" 
                         fill="#88c5db" stroke-width=".5" stroke="black"/>
 
                     <!-- Generate "negative," bad health bars -->
                     <xsl:variable name="bad_length" as="xs:double"
                         select="sum(ancestor::letter/descendant::stress/count(.)) + sum(ancestor::letter/descendant::bad_health/count(.))"/>
-                    <rect y="-{$bad_length * $yscale}" height="{$bad_length * $yscale}" x="{$xpos}"
+                    <rect x="{$xpos}" y="-{$bad_length * $yscale}" height="{$bad_length * $yscale}" 
                         width="{$bar_width}" fill="#f0d946" stroke-width=".5" stroke="black"/>
 
-                    <text y="{$half_height + 10}" x="{$xpos + $spacing + 3}" text-anchor="start"
+                    <text x="{$xpos + $spacing + 3}" y="{$half_height + 10}" text-anchor="start"
                         font-size="10" writing-mode="tb">
                         <xsl:value-of select="translate(., '_', ' ')"/>
                     </text>
                 </xsl:for-each-group>
                 
-                <line y1="-{$half_height}" y2="{$half_height}" x1="0" x2="0" stroke="black"/>
-                <line y1="0" y2="0" x1="0" x2="{$max_width}" stroke="black"/>
+                <line x1="0" x2="0" y1="-{$half_height}" y2="{$half_height}" stroke="black"/>
+                <line x1="0" x2="{$max_width}" y1="0" y2="0" stroke="black"/>
             </g>
         </svg>
     </xsl:template>
