@@ -95,11 +95,11 @@
                 <!-- X Axis labels -->
                 <text x="{$half_width div 2}" y="-{$font-size * 3}" font-size="16" font-family="Times New Roman" text-anchor="middle"
                     font-weight="300">
-                    <xsl:text>"Unstress"/Good Health</xsl:text>
+                    <xsl:text>Good Health</xsl:text>
                 </text>
                 <text x="-{$half_width div 2}" y="-{$font-size * 3}" font-size="16" font-family="Times New Roman" text-anchor="middle"
                     font-weight="300">
-                    <xsl:text>"Stress"/Bad Health</xsl:text>
+                    <xsl:text>Bad Health</xsl:text>
                 </text>
                 <text x="0" y="{$max_height + ($font-size * 2)}" font-size="16" font-family="Times New Roman" text-anchor="middle"
                     font-weight="300">

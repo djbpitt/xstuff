@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" height="620" width="502">
    <g transform="translate(100, 285)">
-      <text x="-30" y="2" font-size="10" text-anchor="middle">0</text>
+      <text x="-30" y="2" font-size="16" text-anchor="middle">0</text>
       <line x1="0" x2="-15" y1="0" y2="0" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -9,7 +9,7 @@
             y2="0"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="42" font-size="10" text-anchor="middle">4</text>
+      <text x="-30" y="42" font-size="16" text-anchor="middle">4</text>
       <line x1="0" x2="-15" y1="40" y2="40" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -17,7 +17,7 @@
             y2="40"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="82" font-size="10" text-anchor="middle">8</text>
+      <text x="-30" y="82" font-size="16" text-anchor="middle">8</text>
       <line x1="0" x2="-15" y1="80" y2="80" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -25,7 +25,7 @@
             y2="80"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="122" font-size="10" text-anchor="middle">12</text>
+      <text x="-30" y="122" font-size="16" text-anchor="middle">12</text>
       <line x1="0" x2="-15" y1="120" y2="120" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -33,7 +33,7 @@
             y2="120"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="162" font-size="10" text-anchor="middle">16</text>
+      <text x="-30" y="162" font-size="16" text-anchor="middle">16</text>
       <line x1="0" x2="-15" y1="160" y2="160" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -41,7 +41,7 @@
             y2="160"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="-158" font-size="10" text-anchor="middle">16</text>
+      <text x="-30" y="-158" font-size="16" text-anchor="middle">16</text>
       <line x1="-15" x2="0" y1="-160" y2="-160" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -49,7 +49,7 @@
             y2="-160"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="-118" font-size="10" text-anchor="middle">12</text>
+      <text x="-30" y="-118" font-size="16" text-anchor="middle">12</text>
       <line x1="-15" x2="0" y1="-120" y2="-120" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -57,7 +57,7 @@
             y2="-120"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="-78" font-size="10" text-anchor="middle">8</text>
+      <text x="-30" y="-78" font-size="16" text-anchor="middle">8</text>
       <line x1="-15" x2="0" y1="-80" y2="-80" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -65,7 +65,7 @@
             y2="-80"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="-38" font-size="10" text-anchor="middle">4</text>
+      <text x="-30" y="-38" font-size="16" text-anchor="middle">4</text>
       <line x1="-15" x2="0" y1="-40" y2="-40" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -73,24 +73,6 @@
             y2="-40"
             stroke="black"
             opacity=".5"/>
-      <text x="-50"
-            y="80"
-            font-size="14"
-            text-anchor="middle"
-            font-weight="300"
-            transform="rotate(270, -50, 80)">"Unstress"/Good Health</text>
-      <text x="-50"
-            y="-80"
-            font-size="14"
-            text-anchor="middle"
-            font-weight="300"
-            transform="rotate(270, -50, -80)">"Stress"/Bad Health</text>
-      <text x="126"
-            y="-185"
-            font-size="16"
-            text-anchor="middle"
-            font-weight="300">Mentions of Mental Health/Stress Factors</text>
-      <text x="126" y="260" text-anchor="middle" font-size="16">Location at time of writing</text>
       <line x1="18"
             x2="18"
             y1="-160"
@@ -100,14 +82,14 @@
             stroke-dasharray="5,5"/>
       <rect x="9"
             width="18"
-            y="0"
+            y="-0"
             height="0"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="9"
             width="18"
-            y="-0"
+            y="0"
             height="0"
             fill="#f0d946"
             stroke-width=".5"
@@ -115,7 +97,7 @@
       <text x="21"
             y="170"
             text-anchor="end"
-            font-size="10"
+            font-size="16"
             transform="rotate(315, 21, 170)">Nuenen</text>
       <line x1="45"
             x2="45"
@@ -126,14 +108,14 @@
             stroke-dasharray="5,5"/>
       <rect x="36"
             width="18"
-            y="0"
+            y="-0"
             height="0"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="36"
             width="18"
-            y="-20"
+            y="0"
             height="20"
             fill="#f0d946"
             stroke-width=".5"
@@ -141,7 +123,7 @@
       <text x="48"
             y="170"
             text-anchor="end"
-            font-size="10"
+            font-size="16"
             transform="rotate(315, 48, 170)">The Hague</text>
       <line x1="72"
             x2="72"
@@ -152,14 +134,14 @@
             stroke-dasharray="5,5"/>
       <rect x="63"
             width="18"
-            y="0"
+            y="-0"
             height="0"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="63"
             width="18"
-            y="-60"
+            y="0"
             height="60"
             fill="#f0d946"
             stroke-width=".5"
@@ -167,7 +149,7 @@
       <text x="75"
             y="170"
             text-anchor="end"
-            font-size="10"
+            font-size="16"
             transform="rotate(315, 75, 170)">Etten</text>
       <line x1="99"
             x2="99"
@@ -178,14 +160,14 @@
             stroke-dasharray="5,5"/>
       <rect x="90"
             width="18"
-            y="0"
+            y="-60"
             height="60"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="90"
             width="18"
-            y="-30"
+            y="0"
             height="30"
             fill="#f0d946"
             stroke-width=".5"
@@ -193,7 +175,7 @@
       <text x="102"
             y="170"
             text-anchor="end"
-            font-size="10"
+            font-size="16"
             transform="rotate(315, 102, 170)">Nieuw-Amsterdam</text>
       <line x1="126"
             x2="126"
@@ -204,14 +186,14 @@
             stroke-dasharray="5,5"/>
       <rect x="117"
             width="18"
-            y="0"
+            y="-0"
             height="0"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="117"
             width="18"
-            y="-110"
+            y="0"
             height="110"
             fill="#f0d946"
             stroke-width=".5"
@@ -219,7 +201,7 @@
       <text x="129"
             y="170"
             text-anchor="end"
-            font-size="10"
+            font-size="16"
             transform="rotate(315, 129, 170)">Cuesmes</text>
       <line x1="153"
             x2="153"
@@ -230,14 +212,14 @@
             stroke-dasharray="5,5"/>
       <rect x="144"
             width="18"
-            y="0"
+            y="-60"
             height="60"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="144"
             width="18"
-            y="-130"
+            y="0"
             height="130"
             fill="#f0d946"
             stroke-width=".5"
@@ -245,7 +227,7 @@
       <text x="156"
             y="170"
             text-anchor="end"
-            font-size="10"
+            font-size="16"
             transform="rotate(315, 156, 170)">Hoogeveen</text>
       <line x1="180"
             x2="180"
@@ -256,14 +238,14 @@
             stroke-dasharray="5,5"/>
       <rect x="171"
             width="18"
-            y="0"
+            y="-0"
             height="0"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="171"
             width="18"
-            y="-0"
+            y="0"
             height="0"
             fill="#f0d946"
             stroke-width=".5"
@@ -271,7 +253,7 @@
       <text x="183"
             y="170"
             text-anchor="end"
-            font-size="10"
+            font-size="16"
             transform="rotate(315, 183, 170)">Brussels</text>
       <line x1="207"
             x2="207"
@@ -282,14 +264,14 @@
             stroke-dasharray="5,5"/>
       <rect x="198"
             width="18"
-            y="0"
+            y="-20"
             height="20"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="198"
             width="18"
-            y="-130"
+            y="0"
             height="130"
             fill="#f0d946"
             stroke-width=".5"
@@ -297,7 +279,7 @@
       <text x="210"
             y="170"
             text-anchor="end"
-            font-size="10"
+            font-size="16"
             transform="rotate(315, 210, 170)">Antwerp</text>
       <line x1="234"
             x2="234"
@@ -308,14 +290,14 @@
             stroke-dasharray="5,5"/>
       <rect x="225"
             width="18"
-            y="0"
+            y="-0"
             height="0"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="225"
             width="18"
-            y="-10"
+            y="0"
             height="10"
             fill="#f0d946"
             stroke-width=".5"
@@ -323,8 +305,26 @@
       <text x="237"
             y="170"
             text-anchor="end"
-            font-size="10"
+            font-size="16"
             transform="rotate(315, 237, 170)">Paris</text>
+      <text x="-50"
+            y="-80"
+            font-size="16"
+            text-anchor="middle"
+            font-weight="300"
+            transform="rotate(270, -50, -80)">Good Health</text>
+      <text x="-50"
+            y="80"
+            font-size="16"
+            text-anchor="middle"
+            font-weight="300"
+            transform="rotate(270, -50, 80)">Bad Health</text>
+      <text x="126" y="310" text-anchor="middle" font-size="16">Location at time of writing</text>
+      <text x="126"
+            y="-185"
+            font-size="16"
+            text-anchor="middle"
+            font-weight="300">Mentions of Mental Health/Stress Factors</text>
       <line x1="0" x2="0" y1="-160" y2="160" stroke="black"/>
       <line x1="0" x2="252" y1="0" y2="0" stroke="black"/>
    </g>

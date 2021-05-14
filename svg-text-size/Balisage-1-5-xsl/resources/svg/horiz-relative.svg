@@ -353,13 +353,13 @@
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle"
-            font-weight="300">"Unstress"/Good Health</text>
+            font-weight="300">Good Health</text>
       <text x="-80"
             y="-48"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle"
-            font-weight="300">"Stress"/Bad Health</text>
+            font-weight="300">Bad Health</text>
       <text x="0"
             y="284"
             font-size="16"
