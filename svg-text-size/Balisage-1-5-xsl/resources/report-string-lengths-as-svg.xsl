@@ -15,6 +15,7 @@
         <input/>
         <input>m</input>
         <input>mm</input>
+        <input>The quick brown fox jumps over the lazy dog … and the lazier wombat!</input>
     </xsl:variable>
     <!-- ================================================================ -->
     <!-- Read in mapping and make accessible in key (one per font/size)   -->
