@@ -172,7 +172,8 @@
                     initially and with scaling consequences (e.g., user cannot safely override
                     supplied font information). For improved robustness, requires webfont. Requires
                     additional logic to deal with font effects (e.g., ligatures, positional glyph
-                    variants) and transformations.</para>
+                    variants) and transformations. Currently works only with TTF (not OTF, TTC, or
+                    others).</para>
             </section>
         </section>
         <section>

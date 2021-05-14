@@ -468,7 +468,8 @@
                               initially and with scaling consequences (e.g., user cannot safely override
                               supplied font information). For improved robustness, requires webfont. Requires
                               additional logic to deal with font effects (e.g., ligatures, positional glyph
-                              variants) and transformations.</p>
+                              variants) and transformations. Currently works only with TTF (not OTF, TTC, or
+                              others).</p>
                         </div>
                      </div>
                      <div class="section" id="d3e138">
@@ -600,8 +601,11 @@ print(xml_str)</pre>
                      <p id="d3e188">Sample output is a sequence of <code class="code">&lt;character&gt;</code> elements inside a root
                         element called <code class="code">&lt;root&gt;</code>:</p>
                      <pre class="programlisting" id="d3e194"><!--language: xml-->&lt;character dec="65" hex="0x41" name="A" str="A" width="11.456"/&gt;</pre>
+                     <p id="d3e196">The strategy described here uses the <code class="code">@str</code> value to retrieve the
+                        <code class="code">@width</code> value. The <code class="code">@dec</code> (decimal) and <code class="code">@hex</code>
+                        (hexadecimal) values are not currently usdd.</p>
                   </div>
-                  <div class="bibliography" id="d3e196">
+                  <div class="bibliography" id="d3e206">
                      <h2 class="title">References</h2>
                      <p class="bibliomixed" id="getBoundingClientRect">[MDN getBoundingClientRect()] <q>Element.getBoundingClientRect()</q>, MDN Web Docs,
                         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" class="link" target="_new">https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</a>
