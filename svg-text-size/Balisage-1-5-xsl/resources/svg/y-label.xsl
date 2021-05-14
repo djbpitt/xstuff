@@ -25,7 +25,7 @@
                 <xsl:for-each select="0 to 4">
                     <xsl:variable name="pos" as="xs:double"
                         select=". * ($half_width div 4)"/>
-                    <text y="-20" x="{$pos}" font-size="13" text-anchor="middle">
+                    <text y="-20" x="{$pos}" font-size="10" text-anchor="middle">
                         <xsl:value-of select="$pos div $xscale"/>
                     </text>
                     <line y1="-15" y2="0" x1="{$pos}" x2="{$pos}" stroke="black"/>
@@ -37,7 +37,7 @@
                 <xsl:for-each select="-4 to -1">
                     <xsl:variable name="pos" as="xs:double"
                         select=". * ($half_width div 4)"/>
-                    <text y="-20" x="{$pos}" font-size="13" text-anchor="middle">
+                    <text y="-20" x="{$pos}" font-size="10" text-anchor="middle">
                         <xsl:value-of select="(-$pos) div $xscale"/>
                     </text>
                     <line y1="-15" y2="0" x1="{$pos}" x2="{$pos}" stroke="black"/>
