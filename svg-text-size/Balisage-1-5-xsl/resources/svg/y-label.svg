@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="452" width="570">
+   <g transform="translate(210, 100)">
+      <line x1="-160" x2="160" y1="0" y2="0" stroke="black"/>
+      <line x1="0" x2="0" y1="0" y2="252" stroke="black"/>
+      <text y="-20" x="0" font-size="13" text-anchor="middle">0</text>
+      <line y1="-15" y2="0" x1="0" x2="0" stroke="black"/>
+      <line y1="0"
+            y2="252"
+            x1="0"
+            x2="0"
+            stroke="black"
+            opacity=".5"/>
+      <text y="-20" x="40" font-size="13" text-anchor="middle">4</text>
+      <line y1="-15" y2="0" x1="40" x2="40" stroke="black"/>
+      <line y1="0"
+            y2="252"
+            x1="40"
+            x2="40"
+            stroke="black"
+            opacity=".5"/>
+      <text y="-20" x="80" font-size="13" text-anchor="middle">8</text>
+      <line y1="-15" y2="0" x1="80" x2="80" stroke="black"/>
+      <line y1="0"
+            y2="252"
+            x1="80"
+            x2="80"
+            stroke="black"
+            opacity=".5"/>
+      <text y="-20" x="120" font-size="13" text-anchor="middle">12</text>
+      <line y1="-15" y2="0" x1="120" x2="120" stroke="black"/>
+      <line y1="0"
+            y2="252"
+            x1="120"
+            x2="120"
+            stroke="black"
+            opacity=".5"/>
+      <text y="-20" x="160" font-size="13" text-anchor="middle">16</text>
+      <line y1="-15" y2="0" x1="160" x2="160" stroke="black"/>
+      <line y1="0"
+            y2="252"
+            x1="160"
+            x2="160"
+            stroke="black"
+            opacity=".5"/>
+      <text y="-20" x="-160" font-size="13" text-anchor="middle">16</text>
+      <line y1="-15" y2="0" x1="-160" x2="-160" stroke="black"/>
+      <line y1="0"
+            y2="252"
+            x1="-160"
+            x2="-160"
+            stroke="black"
+            opacity=".5"/>
+      <text y="-20" x="-120" font-size="13" text-anchor="middle">12</text>
+      <line y1="-15" y2="0" x1="-120" x2="-120" stroke="black"/>
+      <line y1="0"
+            y2="252"
+            x1="-120"
+            x2="-120"
+            stroke="black"
+            opacity=".5"/>
+      <text y="-20" x="-80" font-size="13" text-anchor="middle">8</text>
+      <line y1="-15" y2="0" x1="-80" x2="-80" stroke="black"/>
+      <line y1="0"
+            y2="252"
+            x1="-80"
+            x2="-80"
+            stroke="black"
+            opacity=".5"/>
+      <text y="-20" x="-40" font-size="13" text-anchor="middle">4</text>
+      <line y1="-15" y2="0" x1="-40" x2="-40" stroke="black"/>
+      <line y1="0"
+            y2="252"
+            x1="-40"
+            x2="-40"
+            stroke="black"
+            opacity=".5"/>
+      <text x="80"
+            y="-50"
+            font-size="14"
+            text-anchor="middle"
+            font-weight="300">"Unstress"/Good Health</text>
+      <text x="-80"
+            y="-50"
+            font-size="14"
+            text-anchor="middle"
+            font-weight="300">"Stress"/Bad Health</text>
+      <text x="0"
+            y="302"
+            font-size="16"
+            text-anchor="middle"
+            font-weight="300">Mentions of Mental Health/Stress Factors</text>
+      <text x="275"
+            y="126"
+            text-anchor="middle"
+            font-size="16"
+            writing-mode="tb">Location at time of writing</text>
+      <line x1="-160"
+            x2="160"
+            y1="18"
+            y2="18"
+            stroke="black"
+            opacity=".5"
+            stroke-dasharray="5,5"/>
+      <rect x="0"
+            width="0"
+            y="9"
+            height="18"
+            fill="#88c5db"
+            stroke-width=".5"
+            stroke="black"/>
+      <rect x="-0"
+            width="0"
+            y="9"
+            height="18"
+            fill="#f0d946"
+            stroke-width=".5"
+            stroke="black"/>
+      <text x="170" y="21" text-anchor="start" font-size="10">Nuenen</text>
+      <line x1="-160"
+            x2="160"
+            y1="45"
+            y2="45"
+            stroke="black"
+            opacity=".5"
+            stroke-dasharray="5,5"/>
+      <rect x="0"
+            width="0"
+            y="36"
+            height="18"
+            fill="#88c5db"
+            stroke-width=".5"
+            stroke="black"/>
+      <rect x="-20"
+            width="20"
+            y="36"
+            height="18"
+            fill="#f0d946"
+            stroke-width=".5"
+            stroke="black"/>
+      <text x="170" y="48" text-anchor="start" font-size="10">The Hague</text>
+      <line x1="-160"
+            x2="160"
+            y1="72"
+            y2="72"
+            stroke="black"
+            opacity=".5"
+            stroke-dasharray="5,5"/>
+      <rect x="0"
+            width="0"
+            y="63"
+            height="18"
+            fill="#88c5db"
+            stroke-width=".5"
+            stroke="black"/>
+      <rect x="-60"
+            width="60"
+            y="63"
+            height="18"
+            fill="#f0d946"
+            stroke-width=".5"
+            stroke="black"/>
+      <text x="170" y="75" text-anchor="start" font-size="10">Etten</text>
+      <line x1="-160"
+            x2="160"
+            y1="99"
+            y2="99"
+            stroke="black"
+            opacity=".5"
+            stroke-dasharray="5,5"/>
+      <rect x="0"
+            width="60"
+            y="90"
+            height="18"
+            fill="#88c5db"
+            stroke-width=".5"
+            stroke="black"/>
+      <rect x="-30"
+            width="30"
+            y="90"
+            height="18"
+            fill="#f0d946"
+            stroke-width=".5"
+            stroke="black"/>
+      <text x="170" y="102" text-anchor="start" font-size="10">Nieuw-Amsterdam</text>
+      <line x1="-160"
+            x2="160"
+            y1="126"
+            y2="126"
+            stroke="black"
+            opacity=".5"
+            stroke-dasharray="5,5"/>
+      <rect x="0"
+            width="0"
+            y="117"
+            height="18"
+            fill="#88c5db"
+            stroke-width=".5"
+            stroke="black"/>
+      <rect x="-110"
+            width="110"
+            y="117"
+            height="18"
+            fill="#f0d946"
+            stroke-width=".5"
+            stroke="black"/>
+      <text x="170" y="129" text-anchor="start" font-size="10">Cuesmes</text>
+      <line x1="-160"
+            x2="160"
+            y1="153"
+            y2="153"
+            stroke="black"
+            opacity=".5"
+            stroke-dasharray="5,5"/>
+      <rect x="0"
+            width="60"
+            y="144"
+            height="18"
+            fill="#88c5db"
+            stroke-width=".5"
+            stroke="black"/>
+      <rect x="-130"
+            width="130"
+            y="144"
+            height="18"
+            fill="#f0d946"
+            stroke-width=".5"
+            stroke="black"/>
+      <text x="170" y="156" text-anchor="start" font-size="10">Hoogeveen</text>
+      <line x1="-160"
+            x2="160"
+            y1="180"
+            y2="180"
+            stroke="black"
+            opacity=".5"
+            stroke-dasharray="5,5"/>
+      <rect x="0"
+            width="0"
+            y="171"
+            height="18"
+            fill="#88c5db"
+            stroke-width=".5"
+            stroke="black"/>
+      <rect x="-0"
+            width="0"
+            y="171"
+            height="18"
+            fill="#f0d946"
+            stroke-width=".5"
+            stroke="black"/>
+      <text x="170" y="183" text-anchor="start" font-size="10">Brussels</text>
+      <line x1="-160"
+            x2="160"
+            y1="207"
+            y2="207"
+            stroke="black"
+            opacity=".5"
+            stroke-dasharray="5,5"/>
+      <rect x="0"
+            width="20"
+            y="198"
+            height="18"
+            fill="#88c5db"
+            stroke-width=".5"
+            stroke="black"/>
+      <rect x="-130"
+            width="130"
+            y="198"
+            height="18"
+            fill="#f0d946"
+            stroke-width=".5"
+            stroke="black"/>
+      <text x="170" y="210" text-anchor="start" font-size="10">Antwerp</text>
+      <line x1="-160"
+            x2="160"
+            y1="234"
+            y2="234"
+            stroke="black"
+            opacity=".5"
+            stroke-dasharray="5,5"/>
+      <rect x="0"
+            width="0"
+            y="225"
+            height="18"
+            fill="#88c5db"
+            stroke-width=".5"
+            stroke="black"/>
+      <rect x="-10"
+            width="10"
+            y="225"
+            height="18"
+            fill="#f0d946"
+            stroke-width=".5"
+            stroke="black"/>
+      <text x="170" y="237" text-anchor="start" font-size="10">Paris</text>
+      <line x1="-160" x2="160" y1="0" y2="0" stroke="black"/>
+      <line x1="0" x2="0" y1="0" y2="252" stroke="black"/>
+   </g>
+</svg>
