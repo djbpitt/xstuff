@@ -8,37 +8,39 @@ from fontTools.ttLib.tables._c_m_a_p import CmapSubtable
 from xml.dom import minidom
 from matplotlib import font_manager
 from pathlib import Path
+import argparse
+
 import pprint
 pp = pprint.PrettyPrinter(indent=2)
 
-
-# TODO: be flexible about .ttf filename extension
 # Validate fontname
 # https://stackoverflow.com/questions/15203829/python-argparse-file-extension-checking
 def validateFont(fontName):
+    """Find full font system path from bare name (without extensions)"""
     installed_fonts = {Path(item).stem: item for item in font_manager.findSystemFonts()}
     return installed_fonts.get(fontName) # returns None on KeyError
 
 def allInstalledFonts():
+    """Report all available fonts if user supplies erroneous value"""
     installed_fonts = {Path(item).stem: item for item in font_manager.findSystemFonts()}
     return sorted(installed_fonts.keys())
 
-
-import argparse
+# Handle command line arguments: font name and optional size
 parser = argparse.ArgumentParser()
 parser.add_argument("ttf", help="TrueType font name without extension (quote names with spaces)")
 parser.add_argument("size", help="size in points (defaults to 16pt)", type=int, nargs="?", default=16)
 args = parser.parse_args()
 fontName = args.ttf
 size = args.size
-fontPath = validateFont(fontName)
+fontPath = validateFont(fontName) # returns None for erroneous value
 
 if not fontPath: # bail out if font not found
     print(f"Font '{fontName}' not found. Legal fontnames are:")
     pp.pprint(allInstalledFonts())
     quit()
 
-font = TTFont(fontPath, fontNumber=0) # breaks on ttc, even with fontNumber; table is different?
+# from StackOverflow
+font = TTFont(fontPath, fontNumber=0) # BUG: breaks on ttc, even with fontNumber; table is different?
 cmap = font['cmap']
 t = cmap.getcmap(3,1).cmap # map of decimal values to glyph names
 s = font.getGlyphSet()
@@ -56,11 +58,12 @@ def getTextWidth(text,pointSize):
 
 # from minidom documentation
 root = minidom.Document()
-xml = root.createElement('root')
+xml = root.createElement('metrics')
 root.appendChild(xml)
 metadata = root.createElement('metadata')
 metadata.setAttribute('fontName', fontName)
 metadata.setAttribute('fontPath', fontPath)
+metadata.setAttribute('fontSize', str(size))
 xml.appendChild(metadata)
 
 c_dict = dict()
@@ -83,5 +86,6 @@ for item in c_dict.items(): # string-value : width
         e.setAttribute('name', name)
         xml.appendChild(e)
 
+# serialize and render XML
 xml_str = root.toprettyxml(indent="  ")
 print(xml_str)
