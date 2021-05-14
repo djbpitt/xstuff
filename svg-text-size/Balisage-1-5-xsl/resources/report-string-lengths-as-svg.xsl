@@ -35,6 +35,10 @@
     </xsl:function>
     <!-- ================================================================ -->
     <!-- Main                                                             -->
+    <!--                                                                  -->
+    <!-- Creates SVG output with, for each test string:                   -->
+    <!--   String, followed by parenthesized length                       -->
+    <!--   <line> of same length, for visual comparison                   -->
     <!-- ================================================================ -->
     <xsl:template name="xsl:initial-template">
         <svg>
