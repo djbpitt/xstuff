@@ -23,6 +23,8 @@
     <xsl:variable name="times-new-roman-16-mapping" as="document-node()"
         select="doc('times-new-roman-16.xml')"/>
     <xsl:key name="lengthByChar" match="character" use="@str"/>
+    <xsl:variable name="font-size" as="xs:double"
+        select="$times-new-roman-16-mapping/descendant::metadata/@fontSize"/>
     <!-- ================================================================ -->
     <!-- Return length of string in SVG units                             -->
     <!-- ================================================================ -->
@@ -48,13 +50,15 @@
     </xsl:template>
     <xsl:template match="input">
         <xsl:variable name="length" as="xs:double" select="djb:get-text-length(.)"/>
-        <text x="10" y="{position() * 30}" font-family="Times New Roman" font-size="16">
-            <xsl:value-of select="."/>
-            <xsl:text> (</xsl:text>
-            <xsl:value-of select="$length"/>
-            <xsl:text>)</xsl:text>
+        <xsl:variable name="y-pos" as="xs:double"
+            select="(position() - 1) * 3 * $font-size + $font-size"/>
+        <text x="10" y="{$y-pos}" font-family="Times New Roman" font-size="16">
+            <xsl:value-of select="'Length: ' || $length"/>
         </text>
-        <line x1="10" y1="{position() * 30 + 10}" x2="{10 + $length}" y2="{position() * 30 + 10}"
-            stroke="black" stroke-width="2"/>
+        <text x="10" y="{$y-pos + 16}" font-family="Times New Roman" font-size="16">
+            <xsl:value-of select="."/>
+        </text>
+        <line x1="10" y1="{$y-pos + 20}" x2="{10 + $length}" y2="{$y-pos + 20}" stroke="black"
+            stroke-width="2"/>
     </xsl:template>
 </xsl:stylesheet>
