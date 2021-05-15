@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" height="620" width="502">
+<svg xmlns:djb="http://www.obdurodon.org"
+     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+     xmlns="http://www.w3.org/2000/svg"
+     height="620"
+     width="502">
    <g transform="translate(100, 285)">
-      <text x="-30" y="2" font-size="16" text-anchor="middle">0</text>
+      <text x="-30"
+            y="2"
+            font-size="16"
+            font-family="Times New Roman"
+            text-anchor="middle">0</text>
       <line x1="0" x2="-15" y1="0" y2="0" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -9,7 +17,11 @@
             y2="0"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="42" font-size="16" text-anchor="middle">4</text>
+      <text x="-30"
+            y="42"
+            font-size="16"
+            font-family="Times New Roman"
+            text-anchor="middle">4</text>
       <line x1="0" x2="-15" y1="40" y2="40" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -17,7 +29,11 @@
             y2="40"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="82" font-size="16" text-anchor="middle">8</text>
+      <text x="-30"
+            y="82"
+            font-size="16"
+            font-family="Times New Roman"
+            text-anchor="middle">8</text>
       <line x1="0" x2="-15" y1="80" y2="80" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -25,7 +41,11 @@
             y2="80"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="122" font-size="16" text-anchor="middle">12</text>
+      <text x="-30"
+            y="122"
+            font-size="16"
+            font-family="Times New Roman"
+            text-anchor="middle">12</text>
       <line x1="0" x2="-15" y1="120" y2="120" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -33,7 +53,11 @@
             y2="120"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="162" font-size="16" text-anchor="middle">16</text>
+      <text x="-30"
+            y="162"
+            font-size="16"
+            font-family="Times New Roman"
+            text-anchor="middle">16</text>
       <line x1="0" x2="-15" y1="160" y2="160" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -41,7 +65,11 @@
             y2="160"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="-158" font-size="16" text-anchor="middle">16</text>
+      <text x="-30"
+            y="-158"
+            font-size="16"
+            font-family="Times New Roman"
+            text-anchor="middle">16</text>
       <line x1="-15" x2="0" y1="-160" y2="-160" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -49,7 +77,11 @@
             y2="-160"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="-118" font-size="16" text-anchor="middle">12</text>
+      <text x="-30"
+            y="-118"
+            font-size="16"
+            font-family="Times New Roman"
+            text-anchor="middle">12</text>
       <line x1="-15" x2="0" y1="-120" y2="-120" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -57,7 +89,11 @@
             y2="-120"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="-78" font-size="16" text-anchor="middle">8</text>
+      <text x="-30"
+            y="-78"
+            font-size="16"
+            font-family="Times New Roman"
+            text-anchor="middle">8</text>
       <line x1="-15" x2="0" y1="-80" y2="-80" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -65,7 +101,11 @@
             y2="-80"
             stroke="black"
             opacity=".5"/>
-      <text x="-30" y="-38" font-size="16" text-anchor="middle">4</text>
+      <text x="-30"
+            y="-38"
+            font-size="16"
+            font-family="Times New Roman"
+            text-anchor="middle">4</text>
       <line x1="-15" x2="0" y1="-40" y2="-40" stroke="black"/>
       <line x1="0"
             x2="252"
@@ -98,6 +138,7 @@
             y="180"
             text-anchor="start"
             font-size="16"
+            font-family="Times New Roman"
             transform="rotate(60, 21, 170)">Nuenen</text>
       <line x1="45"
             x2="45"
@@ -124,6 +165,7 @@
             y="180"
             text-anchor="start"
             font-size="16"
+            font-family="Times New Roman"
             transform="rotate(60, 48, 170)">The Hague</text>
       <line x1="72"
             x2="72"
@@ -150,6 +192,7 @@
             y="180"
             text-anchor="start"
             font-size="16"
+            font-family="Times New Roman"
             transform="rotate(60, 75, 170)">Etten</text>
       <line x1="99"
             x2="99"
@@ -176,6 +219,7 @@
             y="180"
             text-anchor="start"
             font-size="16"
+            font-family="Times New Roman"
             transform="rotate(60, 102, 170)">Nieuw-Amsterdam</text>
       <line x1="126"
             x2="126"
@@ -202,6 +246,7 @@
             y="180"
             text-anchor="start"
             font-size="16"
+            font-family="Times New Roman"
             transform="rotate(60, 129, 170)">Cuesmes</text>
       <line x1="153"
             x2="153"
@@ -228,6 +273,7 @@
             y="180"
             text-anchor="start"
             font-size="16"
+            font-family="Times New Roman"
             transform="rotate(60, 156, 170)">Hoogeveen</text>
       <line x1="180"
             x2="180"
@@ -254,6 +300,7 @@
             y="180"
             text-anchor="start"
             font-size="16"
+            font-family="Times New Roman"
             transform="rotate(60, 183, 170)">Brussels</text>
       <line x1="207"
             x2="207"
@@ -280,6 +327,7 @@
             y="180"
             text-anchor="start"
             font-size="16"
+            font-family="Times New Roman"
             transform="rotate(60, 210, 170)">Antwerp</text>
       <line x1="234"
             x2="234"
@@ -306,24 +354,32 @@
             y="180"
             text-anchor="start"
             font-size="16"
+            font-family="Times New Roman"
             transform="rotate(60, 237, 170)">Paris</text>
       <text x="-50"
             y="-80"
             font-size="16"
             text-anchor="middle"
+            font-family="Times New Roman"
             font-weight="300"
-            transform="rotate(270, -50, -80)">Good Health</text>
+            writing-mode="tb">Good Health</text>
       <text x="-50"
             y="80"
             font-size="16"
             text-anchor="middle"
+            font-family="Times New Roman"
             font-weight="300"
-            transform="rotate(270, -50, 80)">Bad Health</text>
-      <text x="126" y="310" text-anchor="middle" font-size="16">Location at time of writing</text>
+            writing-mode="tb">Bad Health</text>
+      <text x="126"
+            y="296.20328111403967"
+            text-anchor="middle"
+            font-size="16"
+            font-family="Times New Roman">Location at time of writing</text>
       <text x="126"
             y="-185"
             font-size="16"
             text-anchor="middle"
+            font-family="Times New Roman"
             font-weight="300">Mentions of Mental Health/Stress Factors</text>
       <line x1="0" x2="0" y1="-160" y2="160" stroke="black"/>
       <line x1="0" x2="252" y1="0" y2="0" stroke="black"/>
