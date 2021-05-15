@@ -119,7 +119,6 @@
         <title>Solutions</title>
         <para> This presentation explores two strategies for working around the difficulty of
             knowing the length of an SVG <code>&lt;text></code> element:</para>
-
         <orderedlist>
             <listitem>
                 <para>As a preprocessing step before undertaking the transformation that outputs the
@@ -159,17 +158,10 @@
                     accordingly. For horizontal or vertical text this requires computing the length
                     of the <code>&lt;text&gt;</code> and using it to position other elements at a
                     specific distance from the end of the text. This approach is less precise than
-                    the JavaScript method described below, but because we normally want to include a
-                    small amount of padding around our <code>&lt;text&gt;</code> elements in any
-                    case, we do not require high precision.<footnote>
-                        <para>In extreme and unnatural cases, such as with text like
-                                <code>"AVAVAV"</code>, which is very heavily kerned where kerning is
-                            applied, the imprecision of the length computed with our XSLT method,
-                            which does not have access to kerning information, becomes noticeable.
-                            We regard this largely as a hypothetical complication, that is, one that
-                            is unlikely to create noticeable distractions with the text strings we
-                            would expect to encounter when processing real data.</para>
-                    </footnote></para>
+                    the JavaScript method described below for at least two reasons (see below), but
+                    because we normally want to include a small amount of padding around our
+                        <code>&lt;text&gt;</code> elements in any case, we do not require high
+                    precision.</para>
                 <para>In the sample SVG below, we compute the length of the text using the method
                     described here and employ it to draw a line parallel to horizontal or vertical
                     text, so that we can assess the accuracy of our measurements visually. In the
@@ -196,21 +188,69 @@
                         </imageobject>
                     </mediaobject>
                 </figure>
-                <para>The examples show the following results:<itemizedlist>
+                <para>The examples show the following desirable results:<itemizedlist>
                         <listitem>
                             <para>The overall precision is quite high.</para>
-                        </listitem>
-                        <listitem>
-                            <para>Because we did not access kerning information, the example with
-                                    <code>"Test string"</code> is imprecise as a result of kerning
-                                applied to the <code>"Te"</code> sequence. The deleterious effect of
-                                kerning on the accuracy of our measurement is pronounced with the
-                                artificial <code>"AVAVAV"</code> example.</para>
                         </listitem>
                         <listitem>
                             <para>A null string is correctly matched by a zero-length line.</para>
                         </listitem>
                     </itemizedlist></para>
+                <para>One limitation to computing the dimensions of SVG <code>&lt;text&gt;</code>
+                    elements while creating them is that <emphasis role="ital">user
+                        agents</emphasis> (typically browsers) may impose small unpredictable
+                    modifications on the layout. For example, the last of the horizontal examples
+                    above specifies a <code>@font-size</code> or <code>"16"</code> and computes a
+                    length of 297.703125), but when we open the SVG in Chrome, Firefox, and Safari
+                    and use the JavaScript <code>getBBox()</code> method to query the size of the
+                    bounding box, the three browsers report slightly different values for both
+                    height and width:<footnote>
+                        <para>We tested under MacOS 11.3.1 (Big Sur) with Chrome Version
+                            90.0.4430.212 (Official Build) (x86_64), Firefox Developer 89.0b11
+                            (64-bit), and Safari Version 14.1 (16611.1.21.161.6).</para>
+                    </footnote><table>
+                        <thead>
+                            <tr>
+                                <th>Browser</th>
+                                <th>Height</th>
+                                <th>Width</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Chrome</td>
+                                <td>17.796875</td>
+                                <td>297.703125</td>
+                            </tr>
+                            <tr>
+                                <td>Firefox</td>
+                                <td>18</td>
+                                <td>298.3999938964844</td>
+                            </tr>
+                            <tr>
+                                <td>Safari</td>
+                                <td>17.734375</td>
+                                <td>297.703125</td>
+                            </tr>
+                        </tbody>
+                    </table></para>
+                <para>A second limitation to computing the dimensions of SVG
+                        <code>&lt;text&gt;</code> elements while creating them is that the height is
+                    not fully predictable from the <code>@font-size</code> attribute of the
+                        <code>&lt;text&gt;</code> element. In the table above, we see that none of
+                    the browsers sets a height of 16 and each of them sets a different height.<footnote>
+                        <para>The widespread assumption that the <code>@font-size</code> values
+                            specifies the vertical distance between baselines is incorrect because,
+                            among other things, the values depend on font metrics, and not only on
+                            font size. See <xref linkend="deOliveira2017"/> for details and
+                            discussion. It should be possible to extract the actual height from the
+                            font metrics, as we do for character width, but we have not explored
+                            that possibility for this report.</para>
+                    </footnote></para>
+                <para>A third limitation to computing the dimensions of SVG
+                        <code>&lt;text&gt;</code> elements while creating them is that kerning
+                    support in browsers is inconsistent, and user-controlled kerning support in SVG
+                    and CSS is unreliable. </para>
                 <para>In the horizontal butterfly chart below, the bars are labeled on the Y axis on
                     the right side, and a general label for the Y axis must be positioned to the
                     right of—but not too far to the right of—the longest bar label. Because we can
