@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <style type="text/css">
+        #auto, #autov {font-kerning: auto;}
+        #normal, #normalv {font-kerning: normal;}
+        #none, #nonev {font-kerning: none;}
+    </style>
+    <g transform="translate(10, 10)">
+        <text x="0" y="10" font-family="Times New Roman" font-size="16">AVAVAVAVAV (No kerning, default is auto)</text>
+        <text x="0" y="30" kerning="auto" font-family="Times New Roman" font-size="16">AVAVAVAVAV (@kerning = "auto")</text>
+        <text x="0" y="50" kerning="0" font-family="Times New Roman" font-size="16">AVAVAVAVAV (@kerning = "0")</text>
+        <text id="auto" x="0" y="70">AVAVAVAVAV (CSS font-kerning: auto)</text>
+        <text id="normal" x="0" y="90">AVAVAVAVAV (CSS font-kerning: normal)</text>
+        <text id="none" x="0" y="110">AVAVAVAVAV (CSS font-kerning: none)</text>
+    </g>
+    <g transform="translate(20, 150)">
+        <text writing-mode="tb" x="0" y="0" font-size="16">AVAVAVAVAV (No kerning, default is auto)</text>
+        <text writing-mode="tb" x="20" y="0" kerning="auto" font-family="Times New Roman"
+            font-size="16">AVAVAVAVAV (@kerning = "auto")</text>
+        <text writing-mode="tb" x="40" y="0" kerning="0" font-family="Times New Roman"
+            font-size="16">AVAVAVAVAV (@kerning = "0")</text>
+        <text writing-mode="tb" id="autov" x="60" y="0">AVAVAVAVAV (CSS font-kerning: auto)</text>
+        <text writing-mode="tb" id="normalv" x="80" y="0">AVAVAVAVAV (CSS font-kerning: normal)</text>
+        <text writing-mode="tb" id="nonev" x="100" y="0">AVAVAVAVAV (CSS font-kerning: none)</text>
+    </g>
+</svg>

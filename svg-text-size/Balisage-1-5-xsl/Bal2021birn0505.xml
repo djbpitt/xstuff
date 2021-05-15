@@ -60,19 +60,22 @@
         <para>SVG layout requires that the developer be in control of the dimensions of the objects
             that must be placed in the coordinate space. It is easy to specify (or compute based on
             other specifications) the size (bounding box height and width) of many SVG objects
-            (rectangles, circles, lines), identifying the bounding box for text is challenging
-            because SVG text does not know its own length. Developers are able to specify a
-            font-size, which corresponds to the height of the font (from baseline to baseline)<footnote>
+            (rectangles, circles, lines), but identifying the bounding box for text is challenging
+            because SVG text does not know its own length (or, perhaps surprisingly, its height).
+            Developers are able to specify a <code>@font-size</code>, which is related to (but does
+            not match) the height of the font (from baseline to baseline) as rendered<footnote>
                 <para>If the user does not specify a font size, the default is 16 pixels, which
                     corresponds to specifying the value <code>"medium"</code> for a
                         <code>@font-size</code> attribute on the SVG <code>&lt;text&gt;</code>
                     element. The <code>@font-size</code> setting may be modified before rendering
-                    with the global SVG <code>@transform</code> attribute.</para>
+                    with the global SVG <code>@transform</code> attribute. See below concerning the
+                    actual height of SVG <code>&lt;text&gt;</code> elements, which is not the same
+                    as the value of the declared or implicit <code>@font-size</code>.</para>
             </footnote>, but the length of a string of characters depends on the widths of the
             individual characters, and those widths are not exposed in any convenient, accessible
             way in a regular XML development environment.</para>
-        <para>Our test case for exploring and addressing this challenge is an SVG bar graph like the
-            following:</para>
+        <para>Our test case for exploring and addressing the challenges <code>&lt;text&gt;</code>
+            elements pose for layout is an SVG bar graph like the following:</para>
         <figure xml:id="figure-01" xreflabel="Sample bar graph">
             <mediaobject>
                 <imageobject>
@@ -84,9 +87,9 @@
             below. Under those labels we label the X axis itself. The challenge involves determining
             the Y position of the general label for the X axis, since that position will depend on
             the length of the longest bar label, and will therefore vary according to the specific
-            poem titles. If you are like us, you place that label with a combination of guesswork
-            with trial and error and then hard-code a magic number, which—predictably and
-            understandably—breaks as soon as you try to reuse the code with new input.<footnote>
+            values of those bar labels. If you are like us, you place that label with a combination
+            of guesswork and trial and error and then hard-code a magic number, which—predictably
+            and understandably—breaks as soon as you try to reuse the code with new input.<footnote>
                 <para>Placing the X axis label more precisely in a way that takes into account the
                     lengths and positions of all of the bar labels is a version of the same type of
                     task, although a more complicated one. For example, if the leftmost and
@@ -139,10 +142,11 @@
                     SVG. With this approach, the length of a <code>&lt;text&gt;</code> element is
                     presumed to be the sum of the widths of its constituent characters. If the text
                     strings are horizontal or vertical, the length is one of the dimensions of the
-                    bounding box, and the other dimension is the font size. If the text is rotated,
-                    we can apply trigonometric functions to the length of the text (which functions
-                    as the hypotenuse) and the angle of rotation to compute the dimensions (the
-                    adjacent and opposites sides of a right triangle) of the bounding box.</para>
+                    bounding box, and the other dimension is (approximately) the font size. If the
+                    text is rotated, we can apply trigonometric functions to the length of the text
+                    (which functions as the hypotenuse) and the angle of rotation to compute the
+                    dimensions (the adjacent and opposites sides of a right triangle) of the
+                    bounding box.</para>
             </listitem>
             <listitem>
                 <para><emphasis role="bold">The JavaScript approach:</emphasis> Output SVG
@@ -171,19 +175,22 @@
             <section>
                 <title>Overview</title>
                 <para>The XSLT approach computes the dimensions of the text as it creates the SVG
-                    and positions other elements in relation to <code>&lt;text&gt;</code> elements
-                    accordingly. For horizontal or vertical text this requires computing the length
-                    of the <code>&lt;text&gt;</code> and using it to position other elements at a
-                    specific distance from it. This approach is less precise than the JavaScript
-                    method described below for several reasons (see below), but in our practical use
-                    we normally want to include a small amount of padding around our
-                        <code>&lt;text&gt;</code> elements in any case, which means that we do not
-                    require placement with exact precision.</para>
+                    and positions other elements accordingly. For horizontal or vertical text this
+                    requires computing the length of the <code>&lt;text&gt;</code> and using it to
+                    position other elements at a specific distance from it. This approach is less
+                    precise than the JavaScript method described below for several reasons, but
+                    because in our actual use we normally want to include a small amount of padding
+                    around our <code>&lt;text&gt;</code> elements, we do not require placement with
+                    exact precision.</para>
                 <para>In the sample SVG below, we compute the length of the text using the method
                     described above and employ it to draw a line parallel to horizontal or vertical
-                    text, so that we can examine the accuracy of our measurements visually. In the
-                    case of diagonal text we draw a bounding rectangle. The third of the four
-                    examples in each figure is a null string:</para>
+                    text, so that we can examine the accuracy of our measurements visually. (That
+                    is, the lines are not created as a font effect; the lines are drawn
+                    independently of the text.) In the case of diagonal text we draw a bounding
+                    rectangle. The third of the four examples in each figure is a null string, so we
+                    expect to see no text and no line. The images below are in SVG that is rendered
+                    in the browser, which means that the exact appearance may vary depending on
+                    browser features:</para>
                 <figure xml:id="horizontal-sample" xreflabel="Sample horizontal text">
                     <mediaobject>
                         <imageobject>
@@ -222,7 +229,7 @@
                     default when no size is specified) and computes a length of 297.703125. However,
                     when when we open the SVG in Chrome, Firefox, and Safari and use the JavaScript
                         <code>getBBox()</code> method to query the size of the bounding box, the
-                    three browsers report slightly different values for both height and width:<footnote>
+                    three browsers report slightly different values for both height and width<footnote>
                         <para>We tested these examples under MacOS 11.3.1 (Big Sur) with Chrome
                             Version 90.0.4430.212 (Official Build) (x86_64), Firefox Developer
                             89.0b11 (64-bit), and Safari Version 14.1 (16611.1.21.161.6).</para>
@@ -251,7 +258,8 @@
                                 <td>297.703125</td>
                             </tr>
                         </tbody>
-                    </table></para>
+                    </table> The retrieved length in Chrome and Safari matches the computed length,
+                    but the value in Firefox does not.</para>
                 <para>A second limitation to computing the dimensions of SVG
                         <code>&lt;text&gt;</code> elements while creating them is that the height of
                     an SVG <code>&lt;text&gt;</code> element is not fully predictable from its
@@ -260,11 +268,11 @@
                     the others.<footnote>
                         <para>The apparently widespread assumption that a <code>@font-size</code>
                             value specifies the vertical distance between baselines is incorrect
-                            because, among other things, the actual spacing depends on font metrics,
-                            and not only on font size. See <xref linkend="deOliveira2017"/> for
-                            details and discussion. In principle it should be possible to extract
-                            the actual height from the font metrics, as we do for character width,
-                            but we have not explored that possibility for this report.</para>
+                            because, among other things, the actual spacing depends on the font
+                            design, and not only on font size. See <xref linkend="deOliveira2017"/>
+                            for details and discussion. In principle it should be possible to
+                            extract the actual height from the font metrics, as we do for character
+                            width, but we have not explored that possibility for this report.</para>
                     </footnote></para>
                 <para>A third limitation to computing the dimensions of SVG
                         <code>&lt;text&gt;</code> elements while creating them is that kerning
@@ -278,14 +286,28 @@
                 <figure xml:id="kerning-comparison" xreflabel="Kerning differences in browsers">
                     <mediaobject>
                         <imageobject>
-                            <imagedata fileref="includes/kerning-differences.png"/>
+                            <imagedata width="12in" fileref="includes/kerning-differences.png"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
                 <para>SVG <code>&lt;text&gt;</code> elements may have a <code>@kerning</code>
-                    attribute (although support for kerning is slated for removal from SVG 2) and
-                    CSS supports a <code>font-kerning</code> property, but browser support is
-                    inconsistent to the point of being unpredictable. RESUME HERE</para>
+                    attribute (although support for kerning is slated for removal from SVG 2<footnote>
+                        <para>See <xref linkend="svg-2-kerning"/>.</para>
+                    </footnote>) and CSS supports a <code>font-kerning</code> property. Browser
+                    support for both of these features too inconsistent and unpredictable to be useful.<footnote>
+                        <para>With no SVG <code>@kerning</code> attribute, with an SVG
+                                <code>@kerning</code> attribute value of <code>"auto"</code> (the
+                            default, which enables kerning), and an SVG <code>@kerning</code>
+                            attribute value of <code>"0"</code> (disables kerning), kerning was
+                            applied consistently to horizontal text in all three browsers and to
+                            vertical (<code>@writing-mode="tb"</code>) in Firefox and Chrome, but
+                            not in Safari. The CSS <code>font-kerning</code> property worked as
+                            advertised in horizontal text in all three browsers, and had no effect
+                            on vertical text in any of them: kerning was always applied to vertical
+                            text in Firefox and Chrome and never applied to vertical text in
+                            Safari.</para>
+                    </footnote>
+                </para>
                 <para>In the horizontal butterfly chart below, the bars are labeled on the Y axis on
                     the right side, and a general label for the Y axis must be positioned to the
                     right of—but not too far to the right of—the longest bar label. Because we can
@@ -311,29 +333,30 @@
                     </mediaobject>
                 </figure>
                 <para>The strategy for positioning objects at a specific distance from rotated text
-                    is similar, except that instead of using the length of the <emphasis role="ital"
-                        >diagonal</emphasis> text, we need to compute the <emphasis role="ital"
-                        >vertical</emphasis> space it occupies. We again start with vertical text
-                    and transform it by rotating it away from the vertical with
-                        <code>transform="rotate()"</code>. <code>rotate()</code> takes three
-                    arguments: the angle of rotation (in degrees) and the X and Y coordinates of the
-                    center of rotation, which we map to the X and Y coordinates of the
+                    is similar to the strategy for vertical text, except that instead of using the
+                    length of the diagonal text, we need to compute the vertical space it occupies.
+                    We again start with vertical text and transform it by rotating it away from the
+                    vertical with <code>transform="rotate()"</code>. <code>rotate()</code> takes
+                    three arguments: the angle of rotation (in degrees) and the X and Y coordinates
+                    of the center of rotation, which we map to the X and Y coordinates of the
                         <code>&lt;text&gt;</code> element.<footnote>
-                        <para>This approach rotates what was originally left-to-right text around
-                            its left edge and vertical center, so that the upper left corner of the
-                            diagonal rendering protrudes slightly to the left and top of the center
-                            of rotation, and the lower right corner behaves similarly. Because we do
-                            not require high precision, we ignore these protrusions.</para>
+                        <para>This approach rotates the text around its starting position (left edge
+                            and vertical center in this left-to-right example), so that the upper
+                            left corner of the diagonal rendering protrudes slightly to the left and
+                            top of the center of rotation, and the lower right corner behaves
+                            similarly. Because we do not require high precision, we ignore these
+                            protrusions.</para>
                     </footnote> If we regard the length of the text as the hypotenuse of a right
-                    angle, the vertical height of the text is the adjacent side, which we can
-                    compute as <emphasis role="ital">hypotenuse * cosθ</emphasis> .<footnote>
+                    angle that has been rotated counter-clockwise away from true vertical, the
+                    vertical height of the rotated text is the adjacent side of the right triangle,
+                    which we can compute as <emphasis role="ital">hypotenuse * cosθ</emphasis>.<footnote>
                         <para>Inconveniently, SVG rotation requires that angles be expressed in
                             degrees, while XPath trigonometic functions in the <code>math:</code>
                             namespace require that they be expressed in radians. We convert degrees
-                            to radians with <emphasis role="ital">radians = degrees *
-                                π/180</emphasis>. The width of the text, should we need it, is side
-                            opposite the angle, and its length can be determined as <emphasis
-                                role="ital">opposite = hypotenuse * sinθ</emphasis>.</para>
+                            to radians with <emphasis role="ital">radians = degrees * π /
+                                180</emphasis>. The width of the text, should we need it, is the
+                            opposite side of the angle, and its length can be determined as
+                                <emphasis role="ital">hypotenuse * sinθ</emphasis>.</para>
                     </footnote></para>
             </section>
             <section>
@@ -342,8 +365,11 @@
                     constructing the SVG, we first extract width information from TrueType TTF files
                     and format them as XML using the script in <xref linkend="extract-widths"/>.<footnote>
                         <para>In its current form our script to extract glyph widths currently
-                            processes only TTF fonts; it fails on, for example, TTC and OTF.</para>
-                    </footnote> The output is an XML document that looks like the following:</para>
+                            processes only TTF fonts and fails on, for example, TTC and OTF. Because
+                            these fonts also include metric information, if we need to process them
+                            we could emend our script to process these filetypes, as well.</para>
+                    </footnote> The output of the extraction process is an XML document that looks
+                    like the following:</para>
                 <programlisting language="xml" xml:space="preserve">&lt;metrics>
   &lt;metadata 
     fontName="Times New Roman" 
@@ -353,10 +379,10 @@
   &lt;character dec="33" hex="0x21" name="exclam" str="!" width="5.328125"/>
   &lt;!-- more characters -->
 &lt;/metrics></programlisting>
-                <para>We use the XPath <code>doc()</code> function to access this document inside
-                    the XSLT (assigned to the variable <code>$times-new-roman-16-mapping</code> in
-                    this case) that creates our SVG, and we compute the length (in SVG units) of the
-                    text strings with the following XSLT function:</para>
+                <para>We use the XPath <code>doc()</code> function to access this document (assigned
+                    to the variable <code>$times-new-roman-16-mapping</code> in this case) from
+                    within the XSLT that creates our SVG, and we compute the length (in SVG units)
+                    of the text strings with the following XSLT function:</para>
                 <programlisting>xsl:function name="djb:get-text-length" as="xs:double">
     xsl:param name="in" as="xs:string"/>
     xsl:sequence select="
@@ -365,28 +391,91 @@
             ! key('lengthByChar', ., $times-new-roman-16-mapping)/@width
             => sum()"/>
 /xsl:function></programlisting>
+                <para>This function explodes the string into a sequence of single-character strings,
+                    looks up the widths of each of them in the mapping table extracted from the font
+                    metrics, and sums the widths.</para>
             </section>
             <section>
                 <title>Discussion</title>
-                <para>Pro: Output does not depend on viewing in a browser or other
-                    DOM-and-JavaScript-aware environment. For example, can be included as an image
-                    in a Balisage (Docbook-based) document. Requires only XML-based programming; in
-                    particular, does not require JavaScript knowledge.</para>
-                <para>Con: Requires preparation of font metric information, an extra step both
-                    initially and with scaling consequences (e.g., user cannot safely override
-                    supplied font information). For improved robustness, requires webfont. Requires
-                    additional logic to deal with font effects (e.g., kerning<footnote>
-                        <para>Kerning is currently deprecated in SVG, and scheduled for removal in
-                            SVG 2.0. See <xref linkend="svg-2-kerning"/>.</para>
-                    </footnote>, ligatures, positional glyph variants) and transformations.
-                    Currently works only with TTF (not OTF, TTC, or others).</para>
+                <section>
+                    <title>Advantages</title>
+                    <itemizedlist>
+                        <listitem>
+                            <para>The primary advantage of this approach is that SVG created in this
+                                way does not depend on specific browser (or other user-agent)
+                                behaviors. Except for unpredictable kerning (or other automatic
+                                glyph-substitution behavior), SVG <code>&lt;text&gt;</code> elements
+                                placed with this method should be positioned as reliably as non-text
+                                SVG elements, and the method should continue to function with the
+                                browsers of the future.</para>
+                        </listitem>
+                        <listitem>
+                            <para>The XSLT-based method described here does not depend on a browser
+                                or other DOM-and-JavaScript-aware environment to compute the
+                                placement and positioning of SVG elements after the DOM content has
+                                been loaded. This means that this method may be easier to use
+                                outside browser environments.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Because creating SVG in this way does not require JavaScript
+                                programming, it poses a lower barrier to entry for XML developers
+                                who are not also comfortable with JavaScript development.<footnote>
+                                    <para>We used Python to create XML font metrics files, but
+                                        Python programming knowledge is not required because there
+                                        is stand-alone command-line <emphasis role="ital"
+                                            >ttx</emphasis> program that can export metric
+                                        information from fonts as XML. See <xref linkend="ttx-intro"
+                                        /> for more information.</para>
+                                </footnote></para>
+                        </listitem>
+                    </itemizedlist>
+                </section>
+                <section>
+                    <title>Disadvantages</title>
+                    <itemizedlist>
+                        <listitem>
+                            <para>This approach requires prior preparation of font metric
+                                information, an extra step that also has scalability implications
+                                because changing decisions about font families, font sizes, or other
+                                font properties requires creating separate additional metric
+                                information for them. Over time developers might create libraries of
+                                font metric information for reuse, but separate metric files will be
+                                required for all combinations of font family and font size.</para>
+                        </listitem>
+                        <listitem>
+                            <para>The method described above accesses only the glyph widths, which
+                                represent a small part of the font metric information available from
+                                a font file. A more robust and accurate implementation would
+                                requires additional logic to deal with font effects (e.g., kerning,
+                                ligatures, positional glyph variants) and transformations. That
+                                information is present in the fonts, but the developer would have to
+                                locate it in the font metric tables and then export it in a usable
+                                format.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Because the metrics of system fonts may differ in unpredictable
+                                ways (the most extreme of which would be the complete
+                                non-availability of a font used to compute the size of a
+                                    <code>&lt;text&gt;</code> element), developers may prefer to
+                                rely on webfonts, which would need to be prepared and made
+                                available. The approach described here is not compatible with font
+                                stacks because font metrics cannot be expected to be the same across
+                                fonts, including across fonts commonly stacked.</para>
+                        </listitem>
+                        <listitem>
+                            <para>The description above works with TTF fonts, but has not been
+                                tested with other font formats, such as OTF and TTC—let alone font
+                                formats of the future.</para>
+                        </listitem>
+                    </itemizedlist>
+                </section>
             </section>
         </section>
         <section>
             <title>A JavaScript approach</title>
             <section>
                 <title>Overview</title>
-                <para>BLAH BLAH BLAH</para>
+                <para>BLAH BLAH BLAH; include getComputedTextLength()</para>
             </section>
             <section>
                 <title>Implementation</title>
@@ -578,5 +667,8 @@ print(xml_str)</programlisting>
             (SVG) 2 W3C Candidate Recommendation 04 October 2018. §11.10.1.4. The ‘kerning’
             property.
             <link>https://www.w3.org/TR/SVG2/text.html#KerningProperty</link></bibliomixed>
+        <bibliomixed xml:id="ttx-intro" xreflabel="An intro to FontTools"><quote>An intro to
+                FontTools.</quote>
+            <link>https://github.com/arrowtype/fonttools-intro</link></bibliomixed>
     </bibliography>
 </article>
