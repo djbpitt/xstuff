@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.jenitennison.com/xslt/xspec"
+        xspec="file:/Users/djb/repos/xstuff/svg-text-size/Balisage-1-5-xsl/resources/report-string-lengths-as-svg.xspec"
+        stylesheet="file:/Users/djb/repos/xstuff/svg-text-size/Balisage-1-5-xsl/resources/report-string-lengths-as-text.xsl"
+        date="2021-05-15T12:41:15.955-04:00">
+   <scenario id="xaf5a622c-709b-3083-8214-e2ae921f9eec"
+             xspec="file:/Users/djb/repos/xstuff/svg-text-size/Balisage-1-5-xsl/resources/report-string-lengths-as-svg.xspec">
+      <label>Scenario for testing function get-text-length</label>
+      <input-wrap xmlns="">
+         <x:call xmlns:djb="http://www.obdurodon.org"
+                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                 xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                 function="djb:get-text-length">
+            <x:param name="in" select="'The quick brown fox jumps over the lazy dog!'"/>
+         </x:call>
+      </input-wrap>
+      <result select="2.97703125e2"/>
+      <test id="xaf5a622c-709b-3083-8214-e2ae921f9eec-expect1" successful="true">
+         <label>Computes length of input text</label>
+         <expect select="2.97703125e2"/>
+      </test>
+   </scenario>
+</report>

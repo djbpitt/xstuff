@@ -71,20 +71,8 @@
             </footnote>, but the length of a string of characters depends on the widths of the
             individual characters, and those widths are not exposed in any convenient, accessible
             way in a regular XML development environment.</para>
-        <para>Our test case for exploring and addressing this challenge is an SVG bar graph like the following:<footnote>
-                <para>This graph is based on XML originally prepared by Matthew Borbonus, Kyle
-                    Huber, and Ethan Moser as part of their <emphasis role="ital">Tracking language
-                        of catch and release in the poetical corpus of Edgar Allan Poe</emphasis>
-                        (<link>http://poe.obdurodon.org/</link>,
-                        <link>https://github.com/Ethandaniel47/EdgarAllanPoeProject</link>). The
-                    developers tagged parts of speech (e.g., <code>&lt;noun&gt;</code>,
-                        <code>&lt;verb&gt;</code>, etc.) in a small corpus of Poe’s poetry, adding
-                    an attribute <code>@value</code> to those elements with values of
-                        <code>"open"</code> and <code>"closed"</code> according to whether the
-                    tagged words could be associated with openness or closedness. We have adapted
-                    the XML and schema from the original project for this report, and the SVG
-                    visualizations are our own.</para>
-            </footnote></para>
+        <para>Our test case for exploring and addressing this challenge is an SVG bar graph like the
+            following:</para>
         <figure xml:id="figure-01" xreflabel="Sample bar graph">
             <mediaobject>
                 <imageobject>
@@ -94,25 +82,27 @@
         </figure>
         <para>In this graph the bars rest on the X axis, and they bear individual slanted labels
             below. Under those labels we label the X axis itself. The challenge involves determining
-            the Y position of the <quote>Poem</quote> label for the X axis, since that position will
-            depend on the length of the longest bar label, and will therefore vary according to the
-            specific poem titles. If you are like us, you place that label with a combination of
-            guesswork with trial and error and then hard-code a magic number, which—predictably and
+            the Y position of the general label for the X axis, since that position will depend on
+            the length of the longest bar label, and will therefore vary according to the specific
+            poem titles. If you are like us, you place that label with a combination of guesswork
+            with trial and error and then hard-code a magic number, which—predictably and
             understandably—breaks as soon as you try to reuse the code with new input.<footnote>
                 <para>Placing the X axis label more precisely in a way that takes into account the
                     lengths and positions of all of the bar labels is a version of the same type of
-                    task, although it is a much more complicated version. For example, if the
-                    leftmost and rightmost bar labels are the longest, a human designer might choose
-                    to label the X axis, if it is short enough, slightly between them, instead of
-                    fully below them. Similarly, a human designer might choose, if the bar labels
-                    happen to be longer on one side of the graph than the other, to place the axis
-                    label on the shorter side, below the bar labels on that side, but not below the
+                    task, although a more complicated one. For example, if the leftmost and
+                    rightmost bar labels are the longest, a human designer might choose to label the
+                    X axis, if it is short enough, slightly between them, instead of fully below
+                    them. Similarly, a human designer might choose, if the bar labels happen to be
+                    longer on one side of the graph than the other, to place the general axis label
+                    on the shorter side, below the bar labels on that side, but not below the
                     longest label (on the other side).</para>
                 <para>Our modest goal is simply to place the general label for the X axis with
                     reliable precision below the longest bar label. Whether the more exact placement
-                    described above would be worth the extra effort is less clear, but, as will be
-                    clear from the description below, it can be implemented as an extension of our
-                    simpler solution to the simpler task.</para>
+                    described above would be worth the extra effort cannot be determined in any
+                    general way, but because it builds on the same methods as the simpler task, it
+                    could, at least in principle, be implemented as an extension of the solution to
+                    that simpler task by taking more measurements into consideration when placing
+                    the label.</para>
             </footnote></para>
     </section>
     <section xml:id="solutions">
@@ -121,32 +111,59 @@
             knowing the length of an SVG <code>&lt;text></code> element:</para>
         <orderedlist>
             <listitem>
-                <para>As a preprocessing step before undertaking the transformation that outputs the
-                    SVG bar graph, create a mapping between characters and their individual widths
-                    by extracting font metrics. We can then import that mapping into the XSLT that
-                    generates the SVG and it to compute the length of text strings. If the text
+                <para><emphasis role="bold">The XSLT approach:</emphasis> As a preprocessing step
+                    before undertaking the transformation that outputs the SVG bar graph, create a
+                    mapping between characters and their individual widths by querying the font metrics.<footnote>
+                        <para><emphasis role="ital">Character</emphasis> refers to an informational
+                            unit of writing independently of its presentation. <emphasis role="ital"
+                                >Glyph</emphasis> refers to a font resource used to render a
+                            character. A text strings in our SVG is made up of characters; the
+                            rendering of the text inside a browser is a made up of glyphs.</para>
+                        <para>The distinction between character and glyph is important in many
+                            contexts because it is not necessarily one to one. For example, the
+                            writing unit <code>"ä"</code> may be represented as either a single
+                            composite character (Unicode U+00E4 <quote>Latin Small Letter A with
+                                Diaeresis</quote>) or a sequence of two Unicode characters, one for
+                            the base character <code>"a"</code> (U+0061 <quote>Latin Small Letter
+                                A</quote>) and one for the combining diacritic (U+0308
+                                <quote>Combining diaeresis</quote>). Whether a writing unit is
+                            represented as two characters informationally or as one is independent
+                            of whether it is rendered in a browser or other platform as two glyphs
+                            or as one.</para>
+                        <para>In this report we use both terms because we focus on situations where
+                            the mapping between characters and glyphs is one to one, or where the
+                            distinction does not affect the computation of text length.</para>
+                    </footnote> Font metrics are not accessible by default to an XSLT processor, but
+                    we can extract and format them in a preprocessing step and then import a
+                    machine-accessing mapping from glyph to width into the XSLT that generates the
+                    SVG. With this approach, the length of a <code>&lt;text&gt;</code> element is
+                    presumed to be the sum of the widths of its constituent characters. If the text
                     strings are horizontal or vertical, the length is one of the dimensions of the
                     bounding box, and the other dimension is the font size. If the text is rotated,
-                    we can use the length combined with the angle of rotation to compute the
-                    dimensions of the bounding box. </para>
+                    we can apply trigonometric functions to the length of the text (which functions
+                    as the hypotenuse) and the angle of rotation to compute the dimensions (the
+                    adjacent and opposites sides of a right triangle) of the bounding box.</para>
             </listitem>
             <listitem>
-                <para>Output SVG components that must be stacked vertically as separate
-                        <code>&lt;svg&gt;</code> elements with no height specified. These would
-                    wind up with a default height in a browser that would be wrong initially. We
-                    then use CSS Flexbox to stack the <code>&lt;svg&gt;</code> elements vertically,
-                    and employ the JavaScript <code>element.getBBox()</code> function to compute the
-                    dimensions of the bounding box for each of the vertically stacked
-                        <code>&lt;svg&gt;</code> elements. We can then write the computed height
-                    values into those elements in the DOM, effectively assigning a height after
-                    loading the SVG into the browser, instead of when creating it with XSLT.</para>
+                <para><emphasis role="bold">The JavaScript approach:</emphasis> Output SVG
+                    components that must be stacked vertically as separate <code>&lt;svg&gt;</code>
+                    elements with no height specified. These would wind up with a default height in
+                    a browser that would be wrong initially. We use CSS Flexbox to stack the
+                        <code>&lt;svg&gt;</code> elements vertically, and employ the JavaScript
+                        <code>element.getBBox()</code> function to compute the dimensions of the
+                    bounding box for each of the vertically stacked <code>&lt;svg&gt;</code>
+                    elements. We can then write the computed height values of each
+                        <code>&lt;svg&gt;</code> element into the DOM, effectively assigning a
+                    height after loading the SVG into the browser, instead of when creating it with
+                    XSLT.</para>
             </listitem>
         </orderedlist>
-        <para>These two approaches are described in more detail and illustrated below.<footnote>
+        <para>These two approaches, each of which has advantages and disadvantages, are described in
+            more detail and illustrated below.<footnote>
                 <para>We are grateful to the developers who participated in the discussion we opened
                     about this topic in the xml.com Slack workspace, and especially Gerrit Imsieke
                     and Liam Quin. Slack postings are ephemeral, but although that conversation will
-                    not be preserved, we are happy to be able to acknowledge it, more persistently,
+                    not be preserved, we are happy to be able to acknowledge it, more sustainably,
                     here.</para>
             </footnote></para>
         <section>
@@ -157,14 +174,14 @@
                     and positions other elements in relation to <code>&lt;text&gt;</code> elements
                     accordingly. For horizontal or vertical text this requires computing the length
                     of the <code>&lt;text&gt;</code> and using it to position other elements at a
-                    specific distance from the end of the text. This approach is less precise than
-                    the JavaScript method described below for at least two reasons (see below), but
-                    because we normally want to include a small amount of padding around our
-                        <code>&lt;text&gt;</code> elements in any case, we do not require high
-                    precision.</para>
+                    specific distance from it. This approach is less precise than the JavaScript
+                    method described below for several reasons (see below), but in our practical use
+                    we normally want to include a small amount of padding around our
+                        <code>&lt;text&gt;</code> elements in any case, which means that we do not
+                    require placement with exact precision.</para>
                 <para>In the sample SVG below, we compute the length of the text using the method
-                    described here and employ it to draw a line parallel to horizontal or vertical
-                    text, so that we can assess the accuracy of our measurements visually. In the
+                    described above and employ it to draw a line parallel to horizontal or vertical
+                    text, so that we can examine the accuracy of our measurements visually. In the
                     case of diagonal text we draw a bounding rectangle. The third of the four
                     examples in each figure is a null string:</para>
                 <figure xml:id="horizontal-sample" xreflabel="Sample horizontal text">
@@ -196,18 +213,19 @@
                             <para>A null string is correctly matched by a zero-length line.</para>
                         </listitem>
                     </itemizedlist></para>
-                <para>One limitation to computing the dimensions of SVG <code>&lt;text&gt;</code>
-                    elements while creating them is that <emphasis role="ital">user
-                        agents</emphasis> (typically browsers) may impose small unpredictable
-                    modifications on the layout. For example, the last of the horizontal examples
-                    above specifies a <code>@font-size</code> or <code>"16"</code> and computes a
-                    length of 297.703125), but when we open the SVG in Chrome, Firefox, and Safari
-                    and use the JavaScript <code>getBBox()</code> method to query the size of the
-                    bounding box, the three browsers report slightly different values for both
-                    height and width:<footnote>
-                        <para>We tested under MacOS 11.3.1 (Big Sur) with Chrome Version
-                            90.0.4430.212 (Official Build) (x86_64), Firefox Developer 89.0b11
-                            (64-bit), and Safari Version 14.1 (16611.1.21.161.6).</para>
+                <para>At the same time, these examples reveal several limitations. One limitation to
+                    computing the dimensions of SVG <code>&lt;text&gt;</code> elements while
+                    creating them is that <emphasis role="ital">user agents</emphasis> (typically
+                    browsers) may impose small unpredictable modifications on the layout. For
+                    example, the last of the horizontal examples above specifies a
+                        <code>@font-size</code> of <code>"16"</code> (which is the SVG and CSS
+                    default when no size is specified) and computes a length of 297.703125. However,
+                    when when we open the SVG in Chrome, Firefox, and Safari and use the JavaScript
+                        <code>getBBox()</code> method to query the size of the bounding box, the
+                    three browsers report slightly different values for both height and width:<footnote>
+                        <para>We tested these examples under MacOS 11.3.1 (Big Sur) with Chrome
+                            Version 90.0.4430.212 (Official Build) (x86_64), Firefox Developer
+                            89.0b11 (64-bit), and Safari Version 14.1 (16611.1.21.161.6).</para>
                     </footnote><table>
                         <thead>
                             <tr>
@@ -235,22 +253,39 @@
                         </tbody>
                     </table></para>
                 <para>A second limitation to computing the dimensions of SVG
-                        <code>&lt;text&gt;</code> elements while creating them is that the height is
-                    not fully predictable from the <code>@font-size</code> attribute of the
-                        <code>&lt;text&gt;</code> element. In the table above, we see that none of
-                    the browsers sets a height of 16 and each of them sets a different height.<footnote>
-                        <para>The widespread assumption that the <code>@font-size</code> values
-                            specifies the vertical distance between baselines is incorrect because,
-                            among other things, the values depend on font metrics, and not only on
-                            font size. See <xref linkend="deOliveira2017"/> for details and
-                            discussion. It should be possible to extract the actual height from the
-                            font metrics, as we do for character width, but we have not explored
-                            that possibility for this report.</para>
+                        <code>&lt;text&gt;</code> elements while creating them is that the height of
+                    an SVG <code>&lt;text&gt;</code> element is not fully predictable from its
+                        <code>@font-size</code> attribute. In the table above, we see that none of
+                    the browsers sets a height of 16 and each of them sets a different height from
+                    the others.<footnote>
+                        <para>The apparently widespread assumption that a <code>@font-size</code>
+                            value specifies the vertical distance between baselines is incorrect
+                            because, among other things, the actual spacing depends on font metrics,
+                            and not only on font size. See <xref linkend="deOliveira2017"/> for
+                            details and discussion. In principle it should be possible to extract
+                            the actual height from the font metrics, as we do for character width,
+                            but we have not explored that possibility for this report.</para>
                     </footnote></para>
                 <para>A third limitation to computing the dimensions of SVG
                         <code>&lt;text&gt;</code> elements while creating them is that kerning
                     support in browsers is inconsistent, and user-controlled kerning support in SVG
-                    and CSS is unreliable. </para>
+                    and CSS is unreliable. Whether you see kerning applied in the horizontal,
+                    vertical, and diagonal samples above will depend on your browser. The images
+                    below are PNG screen captures of the three samples in the versions of Firefox
+                    (left), Chrome (middle), and Safari (right) mentioned above. All three apply
+                    kerning to the horizontal text; Firefox and Chrome also apply kerning to the
+                    vertical and diagonal text, but Safari does not.</para>
+                <figure xml:id="kerning-comparison" xreflabel="Kerning differences in browsers">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/kerning-differences.png"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+                <para>SVG <code>&lt;text&gt;</code> elements may have a <code>@kerning</code>
+                    attribute (although support for kerning is slated for removal from SVG 2) and
+                    CSS supports a <code>font-kerning</code> property, but browser support is
+                    inconsistent to the point of being unpredictable. RESUME HERE</para>
                 <para>In the horizontal butterfly chart below, the bars are labeled on the Y axis on
                     the right side, and a general label for the Y axis must be positioned to the
                     right of—but not too far to the right of—the longest bar label. Because we can

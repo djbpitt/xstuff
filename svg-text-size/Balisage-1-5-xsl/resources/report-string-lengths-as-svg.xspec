@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:djb="http://www.obdurodon.org"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" stylesheet="report-string-lengths-as-text.xsl">
+    <x:scenario label="Scenario for testing function get-text-length">
+        <x:call function="djb:get-text-length">
+            <x:param name="in" select="'The quick brown fox jumps over the lazy dog!'"/>
+        </x:call>
+        <x:expect label="Computes length of input text" select="2.97703125e2"/>
+    </x:scenario>
+
+    <!--<x:scenario label="Scenario for testing function initial-template">
+        <x:call template="xsl:initial-template"/>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>-->
+
+    <!--<x:scenario label="Scenario for testing template with match 'input">
+        <x:context/>
+        <x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+    </x:scenario>-->
+</x:description>
