@@ -41,13 +41,18 @@
                 <surname>Taylor</surname>
             </personname>
             <personblurb>
-                <para>BLAH BLAH BLAH</para>
+                <para>Charlie Taylor is an undergraduate at the University of Pittsburgh studying
+                    History of Art &amp; Architecture and Classics. She was enrolled in Dr.
+                    Birnbaum's <quote>Computational methods in the humanities</quote> class in
+                    Spring 2020, and currently serves as a teaching assistant for the course. She
+                    will graduate in Spring 2023 and plans to pursue a graduate degree in Medieval
+                    Studies.</para>
             </personblurb>
             <affiliation>
                 <!-- job title is optional -->
                 <orgname>University of Pittsburgh</orgname>
             </affiliation>
-            <email>[ADD EMAIL]</email>
+            <email>CLT76@pitt.edu</email>
             <link>[ADD LINK(s)?]</link>
         </author>
         <keywordset role="author">

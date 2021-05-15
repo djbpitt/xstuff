@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns:djb="http://www.obdurodon.org"
-     xmlns="http://www.w3.org/2000/svg"
-     height="452"
-     width="570">
+<svg xmlns="http://www.w3.org/2000/svg" height="452" width="570">
    <g transform="translate(210, 100)">
-      <line x1="-160" x2="160" y1="0" y2="0" stroke="black"/>
-      <line x1="0" x2="0" y1="0" y2="252" stroke="black"/>
       <text y="-24"
             x="0"
             font-size="16"

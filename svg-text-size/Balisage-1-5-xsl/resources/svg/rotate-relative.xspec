@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:djb="http://www.obdurodon.org"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:math="http://www.w3.org/2005/xpath-functions/math" stylesheet="rotate-relative.xsl">
+    <x:scenario label="When degrees = 30">
+        <x:call function="djb:deg-to-rad">
+            <x:param name="deg" select="30"/>
+        </x:call>
+        <x:expect label="radians = pi/6" select="math:pi() div 6"/>
+    </x:scenario>
+
+    <x:scenario label="When rad = pi/6 and hyp = 25">
+        <x:call function="djb:tri-height">
+            <x:param name="hyp" select="25"/>
+            <x:param name="rad" select="math:pi() div 6"/>
+        </x:call>
+        <x:expect label="height = 21.65" select="2.165063509461097e1"/>
+    </x:scenario>
+
+   <x:scenario label="Text size for Nieuw-Amsterdam">
+        <x:call function="djb:get-text-length">
+            <x:param name="in" select="'Nieuw-Amsterdam'"/>
+        </x:call>
+       <x:expect label="about 122.6" select="1.226328125e2"/>
+    </x:scenario>
+</x:description>

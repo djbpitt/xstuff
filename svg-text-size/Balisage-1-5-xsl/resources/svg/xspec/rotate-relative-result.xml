@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.jenitennison.com/xslt/xspec"
+        xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec"
+        stylesheet="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xsl"
+        date="2021-05-15T18:05:40.556-04:00">
+   <scenario id="x09058d3e-cf42-38d2-abd1-8e818c6a7833"
+             xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec">
+      <label>When degrees = 30</label>
+      <input-wrap xmlns="">
+         <x:call xmlns:djb="http://www.obdurodon.org"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                 xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                 function="djb:deg-to-rad">
+            <x:param name="deg" select="30"/>
+         </x:call>
+      </input-wrap>
+      <result select="5.235987755982988e-1"/>
+      <test id="x09058d3e-cf42-38d2-abd1-8e818c6a7833-expect1" successful="true">
+         <label>radians = pi/6</label>
+         <expect select="5.235987755982988e-1"/>
+      </test>
+   </scenario>
+   <scenario id="xa975fd7b-db2f-3afb-bbe2-f3949112e30c"
+             xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec">
+      <label>When rad = pi/6 and hyp = 25</label>
+      <input-wrap xmlns="">
+         <x:call xmlns:djb="http://www.obdurodon.org"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                 xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                 function="djb:tri-height">
+            <x:param name="hyp" select="25"/>
+            <x:param name="rad" select="math:pi() div 6"/>
+         </x:call>
+      </input-wrap>
+      <result select="2.165063509461097e1"/>
+      <test id="xa975fd7b-db2f-3afb-bbe2-f3949112e30c-expect1" successful="true">
+         <label>height = 21.65</label>
+         <expect select="2.165063509461097e1"/>
+      </test>
+   </scenario>
+   <scenario id="xa04a1ae9-e4db-3032-bdf0-85225c3787d9"
+             xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec">
+      <label>Text size for Nieuw-Amsterdam</label>
+      <input-wrap xmlns="">
+         <x:call xmlns:djb="http://www.obdurodon.org"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                 xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                 function="djb:get-text-length">
+            <x:param name="in" select="'Nieuw-Amsterdam'"/>
+         </x:call>
+      </input-wrap>
+      <result select="1.226328125e2"/>
+      <test id="xa04a1ae9-e4db-3032-bdf0-85225c3787d9-expect1" successful="true">
+         <label>about 122.6</label>
+         <expect select="1.226328125e2"/>
+      </test>
+   </scenario>
+</report>
