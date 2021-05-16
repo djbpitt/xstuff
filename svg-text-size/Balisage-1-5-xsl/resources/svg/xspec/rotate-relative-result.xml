@@ -2,7 +2,7 @@
 <report xmlns="http://www.jenitennison.com/xslt/xspec"
         xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec"
         stylesheet="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xsl"
-        date="2021-05-15T18:05:40.556-04:00">
+        date="2021-05-16T11:19:21.641-04:00">
    <scenario id="x09058d3e-cf42-38d2-abd1-8e818c6a7833"
              xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec">
       <label>When degrees = 30</label>
@@ -21,26 +21,43 @@
          <expect select="5.235987755982988e-1"/>
       </test>
    </scenario>
-   <scenario id="xa975fd7b-db2f-3afb-bbe2-f3949112e30c"
+   <scenario id="x6ae3905f-0ad2-36a3-b215-3ae4bc0b96ec"
              xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec">
-      <label>When rad = pi/6 and hyp = 25</label>
+      <label>When degrees = 45</label>
       <input-wrap xmlns="">
          <x:call xmlns:djb="http://www.obdurodon.org"
                  xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                  xmlns:x="http://www.jenitennison.com/xslt/xspec"
-                 function="djb:tri-height">
-            <x:param name="hyp" select="25"/>
-            <x:param name="rad" select="math:pi() div 6"/>
+                 function="djb:deg-to-rad">
+            <x:param name="deg" select="45"/>
          </x:call>
       </input-wrap>
-      <result select="2.165063509461097e1"/>
-      <test id="xa975fd7b-db2f-3afb-bbe2-f3949112e30c-expect1" successful="true">
-         <label>height = 21.65</label>
-         <expect select="2.165063509461097e1"/>
+      <result select="7.853981633974483e-1"/>
+      <test id="x6ae3905f-0ad2-36a3-b215-3ae4bc0b96ec-expect1" successful="true">
+         <label>radians = pi/4</label>
+         <expect select="7.853981633974483e-1"/>
       </test>
    </scenario>
-   <scenario id="xa04a1ae9-e4db-3032-bdf0-85225c3787d9"
+   <scenario id="x79c8bd17-6940-31f9-bc3c-0834d9df7908"
+             xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec">
+      <label>When degrees = 60</label>
+      <input-wrap xmlns="">
+         <x:call xmlns:djb="http://www.obdurodon.org"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                 xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                 function="djb:deg-to-rad">
+            <x:param name="deg" select="60"/>
+         </x:call>
+      </input-wrap>
+      <result select="1.0471975511965976e0"/>
+      <test id="x79c8bd17-6940-31f9-bc3c-0834d9df7908-expect1" successful="true">
+         <label>radians = pi/3</label>
+         <expect select="1.0471975511965976e0"/>
+      </test>
+   </scenario>
+   <scenario id="xf315ad82-f7e3-3617-8aa6-8dd59039807c"
              xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec">
       <label>Text size for Nieuw-Amsterdam</label>
       <input-wrap xmlns="">
@@ -53,9 +70,28 @@
          </x:call>
       </input-wrap>
       <result select="1.226328125e2"/>
-      <test id="xa04a1ae9-e4db-3032-bdf0-85225c3787d9-expect1" successful="true">
-         <label>about 122.6</label>
+      <test id="xf315ad82-f7e3-3617-8aa6-8dd59039807c-expect1" successful="true">
+         <label>is about 122.6</label>
          <expect select="1.226328125e2"/>
+      </test>
+   </scenario>
+   <scenario id="x928fa32a-8840-388d-95dc-d797b967cb30"
+             xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec">
+      <label>When rad = pi/6 and hyp = 122.6</label>
+      <input-wrap xmlns="">
+         <x:call xmlns:djb="http://www.obdurodon.org"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                 xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                 function="djb:tri-height">
+            <x:param name="hyp" select="1.226328125e2"/>
+            <x:param name="rad" select="math:pi() div 6"/>
+         </x:call>
+      </input-wrap>
+      <result select="1.0620313096253386e2"/>
+      <test id="x928fa32a-8840-388d-95dc-d797b967cb30-expect1" successful="true">
+         <label>height = about 106.2</label>
+         <expect select="1.0620313096253386e2"/>
       </test>
    </scenario>
 </report>
