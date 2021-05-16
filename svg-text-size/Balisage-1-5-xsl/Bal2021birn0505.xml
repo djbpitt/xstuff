@@ -291,9 +291,10 @@
                             value specifies the vertical distance between baselines is incorrect
                             because, among other things, the actual spacing depends on the font
                             design, and not only on font size. See <xref linkend="deOliveira2017"/>
-                            for details and discussion. In principle it should be possible to
-                            extract the actual height from the font metrics, as we do for character
-                            width, but we have not explored that possibility for this report.</para>
+                            for details and discussion, as well as <xref linkend="chase2019"/>. In
+                            principle it should be possible to extract the actual height from the
+                            font metrics, as we do for character width, but we have not explored
+                            that possibility for this report.</para>
                     </footnote></para>
                 <para>A third limitation to computing the dimensions of SVG
                         <code>&lt;text&gt;</code> elements while creating them is that kerning
@@ -529,7 +530,7 @@
                             <para>Sample output of the JavaScript method. Colored outlines and
                                 borders have been added to illustrate the positions of the otherwise
                                 invisible bounding elements. Note that rotated text that crosses the
-                                bounding box in rendered correctly.</para>
+                                bounding box is rendered correctly (that is, not cropped).</para>
                         </caption>
                     </mediaobject>
                 </figure>
