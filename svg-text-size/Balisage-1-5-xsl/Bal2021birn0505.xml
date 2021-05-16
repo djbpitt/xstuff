@@ -507,12 +507,49 @@
                     be computed when the SVG is created. When the SVG is eventually loaded into a
                     browser, this approach uses standard JavaScript functions to compute the missing
                     dimensions and write them into the DOM in a way that controls the layout.</para>
+                <para>Because the JavaScript approach relies on JavaScript applied in the browser
+                    after the document loads, this method can be used only where the developer has
+                    the neceessary permissions to specify JavaScript modifications. Because that is
+                    not the case with the Balisage Proceedings in which this report is being
+                    published, the output of the JavaScript method is illustrated with PNG screen captures.<footnote>
+                        <para>Our screen captures in this case are taken from the Firefox version
+                            identified above, but we have verified that the method yields a
+                            comparable rendering (except for cosmetic differences in browser
+                            defaults) in Chrome and Safari versions, as well.</para>
+                    </footnote></para>
             </section>
             <section>
                 <title>Implementation</title>
                 <para>BLAH BLAH BLAH</para>
                 <para><code>getComputedTextLength()</code></para>
-                <para>Sample HTML with embedded SVG items to be layered:</para>
+                <para>Below is an HTML example of our JavaScript implementation. HTML
+                        <code>&lt;div></code> elements default to a CSS <code>display</code>value of
+                        <code>block</code>, which means that they will arrange themselves vertically
+                    by default. Because we want to manage our SVG components as HTML blocks, we use
+                    CSS (not included in the example, below) to set a <code>display</code> value of
+                        <code>block</code> for the <code>&lt;svg&gt;</code> children of the
+                        <code>&lt;div&gt;</code> elements, overriding the default value of
+                        <code>inline-block</code>.</para>
+                <para>Because we do not specify the height of the rectangular viewport with an
+                    explicit <code>@height</code> attribute on the embedded <code>&lt;svg></code>
+                    elements, in absence of our JavaScript intervention (see below) the
+                        <code>&lt;svg></code> elements will assume whatever the browser assigns as a
+                    default height.<footnote>
+                        <para>The default size is implementation dependent, and therefore
+                            unpredictable. As of 2017:<blockquote>
+                                <para>The default size for HTML replaced elements will be used:
+                                    300px wide, 150px tall. This applies for &lt;img>, &lt;object>
+                                    or &lt;iframe>. The default 300×150 size also applies to inline
+                                    &lt;svg> elements within HTML documents, but that’s a relatively
+                                    recent consensus from the HTML5 specifications: other browsers
+                                    will by default expand inline SVG to the full size of the
+                                    viewport—equivalent to width: 100vw; height: 100vh; — which is
+                                    the default size for SVG files that are opened directly in their
+                                    own browser tab. Internet Explorer cuts the difference, using
+                                    width of 100% and height of 150px for images and inline SVG.
+                                        (<xref linkend="bellamy-royds2017"/>)</para>
+                            </blockquote></para>
+                    </footnote></para>
                 <programlisting language="xml">&lt;body>
   &lt;div>
     &lt;svg xmlns="http://www.w3.org/2000/svg">
@@ -576,6 +613,9 @@ function init() {
         divs[i].querySelector('svg').setAttribute('height', bb.height);
     }
 }</programlisting>
+                <para>HTML block elements arrange themselves vertically by default, but we can use
+                    CSS Flexbox to arrange them horizontally where needed. </para>
+                <para>RESUME HERE</para>
                 <para><code>getBBox()</code> is not sensitive to transformations that have been
                     applied to an object, and <xref linkend="primer-getBoundingClientRect"/>
                     proposes the use of <code>getCTM()</code> to work around this limitation. We
@@ -766,5 +806,8 @@ print(xml_str)</programlisting>
         <bibliomixed xml:id="ttx-intro" xreflabel="An intro to FontTools"><quote>An intro to
                 FontTools.</quote>
             <link>https://github.com/arrowtype/fonttools-intro</link></bibliomixed>
+        <bibliomixed xml:id="bellamy-royds2017" xreflabel="Bellamy-Royds 2017"><quote>How to scale
+                SVG.</quote> Updated on Jun 27, 2017.
+            <link>https://css-tricks.com/scale-svg/</link></bibliomixed>
     </bibliography>
 </article>
