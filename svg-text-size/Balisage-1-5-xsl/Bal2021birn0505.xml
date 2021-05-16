@@ -503,10 +503,11 @@
             <title>A JavaScript approach</title>
             <section>
                 <title>Overview</title>
-                <para>The JavaScript approach leaves the SVG dimensions unspecified if they cannot
-                    be computed when the SVG is created. When the SVG is eventually loaded into a
-                    browser, this approach uses standard JavaScript functions to compute the missing
-                    dimensions and write them into the DOM in a way that controls the layout.</para>
+                <para>The JavaScript approach leaves the SVG <code>@height</code> and
+                        <code>@width</code> attributes unspecified if they cannot be computed when
+                    the SVG is created. When the SVG is eventually loaded into a browser, we use
+                    standard JavaScript functions to compute the missing dimensions and write them
+                    into the DOM in a way that controls the layout.</para>
                 <para>Because the JavaScript approach relies on JavaScript applied in the browser
                     after the document loads, this method can be used only where the developer has
                     the neceessary permissions to specify JavaScript modifications. Because that is
@@ -515,18 +516,32 @@
                         <para>Our screen captures in this case are taken from the Firefox version
                             identified above, but we have verified that the method yields a
                             comparable rendering (except for cosmetic differences in browser
-                            defaults) in Chrome and Safari versions, as well.</para>
+                            defaults) in Chrome and Safari.</para>
                     </footnote></para>
+                <figure xml:id="js-mockup" xreflabel="Sample output of JavaScript method">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/js-mockup.png" width="12in"/>
+                        </imageobject>
+                        <caption>
+                            <para>Sample output of the JavaScript method. Colored outlines and
+                                borders have been added to illustrate the positions of the otherwise
+                                invisible bounding elements.</para>
+                        </caption>
+                    </mediaobject>
+                </figure>
             </section>
             <section>
                 <title>Implementation</title>
                 <para>BLAH BLAH BLAH</para>
                 <para><code>getComputedTextLength()</code></para>
-                <para>Below is an HTML example of our JavaScript implementation. HTML
-                        <code>&lt;div></code> elements default to a CSS <code>display</code>value of
-                        <code>block</code>, which means that they will arrange themselves vertically
-                    by default. Because we want to manage our SVG components as HTML blocks, we use
-                    CSS (not included in the example, below) to set a <code>display</code> value of
+                <para>Below is an illustration of the output of our JavaScript implementation.<footnote>
+                        <para>The raw HTML, with embedded CSS and JavaScript, can be found in
+                        </para>
+                    </footnote> HTML <code>&lt;div></code> elements default to a CSS
+                        <code>display</code>value of <code>block</code>, which means that they will
+                    arrange themselves vertically by default. Because we want to manage our SVG
+                    components as HTML blocks, to set a <code>display</code> value of
                         <code>block</code> for the <code>&lt;svg&gt;</code> children of the
                         <code>&lt;div&gt;</code> elements, overriding the default value of
                         <code>inline-block</code>.</para>
@@ -771,6 +786,183 @@ print(xml_str)</programlisting>
         <para>The SVG layout strategy described here uses the <code>@str</code> value to retrieve
             the <code>@width</code> value. The <code>@dec</code> (decimal) and <code>@hex</code>
             (hexadecimal) values are not currently used.</para>
+    </appendix>
+    <appendix xml:id="javascript-mockup" xreflabel="JavaScript implementation sample">
+        <title>Sample HTML for JavaScript method</title>
+        <programlisting language="xml" xml:space="preserve">&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;!DOCTYPE html>
+&lt;html xmlns="http://www.w3.org/1999/xhtml">
+  &lt;!-- ================================================================ -->
+  &lt;!-- Illustrates JavaScript mediated layout of SVG &lt;text>             -->
+  &lt;!--                                                                  -->
+  &lt;!-- &lt;body> has &lt;section> children arranged vertically and outlined   -->
+  &lt;!--   in red                                                         -->
+  &lt;!-- &lt;section> elements have &lt;div> children arranged horizontally     -->
+  &lt;!--   and bordered in blue                                           -->
+  &lt;!-- ================================================================ -->
+  &lt;head>
+    &lt;title>JavaScript method mockup&lt;/title>
+    &lt;style type="text/css">
+      svg {
+        display: block;
+        overflow: visible; # for tightly rotated text
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1em;
+      }
+      section {
+        display: flex;
+        flex-direction: row;
+        column-gap: 1em;
+        outline: 4px red solid;
+      }
+      div {
+        border: 2px blue solid;
+      }&lt;/style>
+    &lt;script type="text/javascript">
+      &lt;![CDATA[
+      window.addEventListener('DOMContentLoaded', init, false);
+      function init() {
+        const divs = document.querySelectorAll('div');
+        for (i = 0; i &lt; divs.length; i++) {
+          bb = divs[i].querySelector('g').getBBox();
+          console.log(bb);
+          divs[i].querySelector('svg').setAttribute('height', bb.height);
+          divs[i].querySelector('svg').setAttribute('width', bb.width);
+        }
+      }//&#x005d;&#x005d;>&lt;/script>
+  &lt;/head>
+  &lt;body>
+    &lt;section>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
+              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
+              font-size="16" dominant-baseline="hanging">Sample vertical text&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
+              font-size="16" transform="rotate(-30)">Sample diagonal text (30º)&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
+              font-size="16" transform="rotate(-60)">Sample diagonal text (60º)&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
+              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+    &lt;/section>
+    &lt;section>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
+              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
+              font-size="16" dominant-baseline="hanging">Sample vertical text&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
+              font-size="16" transform="rotate(-30)">Sample diagonal text (30º)&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
+              font-size="16" transform="rotate(-60)">Sample diagonal text (60º)&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
+              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+    &lt;/section>
+    &lt;section>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
+              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
+              font-size="16" dominant-baseline="hanging">Sample vertical text&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
+              font-size="16" transform="rotate(-30)">Sample diagonal text (30º)&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
+              font-size="16" transform="rotate(-60)">Sample diagonal text (60º)&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+      &lt;div>
+        &lt;svg xmlns="http://www.w3.org/2000/svg">
+          &lt;g>
+            &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
+              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+          &lt;/g>
+        &lt;/svg>
+      &lt;/div>
+    &lt;/section>
+  &lt;/body>
+&lt;/html></programlisting>
     </appendix>
     <bibliography>
         <title>Works cited</title>

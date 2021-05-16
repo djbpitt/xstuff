@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+    <!-- ================================================================ -->
+    <!-- Illustrates JavaScript mediated layout of SVG <text>             -->
+    <!--                                                                  -->
+    <!-- <body> has <section> children arranged vertically and outlined   -->
+    <!--   in red                                                         -->
+    <!-- <section> elements have <div> children arranged horizontally     -->
+    <!--   and bordered in blue                                           -->
+    <!-- ================================================================ -->
     <head>
         <title>JavaScript method mockup</title>
         <style type="text/css">
             svg {
                 display: block;
+                overflow: visible; # for tightly rotated text
             }
             body {
                 display: flex;
@@ -32,8 +41,6 @@
                     divs[i].querySelector('svg').setAttribute('height', bb.height);
                     divs[i].querySelector('svg').setAttribute('width', bb.width);
                 }
-                // subtract from text not rotated around origin
-                // Overflow visible or shift g to accommodate
             }//]]></script>
     </head>
     <body>
