@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>JavaScript method mockup</title>
+        <style type="text/css">
+            svg {
+                display: block;
+            }</style>
+        <script type="text/javascript">
+            window.addEventListener('DOMContentLoaded', init, false);
+            function init() {
+                const divs = document.querySelectorAll('div');
+                for (i = 0; i &lt; divs.length; i++) {
+                    bb = divs[i].querySelector('g').getBBox();
+                    console.log(bb);
+                    divs[i].querySelector('svg').setAttribute('height', bb.height);
+                }
+                // subtract from text not rotated around origin
+                // Overflow visible or shift g to accommodate 
+            }</script>
+    </head>
+    <body>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(10)">
+                    <text x="0" y="0" font-family="Times New Roman" font-size="16"
+                        dominant-baseline="hanging">Sample horizontal text</text>
+                </g>
+            </svg>
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(10)">
+                    <text x="0" y="0" writing-mode="tb" font-family="Times New Roman" font-size="16"
+                        >Sample vertical text</text>
+                </g>
+            </svg>
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(13, 5)">
+                    <text x="0" y="0" writing-mode="tb" font-family="Times New Roman" font-size="16"
+                        transform="rotate(-30)">Sample diagonal text (30º)</text>
+                </g>
+            </svg>
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(13, 5)">
+                    <text x="0" y="0" writing-mode="tb" font-family="Times New Roman" font-size="16"
+                        transform="rotate(-60)">Sample diagonal text (60º)</text>
+                </g>
+            </svg>
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(10)">
+                    <text x="0" y="0" font-family="Times New Roman" font-size="16"
+                        dominant-baseline="hanging">Sample horizontal text</text>
+                </g>
+            </svg>
+        </div>
+    </body>
+</html>
