@@ -411,14 +411,14 @@
                     to the variable <code>$times-new-roman-16-mapping</code> in this case) from
                     within the XSLT that creates our SVG, and we compute the length (in SVG units)
                     of the text strings with the following XSLT function:</para>
-                <programlisting>xsl:function name="djb:get-text-length" as="xs:double">
-    xsl:param name="in" as="xs:string"/>
-    xsl:sequence select="
+                <programlisting language="xml">&lt;xsl:function name="djb:get-text-length" as="xs:double">
+    &lt;xsl:param name="in" as="xs:string"/>
+    &lt;xsl:sequence select="
             string-to-codepoints($in)
             ! codepoints-to-string(.)
             ! key('lengthByChar', ., $times-new-roman-16-mapping)/@width
             => sum()"/>
-/xsl:function></programlisting>
+&lt;/xsl:function></programlisting>
                 <para>This function explodes the string into a sequence of single-character strings,
                     looks up the widths of each of them in the mapping table extracted from the font
                     metrics, and sums the widths.</para>
@@ -504,20 +504,22 @@
             <section>
                 <title>Overview</title>
                 <para>The JavaScript approach leaves the SVG <code>@height</code> and
-                        <code>@width</code> attributes unspecified if they cannot be computed when
-                    the SVG is created. When the SVG is eventually loaded into a browser, we use
-                    standard JavaScript functions to compute the missing dimensions and write them
-                    into the DOM in a way that controls the layout.</para>
+                        <code>@width</code> attributes unspecified if they cannot be computed at the
+                    time the SVG is created. When the SVG is eventually loaded into a browser,
+                    JavaScript functions compute the missing dimensions and write them into the DOM
+                    in a way that controls the layout.</para>
                 <para>Because the JavaScript approach relies on JavaScript applied in the browser
                     after the document loads, this method can be used only where the developer has
-                    the neceessary permissions to specify JavaScript modifications. Because that is
-                    not the case with the Balisage Proceedings in which this report is being
-                    published, the output of the JavaScript method is illustrated with PNG screen captures.<footnote>
+                    file system or server permissions needed to specify JavaScript modifications.
+                    Because that is not the case with the Balisage <emphasis role="ital"
+                        >Proceedings</emphasis> in which this report is being published, the output
+                    of the JavaScript method is illustrated below with a PNG screen capture.<footnote>
                         <para>Our screen captures in this case are taken from the Firefox version
                             identified above, but we have verified that the method yields a
                             comparable rendering (except for cosmetic differences in browser
                             defaults) in Chrome and Safari.</para>
-                    </footnote></para>
+                    </footnote> The raw HTML, with embedded CSS and JavaScript, can be found in
+                        <xref linkend="javascript-mockup"/>.</para>
                 <figure xml:id="js-mockup" xreflabel="Sample output of JavaScript method">
                     <mediaobject>
                         <imageobject>
@@ -526,32 +528,21 @@
                         <caption>
                             <para>Sample output of the JavaScript method. Colored outlines and
                                 borders have been added to illustrate the positions of the otherwise
-                                invisible bounding elements.</para>
+                                invisible bounding elements. Note that rotated text that crosses the
+                                bounding box in rendered correctly.</para>
                         </caption>
                     </mediaobject>
                 </figure>
             </section>
             <section>
                 <title>Implementation</title>
-                <para>BLAH BLAH BLAH</para>
-                <para><code>getComputedTextLength()</code></para>
-                <para>Below is an illustration of the output of our JavaScript implementation.<footnote>
-                        <para>The raw HTML, with embedded CSS and JavaScript, can be found in
-                        </para>
-                    </footnote> HTML <code>&lt;div></code> elements default to a CSS
-                        <code>display</code>value of <code>block</code>, which means that they will
-                    arrange themselves vertically by default. Because we want to manage our SVG
-                    components as HTML blocks, to set a <code>display</code> value of
-                        <code>block</code> for the <code>&lt;svg&gt;</code> children of the
-                        <code>&lt;div&gt;</code> elements, overriding the default value of
-                        <code>inline-block</code>.</para>
-                <para>Because we do not specify the height of the rectangular viewport with an
-                    explicit <code>@height</code> attribute on the embedded <code>&lt;svg></code>
-                    elements, in absence of our JavaScript intervention (see below) the
-                        <code>&lt;svg></code> elements will assume whatever the browser assigns as a
-                    default height.<footnote>
-                        <para>The default size is implementation dependent, and therefore
-                            unpredictable. As of 2017:<blockquote>
+                <para>Because we do not specify the width or height of the rectangular viewport of
+                    our <code>&lt;svg&gt;</code> with explicit <code>@width</code> or
+                        <code>@height</code> attributes, in absence of our JavaScript intervention
+                    (see below) the <code>&lt;svg></code> elements will assume whatever the browser
+                    assigns as default. The default size is implementation dependent, and therefore
+                    unpredictable and unusable for our purposes.<footnote>
+                        <para>As of 2017:<blockquote>
                                 <para>The default size for HTML replaced elements will be used:
                                     300px wide, 150px tall. This applies for &lt;img>, &lt;object>
                                     or &lt;iframe>. The default 300×150 size also applies to inline
@@ -564,95 +555,113 @@
                                     width of 100% and height of 150px for images and inline SVG.
                                         (<xref linkend="bellamy-royds2017"/>)</para>
                             </blockquote></para>
-                    </footnote></para>
-                <programlisting language="xml">&lt;body>
-  &lt;div>
-    &lt;svg xmlns="http://www.w3.org/2000/svg">
-      &lt;g transform="translate(10)">
-        &lt;text x="0" y="0" 
-        font-family="Times New Roman" 
-        font-size="16" 
-        dominant-baseline="hanging">Sample horizontal text&lt;/text>
-      &lt;/g>
-    &lt;/svg>
-  &lt;/div>
-  &lt;div>
-    &lt;svg xmlns="http://www.w3.org/2000/svg">
-      &lt;g transform="translate(10)">
-        &lt;text x="0" y="0" 
-        writing-mode="tb" 
-        font-family="Times New Roman" 
-        font-size="16">Sample vertical text&lt;/text>
-      &lt;/g>
-    &lt;/svg>
-  &lt;/div>
-  &lt;div>
-    &lt;svg xmlns="http://www.w3.org/2000/svg">
-      &lt;g transform="translate(10)">
-        &lt;text x="0" y="0" 
-        writing-mode="tb" 
-        font-family="Times New Roman" 
-        font-size="16"
-        transform="rotate(-30, 3, 3)">Sample diagonal text (30º)&lt;/text>
-      &lt;/g>
-    &lt;/svg>
-  &lt;/div>
-  &lt;div>
-    &lt;svg xmlns="http://www.w3.org/2000/svg">
-      &lt;g transform="translate(10)">
-        &lt;text x="0" y="0" 
-        writing-mode="tb" 
-        font-family="Times New Roman" 
-        font-size="16"
-        transform="rotate(-60, 3, 3)">Sample diagonal text (60º)&lt;/text>
-      &lt;/g>
-    &lt;/svg>
-  &lt;/div>
-  &lt;div>
-    &lt;svg xmlns="http://www.w3.org/2000/svg">
-      &lt;g transform="translate(10)">
-        &lt;text x="0" y="0" 
-        font-family="Times New Roman" 
-        font-size="16" 
-        dominant-baseline="hanging">Sample horizontal text&lt;/text>
-      &lt;/g>
-    &lt;/svg>
-  &lt;/div>
-&lt;/body></programlisting>
-                <para>JavaScript to control horizontal layering:</para>
+                    </footnote> Additionally, <code>&lt;svg&gt;</code> elements default to a CSS
+                        <code>display</code> value of <code>inline-block</code>, which we have to
+                    change to <code>block</code> to provide more transparent control over explicit
+                    positioning.</para>
+                <para>Our general strategy relies on HTML and CSS Flexbox to manage the layout of
+                    the SVG components. For this purpose what would normally be constructed as a
+                    single SVG document (e.g., a bar graph with all of its labels) is divided into
+                    multiple SVG documents, each wrapped in an HTML <code>&lt;div&gt;</code> or
+                    other block-level element. We use CSS Flexbox to position the
+                        <code>&lt;div&gt;</code> elements as they would have been positioned in a
+                    single, unified SVG document.</para>
+                <para>We illustrate our positioning strategy in the image above. In that image the
+                        <code>&lt;body&gt;</code> contains three <code>&lt;section&gt;</code>
+                    elements, one for each of the horizontal rows (outlined in red). The
+                        <code>display</code> property of the <code> &lt;body&gt;</code> is set to
+                        <code>flex</code> with a <code>flex-direction</code> value of
+                        <code>column</code>, so that the <code>&lt;section&gt;</code> elements will
+                    be rendered from top to bottom in the browser window. The height of an HTML
+                        <code>&lt;section&gt;</code> is, unless specified explicitly in other ways,
+                    determined by its contents, and we use JavaScript to write <code>@height</code>
+                    attributes into the <code>&lt;svg&gt;</code> descendants of each
+                        <code>&lt;section&gt;</code> that actual match the height occupied by the
+                    SVG. Once those attributes have been added, the height of a section will be
+                    determined by the height of the <code>&lt;svg&gt;</code> it contains. We use the
+                    CSS <code>row-gap</code> property to introduce a gutter between the
+                    sections.</para>
+                <para>Each of the three <code>&lt;section&gt;</code> elements also has its
+                        <code>display</code> property set to <code>flex</code>, this time with a
+                        <code>flex-direction</code> value of <code>row</code>, so that its
+                        <code>&lt;div&gt;</code> children will be distributed horizontally across
+                    the row. We use the CSS <code>column-gap</code> property to introduce a gutter
+                    between the <code>&lt;div&gt;</code> elements in each row (each HTML
+                        <code>&lt;section&gt;</code>). Once our JavaScript writes
+                        <code>@width</code> attributes into the SVG descendants of each
+                        <code>&lt;div&gt;</code>, the <code>&lt;div&gt;</code> will occupy the space
+                    required for their SVG contents, overriding the default width that would
+                    otherwise be supplied by the browser.</para>
+                <para>The JavaScript that supplies explicit <code>@width</code> and
+                        <code>@height</code> values to the <code>&lt;svg&gt;</code> elements
+                    is:</para>
                 <programlisting language="javascript">window.addEventListener('DOMContentLoaded', init, false);
 function init() {
     const divs = document.querySelectorAll('div');
     for (i = 0; i &lt; divs.length; i++) {
         bb = divs[i].querySelector('g').getBBox();
+        console.log(bb);
         divs[i].querySelector('svg').setAttribute('height', bb.height);
+        divs[i].querySelector('svg').setAttribute('width', bb.width);
     }
 }</programlisting>
-                <para>HTML block elements arrange themselves vertically by default, but we can use
-                    CSS Flexbox to arrange them horizontally where needed. </para>
-                <para>RESUME HERE</para>
-                <para><code>getBBox()</code> is not sensitive to transformations that have been
-                    applied to an object, and <xref linkend="primer-getBoundingClientRect"/>
-                    proposes the use of <code>getCTM()</code> to work around this limitation. We
-                    find it simpler to wrap the transformed object(s) in an SVG
-                        <code>&lt;g&gt;</code> or <code>&lt;svg&gt;</code> element; because those
-                    objects are not themselves transformed, <code>getBBox()</code> reports their
-                    actual coordinates correctly even when they contain descendant elements that
-                    have undergone transformation with the SVG <code>@transform</code> attribute,
-                    such as scaling, rotation, translation, or skewing.</para>
+                <para>Our sample takes advantage of use of <code>&lt;div&gt;</code> elements only as
+                    wrappers for SVG content, and of our placement of only a single SVG
+                        <code>&lt;g&gt;</code> element inside each <code>&lt;svg&gt;</code> element.
+                    HTML structured differently may require adjustments, but the general principle
+                    would be the same: use the JavaScript <code>getBBox()</code> method to determine
+                    the size of the bounding box for each SVG component and write the width and
+                    height into the <code>&lt;svg&gt;</code> wrapper element as <code>@width</code>
+                    and <code>@height</code> attribute values.</para>
             </section>
             <section>
                 <title>Discussion</title>
-                <para>Pro: Does not require preparation of font metric information in advance (a
-                    benefit both initially and with respect to scalability). Adapts to viewing
-                    environment, and therefore supports user overrides of default. Does not require
-                    webfont. Does not require additional logic to deal with font effects (e.g.,
-                    ligatures, positional glyph variants) or transformations</para>
-                <para>Con: Requires JavaScript programming knowledge. Works only in
-                    DOM-and-JavaScript-aware environments (e.g., works in a web browser, but not as
-                    an included image in a Balisage (Docbook-based) document. Not all JavaScript
-                    methods (including <code>getBBox()</code>) are sensitive to transformations that
-                    have been performed on an object.</para>
+                <section>
+                    <title>Advantages</title>
+                    <itemizedlist>
+                        <listitem>
+                            <para>The biggest advantage of the JavaScript approach is that it does
+                                not require the preparation of font metric information in advance,
+                                which is a benefit both initially and with respect to
+                                scalability.</para>
+                        </listitem>
+                        <listitem>
+                            <para>The JavaScript approach adapts to the viewing environment because
+                                it reads the actual dimensions of the SVG objects after their
+                                rendering information has been computed by the browser. This means
+                                that the dimensions will be correct for any font, including system
+                                fonts and fonts determined with a font stack.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Also because the JavaScript approach has access to the actual
+                                rendered dimensions, it does not require additional logic (beyond
+                                width as specified in the font metrics) to deal with font effects
+                                (e.g., ligatures, positional glyph variants). The
+                                    <code>getBBox()</code> method computes width and height after
+                                any such font adjustments have been applied.</para>
+                        </listitem>
+                    </itemizedlist>
+                </section>
+                <section>
+                    <title>Disadvantages</title>
+                    <itemizedlist>
+                        <listitem>
+                            <para>The JavaScript approach equires JavaScript programming knowledge,
+                                which cannot be assumed for all XML-stack developers, and the same
+                                is true with respect to knowledge of CSS Flexbox. The actual CSS and
+                                JavaScript required is light and the examples provided here can
+                                serve as models, but both the CSS and JavaScript used here will
+                                typically have to be adjusted according to the specific structures
+                                employed in individual projects.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Because we rely on HTML and CSS to support the relative
+                                positioning of the SVG components of what is conceptually a single
+                                image, this method is not, at least as implemented here, suited for
+                                not appropriate for the creation of stand-alone SVG.</para>
+                        </listitem>
+                    </itemizedlist>
+                </section>
             </section>
         </section>
     </section>
@@ -660,24 +669,44 @@ function init() {
         <title>Loose ends and future directions</title>
         <para>Our XSLT approach assumes that the font metrics that can be extracted from the font
             files are sufficient to compute the length of an SVG line of text. Our implementation
-            does attempt to access kerning information, and it has not been tested on writing
+            does not attempt to access kerning information, and it has not been tested on writing
             systems that involve character substitution (including positional glyph variation or
-            ligation) or glyph reordering. It is not impacted negatively by zero-width characters as
-            long as the font metrics for those glyphs correctly report a width of zero.</para>
-        <para>Font availability on a user system is not fully predictable, especially over time, so
-            supplying a webfont is more robust then trusting that every browser will use, for
-            example, a Times New Roman font with the same font metrics.</para>
-        <para>Saxon-JS</para>
-        <para>Saxon-JS relies on a JavaScript implementation of the XSLT engine that is designed to
-            perform transformations inside the browser. Insofar as Saxon-JS incorporates both XSLT
-            and JavaScript functionality, it may provide a cleaner integration of the two
-            approaches.</para>
+            ligation) or glyph reordering. We have confirmed that our XSLT approach is not impacted
+            negatively by zero-width characters as long as the font metrics for those glyphs
+            correctly report a width of zero, as is the case with the Times New Roman font that we
+            used for testing and illustration.</para>
+        <para>Saxon-JS relies on a JavaScript implementation of the Saxon XSLT engine that is
+            designed to perform transformations inside the browser. Insofar as Saxon-JS incorporates
+            both XSLT and JavaScript functionality, it may provide a cleaner integration of the two
+            approaches. We do not explore this approach here.</para>
+        <para>Our definition of the problem to be solved presumes that an algorithmic solution is
+            appropriate. Our experimentation above confirms that we can ask XSLT or JavaScript to
+            compute the dimensions of SVG <code>&lt;text&gt;</code> elements, dimensions that we had
+            previously regarded as unknowable, and we can use that information to automate the
+            placement of other SVG components that must be positioned in ways that depend on the
+            dimensions of <code>&lt;text&gt;</code> elements. At the same time, algorithmic layout
+            as implemented here is a crude method because it is not sensitive to context-specific
+            details. For example, we have assumed that the general labels on X and Y axes should be
+            positioned not too close to and not too far from the longest data labels on those axes,
+            but those assumptions, although self-evidently correct, are insufficient. In practice we
+            might want to customize the positioning according to specific features of the data,
+            e.g., by labeling an axis in a way that is closer than the distance dictated by the
+            longest data label, but that happens not to overlap that label. This sort of detail is
+            computable in principle, ADD EXAMPLE AND DISCUSS </para>
     </section>
     <section>
         <title>Conclusion</title>
-        <para>BLAH BLAH BLAH</para>
+        <para>The goal of this report has been to identify strategies for working around the fact
+            that SVG <code>&lt;text&gt;</code> elements do not know their length, which makes it
+            difficult to position other elements in relationship to them without a tedious
+            trial-and-error approach. We have identified, implemented, illustrated, and discussed
+            two approaches to meeting this need, one in XSLT and one in JavaScript. Each of these
+            approaches has its own advantages and disadvantages, but both have been shown to work,
+            at least with the authentic examples used here. We have identified some limitations and
+            some directions for future improvement, but both methods provide realisitic alternatives
+            to guesswork, trial-and-error, and magic numbers.</para>
     </section>
-    <appendix xml:id="extract-widths" xreflabel="Script to extract font widths as XML">
+    <appendix xml:id="extract-widths" xreflabel="Appendix A">
         <title>Script to extract font widths as XML</title>
         <para>The following Python script exports the widths of all glyphs in a TrueType font. The
             script has two positional arguments, a required path to the font and an optional point
@@ -787,7 +816,7 @@ print(xml_str)</programlisting>
             the <code>@width</code> value. The <code>@dec</code> (decimal) and <code>@hex</code>
             (hexadecimal) values are not currently used.</para>
     </appendix>
-    <appendix xml:id="javascript-mockup" xreflabel="JavaScript implementation sample">
+    <appendix xml:id="javascript-mockup" xreflabel="Appendix B">
         <title>Sample HTML for JavaScript method</title>
         <programlisting language="xml" xml:space="preserve">&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;!DOCTYPE html>
@@ -966,40 +995,40 @@ print(xml_str)</programlisting>
     </appendix>
     <bibliography>
         <title>Works cited</title>
-        <bibliomixed xml:id="chase2019" xreflabel="Chase 2019">Chase, William R. <quote>Font height
-                differences between Windows and Mac.</quote> 2019.
-                <link>https://www.williamrchase.com/post/font-height-differences-between-windows-and-mac/</link></bibliomixed>
-        <bibliomixed xml:id="deOliveira2017" xreflabel="De Oliveira 2017">De Oliveira, Vincent.
-                <quote>Deep dive CSS: font metrics, line-height and vertical-align.</quote> 2017.
-                <link>https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align</link></bibliomixed>
-        <bibliomixed xml:id="getBoundingClientRect" xreflabel="MDN getBoundingClientRect()"
-                ><quote>Element.getBoundingClientRect()</quote>, MDN Web Docs,
-                <link>https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</link>
-        </bibliomixed>
-        <bibliomixed xml:id="getBBox" xreflabel="MDN getBBox()"
-                ><quote>SVGGraphicsElement.getBBox()</quote>, MDN Web Docs,
-                <link>https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox</link>
-        </bibliomixed>
-        <bibliomixed xml:id="primer-getBoundingClientRect"
-            xreflabel="MDN getBoundingClientRect() (Primer)"><quote>getBBox</quote>. <emphasis
-                role="ital">An SVG primer for today’s browsers. W3C Working Draft — September
-                2010</emphasis>, ed. David Dailey.
-                <link>https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox</link>
-        </bibliomixed>
-        <bibliomixed xml:id="primer-getCTM" xreflabel="MDN getCTM() (Primer)"
-                ><quote>getCTM()</quote>. <emphasis role="ital">An SVG primer for today’s browsers.
-                W3C Working Draft — September 2010</emphasis>, ed. David Dailey.
-                <link>https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM</link>
-        </bibliomixed>
-        <bibliomixed xml:id="svg-2-kerning" xreflabel="SVG 2.0, Kerning">Scalable Vector Graphics
-            (SVG) 2 W3C Candidate Recommendation 04 October 2018. §11.10.1.4. The ‘kerning’
-            property.
-            <link>https://www.w3.org/TR/SVG2/text.html#KerningProperty</link></bibliomixed>
         <bibliomixed xml:id="ttx-intro" xreflabel="An intro to FontTools"><quote>An intro to
                 FontTools.</quote>
             <link>https://github.com/arrowtype/fonttools-intro</link></bibliomixed>
         <bibliomixed xml:id="bellamy-royds2017" xreflabel="Bellamy-Royds 2017"><quote>How to scale
                 SVG.</quote> Updated on Jun 27, 2017.
             <link>https://css-tricks.com/scale-svg/</link></bibliomixed>
+        <bibliomixed xml:id="chase2019" xreflabel="Chase 2019">Chase, William R. <quote>Font height
+                differences between Windows and Mac.</quote> 2019.
+                <link>https://www.williamrchase.com/post/font-height-differences-between-windows-and-mac/</link></bibliomixed>
+        <bibliomixed xml:id="deOliveira2017" xreflabel="De Oliveira 2017">De Oliveira, Vincent.
+                <quote>Deep dive CSS: font metrics, line-height and vertical-align.</quote> 2017.
+                <link>https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align</link></bibliomixed>
+        <!--<bibliomixed xml:id="getBoundingClientRect" xreflabel="MDN getBoundingClientRect()"
+                ><quote>Element.getBoundingClientRect()</quote>, MDN Web Docs,
+                <link>https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</link>
+        </bibliomixed>-->
+        <!--<bibliomixed xml:id="getBBox" xreflabel="MDN getBBox()"
+                ><quote>SVGGraphicsElement.getBBox()</quote>, MDN Web Docs,
+                <link>https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox</link>
+        </bibliomixed>-->
+        <!--<bibliomixed xml:id="primer-getBoundingClientRect"
+            xreflabel="MDN getBoundingClientRect() (Primer)"><quote>getBBox</quote>. <emphasis
+                role="ital">An SVG primer for today’s browsers. W3C Working Draft — September
+                2010</emphasis>, ed. David Dailey.
+                <link>https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getBBox</link>
+        </bibliomixed>-->
+        <!--<bibliomixed xml:id="primer-getCTM" xreflabel="MDN getCTM() (Primer)"
+                ><quote>getCTM()</quote>. <emphasis role="ital">An SVG primer for today’s browsers.
+                W3C Working Draft — September 2010</emphasis>, ed. David Dailey.
+                <link>https://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#getCTM</link>
+        </bibliomixed>-->
+        <bibliomixed xml:id="svg-2-kerning" xreflabel="SVG 2.0, Kerning">Scalable Vector Graphics
+            (SVG) 2 W3C Candidate Recommendation 04 October 2018. §11.10.1.4. The ‘kerning’
+            property.
+            <link>https://www.w3.org/TR/SVG2/text.html#KerningProperty</link></bibliomixed>
     </bibliography>
 </article>
