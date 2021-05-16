@@ -6,7 +6,17 @@
     <title>How long is my SVG <code>&lt;text&gt;</code> element?</title>
     <info>
         <abstract>
-            <para>BLAH BLAH BLAH</para>
+            <para>SVG layout requires that the developer be in control of the dimensions of the
+                objects that must be placed in the coordinate space. It is easy to specify (or
+                compute based on other specifications) the size (bounding box height and width) of
+                many SVG objects (rectangles, circles, lines), but identifying the bounding box for
+                text is challenging because SVG text does not know its own length.</para>
+            <para>In this report we explore two methods for working around this limitation. The
+                first method, implemented in XSLT, determines the length of SVG
+                    <code>&lt;text&gt;</code> elements and uses that information for layout purposes
+                as the SVG is created. The second method, implemented in JavaScript, determines the
+                length of SVG <code>&lt;text&gt;</code> objects as the SVG is rendered in a browser
+                and uses the information to control the layout at rendering time.</para>
         </abstract>
         <author>
             <personname>
@@ -77,7 +87,16 @@
             individual characters, and those widths are not exposed in any convenient, accessible
             way in a regular XML development environment.</para>
         <para>Our test case for exploring and addressing the challenges <code>&lt;text&gt;</code>
-            elements pose for layout is an SVG bar graph like the following:</para>
+            elements pose for layout is an SVG bar graph like the following:<footnote>
+                <para>The sample graphs for this report are based on materials from Charlie Taylor’s
+                        <quote>Van Gogh as a ‘tortured genius”</quote>
+                        (<link>http://vangogh.obdurodon.org</link>,
+                        <link>https://github.com/charlietaylor98/vangogh-gang</link>), which she
+                    undertook in Spring 2020 together with Colin Woelfel, Nate McDowell, and Rachel
+                    Saula as part of David J. Birnbaum’s <quote>Computational methods in the
+                        humanities</quote> course (<link>http://dh.obdurodon.org</link>) in the
+                    University Honors College at the University of Pittsburgh.</para>
+            </footnote></para>
         <figure xml:id="figure-01" xreflabel="Sample bar graph">
             <mediaobject>
                 <imageobject>
@@ -484,11 +503,79 @@
             <title>A JavaScript approach</title>
             <section>
                 <title>Overview</title>
-                <para>BLAH BLAH BLAH; include getComputedTextLength()</para>
+                <para>The JavaScript approach leaves the SVG dimensions unspecified if they cannot
+                    be computed when the SVG is created. When the SVG is eventually loaded into a
+                    browser, this approach uses standard JavaScript functions to compute the missing
+                    dimensions and write them into the DOM in a way that controls the layout.</para>
             </section>
             <section>
                 <title>Implementation</title>
                 <para>BLAH BLAH BLAH</para>
+                <para><code>getComputedTextLength()</code></para>
+                <para>Sample HTML with embedded SVG items to be layered:</para>
+                <programlisting language="xml">&lt;body>
+  &lt;div>
+    &lt;svg xmlns="http://www.w3.org/2000/svg">
+      &lt;g transform="translate(10)">
+        &lt;text x="0" y="0" 
+        font-family="Times New Roman" 
+        font-size="16" 
+        dominant-baseline="hanging">Sample horizontal text&lt;/text>
+      &lt;/g>
+    &lt;/svg>
+  &lt;/div>
+  &lt;div>
+    &lt;svg xmlns="http://www.w3.org/2000/svg">
+      &lt;g transform="translate(10)">
+        &lt;text x="0" y="0" 
+        writing-mode="tb" 
+        font-family="Times New Roman" 
+        font-size="16">Sample vertical text&lt;/text>
+      &lt;/g>
+    &lt;/svg>
+  &lt;/div>
+  &lt;div>
+    &lt;svg xmlns="http://www.w3.org/2000/svg">
+      &lt;g transform="translate(10)">
+        &lt;text x="0" y="0" 
+        writing-mode="tb" 
+        font-family="Times New Roman" 
+        font-size="16"
+        transform="rotate(-30, 3, 3)">Sample diagonal text (30º)&lt;/text>
+      &lt;/g>
+    &lt;/svg>
+  &lt;/div>
+  &lt;div>
+    &lt;svg xmlns="http://www.w3.org/2000/svg">
+      &lt;g transform="translate(10)">
+        &lt;text x="0" y="0" 
+        writing-mode="tb" 
+        font-family="Times New Roman" 
+        font-size="16"
+        transform="rotate(-60, 3, 3)">Sample diagonal text (60º)&lt;/text>
+      &lt;/g>
+    &lt;/svg>
+  &lt;/div>
+  &lt;div>
+    &lt;svg xmlns="http://www.w3.org/2000/svg">
+      &lt;g transform="translate(10)">
+        &lt;text x="0" y="0" 
+        font-family="Times New Roman" 
+        font-size="16" 
+        dominant-baseline="hanging">Sample horizontal text&lt;/text>
+      &lt;/g>
+    &lt;/svg>
+  &lt;/div>
+&lt;/body></programlisting>
+                <para>JavaScript to control horizontal layering:</para>
+                <programlisting language="javascript">window.addEventListener('DOMContentLoaded', init, false);
+function init() {
+    const divs = document.querySelectorAll('div');
+    for (i = 0; i &lt; divs.length; i++) {
+        bb = divs[i].querySelector('g').getBBox();
+        divs[i].querySelector('svg').setAttribute('height', bb.height);
+    }
+}</programlisting>
                 <para><code>getBBox()</code> is not sensitive to transformations that have been
                     applied to an object, and <xref linkend="primer-getBoundingClientRect"/>
                     proposes the use of <code>getCTM()</code> to work around this limitation. We
