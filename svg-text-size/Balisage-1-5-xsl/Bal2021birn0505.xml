@@ -36,24 +36,21 @@
         </author>
         <author>
             <personname>
-                <!-- Middle  name? Other name parts or shapes? -->
                 <firstname>Charlie</firstname>
                 <surname>Taylor</surname>
             </personname>
             <personblurb>
                 <para>Charlie Taylor is an undergraduate at the University of Pittsburgh studying
                     History of Art &amp; Architecture and Classics. She was enrolled in Dr.
-                    Birnbaum's <quote>Computational methods in the humanities</quote> class in
+                    Birnbaum’s <quote>Computational methods in the humanities</quote> class in
                     Spring 2020, and currently serves as a teaching assistant for the course. She
                     will graduate in Spring 2023 and plans to pursue a graduate degree in Medieval
                     Studies.</para>
             </personblurb>
             <affiliation>
-                <!-- job title is optional -->
                 <orgname>University of Pittsburgh</orgname>
             </affiliation>
-            <email>CLT76@pitt.edu</email>
-            <link>[ADD LINK(s)?]</link>
+            <email>clt76@pitt.edu</email>
         </author>
         <keywordset role="author">
             <keyword>SVG</keyword>
@@ -84,7 +81,7 @@
         <figure xml:id="figure-01" xreflabel="Sample bar graph">
             <mediaobject>
                 <imageobject>
-                    <imagedata fileref="includes/Bal2021birn0505_svg-01.svg"/>
+                    <imagedata width="12in" fileref="includes/diagonal-graph.svg"/>
                 </imageobject>
             </mediaobject>
         </figure>
@@ -199,21 +196,21 @@
                 <figure xml:id="horizontal-sample" xreflabel="Sample horizontal text">
                     <mediaobject>
                         <imageobject>
-                            <imagedata fileref="includes/horizontal-samples.svg"/>
+                            <imagedata width="12in" fileref="includes/horizontal-samples.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
                 <figure xml:id="vertical-sample" xreflabel="Sample vertical text">
                     <mediaobject>
                         <imageobject>
-                            <imagedata fileref="includes/vertical-samples.svg"/>
+                            <imagedata width="12in" fileref="includes/vertical-samples.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
                 <figure xml:id="diagonal-sample" xreflabel="Sample diagonal text">
                     <mediaobject>
                         <imageobject>
-                            <imagedata fileref="includes/diagonal-samples.svg"/>
+                            <imagedata width="12in" fileref="includes/diagonal-samples.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
@@ -319,10 +316,10 @@
                     compute the lengths of the bar labels, we can find the length of the longest
                     bar, augment it with a predetermined amount of padding, and use that figure to
                     place the general Y axis label.</para>
-                <figure xml:id="figure-01" xreflabel="REPLACE WITH REAL IMAGE">
+                <figure xml:id="figure-01" xreflabel="Graph with horizontal bar labels">
                     <mediaobject>
                         <imageobject>
-                            <imagedata fileref="includes/Bal2021birn0505_svg-01.svg"/>
+                            <imagedata width="12in" fileref="includes/horizontal-graph.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
@@ -330,10 +327,10 @@
                     this case we set <code>@writing-mode</code> to <code>"tb"</code> (top to bottom)
                     to create vertical text and use the longest bar label to compute the position
                     the general X axis label:</para>
-                <figure xml:id="figure-01" xreflabel="REPLACE WITH REAL IMAGE">
+                <figure xml:id="figure-01" xreflabel="Graph with vertical bar labels">
                     <mediaobject>
                         <imageobject>
-                            <imagedata fileref="includes/Bal2021birn0505_svg-01.svg"/>
+                            <imagedata width="12in" fileref="includes/vertical-graph.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
@@ -362,7 +359,14 @@
                                 180</emphasis>. The width of the text, should we need it, is the
                             opposite side of the angle, and its length can be determined as
                                 <emphasis role="ital">hypotenuse * sinθ</emphasis>.</para>
-                    </footnote></para>
+                    </footnote> The graph with diagonal bar labels looks like:</para>
+                <figure xml:id="figure-01" xreflabel="Graph with diagonal bar labels">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="12in" fileref="includes/diagonal-graph.svg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
             </section>
             <section>
                 <title>Implementation</title>
