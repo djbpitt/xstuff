@@ -205,13 +205,17 @@
                     exact precision.</para>
                 <para>In the sample SVG below, we compute the length of the text using the method
                     described above and employ it to draw a line parallel to horizontal or vertical
-                    text, so that we can examine the accuracy of our measurements visually. (That
-                    is, the lines are not created as a font effect; the lines are drawn
-                    independently of the text.) In the case of diagonal text we draw a bounding
-                    rectangle. The third of the four examples in each figure is a null string, so we
-                    expect to see no text and no line. The images below are in SVG that is rendered
-                    in the browser, which means that the exact appearance may vary depending on
-                    browser features:</para>
+                    text, so that we can examine the accuracy of our measurements visually.<footnote>
+                        <para>Browsers interpret the values of the SVG
+                                <code>@dominant-baseline</code> attribute inconsistently. See <xref
+                                linkend="gudehus2021"/> for discussion, an interactive diagnostic
+                            interface, and a suggested work-around.</para>
+                    </footnote> (That is, the lines are not created as a font effect; the lines are
+                    drawn independently of the text.) In the case of diagonal text we draw a
+                    bounding rectangle. The third of the four examples in each figure is a null
+                    string, so we expect to see no text and no line. The images below are in SVG
+                    that is rendered in the browser, which means that the exact appearance may vary
+                    depending on browser features:</para>
                 <figure xml:id="horizontal-sample" xreflabel="Sample horizontal text">
                     <mediaobject>
                         <imageobject>
@@ -1008,6 +1012,9 @@ print(xml_str)</programlisting>
         <bibliomixed xml:id="deOliveira2017" xreflabel="De Oliveira 2017">De Oliveira, Vincent.
                 <quote>Deep dive CSS: font metrics, line-height and vertical-align.</quote> 2017.
                 <link>https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align</link></bibliomixed>
+        <bibliomixed xml:id="gudehus2021" xreflabel="Gudehus 2021">Gudehus, Benjamin.
+                <quote>Vertical text alignment in SVG.</quote>
+            <link>https://observablehq.com/@hastebrot/vertical-text-alignment-in-svg</link></bibliomixed>
         <!--<bibliomixed xml:id="getBoundingClientRect" xreflabel="MDN getBoundingClientRect()"
                 ><quote>Element.getBoundingClientRect()</quote>, MDN Web Docs,
                 <link>https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect</link>
