@@ -30,9 +30,9 @@
     </x:scenario>
 
     <x:scenario label="When rad = pi/6 and hyp = 122.6">
-        <x:call function="djb:tri-height">
+        <x:call function="djb:tri-adj">
             <x:param name="hyp" select="1.226328125e2"/>
-            <x:param name="rad" select="math:pi() div 6"/>
+            <x:param name="deg" select="30"/>
         </x:call>
         <x:expect label="height = about 106.2" select="1.0620313096253386e2"/>
     </x:scenario>

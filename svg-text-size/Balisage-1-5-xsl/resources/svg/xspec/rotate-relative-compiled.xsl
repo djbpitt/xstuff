@@ -83,7 +83,7 @@
                  as="element(Q{http://www.jenitennison.com/xslt/xspec}test)">
       <xsl:context-item use="absent"/>
       <xsl:param name="Q{http://www.jenitennison.com/xslt/xspec}result" required="yes"/>
-      <xsl:message>radians = pi/6</xsl:message>
+      <xsl:message>radians = pi/6 (approx. value)</xsl:message>
       <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:djb="http://www.obdurodon.org"
                     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
@@ -101,7 +101,7 @@
                         namespace=""
                         select="$Q{urn:x-xspec:compile:impl}successful"/>
          <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
-            <xsl:text>radians = pi/6</xsl:text>
+            <xsl:text>radians = pi/6 (approx. value)</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
             <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d51e5"/>
@@ -308,7 +308,7 @@
                  as="element(Q{http://www.jenitennison.com/xslt/xspec}test)">
       <xsl:context-item use="absent"/>
       <xsl:param name="Q{http://www.jenitennison.com/xslt/xspec}result" required="yes"/>
-      <xsl:message>is about 122.6</xsl:message>
+      <xsl:message>= about 122.6</xsl:message>
       <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:djb="http://www.obdurodon.org"
                     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
@@ -326,7 +326,7 @@
                         namespace=""
                         select="$Q{urn:x-xspec:compile:impl}successful"/>
          <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
-            <xsl:text>is about 122.6</xsl:text>
+            <xsl:text>= about 122.6</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
             <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d51e17"/>
@@ -349,7 +349,7 @@
                <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
                <xsl:namespace name="math">http://www.w3.org/2005/xpath-functions/math</xsl:namespace>
                <xsl:namespace name="xsl">http://www.w3.org/1999/XSL/Transform</xsl:namespace>
-               <xsl:attribute name="function" namespace="">djb:tri-height</xsl:attribute>
+               <xsl:attribute name="function" namespace="">djb:tri-adj</xsl:attribute>
                <xsl:element name="x:param" namespace="http://www.jenitennison.com/xslt/xspec">
                   <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
                   <xsl:namespace name="math">http://www.w3.org/2005/xpath-functions/math</xsl:namespace>
@@ -361,8 +361,8 @@
                   <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
                   <xsl:namespace name="math">http://www.w3.org/2005/xpath-functions/math</xsl:namespace>
                   <xsl:namespace name="xsl">http://www.w3.org/1999/XSL/Transform</xsl:namespace>
-                  <xsl:attribute name="name" namespace="">rad</xsl:attribute>
-                  <xsl:attribute name="select" namespace="">math:pi() div 6</xsl:attribute>
+                  <xsl:attribute name="name" namespace="">deg</xsl:attribute>
+                  <xsl:attribute name="select" namespace="">30</xsl:attribute>
                </xsl:element>
             </xsl:element>
          </xsl:element>
@@ -375,9 +375,9 @@
             <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
                           xmlns:djb="http://www.obdurodon.org"
                           xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                          name="Q{}rad"
-                          select="math:pi() div 6"/>
-            <xsl:sequence select="Q{http://www.obdurodon.org}tri-height($Q{}hyp, $Q{}rad)"/>
+                          name="Q{}deg"
+                          select="30"/>
+            <xsl:sequence select="Q{http://www.obdurodon.org}tri-adj($Q{}hyp, $Q{}deg)"/>
          </xsl:variable>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
             <xsl:with-param name="sequence"

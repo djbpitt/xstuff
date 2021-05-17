@@ -17,10 +17,8 @@
             return
                 djb:get-text-length($loc))"/>
     <xsl:variable name="angle-deg" as="xs:double" select="30"/>
-    <xsl:variable name="angle-rad" as="xs:double"
-        select="djb:deg-to-rad($angle-deg)"/>
     <xsl:variable name="label-height" as="xs:double"
-        select="djb:tri-height($hypotenuse, $angle-rad)"/>
+        select="djb:tri-adj($hypotenuse, $angle-deg)"/>
     <!-- ================================================================ -->
     <!-- Functions perform trig calculations                              -->
     <!-- ================================================================ -->
@@ -28,10 +26,10 @@
         <xsl:param name="deg" as="xs:double"/>
         <xsl:sequence select="$deg * math:pi() div 180"/>
     </xsl:function>
-    <xsl:function name="djb:tri-height" as="xs:double">
+    <xsl:function name="djb:tri-adj" as="xs:double">
         <xsl:param name="hyp" as="xs:double"/>
-        <xsl:param name="rad" as="xs:double"/>
-        <xsl:sequence select="$hyp * math:cos($rad)"/>
+        <xsl:param name="deg" as="xs:double"/>
+        <xsl:sequence select="$hyp * math:cos(djb:deg-to-rad($deg))"/>
     </xsl:function>
     
     <!-- ================================================================ -->

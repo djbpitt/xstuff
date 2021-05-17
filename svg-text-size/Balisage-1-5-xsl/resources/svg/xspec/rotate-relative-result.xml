@@ -2,7 +2,7 @@
 <report xmlns="http://www.jenitennison.com/xslt/xspec"
         xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec"
         stylesheet="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xsl"
-        date="2021-05-16T11:19:21.641-04:00">
+        date="2021-05-17T10:53:07.772-04:00">
    <scenario id="x09058d3e-cf42-38d2-abd1-8e818c6a7833"
              xspec="file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec">
       <label>When degrees = 30</label>
@@ -17,7 +17,7 @@
       </input-wrap>
       <result select="5.235987755982988e-1"/>
       <test id="x09058d3e-cf42-38d2-abd1-8e818c6a7833-expect1" successful="true">
-         <label>radians = pi/6</label>
+         <label>radians = pi/6 (approx. value)</label>
          <expect select="5.235987755982988e-1"/>
       </test>
    </scenario>
@@ -71,7 +71,7 @@
       </input-wrap>
       <result select="1.226328125e2"/>
       <test id="xf315ad82-f7e3-3617-8aa6-8dd59039807c-expect1" successful="true">
-         <label>is about 122.6</label>
+         <label>= about 122.6</label>
          <expect select="1.226328125e2"/>
       </test>
    </scenario>
@@ -83,9 +83,9 @@
                  xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                  xmlns:x="http://www.jenitennison.com/xslt/xspec"
-                 function="djb:tri-height">
+                 function="djb:tri-adj">
             <x:param name="hyp" select="1.226328125e2"/>
-            <x:param name="rad" select="math:pi() div 6"/>
+            <x:param name="deg" select="30"/>
          </x:call>
       </input-wrap>
       <result select="1.0620313096253386e2"/>
