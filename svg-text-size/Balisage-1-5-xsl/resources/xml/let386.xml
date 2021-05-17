@@ -2,7 +2,7 @@
 <letter>
    <head>
       <location>Hoogeveen</location>
-      <date>14 September 1883</date>
+      <date>14 September <year>1883</year></date>
    </head>
    <salutation>My dear Theo,</salutation>
    <body>

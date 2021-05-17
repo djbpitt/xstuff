@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <letter>
    <head>
-      <location>Nuenen</location>, on or about Friday, <date>28 November 1884</date>.</head>
+      <location>Nuenen</location>, on or about Friday, <date>28 November <year>1884</year></date>.</head>
    <salutation>Dear brother,</salutation>
    <body>
       <p>Thanks for your letter and the money.</p>

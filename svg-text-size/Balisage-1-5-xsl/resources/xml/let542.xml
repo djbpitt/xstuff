@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <letter>
    <head>
-      <location>Nuenen</location>, on or about Tuesday, <date>17 November 1885</date>.</head>
+      <location>Nuenen</location>, on or about Tuesday, <date>17 November <year>1885</year></date>.</head>
    <salutation>My dear Theo,</salutation>
    <body>
       <p>I’ll tell you in a few words what Van de Loo said about Ma. He says</p>

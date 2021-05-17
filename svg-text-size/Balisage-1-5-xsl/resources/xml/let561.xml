@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <letter>
    <head>
-      <location>Antwerp</location>, on or about Thursday, <date>11 February 1886</date>.</head>
+      <location>Antwerp</location>, on or about Thursday, <date>11 February <year>1886</year></date>.</head>
    <salutation>My dear Theo,</salutation>
    <body>
       <p>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <letter>
    <head>
-      <location>Paris</location>, between about Sunday, 17 and Tuesday, <date>19 July 1887</date>.</head>
+      <location>Paris</location>, between about Sunday, 17 and Tuesday, <date>19 July <year>1887</year></date>.</head>
    <salutation>My dear friend,</salutation>
    <body>
       <p>Enclosed a letter that arrived yesterday but which the concierge didn’t pass on to me

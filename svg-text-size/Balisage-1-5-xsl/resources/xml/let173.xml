@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <letter>
    <head>
-      <location>Etten</location>, <date>beginning of October 1881</date>
+      <location>Etten</location>, <date>beginning of October <year>1881</year></date>
    </head>
    <salutation>My dear Theo,</salutation>
    <body>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <letter>
    <head>
-      <location>Brussels</location>, <date>February 1881</date>
+      <location>Brussels</location>, <date>February <year>1881</year></date>
    </head>
    <salutation>Dear Pa and Ma,</salutation>
    <body>

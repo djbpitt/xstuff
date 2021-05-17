@@ -2,7 +2,7 @@
 <letter>
    <head>
       <location>The Hague</location>
-      <date>7 August 1883</date>
+      <date>7 August <year>1883</year></date>
    </head>
    <salutation>My dear Theo,</salutation>
    <body>

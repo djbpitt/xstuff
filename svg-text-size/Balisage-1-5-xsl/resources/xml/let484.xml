@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <letter>
    <head>
-      <location>Nuenen</location>, on or about Monday, <date>2 March 1885</date>.</head>
+      <location>Nuenen</location>, on or about Monday, <date>2 March <year>1885</year></date>.</head>
    <salutation>My dear Theo,</salutation>
    <body>
       <p>

@@ -7,19 +7,12 @@
                         display: block;
                         overflow: visible
                     }
-                    body {
-                        display: flex;
-                        flex-direction: column;
-                        row-gap: 1em;
-                    }
                     section {
                         display: flex;
                         flex-direction: row;
                         column-gap: 1em;
                     }
-                    div {
-                        padding: .5em
-                    }</style>
+               </style>
       <script type="text/javascript">
                 
                     window.addEventListener('DOMContentLoaded', init, false);
@@ -28,8 +21,8 @@
                         for (i = 0; i &lt; divs.length; i++) {
                             bb = divs[i].querySelector('g').getBBox();
                             console.log(bb);
-                            divs[i].querySelector('svg').setAttribute('height', (bb.height + 10));
-                            divs[i].querySelector('svg').setAttribute('width', (bb.width + 10));
+                            divs[i].querySelector('svg').setAttribute('height', bb.height);
+                            divs[i].querySelector('svg').setAttribute('width', bb.width);
                         }
                         // subtract from text not rotated around origin
                         // Overflow visible or shift g to accommodate
@@ -39,109 +32,109 @@
       <section>
          <div>
             <svg xmlns="http://www.w3.org/2000/svg">
-               <g transform="translate(192, 64)">
-                  <text y="-24"
+               <g transform="translate(160, 65)">
+                  <text y="-25"
                         x="0"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle">0</text>
-                  <line y1="-16" y2="0" x1="0" x2="0" stroke="black"/>
+                  <line y1="-15" y2="0" x1="0" x2="0" stroke="black"/>
                   <line y1="0"
                         y2="252"
                         x1="0"
                         x2="0"
                         stroke="black"
                         opacity=".5"/>
-                  <text y="-24"
+                  <text y="-25"
                         x="40"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle">4</text>
-                  <line y1="-16" y2="0" x1="40" x2="40" stroke="black"/>
+                  <line y1="-15" y2="0" x1="40" x2="40" stroke="black"/>
                   <line y1="0"
                         y2="252"
                         x1="40"
                         x2="40"
                         stroke="black"
                         opacity=".5"/>
-                  <text y="-24"
+                  <text y="-25"
                         x="80"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle">8</text>
-                  <line y1="-16" y2="0" x1="80" x2="80" stroke="black"/>
+                  <line y1="-15" y2="0" x1="80" x2="80" stroke="black"/>
                   <line y1="0"
                         y2="252"
                         x1="80"
                         x2="80"
                         stroke="black"
                         opacity=".5"/>
-                  <text y="-24"
+                  <text y="-25"
                         x="120"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle">12</text>
-                  <line y1="-16" y2="0" x1="120" x2="120" stroke="black"/>
+                  <line y1="-15" y2="0" x1="120" x2="120" stroke="black"/>
                   <line y1="0"
                         y2="252"
                         x1="120"
                         x2="120"
                         stroke="black"
                         opacity=".5"/>
-                  <text y="-24"
+                  <text y="-25"
                         x="160"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle">16</text>
-                  <line y1="-16" y2="0" x1="160" x2="160" stroke="black"/>
+                  <line y1="-15" y2="0" x1="160" x2="160" stroke="black"/>
                   <line y1="0"
                         y2="252"
                         x1="160"
                         x2="160"
                         stroke="black"
                         opacity=".5"/>
-                  <text y="-24"
+                  <text y="-25"
                         x="-160"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle">16</text>
-                  <line y1="-16" y2="0" x1="-160" x2="-160" stroke="black"/>
+                  <line y1="-15" y2="0" x1="-160" x2="-160" stroke="black"/>
                   <line y1="0"
                         y2="252"
                         x1="-160"
                         x2="-160"
                         stroke="black"
                         opacity=".5"/>
-                  <text y="-24"
+                  <text y="-25"
                         x="-120"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle">12</text>
-                  <line y1="-16" y2="0" x1="-120" x2="-120" stroke="black"/>
+                  <line y1="-15" y2="0" x1="-120" x2="-120" stroke="black"/>
                   <line y1="0"
                         y2="252"
                         x1="-120"
                         x2="-120"
                         stroke="black"
                         opacity=".5"/>
-                  <text y="-24"
+                  <text y="-25"
                         x="-80"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle">8</text>
-                  <line y1="-16" y2="0" x1="-80" x2="-80" stroke="black"/>
+                  <line y1="-15" y2="0" x1="-80" x2="-80" stroke="black"/>
                   <line y1="0"
                         y2="252"
                         x1="-80"
                         x2="-80"
                         stroke="black"
                         opacity=".5"/>
-                  <text y="-24"
+                  <text y="-25"
                         x="-40"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle">4</text>
-                  <line y1="-16" y2="0" x1="-40" x2="-40" stroke="black"/>
+                  <line y1="-15" y2="0" x1="-40" x2="-40" stroke="black"/>
                   <line y1="0"
                         y2="252"
                         x1="-40"
@@ -162,8 +155,8 @@
                         fill="#88c5db"
                         stroke-width=".5"
                         stroke="black"/>
-                  <rect x="-0"
-                        width="0"
+                  <rect x="-110"
+                        width="110"
                         y="9"
                         height="18"
                         fill="#f0d946"
@@ -173,7 +166,7 @@
                         y="21"
                         text-anchor="start"
                         font-family="Times New Roman"
-                        font-size="16">Nuenen</text>
+                        font-size="16">Cuesmes (1880)</text>
                   <line x1="-160"
                         x2="160"
                         y1="45"
@@ -188,8 +181,8 @@
                         fill="#88c5db"
                         stroke-width=".5"
                         stroke="black"/>
-                  <rect x="-20"
-                        width="20"
+                  <rect x="-60"
+                        width="60"
                         y="36"
                         height="18"
                         fill="#f0d946"
@@ -199,7 +192,7 @@
                         y="48"
                         text-anchor="start"
                         font-family="Times New Roman"
-                        font-size="16">The Hague</text>
+                        font-size="16">Etten (1881)</text>
                   <line x1="-160"
                         x2="160"
                         y1="72"
@@ -214,8 +207,8 @@
                         fill="#88c5db"
                         stroke-width=".5"
                         stroke="black"/>
-                  <rect x="-60"
-                        width="60"
+                  <rect x="-0"
+                        width="0"
                         y="63"
                         height="18"
                         fill="#f0d946"
@@ -225,7 +218,7 @@
                         y="75"
                         text-anchor="start"
                         font-family="Times New Roman"
-                        font-size="16">Etten</text>
+                        font-size="16">Brussels (1881)</text>
                   <line x1="-160"
                         x2="160"
                         y1="99"
@@ -234,14 +227,14 @@
                         opacity=".5"
                         stroke-dasharray="5,5"/>
                   <rect x="0"
-                        width="60"
+                        width="0"
                         y="90"
                         height="18"
                         fill="#88c5db"
                         stroke-width=".5"
                         stroke="black"/>
-                  <rect x="-30"
-                        width="30"
+                  <rect x="-20"
+                        width="20"
                         y="90"
                         height="18"
                         fill="#f0d946"
@@ -251,7 +244,7 @@
                         y="102"
                         text-anchor="start"
                         font-family="Times New Roman"
-                        font-size="16">Nieuw-Amsterdam</text>
+                        font-size="16">The Hague (1882)</text>
                   <line x1="-160"
                         x2="160"
                         y1="126"
@@ -260,14 +253,14 @@
                         opacity=".5"
                         stroke-dasharray="5,5"/>
                   <rect x="0"
-                        width="0"
+                        width="60"
                         y="117"
                         height="18"
                         fill="#88c5db"
                         stroke-width=".5"
                         stroke="black"/>
-                  <rect x="-110"
-                        width="110"
+                  <rect x="-30"
+                        width="30"
                         y="117"
                         height="18"
                         fill="#f0d946"
@@ -277,7 +270,7 @@
                         y="129"
                         text-anchor="start"
                         font-family="Times New Roman"
-                        font-size="16">Cuesmes</text>
+                        font-size="16">Nieuw-Amsterdam (1883)</text>
                   <line x1="-160"
                         x2="160"
                         y1="153"
@@ -303,7 +296,7 @@
                         y="156"
                         text-anchor="start"
                         font-family="Times New Roman"
-                        font-size="16">Hoogeveen</text>
+                        font-size="16">Hoogeveen (1883)</text>
                   <line x1="-160"
                         x2="160"
                         y1="180"
@@ -329,7 +322,7 @@
                         y="183"
                         text-anchor="start"
                         font-family="Times New Roman"
-                        font-size="16">Brussels</text>
+                        font-size="16">Nuenen (1884)</text>
                   <line x1="-160"
                         x2="160"
                         y1="207"
@@ -355,7 +348,7 @@
                         y="210"
                         text-anchor="start"
                         font-family="Times New Roman"
-                        font-size="16">Antwerp</text>
+                        font-size="16">Antwerp (1886)</text>
                   <line x1="-160"
                         x2="160"
                         y1="234"
@@ -381,21 +374,21 @@
                         y="237"
                         text-anchor="start"
                         font-family="Times New Roman"
-                        font-size="16">Paris</text>
+                        font-size="16">Paris (1887)</text>
                   <text x="80"
-                        y="-48"
+                        y="-50"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle"
                         font-weight="300">Good Health</text>
                   <text x="-80"
-                        y="-48"
+                        y="-50"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle"
                         font-weight="300">Bad Health</text>
                   <text x="0"
-                        y="284"
+                        y="282"
                         font-size="16"
                         font-family="Times New Roman"
                         text-anchor="middle"
@@ -407,7 +400,7 @@
          </div>
          <div>
             <svg xmlns="http://www.w3.org/2000/svg">
-               <g transform="translate(0, 64)">
+               <g transform="translate(0, 65)">
                   <text x="0"
                         y="126"
                         font-family="Times New Roman"

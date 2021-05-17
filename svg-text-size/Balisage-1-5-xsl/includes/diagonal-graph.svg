@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" height="620" width="502">
-   <g transform="translate(100, 285)">
+   <g transform="translate(100, 210)">
       <text x="-32"
             y="2"
             font-size="16"
@@ -126,7 +126,7 @@
       <rect x="9"
             width="18"
             y="0"
-            height="0"
+            height="110"
             fill="#f0d946"
             stroke-width=".5"
             stroke="black"/>
@@ -136,7 +136,7 @@
             font-size="16"
             font-family="Times New Roman"
             writing-mode="tb"
-            transform="rotate(-30, 18, 168)">Nuenen</text>
+            transform="rotate(-30, 18, 168)">Cuesmes (1880)</text>
       <line x1="45"
             x2="45"
             y1="-160"
@@ -154,7 +154,7 @@
       <rect x="36"
             width="18"
             y="0"
-            height="20"
+            height="60"
             fill="#f0d946"
             stroke-width=".5"
             stroke="black"/>
@@ -164,7 +164,7 @@
             font-size="16"
             font-family="Times New Roman"
             writing-mode="tb"
-            transform="rotate(-30, 45, 168)">The Hague</text>
+            transform="rotate(-30, 45, 168)">Etten (1881)</text>
       <line x1="72"
             x2="72"
             y1="-160"
@@ -182,7 +182,7 @@
       <rect x="63"
             width="18"
             y="0"
-            height="60"
+            height="0"
             fill="#f0d946"
             stroke-width=".5"
             stroke="black"/>
@@ -192,7 +192,7 @@
             font-size="16"
             font-family="Times New Roman"
             writing-mode="tb"
-            transform="rotate(-30, 72, 168)">Etten</text>
+            transform="rotate(-30, 72, 168)">Brussels (1881)</text>
       <line x1="99"
             x2="99"
             y1="-160"
@@ -202,15 +202,15 @@
             stroke-dasharray="5,5"/>
       <rect x="90"
             width="18"
-            y="-60"
-            height="60"
+            y="-0"
+            height="0"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="90"
             width="18"
             y="0"
-            height="30"
+            height="20"
             fill="#f0d946"
             stroke-width=".5"
             stroke="black"/>
@@ -220,7 +220,7 @@
             font-size="16"
             font-family="Times New Roman"
             writing-mode="tb"
-            transform="rotate(-30, 99, 168)">Nieuw-Amsterdam</text>
+            transform="rotate(-30, 99, 168)">The Hague (1882)</text>
       <line x1="126"
             x2="126"
             y1="-160"
@@ -230,15 +230,15 @@
             stroke-dasharray="5,5"/>
       <rect x="117"
             width="18"
-            y="-0"
-            height="0"
+            y="-60"
+            height="60"
             fill="#88c5db"
             stroke-width=".5"
             stroke="black"/>
       <rect x="117"
             width="18"
             y="0"
-            height="110"
+            height="30"
             fill="#f0d946"
             stroke-width=".5"
             stroke="black"/>
@@ -248,7 +248,7 @@
             font-size="16"
             font-family="Times New Roman"
             writing-mode="tb"
-            transform="rotate(-30, 126, 168)">Cuesmes</text>
+            transform="rotate(-30, 126, 168)">Nieuw-Amsterdam (1883)</text>
       <line x1="153"
             x2="153"
             y1="-160"
@@ -276,7 +276,7 @@
             font-size="16"
             font-family="Times New Roman"
             writing-mode="tb"
-            transform="rotate(-30, 153, 168)">Hoogeveen</text>
+            transform="rotate(-30, 153, 168)">Hoogeveen (1883)</text>
       <line x1="180"
             x2="180"
             y1="-160"
@@ -304,7 +304,7 @@
             font-size="16"
             font-family="Times New Roman"
             writing-mode="tb"
-            transform="rotate(-30, 180, 168)">Brussels</text>
+            transform="rotate(-30, 180, 168)">Nuenen (1884)</text>
       <line x1="207"
             x2="207"
             y1="-160"
@@ -332,7 +332,7 @@
             font-size="16"
             font-family="Times New Roman"
             writing-mode="tb"
-            transform="rotate(-30, 207, 168)">Antwerp</text>
+            transform="rotate(-30, 207, 168)">Antwerp (1886)</text>
       <line x1="234"
             x2="234"
             y1="-160"
@@ -360,7 +360,7 @@
             font-size="16"
             font-family="Times New Roman"
             writing-mode="tb"
-            transform="rotate(-30, 234, 168)">Paris</text>
+            transform="rotate(-30, 234, 168)">Paris (1887)</text>
       <text x="-64"
             y="-80"
             font-size="16"
@@ -376,7 +376,7 @@
             font-weight="300"
             writing-mode="tb">Bad Health</text>
       <text x="126"
-            y="298.20313096253386"
+            y="338.6086287078516"
             text-anchor="middle"
             font-size="16"
             font-family="Times New Roman">Location at time of writing</text>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <letter>
    <head>
-      <location>Nuenen</location>, on or about Tuesday, <date>14 July 1885</date>.</head>
+      <location>Nuenen</location>, on or about Tuesday, <date>14 July <year>1885</year></date>.</head>
    <salutation>My dear Theo,</salutation>
    <body>
       <p>I wish that the 4 canvases I wrote to you about were gone. I may work on them again

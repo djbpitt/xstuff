@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <letter>
    <head>
-      <location>Nuenen</location>, on or about Wednesday, <date>19 August 1885</date>.</head>
+      <location>Nuenen</location>, on or about Wednesday, <date>19 August <year>1885</year></date>.</head>
    <salutation>My dear Theo,</salutation>
    <body>
       <p>I wanted to add to my letter of the day before yesterday that I had a letter from Rappard

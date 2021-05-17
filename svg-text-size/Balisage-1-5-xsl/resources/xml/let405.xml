@@ -2,7 +2,7 @@
 <letter>
    <head>
       <location>Nieuw-Amsterdam</location>
-      <date>11 November 1883</date>
+      <date>11 November <year>1883</year></date>
    </head>
    <salutation>Theo,</salutation>
    <body>

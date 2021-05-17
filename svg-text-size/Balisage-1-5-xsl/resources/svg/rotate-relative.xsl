@@ -10,15 +10,19 @@
     <!-- ================================================================ -->
     <!-- Establish rotated label dimensions                               -->
     <!-- ================================================================ -->
-    <xsl:variable name="locs" select="$letters//location => distinct-values()"/>
-    <xsl:variable name="loc-count" as="xs:integer" select="count($locs)"/>
+    <xsl:variable name="locs" select="$letters//location"/>
+    <xsl:variable name="distinct-locs" select="$locs => distinct-values()"/>
+    <xsl:variable name="loc-count" as="xs:integer" select="count($distinct-locs)"/>
     <xsl:variable name="hypotenuse" as="xs:double" select="
-            max(for $loc in $locs
-            return
-                djb:get-text-length($loc))"/>
+        max(for $loc in $locs
+        return djb:get-text-length(
+        $loc  || ' (' || $loc/following-sibling::date/year || ')'))"/>
     <xsl:variable name="angle-deg" as="xs:double" select="30"/>
     <xsl:variable name="label-height" as="xs:double"
         select="djb:tri-adj($hypotenuse, $angle-deg)"/>
+    <xsl:variable name="label-pos" as="xs:double"
+        select="$half_height + $label-height + ($font-size * 2)"/>
+
     <!-- ================================================================ -->
     <!-- Functions perform trig calculations                              -->
     <!-- ================================================================ -->
@@ -65,7 +69,7 @@
 
     <xsl:template name="xsl:initial-template">
         <svg height="{$max_height + 300}" width="{$max_width + 250}">
-            <g transform="translate(100, {$half_height + 125})">
+            <g transform="translate(100, {$half_height + 50})">
 
                 <!-- ================================================================ -->
                 <!-- Ruling lines and labels for "positive," good health values       -->
@@ -97,6 +101,7 @@
                 <!-- for-each-group to draw ruling lines, bars, bar labels            -->
                 <!-- ================================================================ -->
                 <xsl:for-each-group select="$letters//location" group-by=".">
+                    <xsl:sort select=".[1]/following-sibling::date/year"/>
                     <xsl:variable name="xpos" as="xs:double"
                         select="$spacing + (position() - 1) * ($bar_width + $spacing)"/>
                     <line x1="{$xpos + $spacing}" x2="{$xpos + $spacing}" y1="-{$half_height}"
@@ -126,6 +131,9 @@
                         font-size="16" font-family="Times New Roman" writing-mode="tb"
                         transform="rotate(-{$angle-deg}, {$xpos + $spacing}, {$half_height + (.5 * $font-size)})">
                         <xsl:value-of select="translate(., '_', ' ')"/>
+                        <xsl:text> (</xsl:text>
+                        <xsl:value-of select=".[1]/following-sibling::date/year"/>
+                        <xsl:text>)</xsl:text>
                     </text>
                 </xsl:for-each-group>
 
@@ -144,7 +152,7 @@
                 <!-- ================================================================ -->
                 <!-- X Axis labels                                                    -->
                 <!-- ================================================================ -->
-                <text x="{$max_width div 2}" y="{$half_height + (2 * $font-size) + $label-height}" text-anchor="middle"
+                <text x="{$max_width div 2}" y="{$label-pos}" text-anchor="middle"
                     font-size="16" font-family="Times New Roman">Location at time of writing</text>
                 <text x="{$max_width div 2}" y="{-$half_height - 25}" font-size="16"
                     text-anchor="middle" font-family="Times New Roman" font-weight="300">

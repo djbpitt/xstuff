@@ -5,17 +5,20 @@
     <xsl:output method="xml" indent="yes"/>
 
     <xsl:variable name="letters" select="collection('../xml/?select=*.xml')"/>
-    
+
     <!-- ================================================================ -->
     <!-- Establish label dimensions                                       -->
     <!-- ================================================================ -->
-    <xsl:variable name="locs" select="$letters//location => distinct-values()"/>
+    <xsl:variable name="locs" select="$letters//location"/>
+    <xsl:variable name="distinct-locs" select="$locs => distinct-values()"/>
+    <xsl:variable name="loc-count" as="xs:integer" select="count($distinct-locs)"/>
     <xsl:variable name="max-loc-str" as="xs:double" select="
-            max(for $loc in $locs
-            return
-                djb:get-text-length($loc))"/>
-    <xsl:variable name="loc-count" as="xs:integer" select="count($locs)"/>
-    
+        max(for $loc in $locs
+        return djb:get-text-length(
+            $loc  || ' (' || $loc/following-sibling::date/year || ')'))"/>
+    <xsl:variable name="label-pos" as="xs:double"
+        select="$half_width + $max-loc-str + ($font-size * 2)"/>
+
     <!-- ================================================================ -->
     <!-- General graph dimensions                                         -->
     <!-- ================================================================ -->
@@ -48,7 +51,7 @@
     </xsl:function>
 
     <xsl:template name="xsl:initial-template">
-        <svg height="{$max_height + 200}" width="{$max_width + 250}">
+        <svg height="{$max_height + 200}" width="{$max_width + 300}">
             <g transform="translate({$half_width + 50}, 100)">
 
                 <!-- ================================================================ -->
@@ -83,6 +86,7 @@
                 <!-- for-each-group to draw ruling lines, bars, bar labels            -->
                 <!-- ================================================================ -->
                 <xsl:for-each-group select="$letters//location" group-by=".">
+                    <xsl:sort select=".[1]/following-sibling::date/year"/>
                     <xsl:variable name="ypos" as="xs:double"
                         select="$spacing + (position() - 1) * ($bar_height + $spacing)"/>
                     <line x1="-{$half_width}" x2="{$half_width}" y1="{$ypos + $spacing}"
@@ -110,6 +114,9 @@
                     <text x="{$half_width + 10}" y="{$ypos + $spacing + 3}" text-anchor="start"
                         font-family="Times New Roman" font-size="16">
                         <xsl:value-of select="translate(., '_', ' ')"/>
+                        <xsl:text> (</xsl:text>
+                        <xsl:value-of select=".[1]/following-sibling::date/year"/>
+                        <xsl:text>)</xsl:text>
                     </text>
                 </xsl:for-each-group>
 
@@ -132,9 +139,9 @@
                 <!-- ================================================================ -->
                 <!-- Y Axis label                                                    -->
                 <!-- ================================================================ -->
-                <text x="{$half_width + $max-loc-str + ($font-size * 2)}" y="{$max_height div 2}"
-                    font-family="Times New Roman" text-anchor="middle" font-size="16"
-                    writing-mode="tb">Location at time of writing</text>
+                <text x="{$label-pos}" y="{$max_height div 2}" font-family="Times New Roman"
+                    text-anchor="middle" font-size="16" writing-mode="tb">Location at time of
+                    writing</text>
 
                 <!-- ================================================================ -->
                 <!-- General axes                                                     -->

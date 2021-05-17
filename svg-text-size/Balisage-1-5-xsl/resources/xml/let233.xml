@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <letter>
    <head>
-      <location>The Hague</location>, <date>Tuesday, 30 May 1882.</date>
+      <location>The Hague</location>, <date>Tuesday, 30 May <year>1882</year>.</date>
    </head>
    <salutation>My dear brother, </salutation>
    <body>

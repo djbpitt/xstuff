@@ -6,15 +6,7 @@
     <xsl:output method="xml" indent="yes"/>
 
     <xsl:variable name="letters" select="collection('../xml/?select=*.xml')"/>
-
-    <!-- ================================================================ -->
-    <!-- Establish label dimensions                                       -->
-    <!-- ================================================================ -->
     <xsl:variable name="locs" select="$letters//location => distinct-values()"/>
-    <xsl:variable name="max-loc-str" as="xs:double" select="
-            max(for $loc in $locs
-            return
-                djb:get-text-length($loc))"/>
     <xsl:variable name="loc-count" as="xs:integer" select="count($locs)"/>
 
     <!-- ================================================================ -->
@@ -28,26 +20,6 @@
     <xsl:variable name="max_width" as="xs:double" select="$half_width * 2"/>
     <xsl:variable name="xscale" as="xs:double" select="10"/>
 
-    <!-- ================================================================ -->
-    <!-- Read in mapping and make accessible in key (one per font/size)   -->
-    <!-- ================================================================ -->
-    <xsl:variable name="times-new-roman-16-mapping" as="document-node()"
-        select="doc('../times-new-roman-16.xml')"/>
-    <xsl:key name="lengthByChar" match="character" use="@str"/>
-    <xsl:variable name="font-size" as="xs:double"
-        select="$times-new-roman-16-mapping/descendant::metadata/@fontSize"/>
-    <!-- ================================================================ -->
-    <!-- Return length of string in SVG units                             -->
-    <!-- ================================================================ -->
-    <xsl:function name="djb:get-text-length" as="xs:double">
-        <xsl:param name="in" as="xs:string"/>
-        <xsl:sequence select="
-                string-to-codepoints($in)
-                ! codepoints-to-string(.)
-                ! key('lengthByChar', ., $times-new-roman-16-mapping)/@width
-                => sum()"/>
-    </xsl:function>
-
     <xsl:template name="xsl:initial-template">
         <html>
             <head>
@@ -57,19 +29,12 @@
                         display: block;
                         overflow: visible
                     }
-                    body {
-                        display: flex;
-                        flex-direction: column;
-                        row-gap: 1em;
-                    }
                     section {
                         display: flex;
                         flex-direction: row;
                         column-gap: 1em;
                     }
-                    div {
-                        padding: .5em
-                    }</style>
+               </style>
                 <script type="text/javascript">
                 <![CDATA[
                     window.addEventListener('DOMContentLoaded', init, false);
@@ -78,8 +43,8 @@
                         for (i = 0; i < divs.length; i++) {
                             bb = divs[i].querySelector('g').getBBox();
                             console.log(bb);
-                            divs[i].querySelector('svg').setAttribute('height', (bb.height + 10));
-                            divs[i].querySelector('svg').setAttribute('width', (bb.width + 10));
+                            divs[i].querySelector('svg').setAttribute('height', bb.height);
+                            divs[i].querySelector('svg').setAttribute('width', bb.width);
                         }
                         // subtract from text not rotated around origin
                         // Overflow visible or shift g to accommodate
@@ -91,7 +56,7 @@
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg">
                             <g
-                                transform="translate({$half_width + ($font-size * 2)}, {$font-size * 4})">
+                                transform="translate({$half_width}, 65)">
 
                                 <!-- ================================================================ -->
                                 <!-- Ruling lines and labels for "positive," good health values       -->
@@ -99,11 +64,11 @@
                                 <xsl:for-each select="0 to 4">
                                     <xsl:variable name="pos" as="xs:double"
                                         select=". * ($half_width div 4)"/>
-                                    <text y="-{$font-size * 1.5}" x="{$pos}" font-size="16"
+                                    <text y="-25" x="{$pos}" font-size="16"
                                         font-family="Times New Roman" text-anchor="middle">
                                         <xsl:value-of select="$pos div $xscale"/>
                                     </text>
-                                    <line y1="-{$font-size}" y2="0" x1="{$pos}" x2="{$pos}"
+                                    <line y1="-15" y2="0" x1="{$pos}" x2="{$pos}"
                                         stroke="black"/>
                                     <line y1="0" y2="{$max_height}" x1="{$pos}" x2="{$pos}"
                                         stroke="black" opacity=".5"/>
@@ -115,11 +80,11 @@
                                 <xsl:for-each select="-4 to -1">
                                     <xsl:variable name="pos" as="xs:double"
                                         select=". * ($half_width div 4)"/>
-                                    <text y="-{$font-size * 1.5}" x="{$pos}" font-size="16"
+                                    <text y="-25" x="{$pos}" font-size="16"
                                         font-family="Times New Roman" text-anchor="middle">
                                         <xsl:value-of select="(-$pos) div $xscale"/>
                                     </text>
-                                    <line y1="-{$font-size}" y2="0" x1="{$pos}" x2="{$pos}"
+                                    <line y1="-15" y2="0" x1="{$pos}" x2="{$pos}"
                                         stroke="black"/>
                                     <line y1="0" y2="{$max_height}" x1="{$pos}" x2="{$pos}"
                                         stroke="black" opacity=".5"/>
@@ -129,6 +94,7 @@
                                 <!-- for-each-group to draw ruling lines, bars, bar labels            -->
                                 <!-- ================================================================ -->
                                 <xsl:for-each-group select="$letters//location" group-by=".">
+                                    <xsl:sort select=".[1]/following-sibling::date/year"/>
                                     <xsl:variable name="ypos" as="xs:double"
                                         select="$spacing + (position() - 1) * ($bar_height + $spacing)"/>
                                     <line x1="-{$half_width}" x2="{$half_width}"
@@ -161,23 +127,26 @@
                                         text-anchor="start" font-family="Times New Roman"
                                         font-size="16">
                                         <xsl:value-of select="translate(., '_', ' ')"/>
+                                        <xsl:text> (</xsl:text>
+                                        <xsl:value-of select=".[1]/following-sibling::date/year"/>
+                                        <xsl:text>)</xsl:text>
                                     </text>
                                 </xsl:for-each-group>
 
                                 <!-- ================================================================ -->
                                 <!-- X Axis labels                                                    -->
                                 <!-- ================================================================ -->
-                                <text x="{$half_width div 2}" y="-{$font-size * 3}" font-size="16"
+                                <text x="{$half_width div 2}" y="-50" font-size="16"
                                     font-family="Times New Roman" text-anchor="middle"
                                     font-weight="300">
                                     <xsl:text>Good Health</xsl:text>
                                 </text>
-                                <text x="-{$half_width div 2}" y="-{$font-size * 3}" font-size="16"
+                                <text x="-{$half_width div 2}" y="-50" font-size="16"
                                     font-family="Times New Roman" text-anchor="middle"
                                     font-weight="300">
                                     <xsl:text>Bad Health</xsl:text>
                                 </text>
-                                <text x="0" y="{$max_height + ($font-size * 2)}" font-size="16"
+                                <text x="0" y="{$max_height + 30}" font-size="16"
                                     font-family="Times New Roman" text-anchor="middle"
                                     font-weight="300">
                                     <xsl:text>Mentions of Mental Health/Stress Factors</xsl:text>
@@ -194,7 +163,7 @@
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg">
-                            <g transform="translate(0, {$font-size * 4})">
+                            <g transform="translate(0, 65)">
                                 <!-- ================================================================ -->
                                 <!-- Y Axis label                                                    -->
                                 <!-- ================================================================ -->

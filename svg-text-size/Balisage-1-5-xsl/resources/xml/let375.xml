@@ -2,7 +2,7 @@
 <letter>
    <head>
       <location>The Hague</location>
-      <date>18 August 1883</date>
+      <date>18 August <year>1883</year></date>
    </head>
    <salutation>Dear brother,</salutation>
    <body>
@@ -84,7 +84,7 @@
             no matter what, even carrying bales, and leave art for better times, at least having a
             studio and painting.When I look back on the past, I always come up against the same
             fatal points that are still not entirely clear to me and that coincide with the months
-            August 1881 to February 1882. That’s why I can’t help mentioning the same names all the
+            August <year>1881</year> to February <year>1882</year>. That’s why I can’t help mentioning the same names all the
             time. Which appeared to astonish you. </p>
       <p>Dear brother, don’t think of me as being anything other than an ordinary painter facing
             ordinary problems, and don’t imagine there’s anything unusual when there are hard times.
