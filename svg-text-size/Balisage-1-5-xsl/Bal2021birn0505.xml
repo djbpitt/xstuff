@@ -434,13 +434,23 @@
                     <title>Advantages</title>
                     <itemizedlist>
                         <listitem>
-                            <para>The primary advantage of this approach is that SVG created in this
-                                way does not depend on specific browser (or other user-agent)
-                                behaviors. Except for unpredictable kerning (or other automatic
-                                glyph-substitution behavior), SVG <code>&lt;text&gt;</code> elements
-                                placed with this method should be positioned as reliably as non-text
-                                SVG elements, and the method should continue to function with the
-                                browsers of the future.</para>
+                            <para>SVG created in this way looks, both in raw form and when rendered,
+                                like the SVG we would have created by specifying the positioning as
+                                we did previously, that is, by using trial and error to identify
+                                positioning values that produce acceptable layout and then
+                                hard-coding them. This means that adopting the XSLT approach
+                                described here does not require changing how we work with the
+                                resulting SVG (which is not the case with the JavaScript approach,
+                                about which please see below).</para>
+                        </listitem>
+                        <listitem>
+                            <para>SVG created in this way does not depend on specific browser (or
+                                other user-agent) behaviors. Except for unpredictable kerning (or
+                                other automatic glyph-substitution behavior), SVG
+                                    <code>&lt;text&gt;</code> elements placed with this method
+                                should be positioned as reliably as non-text SVG elements, and the
+                                method should continue to function with the browsers of the
+                                future.</para>
                         </listitem>
                         <listitem>
                             <para>The XSLT-based method described here does not depend on a browser
@@ -454,11 +464,12 @@
                                 programming, it poses a lower barrier to entry for XML developers
                                 who are not also comfortable with JavaScript development.<footnote>
                                     <para>We used Python to create XML font metrics files, but
-                                        Python programming knowledge is not required because there
-                                        is stand-alone command-line <emphasis role="ital"
-                                            >ttx</emphasis> program that can export metric
-                                        information from fonts as XML. See <xref linkend="ttx-intro"
-                                        /> for more information.</para>
+                                        Python programming knowledge is not a requirement to access
+                                        font metrics information inside font files. Among other
+                                        things, there is an open-source stand-alone command-line
+                                            <emphasis role="ital">ttx</emphasis> program that can
+                                        export metric information from fonts as XML. See <xref
+                                            linkend="ttx-intro"/> for more information.</para>
                                 </footnote></para>
                         </listitem>
                     </itemizedlist>
@@ -823,7 +834,8 @@ print(xml_str)</programlisting>
     </appendix>
     <appendix xml:id="javascript-mockup" xreflabel="Appendix B">
         <title>Sample HTML for JavaScript method</title>
-        <programlisting language="xml" xml:space="preserve">&lt;?xml version="1.0" encoding="UTF-8"?>
+        <programlisting language="xml" xml:space="preserve">
+&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;!DOCTYPE html>
 &lt;html xmlns="http://www.w3.org/1999/xhtml">
   &lt;!-- ================================================================ -->
@@ -850,7 +862,7 @@ print(xml_str)</programlisting>
         display: flex;
         flex-direction: row;
         column-gap: 1em;
-        outline: 4px red solid;
+        outline: 4px red solid;   
       }
       div {
         border: 2px blue solid;
@@ -874,7 +886,7 @@ print(xml_str)</programlisting>
         &lt;svg xmlns="http://www.w3.org/2000/svg">
           &lt;g>
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+              dominant-baseline="middle" dy=".5em">Sample horizontal text&lt;/text>
           &lt;/g>
         &lt;/svg>
       &lt;/div>
@@ -882,7 +894,8 @@ print(xml_str)</programlisting>
         &lt;svg xmlns="http://www.w3.org/2000/svg">
           &lt;g>
             &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
-              font-size="16" dominant-baseline="hanging">Sample vertical text&lt;/text>
+              font-size="16" dominant-baseline="middle" dx=".5em">Sample vertical
+              text&lt;/text>
           &lt;/g>
         &lt;/svg>
       &lt;/div>
@@ -906,7 +919,7 @@ print(xml_str)</programlisting>
         &lt;svg xmlns="http://www.w3.org/2000/svg">
           &lt;g>
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+              dominant-baseline="middle" dy=".5em">Sample horizontal text&lt;/text>
           &lt;/g>
         &lt;/svg>
       &lt;/div>
@@ -916,7 +929,7 @@ print(xml_str)</programlisting>
         &lt;svg xmlns="http://www.w3.org/2000/svg">
           &lt;g>
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+              dominant-baseline="middle" dy=".5em">Sample horizontal text&lt;/text>
           &lt;/g>
         &lt;/svg>
       &lt;/div>
@@ -924,7 +937,8 @@ print(xml_str)</programlisting>
         &lt;svg xmlns="http://www.w3.org/2000/svg">
           &lt;g>
             &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
-              font-size="16" dominant-baseline="hanging">Sample vertical text&lt;/text>
+              font-size="16" dominant-baseline="middle" dx=".5em">Sample vertical
+              text&lt;/text>
           &lt;/g>
         &lt;/svg>
       &lt;/div>
@@ -948,7 +962,7 @@ print(xml_str)</programlisting>
         &lt;svg xmlns="http://www.w3.org/2000/svg">
           &lt;g>
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+              dominant-baseline="middle" dy=".5em">Sample horizontal text&lt;/text>
           &lt;/g>
         &lt;/svg>
       &lt;/div>
@@ -958,7 +972,7 @@ print(xml_str)</programlisting>
         &lt;svg xmlns="http://www.w3.org/2000/svg">
           &lt;g>
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+              dominant-baseline="middle" dy=".5em">Sample horizontal text&lt;/text>
           &lt;/g>
         &lt;/svg>
       &lt;/div>
@@ -966,7 +980,8 @@ print(xml_str)</programlisting>
         &lt;svg xmlns="http://www.w3.org/2000/svg">
           &lt;g>
             &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
-              font-size="16" dominant-baseline="hanging">Sample vertical text&lt;/text>
+              font-size="16" dominant-baseline="middle" dx=".5em">Sample vertical
+              text&lt;/text>
           &lt;/g>
         &lt;/svg>
       &lt;/div>
@@ -990,13 +1005,15 @@ print(xml_str)</programlisting>
         &lt;svg xmlns="http://www.w3.org/2000/svg">
           &lt;g>
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging">Sample horizontal text&lt;/text>
+              dominant-baseline="middle" dy=".5em">Sample horizontal text&lt;/text>
           &lt;/g>
         &lt;/svg>
       &lt;/div>
     &lt;/section>
   &lt;/body>
-&lt;/html></programlisting>
+&lt;/html>
+
+        </programlisting>
     </appendix>
     <bibliography>
         <title>Works cited</title>

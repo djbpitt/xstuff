@@ -304,18 +304,18 @@
                                              <dt><span class="section"><a href="#d3e362" class="toc">Discussion</a></span></dt>
                                           </dl>
                                        </dd>
-                                       <dt><span class="section"><a href="#d3e399" class="toc">A JavaScript approach</a></span></dt>
+                                       <dt><span class="section"><a href="#d3e401" class="toc">A JavaScript approach</a></span></dt>
                                        <dd>
                                           <dl>
-                                             <dt><span class="section"><a href="#d3e401" class="toc">Overview</a></span></dt>
-                                             <dt><span class="section"><a href="#d3e425" class="toc">Implementation</a></span></dt>
-                                             <dt><span class="section"><a href="#d3e548" class="toc">Discussion</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e403" class="toc">Overview</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e427" class="toc">Implementation</a></span></dt>
+                                             <dt><span class="section"><a href="#d3e550" class="toc">Discussion</a></span></dt>
                                           </dl>
                                        </dd>
                                     </dl>
                                  </dd>
-                                 <dt><span class="section"><a href="#d3e569" class="toc">Loose ends and future directions</a></span></dt>
-                                 <dt><span class="section"><a href="#d3e579" class="toc">Conclusion</a></span></dt>
+                                 <dt><span class="section"><a href="#d3e571" class="toc">Loose ends and future directions</a></span></dt>
+                                 <dt><span class="section"><a href="#d3e581" class="toc">Conclusion</a></span></dt>
                                  <dt><span class="appendix"><a href="#extract-widths" class="toc">Appendix A. Script to extract font widths as XML</a></span></dt>
                                  <dt><span class="appendix"><a href="#javascript-mockup" class="toc">Appendix B. Sample HTML for JavaScript method</a></span></dt>
                               </dl>
@@ -397,18 +397,18 @@
                                     <dt><span class="section"><a href="#d3e362" class="toc">Discussion</a></span></dt>
                                  </dl>
                               </dd>
-                              <dt><span class="section"><a href="#d3e399" class="toc">A JavaScript approach</a></span></dt>
+                              <dt><span class="section"><a href="#d3e401" class="toc">A JavaScript approach</a></span></dt>
                               <dd>
                                  <dl>
-                                    <dt><span class="section"><a href="#d3e401" class="toc">Overview</a></span></dt>
-                                    <dt><span class="section"><a href="#d3e425" class="toc">Implementation</a></span></dt>
-                                    <dt><span class="section"><a href="#d3e548" class="toc">Discussion</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e403" class="toc">Overview</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e427" class="toc">Implementation</a></span></dt>
+                                    <dt><span class="section"><a href="#d3e550" class="toc">Discussion</a></span></dt>
                                  </dl>
                               </dd>
                            </dl>
                         </dd>
-                        <dt><span class="section"><a href="#d3e569" class="toc">Loose ends and future directions</a></span></dt>
-                        <dt><span class="section"><a href="#d3e579" class="toc">Conclusion</a></span></dt>
+                        <dt><span class="section"><a href="#d3e571" class="toc">Loose ends and future directions</a></span></dt>
+                        <dt><span class="section"><a href="#d3e581" class="toc">Conclusion</a></span></dt>
                         <dt><span class="appendix"><a href="#extract-widths" class="toc">Appendix A. Script to extract font widths as XML</a></span></dt>
                         <dt><span class="appendix"><a href="#javascript-mockup" class="toc">Appendix B. Sample HTML for JavaScript method</a></span></dt>
                      </dl>
@@ -678,35 +678,45 @@
                               <div class="itemizedlist" id="d3e366">
                                  <ul>
                                     <li id="d3e367">
-                                       <p id="d3e368">The primary advantage of this approach is that SVG created in this
-                                          way does not depend on specific browser (or other user-agent)
-                                          behaviors. Except for unpredictable kerning (or other automatic
-                                          glyph-substitution behavior), SVG <code class="code">&lt;text&gt;</code> elements
-                                          placed with this method should be positioned as reliably as non-text
-                                          SVG elements, and the method should continue to function with the
-                                          browsers of the future.</p>
+                                       <p id="d3e368">SVG created in this way looks, both in raw form and when rendered,
+                                          like the SVG we would have created by specifying the positioning as
+                                          we did previously, that is, by using trial and error to identify
+                                          positioning values that produce acceptable layout and then
+                                          hard-coding them. This means that adopting the XSLT approach
+                                          described here does not require changing how we work with the
+                                          resulting SVG (which is not the case with the JavaScript approach,
+                                          about which please see below).</p>
                                     </li>
-                                    <li id="d3e372">
-                                       <p id="d3e373">The XSLT-based method described here does not depend on a browser
+                                    <li id="d3e369">
+                                       <p id="d3e370">SVG created in this way does not depend on specific browser (or
+                                          other user-agent) behaviors. Except for unpredictable kerning (or
+                                          other automatic glyph-substitution behavior), SVG
+                                          <code class="code">&lt;text&gt;</code> elements placed with this method
+                                          should be positioned as reliably as non-text SVG elements, and the
+                                          method should continue to function with the browsers of the
+                                          future.</p>
+                                    </li>
+                                    <li id="d3e374">
+                                       <p id="d3e375">The XSLT-based method described here does not depend on a browser
                                           or other DOM-and-JavaScript-aware environment to compute the
                                           placement and positioning of SVG elements after the DOM content has
                                           been loaded. This means that this method may be easier to use
                                           outside browser environments.</p>
                                     </li>
-                                    <li id="d3e374">
-                                       <p id="d3e375">Because creating SVG in this way does not require JavaScript
+                                    <li id="d3e376">
+                                       <p id="d3e377">Because creating SVG in this way does not require JavaScript
                                           programming, it poses a lower barrier to entry for XML developers
-                                          who are not also comfortable with JavaScript development.<sup class="fn-label"><a href="#d3e377" class="footnoteref" id="d3e377-ref">[14]</a></sup></p>
+                                          who are not also comfortable with JavaScript development.<sup class="fn-label"><a href="#d3e379" class="footnoteref" id="d3e379-ref">[14]</a></sup></p>
                                     </li>
                                  </ul>
                               </div>
                            </div>
-                           <div class="section" id="d3e385">
+                           <div class="section" id="d3e387">
                               <h5 class="title" style="clear: both">Disadvantages</h5>
-                              <div class="itemizedlist" id="d3e387">
+                              <div class="itemizedlist" id="d3e389">
                                  <ul>
-                                    <li id="d3e388">
-                                       <p id="d3e389">This approach requires prior preparation of font metric
+                                    <li id="d3e390">
+                                       <p id="d3e391">This approach requires prior preparation of font metric
                                           information, an extra step that also has scalability implications
                                           because changing decisions about font families, font sizes, or other
                                           font properties requires creating separate additional metric
@@ -714,8 +724,8 @@
                                           font metric information for reuse, but separate metric files will be
                                           required for all combinations of font family and font size.</p>
                                     </li>
-                                    <li id="d3e390">
-                                       <p id="d3e391">The method described above accesses only the glyph widths, which
+                                    <li id="d3e392">
+                                       <p id="d3e393">The method described above accesses only the glyph widths, which
                                           represent a small part of the font metric information available from
                                           a font file. A more robust and accurate implementation would
                                           requires additional logic to deal with font effects (e.g., kerning,
@@ -724,8 +734,8 @@
                                           locate it in the font metric tables and then export it in a usable
                                           format.</p>
                                     </li>
-                                    <li id="d3e392">
-                                       <p id="d3e393">Because the metrics of system fonts may differ in unpredictable
+                                    <li id="d3e394">
+                                       <p id="d3e395">Because the metrics of system fonts may differ in unpredictable
                                           ways (the most extreme of which would be the complete
                                           non-availability of a font used to compute the size of a
                                           <code class="code">&lt;text&gt;</code> element), developers may prefer to
@@ -734,8 +744,8 @@
                                           stacks because font metrics cannot be expected to be the same across
                                           fonts, including across fonts commonly stacked.</p>
                                     </li>
-                                    <li id="d3e397">
-                                       <p id="d3e398">The description above works with TTF fonts, but has not been
+                                    <li id="d3e399">
+                                       <p id="d3e400">The description above works with TTF fonts, but has not been
                                           tested with other font formats, such as OTF and TTC—let alone font
                                           formats of the future.</p>
                                     </li>
@@ -744,26 +754,26 @@
                            </div>
                         </div>
                      </div>
-                     <div class="section" id="d3e399">
+                     <div class="section" id="d3e401">
                         <h3 class="title" style="clear: both">A JavaScript approach</h3>
-                        <div class="section" id="d3e401">
+                        <div class="section" id="d3e403">
                            <h4 class="title" style="clear: both">Overview</h4>
-                           <p id="d3e403">The JavaScript approach leaves the SVG <code class="code">@height</code> and
+                           <p id="d3e405">The JavaScript approach leaves the SVG <code class="code">@height</code> and
                               <code class="code">@width</code> attributes unspecified if they cannot be computed at the
                               time the SVG is created. When the SVG is eventually loaded into a browser,
                               JavaScript functions compute the missing dimensions and write them into the DOM
                               in a way that controls the layout.</p>
-                           <p id="d3e409">Because the JavaScript approach relies on JavaScript applied in the browser
+                           <p id="d3e411">Because the JavaScript approach relies on JavaScript applied in the browser
                               after the document loads, this method can be used only where the developer has
                               file system or server permissions needed to specify JavaScript modifications.
                               Because that is not the case with the Balisage <span class="ital">Proceedings</span> in which this report is being published, the output
-                              of the JavaScript method is illustrated below with a PNG screen capture.<sup class="fn-label"><a href="#d3e414" class="footnoteref" id="d3e414-ref">[15]</a></sup> The raw HTML, with embedded CSS and JavaScript, can be found in
-                              <a class="xref" href="#javascript-mockup" id="d3e417">Appendix B</a>.</p>
+                              of the JavaScript method is illustrated below with a PNG screen capture.<sup class="fn-label"><a href="#d3e416" class="footnoteref" id="d3e416-ref">[15]</a></sup> The raw HTML, with embedded CSS and JavaScript, can be found in
+                              <a class="xref" href="#javascript-mockup" id="d3e419">Appendix B</a>.</p>
                            <figure id="js-mockup">
                               <p class="title">Sample output of JavaScript method</p>
                               <div class="figure-contents">
-                                 <div class="mediaobject" id="d3e420"><img alt="" src="includes/js-mockup.png" style="width: 12in"><div class="caption">
-                                       <p id="d3e424">Sample output of the JavaScript method. Colored outlines and
+                                 <div class="mediaobject" id="d3e422"><img alt="" src="includes/js-mockup.png" style="width: 12in"><div class="caption">
+                                       <p id="d3e426">Sample output of the JavaScript method. Colored outlines and
                                           borders have been added to illustrate the positions of the otherwise
                                           invisible bounding elements. Note that rotated text that crosses the
                                           bounding box is rendered correctly (that is, not cropped).</p>
@@ -772,25 +782,25 @@
                               </div>
                            </figure>
                         </div>
-                        <div class="section" id="d3e425">
+                        <div class="section" id="d3e427">
                            <h4 class="title" style="clear: both">Implementation</h4>
-                           <p id="d3e427">Because we do not specify the width or height of the rectangular viewport of
+                           <p id="d3e429">Because we do not specify the width or height of the rectangular viewport of
                               our <code class="code">&lt;svg&gt;</code> with explicit <code class="code">@width</code> or
                               <code class="code">@height</code> attributes, in absence of our JavaScript intervention
                               (see below) the <code class="code">&lt;svg&gt;</code> elements will assume whatever the browser
                               assigns as default. The default size is implementation dependent, and therefore
-                              unpredictable and unusable for our purposes.<sup class="fn-label"><a href="#d3e437" class="footnoteref" id="d3e437-ref">[16]</a></sup> Additionally, <code class="code">&lt;svg&gt;</code> elements default to a CSS
+                              unpredictable and unusable for our purposes.<sup class="fn-label"><a href="#d3e439" class="footnoteref" id="d3e439-ref">[16]</a></sup> Additionally, <code class="code">&lt;svg&gt;</code> elements default to a CSS
                               <code class="code">display</code> value of <code class="code">inline-block</code>, which we have to
                               change to <code class="code">block</code> to provide more transparent control over explicit
                               positioning.</p>
-                           <p id="d3e455">Our general strategy relies on HTML and CSS Flexbox to manage the layout of
+                           <p id="d3e457">Our general strategy relies on HTML and CSS Flexbox to manage the layout of
                               the SVG components. For this purpose what would normally be constructed as a
                               single SVG document (e.g., a bar graph with all of its labels) is divided into
                               multiple SVG documents, each wrapped in an HTML <code class="code">&lt;div&gt;</code> or
                               other block-level element. We use CSS Flexbox to position the
                               <code class="code">&lt;div&gt;</code> elements as they would have been positioned in a
                               single, unified SVG document.</p>
-                           <p id="d3e461">We illustrate our positioning strategy in the image above. In that image the
+                           <p id="d3e463">We illustrate our positioning strategy in the image above. In that image the
                               <code class="code">&lt;body&gt;</code> contains three <code class="code">&lt;section&gt;</code>
                               elements, one for each of the horizontal rows (outlined in red). The
                               <code class="code">display</code> property of the <code class="code"> &lt;body&gt;</code> is set to
@@ -805,7 +815,7 @@
                               determined by the height of the <code class="code">&lt;svg&gt;</code> it contains. We use the
                               CSS <code class="code">row-gap</code> property to introduce a gutter between the
                               sections.</p>
-                           <p id="d3e493">Each of the three <code class="code">&lt;section&gt;</code> elements also has its
+                           <p id="d3e495">Each of the three <code class="code">&lt;section&gt;</code> elements also has its
                               <code class="code">display</code> property set to <code class="code">flex</code>, this time with a
                               <code class="code">flex-direction</code> value of <code class="code">row</code>, so that its
                               <code class="code">&lt;div&gt;</code> children will be distributed horizontally across
@@ -816,10 +826,10 @@
                               <code class="code">&lt;div&gt;</code>, the <code class="code">&lt;div&gt;</code> will occupy the space
                               required for their SVG contents, overriding the default width that would
                               otherwise be supplied by the browser.</p>
-                           <p id="d3e521">The JavaScript that supplies explicit <code class="code">@width</code> and
+                           <p id="d3e523">The JavaScript that supplies explicit <code class="code">@width</code> and
                               <code class="code">@height</code> values to the <code class="code">&lt;svg&gt;</code> elements
                               is:</p>
-                           <pre class="programlisting" id="d3e529"><!--language: javascript-->window.addEventListener('DOMContentLoaded', init, false);
+                           <pre class="programlisting" id="d3e531"><!--language: javascript-->window.addEventListener('DOMContentLoaded', init, false);
 function init() {
     const divs = document.querySelectorAll('div');
     for (i = 0; i &lt; divs.length; i++) {
@@ -829,7 +839,7 @@ function init() {
         divs[i].querySelector('svg').setAttribute('width', bb.width);
     }
 }</pre>
-                           <p id="d3e531">Our sample takes advantage of use of <code class="code">&lt;div&gt;</code> elements only as
+                           <p id="d3e533">Our sample takes advantage of use of <code class="code">&lt;div&gt;</code> elements only as
                               wrappers for SVG content, and of our placement of only a single SVG
                               <code class="code">&lt;g&gt;</code> element inside each <code class="code">&lt;svg&gt;</code> element.
                               HTML structured differently may require adjustments, but the general principle
@@ -838,27 +848,27 @@ function init() {
                               height into the <code class="code">&lt;svg&gt;</code> wrapper element as <code class="code">@width</code>
                               and <code class="code">@height</code> attribute values.</p>
                         </div>
-                        <div class="section" id="d3e548">
+                        <div class="section" id="d3e550">
                            <h4 class="title" style="clear: both">Discussion</h4>
-                           <div class="section" id="d3e550">
+                           <div class="section" id="d3e552">
                               <h5 class="title" style="clear: both">Advantages</h5>
-                              <div class="itemizedlist" id="d3e552">
+                              <div class="itemizedlist" id="d3e554">
                                  <ul>
-                                    <li id="d3e553">
-                                       <p id="d3e554">The biggest advantage of the JavaScript approach is that it does
+                                    <li id="d3e555">
+                                       <p id="d3e556">The biggest advantage of the JavaScript approach is that it does
                                           not require the preparation of font metric information in advance,
                                           which is a benefit both initially and with respect to
                                           scalability.</p>
                                     </li>
-                                    <li id="d3e555">
-                                       <p id="d3e556">The JavaScript approach adapts to the viewing environment because
+                                    <li id="d3e557">
+                                       <p id="d3e558">The JavaScript approach adapts to the viewing environment because
                                           it reads the actual dimensions of the SVG objects after their
                                           rendering information has been computed by the browser. This means
                                           that the dimensions will be correct for any font, including system
                                           fonts and fonts determined with a font stack.</p>
                                     </li>
-                                    <li id="d3e557">
-                                       <p id="d3e558">Also because the JavaScript approach has access to the actual
+                                    <li id="d3e559">
+                                       <p id="d3e560">Also because the JavaScript approach has access to the actual
                                           rendered dimensions, it does not require additional logic (beyond
                                           width as specified in the font metrics) to deal with font effects
                                           (e.g., ligatures, positional glyph variants). The
@@ -868,12 +878,12 @@ function init() {
                                  </ul>
                               </div>
                            </div>
-                           <div class="section" id="d3e562">
+                           <div class="section" id="d3e564">
                               <h5 class="title" style="clear: both">Disadvantages</h5>
-                              <div class="itemizedlist" id="d3e564">
+                              <div class="itemizedlist" id="d3e566">
                                  <ul>
-                                    <li id="d3e565">
-                                       <p id="d3e566">The JavaScript approach equires JavaScript programming knowledge,
+                                    <li id="d3e567">
+                                       <p id="d3e568">The JavaScript approach equires JavaScript programming knowledge,
                                           which cannot be assumed for all XML-stack developers, and the same
                                           is true with respect to knowledge of CSS Flexbox. The actual CSS and
                                           JavaScript required is light and the examples provided here can
@@ -881,8 +891,8 @@ function init() {
                                           typically have to be adjusted according to the specific structures
                                           employed in individual projects.</p>
                                     </li>
-                                    <li id="d3e567">
-                                       <p id="d3e568">Because we rely on HTML and CSS to support the relative
+                                    <li id="d3e569">
+                                       <p id="d3e570">Because we rely on HTML and CSS to support the relative
                                           positioning of the SVG components of what is conceptually a single
                                           image, this method is not, at least as implemented here, suited for
                                           not appropriate for the creation of stand-alone SVG.</p>
@@ -893,9 +903,9 @@ function init() {
                         </div>
                      </div>
                   </div>
-                  <div class="section" id="d3e569">
+                  <div class="section" id="d3e571">
                      <h2 class="title" style="clear: both">Loose ends and future directions</h2>
-                     <p id="d3e571">Our XSLT approach assumes that the font metrics that can be extracted from the font
+                     <p id="d3e573">Our XSLT approach assumes that the font metrics that can be extracted from the font
                         files are sufficient to compute the length of an SVG line of text. Our implementation
                         does not attempt to access kerning information, and it has not been tested on writing
                         systems that involve character substitution (including positional glyph variation
@@ -905,12 +915,12 @@ function init() {
                         correctly report a width of zero, as is the case with the Times New Roman font that
                         we
                         used for testing and illustration.</p>
-                     <p id="d3e572">Saxon-JS relies on a JavaScript implementation of the Saxon XSLT engine that is
+                     <p id="d3e574">Saxon-JS relies on a JavaScript implementation of the Saxon XSLT engine that is
                         designed to perform transformations inside the browser. Insofar as Saxon-JS incorporates
                         both XSLT and JavaScript functionality, it may provide a cleaner integration of the
                         two
                         approaches. We do not explore this approach here.</p>
-                     <p id="d3e573">Our definition of the problem to be solved presumes that an algorithmic solution is
+                     <p id="d3e575">Our definition of the problem to be solved presumes that an algorithmic solution is
                         appropriate. Our experimentation above confirms that we can ask XSLT or JavaScript
                         to
                         compute the dimensions of SVG <code class="code">&lt;text&gt;</code> elements, dimensions that we had
@@ -930,9 +940,9 @@ function init() {
                         is
                         computable in principle, ADD EXAMPLE AND DISCUSS </p>
                   </div>
-                  <div class="section" id="d3e579">
+                  <div class="section" id="d3e581">
                      <h2 class="title" style="clear: both">Conclusion</h2>
-                     <p id="d3e581">The goal of this report has been to identify strategies for working around the fact
+                     <p id="d3e583">The goal of this report has been to identify strategies for working around the fact
                         that SVG <code class="code">&lt;text&gt;</code> elements do not know their length, which makes it
                         difficult to position other elements in relationship to them without a tedious
                         trial-and-error approach. We have identified, implemented, illustrated, and discussed
@@ -945,11 +955,11 @@ function init() {
                   </div>
                   <div class="appendix" id="extract-widths">
                      <h2 class="title" style="clear: both">Appendix A. Script to extract font widths as XML</h2>
-                     <p id="d3e587">The following Python script exports the widths of all glyphs in a TrueType font. The
+                     <p id="d3e589">The following Python script exports the widths of all glyphs in a TrueType font. The
                         script has two positional arguments, a required path to the font and an optional point
                         size (defaults to 16, which is the size of SVG text that either does not specify a
                         <code class="code">@font-size</code> or specifies a size of <code class="code">"medium"</code>.</p>
-                     <pre class="programlisting" id="d3e593"><!--language: python-->#!/usr/bin/env python
+                     <pre class="programlisting" id="d3e595"><!--language: python-->#!/usr/bin/env python
 # https://stackoverflow.com/questions/4190667/how-to-get-width-of-a-truetype-font-character-in-1200ths-of-an-inch-with-python
 # https://fonttools.readthedocs.io/en/latest/index.html
 # https://www.geeksforgeeks.org/create-xml-documents-using-python/
@@ -1039,8 +1049,8 @@ for item in c_dict.items(): # string-value : width
 # serialize and render XML
 xml_str = root.toprettyxml(indent="  ")
 print(xml_str)</pre>
-                     <p id="d3e595">The output is an XML document that looks like the following:</p>
-                     <pre class="programlisting" id="d3e596"><!--language: xml-->&lt;metrics&gt;
+                     <p id="d3e597">The output is an XML document that looks like the following:</p>
+                     <pre class="programlisting" id="d3e598"><!--language: xml-->&lt;metrics&gt;
   &lt;metadata 
     fontName="Times New Roman" 
     fontPath="/System/Library/Fonts/Supplemental/Times New Roman.ttf" 
@@ -1049,13 +1059,14 @@ print(xml_str)</pre>
   &lt;character dec="33" hex="0x21" name="exclam" str="!" width="5.328125"/&gt;
   &lt;!-- more characters --&gt;
 &lt;/metrics&gt;</pre>
-                     <p id="d3e598">The SVG layout strategy described here uses the <code class="code">@str</code> value to retrieve
+                     <p id="d3e600">The SVG layout strategy described here uses the <code class="code">@str</code> value to retrieve
                         the <code class="code">@width</code> value. The <code class="code">@dec</code> (decimal) and <code class="code">@hex</code>
                         (hexadecimal) values are not currently used.</p>
                   </div>
                   <div class="appendix" id="javascript-mockup">
                      <h2 class="title" style="clear: both">Appendix B. Sample HTML for JavaScript method</h2>
-                     <pre class="programlisting" id="d3e610"><!--language: xml-->&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                     <pre class="programlisting" id="d3e612"><!--language: xml-->
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
   &lt;!-- ================================================================ --&gt;
@@ -1082,7 +1093,7 @@ print(xml_str)</pre>
         display: flex;
         flex-direction: row;
         column-gap: 1em;
-        outline: 4px red solid;
+        outline: 4px red solid;   
       }
       div {
         border: 2px blue solid;
@@ -1106,7 +1117,7 @@ print(xml_str)</pre>
         &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
           &lt;g&gt;
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging"&gt;Sample horizontal text&lt;/text&gt;
+              dominant-baseline="middle" dy=".5em"&gt;Sample horizontal text&lt;/text&gt;
           &lt;/g&gt;
         &lt;/svg&gt;
       &lt;/div&gt;
@@ -1114,7 +1125,8 @@ print(xml_str)</pre>
         &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
           &lt;g&gt;
             &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
-              font-size="16" dominant-baseline="hanging"&gt;Sample vertical text&lt;/text&gt;
+              font-size="16" dominant-baseline="middle" dx=".5em"&gt;Sample vertical
+              text&lt;/text&gt;
           &lt;/g&gt;
         &lt;/svg&gt;
       &lt;/div&gt;
@@ -1138,7 +1150,7 @@ print(xml_str)</pre>
         &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
           &lt;g&gt;
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging"&gt;Sample horizontal text&lt;/text&gt;
+              dominant-baseline="middle" dy=".5em"&gt;Sample horizontal text&lt;/text&gt;
           &lt;/g&gt;
         &lt;/svg&gt;
       &lt;/div&gt;
@@ -1148,7 +1160,7 @@ print(xml_str)</pre>
         &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
           &lt;g&gt;
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging"&gt;Sample horizontal text&lt;/text&gt;
+              dominant-baseline="middle" dy=".5em"&gt;Sample horizontal text&lt;/text&gt;
           &lt;/g&gt;
         &lt;/svg&gt;
       &lt;/div&gt;
@@ -1156,7 +1168,8 @@ print(xml_str)</pre>
         &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
           &lt;g&gt;
             &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
-              font-size="16" dominant-baseline="hanging"&gt;Sample vertical text&lt;/text&gt;
+              font-size="16" dominant-baseline="middle" dx=".5em"&gt;Sample vertical
+              text&lt;/text&gt;
           &lt;/g&gt;
         &lt;/svg&gt;
       &lt;/div&gt;
@@ -1180,7 +1193,7 @@ print(xml_str)</pre>
         &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
           &lt;g&gt;
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging"&gt;Sample horizontal text&lt;/text&gt;
+              dominant-baseline="middle" dy=".5em"&gt;Sample horizontal text&lt;/text&gt;
           &lt;/g&gt;
         &lt;/svg&gt;
       &lt;/div&gt;
@@ -1190,7 +1203,7 @@ print(xml_str)</pre>
         &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
           &lt;g&gt;
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging"&gt;Sample horizontal text&lt;/text&gt;
+              dominant-baseline="middle" dy=".5em"&gt;Sample horizontal text&lt;/text&gt;
           &lt;/g&gt;
         &lt;/svg&gt;
       &lt;/div&gt;
@@ -1198,7 +1211,8 @@ print(xml_str)</pre>
         &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
           &lt;g&gt;
             &lt;text x="0" y="0" writing-mode="tb" font-family="Times New Roman"
-              font-size="16" dominant-baseline="hanging"&gt;Sample vertical text&lt;/text&gt;
+              font-size="16" dominant-baseline="middle" dx=".5em"&gt;Sample vertical
+              text&lt;/text&gt;
           &lt;/g&gt;
         &lt;/svg&gt;
       &lt;/div&gt;
@@ -1222,20 +1236,22 @@ print(xml_str)</pre>
         &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
           &lt;g&gt;
             &lt;text x="0" y="0" font-family="Times New Roman" font-size="16"
-              dominant-baseline="hanging"&gt;Sample horizontal text&lt;/text&gt;
+              dominant-baseline="middle" dy=".5em"&gt;Sample horizontal text&lt;/text&gt;
           &lt;/g&gt;
         &lt;/svg&gt;
       &lt;/div&gt;
     &lt;/section&gt;
   &lt;/body&gt;
-&lt;/html&gt;</pre>
+&lt;/html&gt;
+
+        </pre>
                   </div>
-                  <div class="bibliography" id="d3e612">
+                  <div class="bibliography" id="d3e614">
                      <h2 class="title">References</h2>
-                     <p class="bibliomixed" id="ttx-intro"><a href="#d3e383">[An intro to FontTools] </a><q>An intro to
+                     <p class="bibliomixed" id="ttx-intro"><a href="#d3e385">[An intro to FontTools] </a><q>An intro to
                            FontTools.</q>
                         <a href="https://github.com/arrowtype/fonttools-intro" class="link" target="_new">https://github.com/arrowtype/fonttools-intro</a></p>
-                     <p class="bibliomixed" id="bellamy-royds2017"><a href="#d3e443">[Bellamy-Royds 2017] </a><q>How to scale
+                     <p class="bibliomixed" id="bellamy-royds2017"><a href="#d3e445">[Bellamy-Royds 2017] </a><q>How to scale
                            SVG.</q> Updated on Jun 27, 2017.
                         <a href="https://css-tricks.com/scale-svg/" class="link" target="_new">https://css-tricks.com/scale-svg/</a></p>
                      <p class="bibliomixed" id="chase2019"><a href="#d3e252">[Chase 2019] </a>Chase, William R. <q>Font height
@@ -1376,23 +1392,25 @@ print(xml_str)</pre>
                            these fonts also include metric information, if we need to process them
                            we could emend our script to process these filetypes, as well.</p>
                      </div>
-                     <div id="d3e377" class="footnote">
-                        <p><sup class="fn-label"><a href="#d3e377-ref" class="footnoteref">[14]</a></sup> We used Python to create XML font metrics files, but
-                           Python programming knowledge is not required because there
-                           is stand-alone command-line <span class="ital">ttx</span> program that can export metric
-                           information from fonts as XML. See <a class="xref" id="d3e383" href="javascript:showcite('cite-ttx-intro','d3e383')">An intro to FontTools</a> for more information.</p>
+                     <div id="d3e379" class="footnote">
+                        <p><sup class="fn-label"><a href="#d3e379-ref" class="footnoteref">[14]</a></sup> We used Python to create XML font metrics files, but
+                           Python programming knowledge is not a requirement to access
+                           font metrics information inside font files. Among other
+                           things, there is an open-source stand-alone command-line
+                           <span class="ital">ttx</span> program that can
+                           export metric information from fonts as XML. See <a class="xref" id="d3e385" href="javascript:showcite('cite-ttx-intro','d3e385')">An intro to FontTools</a> for more information.</p>
                      </div>
-                     <div id="d3e414" class="footnote">
-                        <p><sup class="fn-label"><a href="#d3e414-ref" class="footnoteref">[15]</a></sup> Our screen captures in this case are taken from the Firefox version
+                     <div id="d3e416" class="footnote">
+                        <p><sup class="fn-label"><a href="#d3e416-ref" class="footnoteref">[15]</a></sup> Our screen captures in this case are taken from the Firefox version
                            identified above, but we have verified that the method yields a
                            comparable rendering (except for cosmetic differences in browser
                            defaults) in Chrome and Safari.</p>
                      </div>
-                     <div id="d3e437" class="footnote">
-                        <p><sup class="fn-label"><a href="#d3e437-ref" class="footnoteref">[16]</a></sup> As of 2017:
+                     <div id="d3e439" class="footnote">
+                        <p><sup class="fn-label"><a href="#d3e439-ref" class="footnoteref">[16]</a></sup> As of 2017:
                            <div class="blockquote">
                               <blockquote class="blockquote">
-                                 <p id="d3e441">The default size for HTML replaced elements will be used:
+                                 <p id="d3e443">The default size for HTML replaced elements will be used:
                                     300px wide, 150px tall. This applies for &lt;img&gt;, &lt;object&gt;
                                     or &lt;iframe&gt;. The default 300×150 size also applies to inline
                                     &lt;svg&gt; elements within HTML documents, but that’s a relatively
@@ -1402,7 +1420,7 @@ print(xml_str)</pre>
                                     the default size for SVG files that are opened directly in their
                                     own browser tab. Internet Explorer cuts the difference, using
                                     width of 100% and height of 150px for images and inline SVG.
-                                    (<a class="xref" id="d3e443" href="javascript:showcite('cite-bellamy-royds2017','d3e443')">Bellamy-Royds 2017</a>)</p>
+                                    (<a class="xref" id="d3e445" href="javascript:showcite('cite-bellamy-royds2017','d3e445')">Bellamy-Royds 2017</a>)</p>
                               </blockquote>
                            </div>
                         </p>
