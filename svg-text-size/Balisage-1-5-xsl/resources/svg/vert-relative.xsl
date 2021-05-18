@@ -10,8 +10,6 @@
     <!-- Establish label dimensions                                       -->
     <!-- ================================================================ -->
     <xsl:variable name="locs" select="$letters//location"/>
-    <xsl:variable name="distinct-locs" select="$locs => distinct-values()"/>
-    <xsl:variable name="loc-count" as="xs:integer" select="count($distinct-locs)"/>
     <xsl:variable name="max-loc-str" as="xs:double" select="
         max(for $loc in $locs
         return djb:get-text-length(
@@ -25,7 +23,7 @@
     <xsl:variable name="bar_width" as="xs:double" select="18"/>
     <xsl:variable name="spacing" as="xs:double" select="$bar_width div 2"/>
     <xsl:variable name="max_width" as="xs:double"
-        select="($bar_width + $spacing) * $loc-count + $spacing"/>
+        select="($bar_width + $spacing) * count(distinct-values($locs)) + $spacing"/>
     <xsl:variable name="half_height" as="xs:double" select="160"/>
     <xsl:variable name="max_height" as="xs:double" select="$half_height * 2"/>
     <xsl:variable name="yscale" as="xs:double" select="10"/>
@@ -84,7 +82,7 @@
                 <!-- for-each-group to draw ruling lines, bars, bar labels            -->
                 <!-- ================================================================ -->
                 <xsl:for-each-group select="$letters//location" group-by=".">
-                    <xsl:sort select=".[1]/following-sibling::date/year"/>
+                    <xsl:sort select="./following-sibling::date/year"/>
                     <xsl:variable name="xpos" as="xs:double"
                         select="$spacing + (position() - 1) * ($bar_width + $spacing)"/>
                     <line x1="{$xpos + $spacing}" x2="{$xpos + $spacing}" y1="-{$half_height}"
@@ -114,7 +112,7 @@
                         font-size="16" font-family="Times New Roman" writing-mode="tb">
                         <xsl:value-of select="translate(., '_', ' ')"/>
                         <xsl:text> (</xsl:text>
-                        <xsl:value-of select=".[1]/following-sibling::date/year"/>
+                        <xsl:value-of select="./following-sibling::date/year"/>
                         <xsl:text>)</xsl:text>
                     </text>
                 </xsl:for-each-group>

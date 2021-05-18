@@ -29,8 +29,10 @@
             <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}x09058d3e-cf42-38d2-abd1-8e818c6a7833"/>
             <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}x6ae3905f-0ad2-36a3-b215-3ae4bc0b96ec"/>
             <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}x79c8bd17-6940-31f9-bc3c-0834d9df7908"/>
-            <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}xf315ad82-f7e3-3617-8aa6-8dd59039807c"/>
-            <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}x928fa32a-8840-388d-95dc-d797b967cb30"/>
+            <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}x7a169100-ce16-3409-a52b-cd22ddf33db9"/>
+            <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}x8be394c9-3171-318e-8a90-ae99294468cd"/>
+            <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}xf24122a1-e338-34e2-b985-c4e217eb4c70"/>
+            <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}xf0472b0e-e7f4-39c5-b8fc-1b6df7f617b5"/>
          </xsl:element>
       </xsl:result-document>
    </xsl:template>
@@ -87,11 +89,11 @@
       <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:djb="http://www.obdurodon.org"
                     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                    name="Q{urn:x-xspec:compile:impl}expect-d51e5"
+                    name="Q{urn:x-xspec:compile:impl}expect-d53e5"
                     select="math:pi() div 6"><!--expected result--></xsl:variable>
       <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
                     as="Q{http://www.w3.org/2001/XMLSchema}boolean"
-                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d51e5, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d53e5, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
       <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
          <xsl:message>      FAILED</xsl:message>
       </xsl:if>
@@ -104,7 +106,7 @@
             <xsl:text>radians = pi/6 (approx. value)</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
-            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d51e5"/>
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d53e5"/>
             <xsl:with-param name="report-name" select="'expect'"/>
          </xsl:call-template>
       </xsl:element>
@@ -162,11 +164,11 @@
       <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:djb="http://www.obdurodon.org"
                     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                    name="Q{urn:x-xspec:compile:impl}expect-d51e9"
+                    name="Q{urn:x-xspec:compile:impl}expect-d53e9"
                     select="math:pi() div 4"><!--expected result--></xsl:variable>
       <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
                     as="Q{http://www.w3.org/2001/XMLSchema}boolean"
-                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d51e9, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d53e9, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
       <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
          <xsl:message>      FAILED</xsl:message>
       </xsl:if>
@@ -179,7 +181,7 @@
             <xsl:text>radians = pi/4</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
-            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d51e9"/>
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d53e9"/>
             <xsl:with-param name="report-name" select="'expect'"/>
          </xsl:call-template>
       </xsl:element>
@@ -237,11 +239,11 @@
       <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:djb="http://www.obdurodon.org"
                     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                    name="Q{urn:x-xspec:compile:impl}expect-d51e13"
+                    name="Q{urn:x-xspec:compile:impl}expect-d53e13"
                     select="math:pi() div 3"><!--expected result--></xsl:variable>
       <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
                     as="Q{http://www.w3.org/2001/XMLSchema}boolean"
-                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d51e13, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d53e13, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
       <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
          <xsl:message>      FAILED</xsl:message>
       </xsl:if>
@@ -254,17 +256,92 @@
             <xsl:text>radians = pi/3</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
-            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d51e13"/>
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d53e13"/>
             <xsl:with-param name="report-name" select="'expect'"/>
          </xsl:call-template>
       </xsl:element>
    </xsl:template>
-   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}xf315ad82-f7e3-3617-8aa6-8dd59039807c"
+   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}x7a169100-ce16-3409-a52b-cd22ddf33db9"
+                 as="element(Q{http://www.jenitennison.com/xslt/xspec}scenario)">
+      <xsl:context-item use="absent"/>
+      <xsl:message>When degrees = -30</xsl:message>
+      <xsl:element name="scenario" namespace="http://www.jenitennison.com/xslt/xspec">
+         <xsl:attribute name="id" namespace="">x7a169100-ce16-3409-a52b-cd22ddf33db9</xsl:attribute>
+         <xsl:attribute name="xspec" namespace="">file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec</xsl:attribute>
+         <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
+            <xsl:text>When degrees = -30</xsl:text>
+         </xsl:element>
+         <xsl:element name="input-wrap" namespace="">
+            <xsl:element name="x:call" namespace="http://www.jenitennison.com/xslt/xspec">
+               <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
+               <xsl:namespace name="math">http://www.w3.org/2005/xpath-functions/math</xsl:namespace>
+               <xsl:namespace name="xsl">http://www.w3.org/1999/XSL/Transform</xsl:namespace>
+               <xsl:attribute name="function" namespace="">djb:deg-to-rad</xsl:attribute>
+               <xsl:element name="x:param" namespace="http://www.jenitennison.com/xslt/xspec">
+                  <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
+                  <xsl:namespace name="math">http://www.w3.org/2005/xpath-functions/math</xsl:namespace>
+                  <xsl:namespace name="xsl">http://www.w3.org/1999/XSL/Transform</xsl:namespace>
+                  <xsl:attribute name="name" namespace="">deg</xsl:attribute>
+                  <xsl:attribute name="select" namespace="">-30</xsl:attribute>
+               </xsl:element>
+            </xsl:element>
+         </xsl:element>
+         <xsl:variable name="Q{http://www.jenitennison.com/xslt/xspec}result" as="item()*">
+            <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                          xmlns:djb="http://www.obdurodon.org"
+                          xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+                          name="Q{}deg"
+                          select="-30"/>
+            <xsl:sequence select="Q{http://www.obdurodon.org}deg-to-rad($Q{}deg)"/>
+         </xsl:variable>
+         <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
+            <xsl:with-param name="sequence"
+                            select="$Q{http://www.jenitennison.com/xslt/xspec}result"/>
+            <xsl:with-param name="report-name" select="'result'"/>
+         </xsl:call-template>
+         <!-- invoke each compiled x:expect -->
+         <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}x7a169100-ce16-3409-a52b-cd22ddf33db9-expect1">
+            <xsl:with-param name="Q{http://www.jenitennison.com/xslt/xspec}result"
+                            select="$Q{http://www.jenitennison.com/xslt/xspec}result"/>
+         </xsl:call-template>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}x7a169100-ce16-3409-a52b-cd22ddf33db9-expect1"
+                 as="element(Q{http://www.jenitennison.com/xslt/xspec}test)">
+      <xsl:context-item use="absent"/>
+      <xsl:param name="Q{http://www.jenitennison.com/xslt/xspec}result" required="yes"/>
+      <xsl:message>radians = pi/6 (approx. value)</xsl:message>
+      <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                    xmlns:djb="http://www.obdurodon.org"
+                    xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+                    name="Q{urn:x-xspec:compile:impl}expect-d53e17"
+                    select="-(math:pi() div 6)"><!--expected result--></xsl:variable>
+      <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
+                    as="Q{http://www.w3.org/2001/XMLSchema}boolean"
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d53e17, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+      <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
+         <xsl:message>      FAILED</xsl:message>
+      </xsl:if>
+      <xsl:element name="test" namespace="http://www.jenitennison.com/xslt/xspec">
+         <xsl:attribute name="id" namespace="">x7a169100-ce16-3409-a52b-cd22ddf33db9-expect1</xsl:attribute>
+         <xsl:attribute name="successful"
+                        namespace=""
+                        select="$Q{urn:x-xspec:compile:impl}successful"/>
+         <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
+            <xsl:text>radians = pi/6 (approx. value)</xsl:text>
+         </xsl:element>
+         <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d53e17"/>
+            <xsl:with-param name="report-name" select="'expect'"/>
+         </xsl:call-template>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}x8be394c9-3171-318e-8a90-ae99294468cd"
                  as="element(Q{http://www.jenitennison.com/xslt/xspec}scenario)">
       <xsl:context-item use="absent"/>
       <xsl:message>Text size for Nieuw-Amsterdam</xsl:message>
       <xsl:element name="scenario" namespace="http://www.jenitennison.com/xslt/xspec">
-         <xsl:attribute name="id" namespace="">xf315ad82-f7e3-3617-8aa6-8dd59039807c</xsl:attribute>
+         <xsl:attribute name="id" namespace="">x8be394c9-3171-318e-8a90-ae99294468cd</xsl:attribute>
          <xsl:attribute name="xspec" namespace="">file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec</xsl:attribute>
          <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
             <xsl:text>Text size for Nieuw-Amsterdam</xsl:text>
@@ -298,13 +375,13 @@
             <xsl:with-param name="report-name" select="'result'"/>
          </xsl:call-template>
          <!-- invoke each compiled x:expect -->
-         <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}xf315ad82-f7e3-3617-8aa6-8dd59039807c-expect1">
+         <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}x8be394c9-3171-318e-8a90-ae99294468cd-expect1">
             <xsl:with-param name="Q{http://www.jenitennison.com/xslt/xspec}result"
                             select="$Q{http://www.jenitennison.com/xslt/xspec}result"/>
          </xsl:call-template>
       </xsl:element>
    </xsl:template>
-   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}xf315ad82-f7e3-3617-8aa6-8dd59039807c-expect1"
+   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}x8be394c9-3171-318e-8a90-ae99294468cd-expect1"
                  as="element(Q{http://www.jenitennison.com/xslt/xspec}test)">
       <xsl:context-item use="absent"/>
       <xsl:param name="Q{http://www.jenitennison.com/xslt/xspec}result" required="yes"/>
@@ -312,16 +389,16 @@
       <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:djb="http://www.obdurodon.org"
                     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                    name="Q{urn:x-xspec:compile:impl}expect-d51e17"
+                    name="Q{urn:x-xspec:compile:impl}expect-d53e21"
                     select="1.226328125e2"><!--expected result--></xsl:variable>
       <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
                     as="Q{http://www.w3.org/2001/XMLSchema}boolean"
-                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d51e17, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d53e21, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
       <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
          <xsl:message>      FAILED</xsl:message>
       </xsl:if>
       <xsl:element name="test" namespace="http://www.jenitennison.com/xslt/xspec">
-         <xsl:attribute name="id" namespace="">xf315ad82-f7e3-3617-8aa6-8dd59039807c-expect1</xsl:attribute>
+         <xsl:attribute name="id" namespace="">x8be394c9-3171-318e-8a90-ae99294468cd-expect1</xsl:attribute>
          <xsl:attribute name="successful"
                         namespace=""
                         select="$Q{urn:x-xspec:compile:impl}successful"/>
@@ -329,17 +406,17 @@
             <xsl:text>= about 122.6</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
-            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d51e17"/>
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d53e21"/>
             <xsl:with-param name="report-name" select="'expect'"/>
          </xsl:call-template>
       </xsl:element>
    </xsl:template>
-   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}x928fa32a-8840-388d-95dc-d797b967cb30"
+   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}xf24122a1-e338-34e2-b985-c4e217eb4c70"
                  as="element(Q{http://www.jenitennison.com/xslt/xspec}scenario)">
       <xsl:context-item use="absent"/>
       <xsl:message>When rad = pi/6 and hyp = 122.6</xsl:message>
       <xsl:element name="scenario" namespace="http://www.jenitennison.com/xslt/xspec">
-         <xsl:attribute name="id" namespace="">x928fa32a-8840-388d-95dc-d797b967cb30</xsl:attribute>
+         <xsl:attribute name="id" namespace="">xf24122a1-e338-34e2-b985-c4e217eb4c70</xsl:attribute>
          <xsl:attribute name="xspec" namespace="">file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec</xsl:attribute>
          <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
             <xsl:text>When rad = pi/6 and hyp = 122.6</xsl:text>
@@ -385,13 +462,13 @@
             <xsl:with-param name="report-name" select="'result'"/>
          </xsl:call-template>
          <!-- invoke each compiled x:expect -->
-         <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}x928fa32a-8840-388d-95dc-d797b967cb30-expect1">
+         <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}xf24122a1-e338-34e2-b985-c4e217eb4c70-expect1">
             <xsl:with-param name="Q{http://www.jenitennison.com/xslt/xspec}result"
                             select="$Q{http://www.jenitennison.com/xslt/xspec}result"/>
          </xsl:call-template>
       </xsl:element>
    </xsl:template>
-   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}x928fa32a-8840-388d-95dc-d797b967cb30-expect1"
+   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}xf24122a1-e338-34e2-b985-c4e217eb4c70-expect1"
                  as="element(Q{http://www.jenitennison.com/xslt/xspec}test)">
       <xsl:context-item use="absent"/>
       <xsl:param name="Q{http://www.jenitennison.com/xslt/xspec}result" required="yes"/>
@@ -399,16 +476,16 @@
       <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:djb="http://www.obdurodon.org"
                     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                    name="Q{urn:x-xspec:compile:impl}expect-d51e22"
+                    name="Q{urn:x-xspec:compile:impl}expect-d53e26"
                     select="1.0620313096253386e2"><!--expected result--></xsl:variable>
       <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
                     as="Q{http://www.w3.org/2001/XMLSchema}boolean"
-                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d51e22, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d53e26, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
       <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
          <xsl:message>      FAILED</xsl:message>
       </xsl:if>
       <xsl:element name="test" namespace="http://www.jenitennison.com/xslt/xspec">
-         <xsl:attribute name="id" namespace="">x928fa32a-8840-388d-95dc-d797b967cb30-expect1</xsl:attribute>
+         <xsl:attribute name="id" namespace="">xf24122a1-e338-34e2-b985-c4e217eb4c70-expect1</xsl:attribute>
          <xsl:attribute name="successful"
                         namespace=""
                         select="$Q{urn:x-xspec:compile:impl}successful"/>
@@ -416,7 +493,94 @@
             <xsl:text>height = about 106.2</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
-            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d51e22"/>
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d53e26"/>
+            <xsl:with-param name="report-name" select="'expect'"/>
+         </xsl:call-template>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}xf0472b0e-e7f4-39c5-b8fc-1b6df7f617b5"
+                 as="element(Q{http://www.jenitennison.com/xslt/xspec}scenario)">
+      <xsl:context-item use="absent"/>
+      <xsl:message>When rad = - pi/6 and hyp = 122.6</xsl:message>
+      <xsl:element name="scenario" namespace="http://www.jenitennison.com/xslt/xspec">
+         <xsl:attribute name="id" namespace="">xf0472b0e-e7f4-39c5-b8fc-1b6df7f617b5</xsl:attribute>
+         <xsl:attribute name="xspec" namespace="">file:/Users/charlie/Desktop/xstuff/svg-text-size/Balisage-1-5-xsl/resources/svg/rotate-relative.xspec</xsl:attribute>
+         <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
+            <xsl:text>When rad = - pi/6 and hyp = 122.6</xsl:text>
+         </xsl:element>
+         <xsl:element name="input-wrap" namespace="">
+            <xsl:element name="x:call" namespace="http://www.jenitennison.com/xslt/xspec">
+               <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
+               <xsl:namespace name="math">http://www.w3.org/2005/xpath-functions/math</xsl:namespace>
+               <xsl:namespace name="xsl">http://www.w3.org/1999/XSL/Transform</xsl:namespace>
+               <xsl:attribute name="function" namespace="">djb:tri-adj</xsl:attribute>
+               <xsl:element name="x:param" namespace="http://www.jenitennison.com/xslt/xspec">
+                  <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
+                  <xsl:namespace name="math">http://www.w3.org/2005/xpath-functions/math</xsl:namespace>
+                  <xsl:namespace name="xsl">http://www.w3.org/1999/XSL/Transform</xsl:namespace>
+                  <xsl:attribute name="name" namespace="">hyp</xsl:attribute>
+                  <xsl:attribute name="select" namespace="">1.226328125e2</xsl:attribute>
+               </xsl:element>
+               <xsl:element name="x:param" namespace="http://www.jenitennison.com/xslt/xspec">
+                  <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
+                  <xsl:namespace name="math">http://www.w3.org/2005/xpath-functions/math</xsl:namespace>
+                  <xsl:namespace name="xsl">http://www.w3.org/1999/XSL/Transform</xsl:namespace>
+                  <xsl:attribute name="name" namespace="">deg</xsl:attribute>
+                  <xsl:attribute name="select" namespace="">-30</xsl:attribute>
+               </xsl:element>
+            </xsl:element>
+         </xsl:element>
+         <xsl:variable name="Q{http://www.jenitennison.com/xslt/xspec}result" as="item()*">
+            <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                          xmlns:djb="http://www.obdurodon.org"
+                          xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+                          name="Q{}hyp"
+                          select="1.226328125e2"/>
+            <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                          xmlns:djb="http://www.obdurodon.org"
+                          xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+                          name="Q{}deg"
+                          select="-30"/>
+            <xsl:sequence select="Q{http://www.obdurodon.org}tri-adj($Q{}hyp, $Q{}deg)"/>
+         </xsl:variable>
+         <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
+            <xsl:with-param name="sequence"
+                            select="$Q{http://www.jenitennison.com/xslt/xspec}result"/>
+            <xsl:with-param name="report-name" select="'result'"/>
+         </xsl:call-template>
+         <!-- invoke each compiled x:expect -->
+         <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}xf0472b0e-e7f4-39c5-b8fc-1b6df7f617b5-expect1">
+            <xsl:with-param name="Q{http://www.jenitennison.com/xslt/xspec}result"
+                            select="$Q{http://www.jenitennison.com/xslt/xspec}result"/>
+         </xsl:call-template>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}xf0472b0e-e7f4-39c5-b8fc-1b6df7f617b5-expect1"
+                 as="element(Q{http://www.jenitennison.com/xslt/xspec}test)">
+      <xsl:context-item use="absent"/>
+      <xsl:param name="Q{http://www.jenitennison.com/xslt/xspec}result" required="yes"/>
+      <xsl:message>height = about 106.2</xsl:message>
+      <xsl:variable xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                    xmlns:djb="http://www.obdurodon.org"
+                    xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+                    name="Q{urn:x-xspec:compile:impl}expect-d53e31"
+                    select="1.0620313096253386e2"><!--expected result--></xsl:variable>
+      <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
+                    as="Q{http://www.w3.org/2001/XMLSchema}boolean"
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d53e31, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+      <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
+         <xsl:message>      FAILED</xsl:message>
+      </xsl:if>
+      <xsl:element name="test" namespace="http://www.jenitennison.com/xslt/xspec">
+         <xsl:attribute name="id" namespace="">xf0472b0e-e7f4-39c5-b8fc-1b6df7f617b5-expect1</xsl:attribute>
+         <xsl:attribute name="successful"
+                        namespace=""
+                        select="$Q{urn:x-xspec:compile:impl}successful"/>
+         <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
+            <xsl:text>height = about 106.2</xsl:text>
+         </xsl:element>
+         <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d53e31"/>
             <xsl:with-param name="report-name" select="'expect'"/>
          </xsl:call-template>
       </xsl:element>

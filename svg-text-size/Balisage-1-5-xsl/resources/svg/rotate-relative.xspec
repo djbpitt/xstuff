@@ -21,6 +21,13 @@
         </x:call>
         <x:expect label="radians = pi/3" select="math:pi() div 3"/>
     </x:scenario>
+    
+    <x:scenario label="When degrees = -30">
+        <x:call function="djb:deg-to-rad">
+            <x:param name="deg" select="-30"/>
+        </x:call>
+        <x:expect label="radians = pi/6 (approx. value)" select="-(math:pi() div 6)"/>
+    </x:scenario>
 
     <x:scenario label="Text size for Nieuw-Amsterdam">
         <x:call function="djb:get-text-length">
@@ -33,6 +40,14 @@
         <x:call function="djb:tri-adj">
             <x:param name="hyp" select="1.226328125e2"/>
             <x:param name="deg" select="30"/>
+        </x:call>
+        <x:expect label="height = about 106.2" select="1.0620313096253386e2"/>
+    </x:scenario>
+    
+    <x:scenario label="When rad = - pi/6 and hyp = 122.6">
+        <x:call function="djb:tri-adj">
+            <x:param name="hyp" select="1.226328125e2"/>
+            <x:param name="deg" select="-30"/>
         </x:call>
         <x:expect label="height = about 106.2" select="1.0620313096253386e2"/>
     </x:scenario>
