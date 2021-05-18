@@ -100,7 +100,7 @@
         <figure xml:id="figure-01" xreflabel="Sample bar graph">
             <mediaobject>
                 <imageobject>
-                    <imagedata width="12in" fileref="includes/diagonal-graph.svg"/>
+                    <imagedata fileref="includes/diagonal-graph.svg"/>
                 </imageobject>
             </mediaobject>
         </figure>
@@ -219,21 +219,21 @@
                 <figure xml:id="horizontal-sample" xreflabel="Sample horizontal text">
                     <mediaobject>
                         <imageobject>
-                            <imagedata width="12in" fileref="includes/horizontal-samples.svg"/>
+                            <imagedata fileref="includes/horizontal-samples.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
                 <figure xml:id="vertical-sample" xreflabel="Sample vertical text">
                     <mediaobject>
                         <imageobject>
-                            <imagedata width="12in" fileref="includes/vertical-samples.svg"/>
+                            <imagedata fileref="includes/vertical-samples.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
                 <figure xml:id="diagonal-sample" xreflabel="Sample diagonal text">
                     <mediaobject>
                         <imageobject>
-                            <imagedata width="12in" fileref="includes/diagonal-samples.svg"/>
+                            <imagedata fileref="includes/diagonal-samples.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
@@ -312,7 +312,7 @@
                 <figure xml:id="kerning-comparison" xreflabel="Kerning differences in browsers">
                     <mediaobject>
                         <imageobject>
-                            <imagedata width="12in" fileref="includes/kerning-differences.png"/>
+                            <imagedata fileref="includes/kerning-differences.png"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
@@ -346,7 +346,7 @@
                 <figure xml:id="figure-01" xreflabel="Graph with horizontal bar labels">
                     <mediaobject>
                         <imageobject>
-                            <imagedata width="12in" fileref="includes/horizontal-graph.svg"/>
+                            <imagedata fileref="includes/horizontal-graph.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
@@ -357,7 +357,7 @@
                 <figure xml:id="figure-01" xreflabel="Graph with vertical bar labels">
                     <mediaobject>
                         <imageobject>
-                            <imagedata width="12in" fileref="includes/vertical-graph.svg"/>
+                            <imagedata fileref="includes/vertical-graph.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
@@ -390,7 +390,7 @@
                 <figure xml:id="figure-01" xreflabel="Graph with diagonal bar labels">
                     <mediaobject>
                         <imageobject>
-                            <imagedata width="12in" fileref="includes/diagonal-graph.svg"/>
+                            <imagedata fileref="includes/diagonal-graph.svg"/>
                         </imageobject>
                     </mediaobject>
                 </figure>
