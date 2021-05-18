@@ -89,7 +89,7 @@
         <para>Our test case for exploring and addressing the challenges <code>&lt;text&gt;</code>
             elements pose for layout is an SVG bar graph like the following:<footnote>
                 <para>The sample graphs for this report are based on materials from Charlie Taylor’s
-                        <quote>Van Gogh as a ‘tortured genius”</quote>
+                        <quote>Van Gogh as a ‘tortured genius’</quote>
                         (<link>http://vangogh.obdurodon.org</link>,
                         <link>https://github.com/charlietaylor98/vangogh-gang</link>), which she
                     undertook in Spring 2020 together with Colin Woelfel, Nate McDowell, and Rachel
@@ -104,13 +104,22 @@
                 </imageobject>
             </mediaobject>
         </figure>
-        <para>In this graph the bars rest on the X axis, and they bear individual slanted labels
-            below. Under those labels we label the X axis itself. The challenge involves determining
-            the Y position of the general label for the X axis, since that position will depend on
-            the length of the longest bar label, and will therefore vary according to the specific
-            values of those bar labels. If you are like us, you place that label with a combination
-            of guesswork and trial and error and then hard-code a magic number, which—predictably
-            and understandably—breaks as soon as you try to reuse the code with new input.<footnote>
+        <para>In this graph the bars rest on the X axis, and they bear individual slanted labels below.<footnote>
+                <para>There is no data for two of the places because the developers used all place
+                    names in their corpus for all graphs, but not all places included data for every
+                    graph. In this example, letters written in Brussels and Nuenen within the corpus
+                    did not address mental health or stress factors, although letters from those
+                    places did contribute data to graphs of other topics. The place names are sorted
+                    and labeled according to their first appearance in the corpus, and the labels
+                    are not meant to imply that Van Gogh did not return to some of those places in
+                    later years.</para>
+            </footnote> Under those labels we label the X axis itself. The challenge involves
+            determining the Y position of the general label for the X axis, since that position will
+            depend on the length of the longest bar label, and will therefore vary according to the
+            specific values of those bar labels. If you are like us, you place that label with a
+            combination of guesswork and trial and error and then hard-code a magic number,
+            which—predictably and understandably—breaks as soon as you try to reuse the code with
+            new input.<footnote>
                 <para>Placing the X axis label more precisely in a way that takes into account the
                     lengths and positions of all of the bar labels is a version of the same type of
                     task, although a more complicated one. For example, if the leftmost and
@@ -141,7 +150,7 @@
                         <para><emphasis role="ital">Character</emphasis> refers to an informational
                             unit of writing independently of its presentation. <emphasis role="ital"
                                 >Glyph</emphasis> refers to a font resource used to render a
-                            character. A text strings in our SVG is made up of characters; the
+                            character. A text string in our SVG is made up of characters; the
                             rendering of the text inside a browser is a made up of glyphs.</para>
                         <para>The distinction between character and glyph is important in many
                             contexts because it is not necessarily one to one. For example, the
@@ -150,7 +159,7 @@
                                 Diaeresis</quote>) or a sequence of two Unicode characters, one for
                             the base character <code>"a"</code> (U+0061 <quote>Latin Small Letter
                                 A</quote>) and one for the combining diacritic (U+0308
-                                <quote>Combining diaeresis</quote>). Whether a writing unit is
+                                <quote>Combining Diaeresis</quote>). Whether a writing unit is
                             represented as two characters informationally or as one is independent
                             of whether it is rendered in a browser or other platform as two glyphs
                             or as one.</para>
@@ -186,10 +195,10 @@
         <para>These two approaches, each of which has advantages and disadvantages, are described in
             more detail and illustrated below.<footnote>
                 <para>We are grateful to the developers who participated in the discussion we opened
-                    about this topic in the xml.com Slack workspace, and especially Gerrit Imsieke
-                    and Liam Quin. Slack postings are ephemeral, but although that conversation will
-                    not be preserved, we are happy to be able to acknowledge it, more sustainably,
-                    here.</para>
+                    about this topic in the xml.com Slack workspace, and especially to Gerrit
+                    Imsieke and Liam Quin. Slack postings are ephemeral, but although that
+                    conversation will not be preserved, we are happy to be able to acknowledge it,
+                    more sustainably, here.</para>
             </footnote></para>
         <section>
             <title>An XSLT approach</title>
@@ -209,7 +218,8 @@
                         <para>Browsers interpret the values of the SVG
                                 <code>@dominant-baseline</code> attribute inconsistently. See <xref
                                 linkend="gudehus2021"/> for discussion, an interactive diagnostic
-                            interface, and a suggested work-around.</para>
+                            interface, and a suggested work-around, which we have adopted
+                            here.</para>
                     </footnote> (That is, the lines are not created as a font effect; the lines are
                     drawn independently of the text.) In the case of diagonal text we draw a
                     bounding rectangle. The third of the four examples in each figure is a null
@@ -323,11 +333,11 @@
                     support for both of these features too inconsistent and unpredictable to be useful.<footnote>
                         <para>With no SVG <code>@kerning</code> attribute, with an SVG
                                 <code>@kerning</code> attribute value of <code>"auto"</code> (the
-                            default, which enables kerning), and an SVG <code>@kerning</code>
+                            default, which enables kerning), and with an SVG <code>@kerning</code>
                             attribute value of <code>"0"</code> (disables kerning), kerning was
                             applied consistently to horizontal text in all three browsers and to
-                            vertical (<code>@writing-mode="tb"</code>) in Firefox and Chrome, but
-                            not in Safari. The CSS <code>font-kerning</code> property worked as
+                            vertical (<code>@writing-mode="tb"</code>) text in Firefox and Chrome,
+                            but not in Safari. The CSS <code>font-kerning</code> property worked as
                             advertised in horizontal text in all three browsers, and had no effect
                             on vertical text in any of them: kerning was always applied to vertical
                             text in Firefox and Chrome and never applied to vertical text in
@@ -336,74 +346,14 @@
                 </para>
             </section>
             <section>
-                <title>Illustrations</title>
-                <para>In the horizontal butterfly chart below, the bars are labeled on the Y axis on
-                    the right side, and a general label for the Y axis must be positioned to the
-                    right of—but not too far to the right of—the longest bar label. Because we can
-                    compute the lengths of the bar labels, we can find the length of the longest
-                    bar, augment it with a predetermined amount of padding, and use that figure to
-                    place the general Y axis label.</para>
-                <figure xml:id="figure-01" xreflabel="Graph with horizontal bar labels">
-                    <mediaobject>
-                        <imageobject>
-                            <imagedata fileref="includes/horizontal-graph.svg"/>
-                        </imageobject>
-                    </mediaobject>
-                </figure>
-                <para>The vertical butterfly chart below illustrates a variant of the same task. In
-                    this case we set <code>@writing-mode</code> to <code>"tb"</code> (top to bottom)
-                    to create vertical text and use the longest bar label to compute the position of
-                    the general X axis label:</para>
-                <figure xml:id="figure-01" xreflabel="Graph with vertical bar labels">
-                    <mediaobject>
-                        <imageobject>
-                            <imagedata fileref="includes/vertical-graph.svg"/>
-                        </imageobject>
-                    </mediaobject>
-                </figure>
-                <para>The strategy for positioning objects at a specific distance from rotated text
-                    is similar to the strategy for vertical text, except that instead of using the
-                    length of the diagonal text, we need to compute the vertical space it occupies.
-                    We again start with vertical text and transform it by rotating it away from the
-                    vertical with <code>transform="rotate()"</code>. <code>rotate()</code> takes
-                    three arguments: the angle of rotation (in degrees) and the X and Y coordinates
-                    of the center of rotation, which we map to the X and Y coordinates of the
-                        <code>&lt;text&gt;</code> element.<footnote>
-                        <para>This approach rotates the text around its starting position (left edge
-                            and vertical center in this left-to-right example), so that the upper
-                            left corner of the diagonal rendering protrudes slightly to the left and
-                            top of the center of rotation, and the lower right corner behaves
-                            similarly. Because we do not require high precision, we ignore these
-                            protrusions.</para>
-                    </footnote> If we regard the length of the text as the hypotenuse of a right
-                    angle that has been rotated counter-clockwise away from true vertical, the
-                    vertical height of the rotated text is the adjacent side of the right triangle,
-                    which we can compute as <emphasis role="ital">hypotenuse * cosθ</emphasis>.<footnote>
-                        <para>Inconveniently, SVG rotation requires that angles be expressed in
-                            degrees, while XPath trigonometic functions in the <code>math:</code>
-                            namespace require that they be expressed in radians. We convert degrees
-                            to radians with <emphasis role="ital">radians = degrees * π /
-                                180</emphasis>. The width of the text, should we need it, is the
-                            opposite side of the angle, and its length can be determined as
-                                <emphasis role="ital">hypotenuse * sinθ</emphasis>.</para>
-                    </footnote> The graph with diagonal bar labels looks like:</para>
-                <figure xml:id="figure-01" xreflabel="Graph with diagonal bar labels">
-                    <mediaobject>
-                        <imageobject>
-                            <imagedata fileref="includes/diagonal-graph.svg"/>
-                        </imageobject>
-                    </mediaobject>
-                </figure>
-            </section>
-            <section>
                 <title>Implementation</title>
                 <para>Because this method requires knowing the widths of the individual glyphs while
                     constructing the SVG, we first extract width information from TrueType TTF files
                     and format them as XML using the script in <xref linkend="extract-widths"/>.<footnote>
-                        <para>In its current form our script to extract glyph widths currently
-                            processes only TTF fonts and fails on, for example, TTC and OTF. Because
-                            these fonts also include metric information, if we need to process them
-                            we could emend our script to process these filetypes, as well.</para>
+                        <para>In its current form our script to extract glyph widths processes only
+                            TTF fonts and fails on, for example, TTC and OTF. those font formats
+                            also include metric information, which means thaat we could emend our
+                            script to process them, as well.</para>
                     </footnote> The output of the extraction process is an XML document that looks
                     like the following:</para>
                 <programlisting language="xml" xml:space="preserve">&lt;metrics>
@@ -432,6 +382,67 @@
                     metrics, and sums the widths.</para>
             </section>
             <section>
+                <title>Illustrations</title>
+                <para>In the horizontal butterfly chart below, the bars are labeled on the Y axis on
+                    the right side, and a general label for the Y axis must be positioned to the
+                    right of—but not too far to the right of—the longest bar label. Because we can
+                    compute the lengths of the bar labels, we can find the length of the longest
+                    bar, augment it with a predetermined amount of padding, and use that figure to
+                    place the general Y axis label.</para>
+                <figure xml:id="horizontal-xslt" xreflabel="Graph with horizontal bar labels">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/horizontal-graph.svg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+                <para>The vertical butterfly chart below illustrates a variant of the same task. In
+                    this case we set <code>@writing-mode</code> to <code>"tb"</code> (top to bottom)
+                    to create vertical text and use the longest bar label to compute the position of
+                    the general X axis label:</para>
+                <figure xml:id="vertical-xslt" xreflabel="Graph with vertical bar labels">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/vertical-graph.svg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+                <para>The strategy for positioning objects at a specific distance from rotated text
+                    is similar to the strategy for vertical text, except that instead of using the
+                    length of the diagonal text, we need to compute the vertical space it occupies.
+                    We again start with vertical text and transform it by rotating it away from the
+                    vertical with <code>transform="rotate()"</code>. <code>rotate()</code> takes
+                    three arguments: the angle of rotation (in degrees) and the X and Y coordinates
+                    of the center of rotation, which we map to the X and Y coordinates of the
+                        <code>&lt;text&gt;</code> element.<footnote>
+                        <para>This approach rotates the text around its starting position (left edge
+                            and vertical center in this left-to-right example), so that the upper
+                            left corner of the diagonal rendering protrudes slightly to the left and
+                            top of the center of rotation. Because we do not require high precision,
+                            we ignore these protrusions in positioning our elements, and we set the
+                            CSS <code>overflow</code> property to <code>visible</code> where needed
+                            to ensure that the image is not cropped.</para>
+                    </footnote> If we regard the length of the text as the hypotenuse of a right
+                    angle that has been rotated counter-clockwise away from true vertical, the
+                    vertical height of the rotated text is the adjacent side of the right triangle,
+                    which we can compute as <emphasis role="ital">hypotenuse * cosθ</emphasis>.<footnote>
+                        <para>Inconveniently, SVG rotation requires that angles be expressed in
+                            degrees, while XPath trigonometic functions in the <code>math:</code>
+                            namespace require that they be expressed in radians. We convert degrees
+                            to radians with <emphasis role="ital">radians = degrees * π /
+                                180</emphasis>. The width of the text, should we need it, is the
+                            opposite side of the angle, and its length can be determined as
+                                <emphasis role="ital">hypotenuse * sinθ</emphasis>.</para>
+                    </footnote> The graph with diagonal bar labels looks like:</para>
+                <figure xml:id="diagonal-xslt" xreflabel="Graph with diagonal bar labels">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/diagonal-graph.svg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+            </section>
+            <section>
                 <title>Discussion</title>
                 <section>
                     <title>Advantages</title>
@@ -443,13 +454,13 @@
                                 positioning values that produce acceptable layout and then
                                 hard-coding them. This means that adopting the XSLT approach
                                 described here does not require changing how we work with the
-                                resulting SVG (which is not the case with the JavaScript approach,
-                                about which please see below).</para>
+                                resulting SVG (which is not the case with the JavaScript approach
+                                described below).</para>
                         </listitem>
                         <listitem>
                             <para>SVG created in this way does not depend on specific browser (or
-                                other user-agent) behaviors. Except for unpredictable kerning (or
-                                other automatic glyph-substitution behavior), SVG
+                                other user-agent) behaviors. Except for unpredictable browser
+                                kerning (or other automatic glyph-modification behavior), SVG
                                     <code>&lt;text&gt;</code> elements placed with this method
                                 should be positioned as reliably as non-text SVG elements, and the
                                 method should continue to function with the browsers of the
@@ -468,7 +479,7 @@
                                 who are not also comfortable with JavaScript development.<footnote>
                                     <para>We used Python to create XML font metrics files, but
                                         Python programming knowledge is not a requirement to access
-                                        font metrics information inside font files. Among other
+                                        font metric information inside font files. Among other
                                         things, there is an open-source stand-alone command-line
                                             <emphasis role="ital">ttx</emphasis> program that can
                                         export metric information from fonts as XML. See <xref
@@ -484,10 +495,11 @@
                             <para>This approach requires prior preparation of font metric
                                 information, an extra step that also has scalability implications
                                 because changing decisions about font families, font sizes, or other
-                                font properties requires creating separate additional metric
+                                font properties requires exporting and formatting separate metric
                                 information for them. Over time developers might create libraries of
                                 font metric information for reuse, but separate metric files will be
-                                required for all combinations of font family and font size.</para>
+                                required for all combinations of font family, font size and font
+                                effects.</para>
                         </listitem>
                         <listitem>
                             <para>The method described above accesses only the glyph widths, which
@@ -497,17 +509,18 @@
                                 ligatures, positional glyph variants) and transformations. That
                                 information is present in the fonts, but the developer would have to
                                 locate it in the font metric tables and then export it in a usable
-                                format.</para>
+                                format. We have not attempted to do that in this proof of concept
+                                demonstration.</para>
                         </listitem>
                         <listitem>
-                            <para>Because the metrics of system fonts may differ in unpredictable
-                                ways (the most extreme of which would be the complete
+                            <para>Because the metrics of client-side system fonts may differ in
+                                unpredictable ways (the most extreme of which would be the complete
                                 non-availability of a font used to compute the size of a
                                     <code>&lt;text&gt;</code> element), developers may prefer to
                                 rely on webfonts, which would need to be prepared and made
                                 available. The approach described here is not compatible with font
-                                stacks because font metrics cannot be expected to be the same across
-                                fonts, including across fonts commonly stacked.</para>
+                                stacks because font metrics cannot be expected to be consistent
+                                across fonts, including across fonts commonly stacked.</para>
                         </listitem>
                         <listitem>
                             <para>The description above works with TTF fonts, but has not been
@@ -524,16 +537,19 @@
                 <title>Overview</title>
                 <para>The JavaScript approach leaves the SVG <code>@height</code> and
                         <code>@width</code> attributes unspecified if they cannot be computed at the
-                    time the SVG is created. When the SVG is eventually loaded into a browser,
-                    JavaScript functions compute the missing dimensions and write them into the DOM
-                    in a way that controls the layout.<footnote>
+                    time the SVG is created, as is the case when the height and width depends on the
+                    dimensions of <code>&lt;text&gt;</code> elements. When the SVG is eventually
+                    loaded into a browser, a JavaScript function computes the missing dimensions and
+                    writes them into the DOM in a way that controls the layout.<footnote>
                         <para>Our JavaScript method, as applied to real data (see the Van Gogh
                             examples, below), uses XSLT to create the SVG. What we mean, then, when
                             we refer to this method as a <quote>JavaScript approach</quote>
                             (contrasted to an <quote>XSLT approach</quote>, above) is that we use
                             JavaScript, rather than XSLT, specifically to compute the size of SVG
                                 <code>&lt;text&gt;</code> elements so that we can use those sizes to
-                            position other SVG elements.</para>
+                            position other SVG elements. Except for the dimensions of
+                                <code>&lt;text&gt;</code> elements, both methods use XSLT
+                            computation to transform XML source documents to SVG.</para>
                     </footnote></para>
                 <para>Because the JavaScript approach relies on JavaScript applied in the browser
                     after the document loads, and on CSS that we specify, this method can be used
@@ -591,12 +607,14 @@
                         <code>block</code> to provide more transparent control over explicit
                     positioning.</para>
                 <para>Our general strategy relies on HTML and CSS Flexbox to manage the layout of
-                    the SVG components. For this purpose what would normally be constructed as a
-                    single SVG document (e.g., a single <code>&lt;svg&gt;</code> element that
-                    contains a bar graph with all of its labels) is divided into multiple SVG
-                    documents, each wrapped in an HTML <code>&lt;div&gt;</code> or other block-level
-                    element. We use CSS Flexbox to render the <code>&lt;div&gt;</code> elements
-                    where they would have been rendered in a single, unified SVG document.</para>
+                    the SVG components that cannot be positioned without information about the size
+                    of <code>&lt;text&gt;</code> elements. For this purpose what would normally be
+                    constructed as a single SVG document (e.g., a single <code>&lt;svg&gt;</code>
+                    element that contains a bar graph with all of its labels) is divided into
+                    multiple SVG documents, each wrapped in an HTML <code>&lt;div&gt;</code> or
+                    other block-level element. We use CSS Flexbox to render the
+                        <code>&lt;div&gt;</code> elements where they would have been rendered in a
+                    single, unified SVG document.</para>
                 <para>We illustrate our positioning strategy in the image above. In that image the
                         <code>&lt;body&gt;</code> contains three <code>&lt;section&gt;</code>
                     elements, one for each of the horizontal rows (outlined in red). The
@@ -605,9 +623,9 @@
                         <code>column</code>, so that the <code>&lt;section&gt;</code> elements will
                     be rendered from top to bottom in the browser window. The height of an HTML
                         <code>&lt;section&gt;</code> is, unless specified explicitly in other ways,
-                    determined by its contents, which, without our JavaScript interventions, would
-                    be whatever default height the browser assigns to the embedded
-                        <code>&lt;svg&gt;</code> elements. To override that default we use
+                    determined by the height of its contents, which, without our JavaScript
+                    interventions, would be whatever default height the browser assigns to the
+                    embedded <code>&lt;svg&gt;</code> elements. To override that default we use
                     JavaScript to compute the actual height of the <code>&lt;svg&gt;</code>
                     descendants of each <code>&lt;section&gt;</code> and write those values into
                         <code>@height</code> attributes on the <code>&lt;svg></code> elements. Once
@@ -620,14 +638,13 @@
                         <code>flex-direction</code> value of <code>row</code>, so that its
                         <code>&lt;div&gt;</code> children will be distributed horizontally across
                     the row. We use the CSS <code>column-gap</code> property to introduce a gutter
-                    between the <code>&lt;div&gt;</code> elements in each row (each HTML
-                        <code>&lt;section&gt;</code>). Our JavaScript writes computed
-                        <code>@width</code> attributes, as well as the <code>@height</code>
-                    attributes discussed above, into the <code>&lt;svg></code> elements, and once
-                    the JavaScript has created those attributes, the <code>&lt;div&gt;</code>
-                    elements will occupy the horizontal space required for their SVG contents,
-                    overriding the default width that would otherwise have been supplied by the
-                    browser.</para>
+                    between the <code>&lt;div&gt;</code> elements within each row (each HTML
+                        <code>&lt;section&gt;</code>). Our JavaScript writes <code>@width</code>
+                    attributes with computed values into the <code>&lt;svg&gt;</code> elements
+                    alongside the <code>@height</code> attributes discussed above, and once the
+                    JavaScript has created those attributes, the <code>&lt;div&gt;</code> elements
+                    will occupy the horizontal space required for their SVG contents, overriding the
+                    default width that would otherwise have been supplied by the browser.</para>
                 <para>The JavaScript that supplies explicit <code>@width</code> and
                         <code>@height</code> values to the <code>&lt;svg&gt;</code> elements
                     is:</para>
@@ -644,10 +661,65 @@ function init() {
                     wrappers for SVG content, and of our placement of only a single SVG
                         <code>&lt;g&gt;</code> element inside each <code>&lt;svg&gt;</code> element.
                     HTML structured differently may require fine-tuning, but the general principle
-                    would be the same: use the JavaScript <code>getBBox()</code> method to determine
-                    the size of the bounding box for each SVG component and write the width and
-                    height into the <code>&lt;svg&gt;</code> wrapper element as <code>@width</code>
-                    and <code>@height</code> attribute values.</para>
+                    would be the same:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Structure SVG plots with separate <code>&lt;svg&gt;</code> elements
+                            for the components that cannot be positioned, relative to one another,
+                            without knowing the size of descendant <code>&lt;text&gt;</code>
+                            elements. Use as few separate SVGG documents as possible, wrapping each
+                            one in an HTML <code>&lt;div&gt;</code> elements. Do not specify
+                                <code>@width</code> or <code>@height</code> on the
+                                <code>&lt;svg&gt;</code> elements.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Use CSS (especially Flexbox properties) to control the relative (but
+                            not absolute) horizontal and vertical position of the
+                                <code>&lt;div&gt;</code> elements. Control spacing between them with
+                            the Flexbox gutter properties <code>column-gap</code> and
+                                <code>row-gap</code>.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Use the JavaScript <code>getBBox()</code> method to determine the size
+                            of the bounding box for each SVG component after it has been loaded into
+                            the DOM and write the width and height into the <code>&lt;svg&gt;</code>
+                            wrapper element as <code>@width</code> and <code>@height</code>
+                            attribute values. This step converts the relative positioning above into
+                            positioning that depends on the exact computed size of the
+                                <code>&lt;svg&gt;</code> elements.</para>
+                    </listitem>
+                </itemizedlist>
+            </section>
+            <section>
+                <title>Illustrations</title>
+                <para>The visualizations of the Van Gogh data below were created with our JavaScript
+                    method, and have the same content as those created with the XSLT method above.
+                    For inclusion in the Balisage <emphasis role="ital">Proceedings</emphasis> we
+                    opened them in Firefox and captured the screen as a PNG image with a transparent
+                    background. The position of the Y axis label at the right of the first image,
+                    and of the X axis label at the bottom of the second and third, is conrolled by
+                    our JavaScript function.</para>
+                <figure xml:id="horizontal-js" xreflabel="Horizontal graph, JavaScript method">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="includes/horizontal-js-transparent.png"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+                <figure xml:id="vertical-js" xreflabel="Vertical graph, JavaScript method">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="75%" fileref="includes/vertical-js-transparent.png"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
+                <figure xml:id="diagonal-js" xreflabel="Diagonal graph, JavaScript method">
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata width="80%" fileref="includes/diagonal-js-transparent.png"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>
             </section>
             <section>
                 <title>Discussion</title>
@@ -663,17 +735,24 @@ function init() {
                         <listitem>
                             <para>The JavaScript approach adapts to the viewing environment because
                                 it reads the actual dimensions of the SVG objects after their
-                                rendering information has been computed by the browser. This means
-                                that the dimensions will be correct for any font, including system
-                                fonts and fonts determined with a font stack.</para>
+                                rendering information has been computed within the browser. This
+                                means that the dimensions will be correct for any font, including
+                                system fonts and fonts determined according to a font stack.</para>
                         </listitem>
                         <listitem>
-                            <para>Also because the JavaScript approach has access to the actual
-                                rendered dimensions, it does not require additional logic (beyond
-                                width as specified in the font metrics) to deal with font effects
-                                (e.g., ligatures, positional glyph variants). The
+                            <para>Because the JavaScript approach has access to the actual rendered
+                                dimensions, it does not require additional logic (that is,
+                                additional developer intervention) to deal with font effects (e.g.,
+                                kerning, ligatures, positional glyph variants). The
                                     <code>getBBox()</code> method computes width and height after
                                 any such font adjustments have been applied.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Because the JavaScript approach relieves the developer entirely of
+                                the responsibility of computing the dimensions of SVG
+                                    <code>&lt;text&gt;</code> elements by off-loading that task onto
+                                a JavaScript function that is executed in the browser, it removes an
+                                opportunity for user error.</para>
                         </listitem>
                     </itemizedlist>
                 </section>
@@ -681,19 +760,33 @@ function init() {
                     <title>Disadvantages</title>
                     <itemizedlist>
                         <listitem>
-                            <para>The JavaScript approach equires JavaScript programming knowledge,
+                            <para>The JavaScript approach requires JavaScript programming knowledge,
                                 which cannot be assumed for all XML-stack developers, and the same
                                 is true with respect to knowledge of CSS Flexbox. The actual CSS and
                                 JavaScript required is light and the examples provided here can
-                                serve as models, but both the CSS and JavaScript used here will
+                                serve as models, but both the CSS and JavaScript employedd here will
                                 typically have to be adjusted according to the specific structures
                                 employed in individual projects.</para>
                         </listitem>
                         <listitem>
                             <para>Because we rely on HTML and CSS to support the relative
                                 positioning of the SVG components of what is conceptually a single
-                                image, this method is not, at least as implemented here, suited for
-                                not appropriate for the creation of stand-alone SVG.</para>
+                                image, this method is not not appropriate for the creation of
+                                stand-alone SVG.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Having to split what is conceptually a single SVG graph or chart
+                                into multiple <code>&lt;svg&gt;</code> elements, each inside its own
+                                HTML <code>&lt;div&gt;</code>, complicates the specification of the
+                                components of the SVG and thus creates additional potential locus
+                                for miscalculation by the developer.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Although the user cannot miscalculate the dimensions of an SVG
+                                    <code>&lt;text&gt;</code> element with the JavaScript method
+                                because the user does not perform that calculation directly, the
+                                user can misplace a component in the Flexbox portion of the
+                                implementation.</para>
                         </listitem>
                     </itemizedlist>
                 </section>
@@ -702,50 +795,63 @@ function init() {
     </section>
     <section>
         <title>Loose ends and future directions</title>
-        <para>Our XSLT approach assumes that the font metrics that can be extracted from the font
-            files are sufficient to compute the length of an SVG line of text. Our implementation
-            does not attempt to access kerning information, and it has not been tested on writing
-            systems that involve character substitution (including positional glyph variation or
-            ligation) or glyph reordering. We have confirmed that our XSLT approach is not impacted
-            negatively by zero-width characters as long as the font metrics for those glyphs
-            correctly report a width of zero, as is the case with the Times New Roman font that we
-            used for testing and illustration.</para>
+        <para>Our XSLT approach assumes—as a convenient simplification for proof of concept
+            purposes, and not entirely correctly—that the font metrics that can be extracted from
+            the font files are sufficient to compute the length of an SVG line of text. Our
+            implementation does not attempt to access kerning information, and it has not been
+            tested on writing systems that involve character substitution (including positional
+            glyph variation or ligation) or glyph reordering. We have confirmed that our XSLT
+            approach is not impacted negatively by zero-width characters as long as the font metrics
+            for those glyphs correctly report a width of zero, as is the case with the Times New
+            Roman font that we used for testing and illustration.</para>
         <para>Saxon-JS relies on a JavaScript implementation of the Saxon XSLT engine that is
             designed to perform transformations inside the browser. Insofar as Saxon-JS incorporates
-            both XSLT and JavaScript functionality, it may provide a cleaner integration of the two
-            approaches. We do not explore this approach here.</para>
+            both XSLT and JavaScript functionality, it may provide a cleaner integration of our two
+            approaches. We do not explore a Saxon-JS strategy here.</para>
         <para>Our definition of the problem to be solved presumes that an algorithmic solution is
             appropriate. Our experimentation above confirms that we can ask XSLT or JavaScript to
             compute the dimensions of SVG <code>&lt;text&gt;</code> elements, dimensions that we had
-            previously regarded as unknowable, and we can use that information to automate the
-            placement of other SVG components that must be positioned in ways that depend on the
-            dimensions of <code>&lt;text&gt;</code> elements. At the same time, algorithmic layout
-            as implemented here is a crude method because it is not sensitive to context-specific
-            details. For example, we have assumed that the general labels on X and Y axes should be
-            positioned not too close to and not too far from the longest data labels on those axes,
-            but those assumptions, although self-evidently correct, are insufficient. In practice we
-            might want to customize the positioning according to specific features of the data,
-            e.g., by labeling an axis in a way that is closer than the distance dictated by the
-            longest data label, but that happens not to overlap that label. This sort of detail is
-            computable in principle, ADD EXAMPLE AND DISCUSS </para>
+            previously regarded as unknowable (that is, not knowable in the same way as the
+            dimensions of SVG elements like rectangles, circles, and lines), and we can use that
+            information to automate the placement of other SVG components that must be positioned in
+            ways that depend on the dimensions of <code>&lt;text&gt;</code> elements. At the same
+            time, algorithmic layout as implemented here is a crude method because it is not
+            sensitive to context-specific details. For example, we have assumed that the general
+            labels on X and Y axes should be positioned not too close to and not too far from the
+            longest data labels on those axes, but those assumptions, although self-evidently
+            correct as far as they go, are insufficient. For example, in practice we might want to
+            customize the positioning according to specific features of the data, e.g., by labeling
+            an axis in a way that is closer than the distance dictated by the longest data label,
+            but that happens not to overlap that label. For example, we have mocked up the following
+            example to illustrate the possible placement of an axis label with coordinates that
+            overlap those of the longest data label, but that happen not to overlap because the
+            longest data label is conveniently out of way:</para>
+        <para><emphasis role="bold">[ADD HAND-CRAFTED EXAMPLE]</emphasis></para>
+        <para>This sort of detail is computable in principle, although it would require taking more
+            information into consideration.</para>
     </section>
     <section>
         <title>Conclusion</title>
         <para>The goal of this report has been to identify strategies for working around the fact
-            that SVG <code>&lt;text&gt;</code> elements do not know their length, which makes it
-            difficult to position other elements in relationship to them without a tedious
-            trial-and-error approach. We have identified, implemented, illustrated, and discussed
-            two approaches to meeting this need, one in XSLT and one in JavaScript. Each of these
-            approaches has its own advantages and disadvantages, but both have been shown to work,
-            at least with the authentic examples used here. We have identified some limitations and
-            some directions for future improvement, but both methods provide realisitic alternatives
-            to guesswork, trial-and-error, and magic numbers.</para>
+            that SVG <code>&lt;text&gt;</code> elements do not know their length (and, to a lesser
+            extent, their height), which makes it difficult to position other elements in relation
+            to them without a combination of guesswork and a potentially tedious trial-and-error
+            approach. Furthermore, manual positioning is brittle under reuse because it requires new
+            human intervention when the visualization code is applied to different data.</para>
+        <para>We have identified, implemented, illustrated, and discussed two approaches to meeting
+            this need, one in XSLT and one in JavaScript. Each of these approaches has advantages
+            and disadvantages, but both have been shown to work with the authentic examples used
+            here. We have identified some limitations and some directions for future improvement,
+            but even with their limitations, both methods provide realistic alternatives to
+            guesswork, trial-and-error, and magic numbers.</para>
     </section>
     <appendix xml:id="extract-widths" xreflabel="Appendix A">
         <title>Script to extract font widths as XML</title>
         <para>The following Python script exports the widths of all glyphs in a TrueType font. The
             script has two positional arguments, a required path to the font and an optional point
-            size (defaults to 16, which is the size of SVG text that either does not specify a
+            size. If no font name is supplied, or if the supplied font is not found, the program
+            gives the names of all fonts that it does find. The point size defaults to 16, which,
+            unless modified with CSS, is the size of SVG text that either does not specify a
                 <code>@font-size</code> or specifies a size of <code>"medium"</code>.</para>
         <programlisting language="python" xml:space="preserve">#!/usr/bin/env python
 # https://stackoverflow.com/questions/4190667/how-to-get-width-of-a-truetype-font-character-in-1200ths-of-an-inch-with-python
