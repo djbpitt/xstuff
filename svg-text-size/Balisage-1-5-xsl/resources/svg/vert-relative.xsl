@@ -59,7 +59,7 @@
     </xsl:function>
 
     <xsl:template name="xsl:initial-template">
-        <svg height="{$half_height + $label-pos + (-$title-pos) + ($font-size * 2)}" width="{$max_width + $horiz-shift + ($font-size * 2)}">
+        <svg height="{$label-pos + (-$title-pos) + ($font-size * 2)}" width="{$max_width + $horiz-shift + ($font-size * 2)}">
             <g transform="translate({$horiz-shift}, {$vert-shift})">
 
                 <!-- ================================================================ -->
