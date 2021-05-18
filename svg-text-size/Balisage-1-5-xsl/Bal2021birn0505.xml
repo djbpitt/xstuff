@@ -334,6 +334,9 @@
                             Safari.</para>
                     </footnote>
                 </para>
+            </section>
+            <section>
+                <title>Illustrations</title>
                 <para>In the horizontal butterfly chart below, the bars are labeled on the Y axis on
                     the right side, and a general label for the Y axis must be positioned to the
                     right of—but not too far to the right of—the longest bar label. Because we can
@@ -523,19 +526,31 @@
                         <code>@width</code> attributes unspecified if they cannot be computed at the
                     time the SVG is created. When the SVG is eventually loaded into a browser,
                     JavaScript functions compute the missing dimensions and write them into the DOM
-                    in a way that controls the layout.</para>
+                    in a way that controls the layout.<footnote>
+                        <para>Our JavaScript method, as applied to real data (see the Van Gogh
+                            examples, below), uses XSLT to create the SVG. What we mean, then, when
+                            we refer to this method as a <quote>JavaScript approach</quote>
+                            (contrasted to an <quote>XSLT approach</quote>, above) is that we use
+                            JavaScript, rather than XSLT, specifically to compute the size of SVG
+                                <code>&lt;text&gt;</code> elements so that we can use those sizes to
+                            position other SVG elements.</para>
+                    </footnote></para>
                 <para>Because the JavaScript approach relies on JavaScript applied in the browser
-                    after the document loads, this method can be used only where the developer has
-                    file system or server permissions needed to specify JavaScript modifications.
-                    Because that is not the case with the Balisage <emphasis role="ital"
+                    after the document loads, and on CSS that we specify, this method can be used
+                    only where the developer has file system or server permissions needed to control
+                    these features. Because we cannot rely on being able to apply our own CSS and
+                    JavaScript in the context of the Balisage <emphasis role="ital"
                         >Proceedings</emphasis> in which this report is being published, the output
-                    of the JavaScript method is illustrated below with a PNG screen capture.<footnote>
+                    of the JavaScript method is illustrated below with PNG screen captures.<footnote>
                         <para>Our screen captures in this case are taken from the Firefox version
                             identified above, but we have verified that the method yields a
                             comparable rendering (except for cosmetic differences in browser
                             defaults) in Chrome and Safari.</para>
-                    </footnote> The raw HTML, with embedded CSS and JavaScript, can be found in
-                        <xref linkend="javascript-mockup"/>.</para>
+                    </footnote> The raw HTML for the mockup immediately below, with embedded CSS and
+                    JavaScript, can be found in <xref linkend="javascript-mockup"/>. All of the raw
+                    files used to create the examples based on the authentic Van Gogh data,
+                    illustrated below, are available in our GitHub repository at
+                        <link>https://github.com/djbpitt/xstuff/tree/master/svg-text-size</link>.</para>
                 <figure xml:id="js-mockup" xreflabel="Sample output of JavaScript method">
                     <mediaobject>
                         <imageobject>
@@ -554,10 +569,10 @@
                 <title>Implementation</title>
                 <para>Because we do not specify the width or height of the rectangular viewport of
                     our <code>&lt;svg&gt;</code> with explicit <code>@width</code> or
-                        <code>@height</code> attributes, in absence of our JavaScript intervention
-                    (see below) the <code>&lt;svg></code> elements will assume whatever the browser
-                    assigns as default. The default size is implementation dependent, and therefore
-                    unpredictable and unusable for our purposes.<footnote>
+                        <code>@height</code> attributes, in the absence of our JavaScript
+                    intervention the <code>&lt;svg></code> elements will assume whatever widths and
+                    heights the browser assigns as defaults. Those default values are implementation
+                    dependent, and therefore unpredictable and unusable for our purposes.<footnote>
                         <para>As of 2017:<blockquote>
                                 <para>The default size for HTML replaced elements will be used:
                                     300px wide, 150px tall. This applies for &lt;img>, &lt;object>
@@ -572,16 +587,16 @@
                                         (<xref linkend="bellamy-royds2017"/>)</para>
                             </blockquote></para>
                     </footnote> Additionally, <code>&lt;svg&gt;</code> elements default to a CSS
-                        <code>display</code> value of <code>inline-block</code>, which we have to
-                    change to <code>block</code> to provide more transparent control over explicit
+                        <code>display</code> value of <code>inline-block</code>, which we change to
+                        <code>block</code> to provide more transparent control over explicit
                     positioning.</para>
                 <para>Our general strategy relies on HTML and CSS Flexbox to manage the layout of
                     the SVG components. For this purpose what would normally be constructed as a
-                    single SVG document (e.g., a bar graph with all of its labels) is divided into
-                    multiple SVG documents, each wrapped in an HTML <code>&lt;div&gt;</code> or
-                    other block-level element. We use CSS Flexbox to position the
-                        <code>&lt;div&gt;</code> elements as they would have been positioned in a
-                    single, unified SVG document.</para>
+                    single SVG document (e.g., a single <code>&lt;svg&gt;</code> element that
+                    contains a bar graph with all of its labels) is divided into multiple SVG
+                    documents, each wrapped in an HTML <code>&lt;div&gt;</code> or other block-level
+                    element. We use CSS Flexbox to render the <code>&lt;div&gt;</code> elements
+                    where they would have been rendered in a single, unified SVG document.</para>
                 <para>We illustrate our positioning strategy in the image above. In that image the
                         <code>&lt;body&gt;</code> contains three <code>&lt;section&gt;</code>
                     elements, one for each of the horizontal rows (outlined in red). The
@@ -590,11 +605,14 @@
                         <code>column</code>, so that the <code>&lt;section&gt;</code> elements will
                     be rendered from top to bottom in the browser window. The height of an HTML
                         <code>&lt;section&gt;</code> is, unless specified explicitly in other ways,
-                    determined by its contents, and we use JavaScript to write <code>@height</code>
-                    attributes into the <code>&lt;svg&gt;</code> descendants of each
-                        <code>&lt;section&gt;</code> that actual match the height occupied by the
-                    SVG. Once those attributes have been added, the height of a section will be
-                    determined by the height of the <code>&lt;svg&gt;</code> it contains. We use the
+                    determined by its contents, which, without our JavaScript interventions, would
+                    be whatever default height the browser assigns to the embedded
+                        <code>&lt;svg&gt;</code> elements. To override that default we use
+                    JavaScript to compute the actual height of the <code>&lt;svg&gt;</code>
+                    descendants of each <code>&lt;section&gt;</code> and write those values into
+                        <code>@height</code> attributes on the <code>&lt;svg></code> elements. Once
+                    those attributes have been added, the height of a section will be determined by
+                    the now declared height of the <code>&lt;svg&gt;</code> it contains. We use the
                     CSS <code>row-gap</code> property to introduce a gutter between the
                     sections.</para>
                 <para>Each of the three <code>&lt;section&gt;</code> elements also has its
@@ -603,11 +621,13 @@
                         <code>&lt;div&gt;</code> children will be distributed horizontally across
                     the row. We use the CSS <code>column-gap</code> property to introduce a gutter
                     between the <code>&lt;div&gt;</code> elements in each row (each HTML
-                        <code>&lt;section&gt;</code>). Once our JavaScript writes
-                        <code>@width</code> attributes into the SVG descendants of each
-                        <code>&lt;div&gt;</code>, the <code>&lt;div&gt;</code> will occupy the space
-                    required for their SVG contents, overriding the default width that would
-                    otherwise be supplied by the browser.</para>
+                        <code>&lt;section&gt;</code>). Our JavaScript writes computed
+                        <code>@width</code> attributes, as well as the <code>@height</code>
+                    attributes discussed above, into the <code>&lt;svg></code> elements, and once
+                    the JavaScript has created those attributes, the <code>&lt;div&gt;</code>
+                    elements will occupy the horizontal space required for their SVG contents,
+                    overriding the default width that would otherwise have been supplied by the
+                    browser.</para>
                 <para>The JavaScript that supplies explicit <code>@width</code> and
                         <code>@height</code> values to the <code>&lt;svg&gt;</code> elements
                     is:</para>
@@ -616,7 +636,6 @@ function init() {
     const divs = document.querySelectorAll('div');
     for (i = 0; i &lt; divs.length; i++) {
         bb = divs[i].querySelector('g').getBBox();
-        console.log(bb);
         divs[i].querySelector('svg').setAttribute('height', bb.height);
         divs[i].querySelector('svg').setAttribute('width', bb.width);
     }
@@ -624,7 +643,7 @@ function init() {
                 <para>Our sample takes advantage of use of <code>&lt;div&gt;</code> elements only as
                     wrappers for SVG content, and of our placement of only a single SVG
                         <code>&lt;g&gt;</code> element inside each <code>&lt;svg&gt;</code> element.
-                    HTML structured differently may require adjustments, but the general principle
+                    HTML structured differently may require fine-tuning, but the general principle
                     would be the same: use the JavaScript <code>getBBox()</code> method to determine
                     the size of the bounding box for each SVG component and write the width and
                     height into the <code>&lt;svg&gt;</code> wrapper element as <code>@width</code>
@@ -874,7 +893,6 @@ print(xml_str)</programlisting>
         const divs = document.querySelectorAll('div');
         for (i = 0; i &lt; divs.length; i++) {
           bb = divs[i].querySelector('g').getBBox();
-          console.log(bb);
           divs[i].querySelector('svg').setAttribute('height', bb.height);
           divs[i].querySelector('svg').setAttribute('width', bb.width);
         }
