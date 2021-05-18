@@ -352,7 +352,7 @@
                 </figure>
                 <para>The vertical butterfly chart below illustrates a variant of the same task. In
                     this case we set <code>@writing-mode</code> to <code>"tb"</code> (top to bottom)
-                    to create vertical text and use the longest bar label to compute the position
+                    to create vertical text and use the longest bar label to compute the position of
                     the general X axis label:</para>
                 <figure xml:id="figure-01" xreflabel="Graph with vertical bar labels">
                     <mediaobject>
