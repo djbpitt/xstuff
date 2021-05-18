@@ -1,108 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" height="452" width="620">
-   <g transform="translate(210, 100)">
-      <text y="-24"
+<svg xmlns="http://www.w3.org/2000/svg" height="340" width="553.2890625">
+   <g transform="translate(176, 56)">
+      <text y="-20"
             x="0"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle">0</text>
-      <line y1="-16" y2="0" x1="0" x2="0" stroke="black"/>
+      <line y1="-10" y2="0" x1="0" x2="0" stroke="black"/>
       <line y1="0"
             y2="252"
             x1="0"
             x2="0"
             stroke="black"
             opacity=".5"/>
-      <text y="-24"
+      <text y="-20"
             x="40"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle">4</text>
-      <line y1="-16" y2="0" x1="40" x2="40" stroke="black"/>
+      <line y1="-10" y2="0" x1="40" x2="40" stroke="black"/>
       <line y1="0"
             y2="252"
             x1="40"
             x2="40"
             stroke="black"
             opacity=".5"/>
-      <text y="-24"
+      <text y="-20"
             x="80"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle">8</text>
-      <line y1="-16" y2="0" x1="80" x2="80" stroke="black"/>
+      <line y1="-10" y2="0" x1="80" x2="80" stroke="black"/>
       <line y1="0"
             y2="252"
             x1="80"
             x2="80"
             stroke="black"
             opacity=".5"/>
-      <text y="-24"
+      <text y="-20"
             x="120"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle">12</text>
-      <line y1="-16" y2="0" x1="120" x2="120" stroke="black"/>
+      <line y1="-10" y2="0" x1="120" x2="120" stroke="black"/>
       <line y1="0"
             y2="252"
             x1="120"
             x2="120"
             stroke="black"
             opacity=".5"/>
-      <text y="-24"
+      <text y="-20"
             x="160"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle">16</text>
-      <line y1="-16" y2="0" x1="160" x2="160" stroke="black"/>
+      <line y1="-10" y2="0" x1="160" x2="160" stroke="black"/>
       <line y1="0"
             y2="252"
             x1="160"
             x2="160"
             stroke="black"
             opacity=".5"/>
-      <text y="-24"
+      <text y="-20"
             x="-160"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle">16</text>
-      <line y1="-16" y2="0" x1="-160" x2="-160" stroke="black"/>
+      <line y1="-10" y2="0" x1="-160" x2="-160" stroke="black"/>
       <line y1="0"
             y2="252"
             x1="-160"
             x2="-160"
             stroke="black"
             opacity=".5"/>
-      <text y="-24"
+      <text y="-20"
             x="-120"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle">12</text>
-      <line y1="-16" y2="0" x1="-120" x2="-120" stroke="black"/>
+      <line y1="-10" y2="0" x1="-120" x2="-120" stroke="black"/>
       <line y1="0"
             y2="252"
             x1="-120"
             x2="-120"
             stroke="black"
             opacity=".5"/>
-      <text y="-24"
+      <text y="-20"
             x="-80"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle">8</text>
-      <line y1="-16" y2="0" x1="-80" x2="-80" stroke="black"/>
+      <line y1="-10" y2="0" x1="-80" x2="-80" stroke="black"/>
       <line y1="0"
             y2="252"
             x1="-80"
             x2="-80"
             stroke="black"
             opacity=".5"/>
-      <text y="-24"
+      <text y="-20"
             x="-40"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle">4</text>
-      <line y1="-16" y2="0" x1="-40" x2="-40" stroke="black"/>
+      <line y1="-10" y2="0" x1="-40" x2="-40" stroke="black"/>
       <line y1="0"
             y2="252"
             x1="-40"
@@ -344,13 +344,13 @@
             font-family="Times New Roman"
             font-size="16">Paris (1887)</text>
       <text x="80"
-            y="-48"
+            y="-40"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle"
             font-weight="300">Good Health</text>
       <text x="-80"
-            y="-48"
+            y="-40"
             font-size="16"
             font-family="Times New Roman"
             text-anchor="middle"

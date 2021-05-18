@@ -6,13 +6,20 @@
     <xsl:output method="xml" indent="yes"/>
 
     <xsl:variable name="letters" select="collection('../xml/?select=*.xml')"/>
-
-    <!-- ================================================================ -->
-    <!-- Establish rotated label dimensions                               -->
-    <!-- ================================================================ -->
     <xsl:variable name="locs" select="$letters//location => distinct-values()"/>
     <xsl:variable name="loc-count" as="xs:integer" select="count($locs)"/>
     <xsl:variable name="angle-deg" as="xs:double" select="30"/>
+    
+    <!-- ================================================================ -->
+    <!-- Standardize axis label positions and calculate shift             -->
+    <!-- ================================================================ -->
+    <xsl:variable name="line-end" as="xs:double" select="-10"/>
+    <xsl:variable name="num-pos" as="xs:double" select="$line-end - 10"/>
+    <xsl:variable name="health-pos" as="xs:double" select="$num-pos - 20"/>
+    <xsl:variable name="title-pos" as="xs:double" select="-$half_height - 30"/>
+    <xsl:variable name="margin" as="xs:double" select="8"/>
+    <xsl:variable name="horiz-shift" as="xs:double" select="-$health-pos + $margin"/>
+    <xsl:variable name="vert-shift" as="xs:double" select="-$title-pos + $margin"/>
    
     <!-- ================================================================ -->
     <!-- General graph dimensions                                         -->
@@ -60,7 +67,7 @@
                 <section>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg">
-                            <g transform="translate(65, {$half_height + 40})">
+                            <g transform="translate({$horiz-shift}, {$vert-shift})">
 
                                 <!-- ================================================================ -->
                                 <!-- Ruling lines and labels for "positive," good health values       -->
@@ -68,11 +75,11 @@
                                 <xsl:for-each select="0 to 4">
                                     <xsl:variable name="pos" as="xs:double"
                                         select=". * ($half_height div 4)"/>
-                                    <text x="-30" y="{$pos + 2}" font-size="16"
+                                    <text x="{$num-pos}" y="{$pos + 2}" font-size="16"
                                         font-family="Times New Roman" text-anchor="middle">
                                         <xsl:value-of select="$pos div $yscale"/>
                                     </text>
-                                    <line x1="0" x2="-15" y1="{$pos}" y2="{$pos}"
+                                    <line x1="0" x2="{$line-end}" y1="{$pos}" y2="{$pos}"
                                         stroke="black"/>
                                     <line x1="0" x2="{$max_width}" y1="{$pos}" y2="{$pos}"
                                         stroke="black" opacity=".5"/>
@@ -84,11 +91,11 @@
                                 <xsl:for-each select="-4 to -1">
                                     <xsl:variable name="pos" as="xs:double"
                                         select=". * ($half_height div 4)"/>
-                                    <text x="-30" y="{$pos + 2}" font-size="16"
+                                    <text x="{$num-pos}" y="{$pos + 2}" font-size="16"
                                         font-family="Times New Roman" text-anchor="middle">
                                         <xsl:value-of select="(-$pos) div $yscale"/>
                                     </text>
-                                    <line x1="-15" x2="0" y1="{$pos}" y2="{$pos}"
+                                    <line x1="{$line-end}" x2="0" y1="{$pos}" y2="{$pos}"
                                         stroke="black"/>
                                     <line x1="0" x2="{$max_width}" y1="{$pos}" y2="{$pos}"
                                         stroke="black" opacity=".5"/>
@@ -98,7 +105,7 @@
                                 <!-- for-each-group to draw ruling lines, bars, bar labels            -->
                                 <!-- ================================================================ -->
                                 <xsl:for-each-group select="$letters//location" group-by=".">
-                                    <xsl:sort select="base-uri()"/>
+                                    <xsl:sort select="./following-sibling::date/year"/>
                                     <xsl:variable name="xpos" as="xs:double"
                                         select="$spacing + (position() - 1) * ($bar_width + $spacing)"/>
                                     <line x1="{$xpos + $spacing}" x2="{$xpos + $spacing}"
@@ -134,7 +141,7 @@
                                         transform="rotate(-{$angle-deg}, {$xpos + $spacing}, {$half_height + 10})">
                                         <xsl:value-of select="translate(., '_', ' ')"/>
                                         <xsl:text> (</xsl:text>
-                                        <xsl:value-of select=".[1]/following-sibling::date/year"/>
+                                        <xsl:value-of select="./following-sibling::date/year"/>
                                         <xsl:text>)</xsl:text>
                                     </text>
                                 </xsl:for-each-group>
@@ -142,12 +149,12 @@
                                 <!-- ================================================================ -->
                                 <!-- Y Axis labels                                                    -->
                                 <!-- ================================================================ -->
-                                <text x="-50" y="-{$half_height div 2}" font-size="16"
+                                <text x="{$health-pos}" y="-{$half_height div 2}" font-size="16"
                                     text-anchor="middle" font-family="Times New Roman"
                                     font-weight="300" writing-mode="tb">
                                     <xsl:text>Good Health</xsl:text>
                                 </text>
-                                <text x="-50" y="{$half_height div 2}" font-size="16"
+                                <text x="{$health-pos}" y="{$half_height div 2}" font-size="16"
                                     text-anchor="middle" font-family="Times New Roman"
                                     font-weight="300" writing-mode="tb">
                                     <xsl:text>Bad Health</xsl:text>
@@ -156,7 +163,7 @@
                                 <!-- ================================================================ -->
                                 <!-- X Axis labels                                                    -->
                                 <!-- ================================================================ -->
-                                <text x="{$max_width div 2}" y="{-$half_height - 25}" font-size="16"
+                                <text x="{$max_width div 2}" y="{$title-pos}" font-size="16"
                                     text-anchor="middle" font-family="Times New Roman"
                                     font-weight="300">
                                     <xsl:text>Mentions of Mental Health/Stress Factors</xsl:text>
@@ -173,7 +180,7 @@
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg">
-                            <g transform="translate(65, 0)">
+                            <g transform="translate({$horiz-shift}, 0)">
                                 <text x="{$max_width div 2}"
                                     y="0"
                                     text-anchor="middle" font-size="16"

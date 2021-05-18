@@ -20,6 +20,16 @@
     <xsl:variable name="max_width" as="xs:double" select="$half_width * 2"/>
     <xsl:variable name="xscale" as="xs:double" select="10"/>
 
+    <!-- ================================================================ -->
+    <!-- Standardize X axis label positions and calculate shift           -->
+    <!-- ================================================================ -->
+    <xsl:variable name="line-end" as="xs:double" select="-10"/>
+    <xsl:variable name="num-pos" as="xs:double" select="$line-end - 10"/>
+    <xsl:variable name="health-pos" as="xs:double" select="$num-pos - 20"/>
+    <xsl:variable name="margin" as="xs:double" select="8"/>
+    <xsl:variable name="vert-shift" as="xs:double" select="-$health-pos + $margin"/>
+    <xsl:variable name="horiz-shift" as="xs:double" select="$half_width + $margin"/>
+
     <xsl:template name="xsl:initial-template">
         <html>
             <head>
@@ -56,7 +66,7 @@
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg">
                             <g
-                                transform="translate({$half_width}, 65)">
+                                transform="translate({$horiz-shift}, {$vert-shift})">
 
                                 <!-- ================================================================ -->
                                 <!-- Ruling lines and labels for "positive," good health values       -->
@@ -64,11 +74,11 @@
                                 <xsl:for-each select="0 to 4">
                                     <xsl:variable name="pos" as="xs:double"
                                         select=". * ($half_width div 4)"/>
-                                    <text y="-25" x="{$pos}" font-size="16"
+                                    <text y="{$num-pos}" x="{$pos}" font-size="16"
                                         font-family="Times New Roman" text-anchor="middle">
                                         <xsl:value-of select="$pos div $xscale"/>
                                     </text>
-                                    <line y1="-15" y2="0" x1="{$pos}" x2="{$pos}"
+                                    <line y1="{$line-end}" y2="0" x1="{$pos}" x2="{$pos}"
                                         stroke="black"/>
                                     <line y1="0" y2="{$max_height}" x1="{$pos}" x2="{$pos}"
                                         stroke="black" opacity=".5"/>
@@ -80,11 +90,11 @@
                                 <xsl:for-each select="-4 to -1">
                                     <xsl:variable name="pos" as="xs:double"
                                         select=". * ($half_width div 4)"/>
-                                    <text y="-25" x="{$pos}" font-size="16"
+                                    <text y="{$num-pos}" x="{$pos}" font-size="16"
                                         font-family="Times New Roman" text-anchor="middle">
                                         <xsl:value-of select="(-$pos) div $xscale"/>
                                     </text>
-                                    <line y1="-15" y2="0" x1="{$pos}" x2="{$pos}"
+                                    <line y1="{$line-end}" y2="0" x1="{$pos}" x2="{$pos}"
                                         stroke="black"/>
                                     <line y1="0" y2="{$max_height}" x1="{$pos}" x2="{$pos}"
                                         stroke="black" opacity=".5"/>
@@ -94,7 +104,7 @@
                                 <!-- for-each-group to draw ruling lines, bars, bar labels            -->
                                 <!-- ================================================================ -->
                                 <xsl:for-each-group select="$letters//location" group-by=".">
-                                    <xsl:sort select=".[1]/following-sibling::date/year"/>
+                                    <xsl:sort select="./following-sibling::date/year"/>
                                     <xsl:variable name="ypos" as="xs:double"
                                         select="$spacing + (position() - 1) * ($bar_height + $spacing)"/>
                                     <line x1="-{$half_width}" x2="{$half_width}"
@@ -128,7 +138,7 @@
                                         font-size="16">
                                         <xsl:value-of select="translate(., '_', ' ')"/>
                                         <xsl:text> (</xsl:text>
-                                        <xsl:value-of select=".[1]/following-sibling::date/year"/>
+                                        <xsl:value-of select="./following-sibling::date/year"/>
                                         <xsl:text>)</xsl:text>
                                     </text>
                                 </xsl:for-each-group>
@@ -136,12 +146,12 @@
                                 <!-- ================================================================ -->
                                 <!-- X Axis labels                                                    -->
                                 <!-- ================================================================ -->
-                                <text x="{$half_width div 2}" y="-50" font-size="16"
+                                <text x="{$half_width div 2}" y="{$health-pos}" font-size="16"
                                     font-family="Times New Roman" text-anchor="middle"
                                     font-weight="300">
                                     <xsl:text>Good Health</xsl:text>
                                 </text>
-                                <text x="-{$half_width div 2}" y="-50" font-size="16"
+                                <text x="-{$half_width div 2}" y="{$health-pos}" font-size="16"
                                     font-family="Times New Roman" text-anchor="middle"
                                     font-weight="300">
                                     <xsl:text>Bad Health</xsl:text>
@@ -163,7 +173,7 @@
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg">
-                            <g transform="translate(0, 65)">
+                            <g transform="translate(0, {$vert-shift})">
                                 <!-- ================================================================ -->
                                 <!-- Y Axis label                                                    -->
                                 <!-- ================================================================ -->
