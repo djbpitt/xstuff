@@ -27,6 +27,15 @@
     <xsl:variable name="half_width" as="xs:double" select="160"/>
     <xsl:variable name="max_width" as="xs:double" select="$half_width * 2"/>
     <xsl:variable name="xscale" as="xs:double" select="10"/>
+    
+    <!-- ================================================================ -->
+    <!-- Standardize X axis label positions and calculate shift           -->
+    <!-- ================================================================ -->
+    <xsl:variable name="line-end" as="xs:double" select="-10"/>
+    <xsl:variable name="num-pos" as="xs:double" select="$line-end - 10"/>
+    <xsl:variable name="health-pos" as="xs:double" select="$num-pos - 20"/>
+    <xsl:variable name="vert-shift" as="xs:double" select="-$health-pos + $font-size"/>
+    <xsl:variable name="horiz-shift" as="xs:double" select="$half_width + $font-size"/>
 
     <!-- ================================================================ -->
     <!-- Read in mapping and make accessible in key (one per font/size)   -->
@@ -49,19 +58,19 @@
     </xsl:function>
 
     <xsl:template name="xsl:initial-template">
-        <svg height="{$max_height + 200}" width="{$max_width + 300}">
-            <g transform="translate({$half_width + 50}, 100)">
+        <svg height="{$max_height + $vert-shift + ($font-size * 2)}" width="{$half_width + $label-pos + ($font-size * 2)}">
+            <g transform="translate({$horiz-shift}, {$vert-shift})">
 
                 <!-- ================================================================ -->
                 <!-- Ruling lines and labels for "positive," good health values       -->
                 <!-- ================================================================ -->
                 <xsl:for-each select="0 to 4">
                     <xsl:variable name="pos" as="xs:double" select=". * ($half_width div 4)"/>
-                    <text y="-{$font-size * 1.5}" x="{$pos}" font-size="16"
+                    <text y="{$num-pos}" x="{$pos}" font-size="16"
                         font-family="Times New Roman" text-anchor="middle">
                         <xsl:value-of select="$pos div $xscale"/>
                     </text>
-                    <line y1="-{$font-size}" y2="0" x1="{$pos}" x2="{$pos}" stroke="black"/>
+                    <line y1="{$line-end}" y2="0" x1="{$pos}" x2="{$pos}" stroke="black"/>
                     <line y1="0" y2="{$max_height}" x1="{$pos}" x2="{$pos}" stroke="black"
                         opacity=".5"/>
                 </xsl:for-each>
@@ -71,11 +80,11 @@
                 <!-- ================================================================ -->
                 <xsl:for-each select="-4 to -1">
                     <xsl:variable name="pos" as="xs:double" select=". * ($half_width div 4)"/>
-                    <text y="-{$font-size * 1.5}" x="{$pos}" font-size="16"
+                    <text y="{$num-pos}" x="{$pos}" font-size="16"
                         font-family="Times New Roman" text-anchor="middle">
                         <xsl:value-of select="(-$pos) div $xscale"/>
                     </text>
-                    <line y1="-{$font-size}" y2="0" x1="{$pos}" x2="{$pos}" stroke="black"/>
+                    <line y1="{$line-end}" y2="0" x1="{$pos}" x2="{$pos}" stroke="black"/>
                     <line y1="0" y2="{$max_height}" x1="{$pos}" x2="{$pos}" stroke="black"
                         opacity=".5"/>
                 </xsl:for-each>
@@ -121,11 +130,11 @@
                 <!-- ================================================================ -->
                 <!-- X Axis labels                                                    -->
                 <!-- ================================================================ -->
-                <text x="{$half_width div 2}" y="-{$font-size * 3}" font-size="16"
+                <text x="{$half_width div 2}" y="{$health-pos}" font-size="16"
                     font-family="Times New Roman" text-anchor="middle" font-weight="300">
                     <xsl:text>Good Health</xsl:text>
                 </text>
-                <text x="-{$half_width div 2}" y="-{$font-size * 3}" font-size="16"
+                <text x="-{$half_width div 2}" y="{$health-pos}" font-size="16"
                     font-family="Times New Roman" text-anchor="middle" font-weight="300">
                     <xsl:text>Bad Health</xsl:text>
                 </text>
