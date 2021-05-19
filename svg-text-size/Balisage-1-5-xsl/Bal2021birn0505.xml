@@ -195,7 +195,7 @@
             </listitem>
         </orderedlist>
         <para>These two approaches, each of which has advantages and disadvantages, are described in
-            more detail and illustrated below.<footnote>
+            more detail, with examples, below.<footnote>
                 <para>We are grateful to the colleagues who participated in the discussion we opened
                     about this topic in the xml.com Slack workspace, and especially to Gerrit
                     Imsieke and Liam Quin. Slack postings are ephemeral, but although that
@@ -207,21 +207,20 @@
             <section>
                 <title>Overview</title>
                 <para>The XSLT approach computes the dimensions of the text as it creates the SVG
-                    and positions other elements accordingly. For horizontal or vertical text this
-                    requires computing the length of the <code>&lt;text&gt;</code> and using it to
-                    position other elements at a specific distance from it. This approach is less
-                    precise than the JavaScript method described below for several reasons, but
-                    because in our actual use we normally want to include a small amount of padding
-                    around our <code>&lt;text&gt;</code> elements, we do not require placement with
-                    exact precision.</para>
-                <para>In the sample SVG below, we compute the length of the text using the method
-                    described above and employ it to draw a line parallel to horizontal or vertical
-                    text, so that we can examine the accuracy of our measurements visually.<footnote>
+                    and positions other elements accordingly. This approach is less precise than the
+                    JavaScript method for reasons discussed below, but because in our actual use we
+                    normally want to include a small amount of padding around our
+                        <code>&lt;text&gt;</code> elements, we do not require placement with exact
+                    precision.</para>
+                <para>In the sample SVG below, we compute the length of the text (see the discussion
+                    of the <xref linkend="implementation-xslt"/>, below) and employ it to draw a
+                    line parallel to horizontal or vertical text, so that we can examine the
+                    accuracy of our measurements visually.<footnote>
                         <para>Browsers interpret the values of the SVG
                                 <code>@dominant-baseline</code> attribute inconsistently. See <xref
                                 linkend="gudehus2021"/> for discussion, an interactive diagnostic
-                            interface, and a suggested work-around, which we have adopted
-                            here.</para>
+                            interface, and a suggested work-around, which we have adopted where
+                            needed in this report.</para>
                     </footnote> (That is, the lines are not created as a font effect; the lines are
                     drawn independently of the text.) In the case of diagonal text we draw a
                     bounding rectangle. The third of the four examples in each figure is a null
@@ -303,14 +302,14 @@
                         <code>@font-size</code> attribute. In the table above, we see that none of
                     the browsers sets a height of 16 and each of them sets a different height from
                     the others.<footnote>
-                        <para>The apparently widespread assumption that a <code>@font-size</code>
-                            value specifies the vertical distance between baselines is incorrect
-                            because, among other things, the actual spacing depends on the font
-                            design, and not only on font size. See <xref linkend="deOliveira2017"/>
-                            for details and discussion, as well as <xref linkend="chase2019"/>. In
-                            principle it should be possible to extract the actual height from the
-                            font metrics, as we do for character width, but we have not explored
-                            that possibility for this report.</para>
+                        <para>The common assumption that a <code>@font-size</code> value specifies
+                            the vertical distance between baselines is incorrect because, among
+                            other things, the actual spacing depends on the font design, and not
+                            only on font size. See <xref linkend="deOliveira2017"/> for details and
+                            discussion, as well as <xref linkend="chase2019"/>. In principle it
+                            should be possible to extract the actual height from the font metrics,
+                            as we do for character width, but we have not explored that possibility
+                            for this report.</para>
                     </footnote></para>
                 <para>A third limitation to computing the dimensions of SVG
                         <code>&lt;text&gt;</code> elements while creating them is that kerning
@@ -347,7 +346,7 @@
                     </footnote>
                 </para>
             </section>
-            <section>
+            <section xml:id="implementation-xslt" xreflabel="XSLT Implementation">
                 <title>Implementation</title>
                 <para>Because this method requires knowing the widths of the individual glyphs while
                     constructing the SVG, we first extract width information from TrueType TTF files

@@ -301,7 +301,7 @@
                                        <dd>
                                           <dl>
                                              <dt><span class="section"><a href="#d3e162" class="toc">Overview</a></span></dt>
-                                             <dt><span class="section"><a href="#d3e294" class="toc">Implementation</a></span></dt>
+                                             <dt><span class="section"><a href="#implementation-xslt" class="toc">Implementation</a></span></dt>
                                              <dt><span class="section"><a href="#d3e314" class="toc">Illustrations</a></span></dt>
                                              <dt><span class="section"><a href="#d3e367" class="toc">Discussion</a></span></dt>
                                           </dl>
@@ -397,7 +397,7 @@
                               <dd>
                                  <dl>
                                     <dt><span class="section"><a href="#d3e162" class="toc">Overview</a></span></dt>
-                                    <dt><span class="section"><a href="#d3e294" class="toc">Implementation</a></span></dt>
+                                    <dt><span class="section"><a href="#implementation-xslt" class="toc">Implementation</a></span></dt>
                                     <dt><span class="section"><a href="#d3e314" class="toc">Illustrations</a></span></dt>
                                     <dt><span class="section"><a href="#d3e367" class="toc">Discussion</a></span></dt>
                                  </dl>
@@ -494,22 +494,21 @@
                      </div>
                      <p id="d3e156">These two approaches, each of which has advantages and disadvantages, are described
                         in
-                        more detail and illustrated below.<sup class="fn-label"><a href="#d3e158" class="footnoteref" id="d3e158-ref">[6]</a></sup></p>
+                        more detail, with examples, below.<sup class="fn-label"><a href="#d3e158" class="footnoteref" id="d3e158-ref">[6]</a></sup></p>
                      <div class="section" id="d3e160">
                         <h3 class="title" style="clear: both">An XSLT approach</h3>
                         <div class="section" id="d3e162">
                            <h4 class="title" style="clear: both">Overview</h4>
                            <p id="d3e164">The XSLT approach computes the dimensions of the text as it creates the SVG
-                              and positions other elements accordingly. For horizontal or vertical text this
-                              requires computing the length of the <code class="code">&lt;text&gt;</code> and using it to
-                              position other elements at a specific distance from it. This approach is less
-                              precise than the JavaScript method described below for several reasons, but
-                              because in our actual use we normally want to include a small amount of padding
-                              around our <code class="code">&lt;text&gt;</code> elements, we do not require placement with
-                              exact precision.</p>
-                           <p id="d3e170">In the sample SVG below, we compute the length of the text using the method
-                              described above and employ it to draw a line parallel to horizontal or vertical
-                              text, so that we can examine the accuracy of our measurements visually.<sup class="fn-label"><a href="#d3e172" class="footnoteref" id="d3e172-ref">[7]</a></sup> (That is, the lines are not created as a font effect; the lines are
+                              and positions other elements accordingly. This approach is less precise than the
+                              JavaScript method for reasons discussed below, but because in our actual use we
+                              normally want to include a small amount of padding around our
+                              <code class="code">&lt;text&gt;</code> elements, we do not require placement with exact
+                              precision.</p>
+                           <p id="d3e168">In the sample SVG below, we compute the length of the text (see the discussion
+                              of the <a class="xref" href="#implementation-xslt" id="d3e170">XSLT Implementation</a>, below) and employ it to draw a
+                              line parallel to horizontal or vertical text, so that we can examine the
+                              accuracy of our measurements visually.<sup class="fn-label"><a href="#d3e172" class="footnoteref" id="d3e172-ref">[7]</a></sup> (That is, the lines are not created as a font effect; the lines are
                               drawn independently of the text.) In the case of diagonal text we draw a
                               bounding rectangle. The third of the four examples in each figure is a null
                               string, so we expect to see no text and no line. The images below are in SVG
@@ -610,7 +609,7 @@
                               support for both of these features too inconsistent and unpredictable to be useful.<sup class="fn-label"><a href="#d3e275" class="footnoteref" id="d3e275-ref">[11]</a></sup>
                               </p>
                         </div>
-                        <div class="section" id="d3e294">
+                        <div class="section" id="implementation-xslt">
                            <h4 class="title" style="clear: both">Implementation</h4>
                            <p id="d3e296">Because this method requires knowing the widths of the individual glyphs while
                               constructing the SVG, we first extract width information from TrueType TTF files
