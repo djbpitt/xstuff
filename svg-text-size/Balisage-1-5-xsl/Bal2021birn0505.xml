@@ -350,12 +350,15 @@
                 <title>Implementation</title>
                 <para>Because this method requires knowing the widths of the individual glyphs while
                     constructing the SVG, we first extract width information from TrueType TTF files
-                    and format them as XML using the script in <xref linkend="extract-widths"/>.<footnote>
+                    and format them as XML. We do this with the script in <xref
+                        linkend="extract-widths"/>, but that particular script is not a requirement,
+                    and any method of reading, exporting, and formatting the font metric information
+                    can be used.<footnote>
                         <para>In its current form our script to extract glyph widths processes only
-                            TTF fonts and fails on, for example, TTC and OTF. those font formats
-                            also include metric information, which means that we could emend our
+                            TTF fonts and fails on, for example, TTC and OTF. Those font formats
+                            also include metric information, which means that we could amend our
                             script to process them, as well.</para>
-                    </footnote> The output of the extraction process is an XML document that looks
+                    </footnote> The output of our extraction process is an XML document that looks
                     like the following:</para>
                 <programlisting language="xml" xml:space="preserve">&lt;metrics>
   &lt;metadata 
@@ -499,13 +502,13 @@
                                 font properties requires exporting and formatting separate metric
                                 information for them. Over time developers might create libraries of
                                 font metric information for reuse, but separate metric files will be
-                                required for all combinations of font family, font size and font
+                                required for all combinations of font family, font size, and font
                                 effects.</para>
                         </listitem>
                         <listitem>
                             <para>The method described above accesses only the glyph widths, which
                                 represent a small part of the font metric information available from
-                                a font file. A more robust and accurate implementation would require
+                                a font file. A more robust and accurate implementation would employ
                                 additional logic to deal with font effects (e.g., kerning,
                                 ligatures, positional glyph variants) and transformations. That
                                 information is present in the fonts, but the developer would have to
@@ -536,10 +539,10 @@
             <title>A JavaScript approach</title>
             <section>
                 <title>Overview</title>
-                <para>The JavaScript approach leaves the SVG <code>@height</code> and
-                        <code>@width</code> attributes unspecified if they cannot be computed at the
-                    time the SVG is created, as is the case when the height and width depends on the
-                    dimensions of <code>&lt;text&gt;</code> elements. When the SVG is eventually
+                <para>The JavaScript approach leaves the SVG <code>@width</code> and
+                        <code>@height</code> attributes unspecified if they cannot be computed at
+                    the time the SVG is created, as is the case when the width and height depend on
+                    the dimensions of <code>&lt;text&gt;</code> elements. When the SVG is eventually
                     loaded into a browser, a JavaScript function computes the missing dimensions and
                     writes them into the DOM in a way that controls the layout.<footnote>
                         <para>Our JavaScript method, as applied to real data (see the Van Gogh
@@ -592,16 +595,18 @@
                     dependent, and therefore unpredictable and unusable for our purposes.<footnote>
                         <para>As of 2017:<blockquote>
                                 <para>The default size for HTML replaced elements will be used:
-                                    300px wide, 150px tall. This applies for &lt;img>, &lt;object>
-                                    or &lt;iframe>. The default 300×150 size also applies to inline
-                                    &lt;svg> elements within HTML documents, but that’s a relatively
-                                    recent consensus from the HTML5 specifications: other browsers
-                                    will by default expand inline SVG to the full size of the
-                                    viewport—equivalent to width: 100vw; height: 100vh; — which is
-                                    the default size for SVG files that are opened directly in their
-                                    own browser tab. Internet Explorer cuts the difference, using
-                                    width of 100% and height of 150px for images and inline SVG.
-                                        (<xref linkend="bellamy-royds2017"/>)</para>
+                                    300px wide, 150px tall. This applies for <code>&lt;img></code>,
+                                        <code>&lt;object></code> or <code>&lt;iframe></code>. The
+                                    default 300×150 size also applies to inline
+                                        <code>&lt;svg></code> elements within HTML documents, but
+                                    that’s a relatively recent consensus from the HTML5
+                                    specifications: other browsers will by default expand inline SVG
+                                    to the full size of the viewport—equivalent to <code>width:
+                                        100vw; height: 100vh;</code> — which is the default size for
+                                    SVG files that are opened directly in their own browser tab.
+                                    Internet Explorer cuts the difference, using width of 100% and
+                                    height of 150px for images and inline SVG. (<xref
+                                        linkend="bellamy-royds2017"/>)</para>
                             </blockquote></para>
                     </footnote> Additionally, <code>&lt;svg&gt;</code> elements default to a CSS
                         <code>display</code> value of <code>inline-block</code>, which we change to
@@ -631,8 +636,8 @@
                     descendants of each <code>&lt;section&gt;</code> and write those values into
                         <code>@height</code> attributes on the <code>&lt;svg></code> elements. Once
                     those attributes have been added, the height of a section will be determined by
-                    the now declared height of the <code>&lt;svg&gt;</code> it contains. We use the
-                    CSS <code>row-gap</code> property to introduce a gutter between the
+                    the now declared height of the tallest <code>&lt;svg&gt;</code> it contains. We
+                    use the CSS <code>row-gap</code> property to introduce a gutter between the
                     sections.</para>
                 <para>Each of the three <code>&lt;section&gt;</code> elements also has its
                         <code>display</code> property set to <code>flex</code>, this time with a
@@ -674,8 +679,8 @@ function init() {
                                 <code>&lt;svg&gt;</code> elements.</para>
                     </listitem>
                     <listitem>
-                        <para>Use CSS (especially Flexbox properties) to control the relative (but
-                            not absolute) horizontal and vertical position of the
+                        <para>Use CSS (in particular, Flexbox) properties to control the relative
+                            (but not absolute) horizontal and vertical position of the
                                 <code>&lt;div&gt;</code> elements. Control spacing between them with
                             the Flexbox gutter properties <code>column-gap</code> and
                                 <code>row-gap</code>.</para>
@@ -698,7 +703,7 @@ function init() {
                     For inclusion in the Balisage <emphasis role="ital">Proceedings</emphasis> we
                     opened them in Firefox and captured the screen as a PNG image with a transparent
                     background. The position of the Y axis label at the right of the first image,
-                    and of the X axis label at the bottom of the second and third, is conrolled by
+                    and of the X axis label at the bottom of the second and third, is controlled by
                     our JavaScript function.</para>
                 <figure xml:id="horizontal-js" xreflabel="Horizontal graph, JavaScript method">
                     <mediaobject>
@@ -773,14 +778,14 @@ function init() {
                         <listitem>
                             <para>Because we rely on HTML and CSS to support the relative
                                 positioning of the SVG components of what is conceptually a single
-                                image, this method is not appropriate for the creation of
-                                stand-alone SVG.</para>
+                                image, this method is not convenient for the creation of stand-alone
+                                SVG.</para>
                         </listitem>
                         <listitem>
                             <para>Having to split what is conceptually a single SVG graph or chart
                                 into multiple <code>&lt;svg&gt;</code> elements, each inside its own
                                 HTML <code>&lt;div&gt;</code>, complicates the specification of the
-                                components of the SVG and thus creates additional potential locus
+                                components of the SVG and thus creates an additional potential locus
                                 for miscalculation by the developer.</para>
                         </listitem>
                         <listitem>
@@ -797,15 +802,14 @@ function init() {
     </section>
     <section>
         <title>Loose ends and future directions</title>
-        <para>Our XSLT approach assumes—as a convenient simplification for proof of concept
-            purposes, and not entirely correctly—that the font metrics that can be extracted from
-            the font files are sufficient to compute the length of an SVG line of text. Our
-            implementation does not attempt to access kerning information, and it has not been
-            tested on writing systems that involve character substitution (including positional
-            glyph variation or ligation) or glyph reordering. We have confirmed that our XSLT
-            approach is not impacted negatively by zero-width characters as long as the font metrics
-            for those glyphs correctly report a width of zero, as is the case with the Times New
-            Roman font that we used for testing and illustration.</para>
+        <para>Our XSLT approach assumes that the font metrics that can be extracted from the font
+            files are sufficient to compute the length of an SVG line of text. Our implementation
+            does not attempt to access kerning information, and it has not been tested on writing
+            systems that involve character substitution (including positional glyph variation or
+            ligation) or glyph reordering. We have confirmed that our XSLT approach is not impacted
+            negatively by zero-width characters as long as the font metrics for those glyphs
+            correctly report a width of zero, as is the case with the Times New Roman font that we
+            used for testing and illustration.</para>
         <para>Saxon-JS relies on a JavaScript implementation of the Saxon XSLT engine that is
             designed to perform transformations inside the browser. Insofar as Saxon-JS incorporates
             both XSLT and JavaScript functionality, it may provide a cleaner integration of our two
@@ -821,13 +825,13 @@ function init() {
             is not sensitive to context-specific details. For example, we have assumed that the
             general labels on X and Y axes should be positioned not too close to and not too far
             from the longest data labels on those axes, but those assumptions, although
-            self-evidently correct as far as they go, are insufficient. In practice, though, we
-            might want to customize the positioning according to specific features of the data,
-            e.g., by labeling an axis in a way that is closer than the distance dictated by the
-            longest data label, but that happens not to overlap that label. We have mocked up the
-            following example to illustrate the possible placement of an axis label with coordinates
-            that overlap those of the longest data label, but that happen not to overlap with it
-            because the longest data label is conveniently out of way:</para>
+            self-evidently correct as far as they go, are insufficient. In practice, a human layout
+            designer might want to customize the positioning according to specific features of the
+            data, e.g., by labeling an axis in a way that is closer than the distance dictated by
+            the longest data label, but that happens not to overlap that label. We have mocked up
+            the following example to illustrate the possible placement of an axis label with
+            coordinates that overlap those of the longest data label, but that happen not to overlap
+            with it because the longest data label is conveniently out of way:</para>
         <figure xml:id="overlap-sample" xreflabel="Sample graph with overlapping label placement">
             <mediaobject>
                 <imageobject>
@@ -845,10 +849,10 @@ function init() {
             extent, their height), which makes it difficult to position other elements in relation
             to them without a combination of guesswork and a potentially tedious trial-and-error
             approach. Furthermore, manual positioning is brittle under reuse because it requires new
-            human intervention when the visualization code is applied to different data.</para>
+            human intervention whenever the visualization code is applied to different data.</para>
         <para>We have identified, implemented, illustrated, and discussed two approaches to meeting
             this need, one in XSLT and one in JavaScript. Each of these approaches has advantages
-            and disadvantages, but both have been shown to work with the authentic examples used
+            and disadvantages, and both have been shown to work with the authentic examples used
             here. We have identified some limitations and some directions for future improvement,
             but even with their limitations, both methods provide realistic alternatives to
             guesswork, trial-and-error, and magic numbers.</para>
