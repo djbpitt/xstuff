@@ -352,7 +352,7 @@
                     and format them as XML using the script in <xref linkend="extract-widths"/>.<footnote>
                         <para>In its current form our script to extract glyph widths processes only
                             TTF fonts and fails on, for example, TTC and OTF. those font formats
-                            also include metric information, which means thaat we could emend our
+                            also include metric information, which means that we could emend our
                             script to process them, as well.</para>
                     </footnote> The output of the extraction process is an XML document that looks
                     like the following:</para>
@@ -504,8 +504,8 @@
                         <listitem>
                             <para>The method described above accesses only the glyph widths, which
                                 represent a small part of the font metric information available from
-                                a font file. A more robust and accurate implementation would
-                                requires additional logic to deal with font effects (e.g., kerning,
+                                a font file. A more robust and accurate implementation would require
+                                additional logic to deal with font effects (e.g., kerning,
                                 ligatures, positional glyph variants) and transformations. That
                                 information is present in the fonts, but the developer would have to
                                 locate it in the font metric tables and then export it in a usable
@@ -618,7 +618,7 @@
                 <para>We illustrate our positioning strategy in the image above. In that image the
                         <code>&lt;body&gt;</code> contains three <code>&lt;section&gt;</code>
                     elements, one for each of the horizontal rows (outlined in red). The
-                        <code>display</code> property of the <code> &lt;body&gt;</code> is set to
+                        <code>display</code> property of the <code>&lt;body&gt;</code> is set to
                         <code>flex</code> with a <code>flex-direction</code> value of
                         <code>column</code>, so that the <code>&lt;section&gt;</code> elements will
                     be rendered from top to bottom in the browser window. The height of an HTML
@@ -667,7 +667,7 @@ function init() {
                         <para>Structure SVG plots with separate <code>&lt;svg&gt;</code> elements
                             for the components that cannot be positioned, relative to one another,
                             without knowing the size of descendant <code>&lt;text&gt;</code>
-                            elements. Use as few separate SVGG documents as possible, wrapping each
+                            elements. Use as few separate SVG documents as possible, wrapping each
                             one in an HTML <code>&lt;div&gt;</code> elements. Do not specify
                                 <code>@width</code> or <code>@height</code> on the
                                 <code>&lt;svg&gt;</code> elements.</para>
@@ -764,14 +764,14 @@ function init() {
                                 which cannot be assumed for all XML-stack developers, and the same
                                 is true with respect to knowledge of CSS Flexbox. The actual CSS and
                                 JavaScript required is light and the examples provided here can
-                                serve as models, but both the CSS and JavaScript employedd here will
+                                serve as models, but both the CSS and JavaScript employed here will
                                 typically have to be adjusted according to the specific structures
                                 employed in individual projects.</para>
                         </listitem>
                         <listitem>
                             <para>Because we rely on HTML and CSS to support the relative
                                 positioning of the SVG components of what is conceptually a single
-                                image, this method is not not appropriate for the creation of
+                                image, this method is not appropriate for the creation of
                                 stand-alone SVG.</para>
                         </listitem>
                         <listitem>
