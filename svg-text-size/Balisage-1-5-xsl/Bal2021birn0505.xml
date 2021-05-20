@@ -1153,12 +1153,12 @@ print(xml_str)</programlisting>
     </appendix>
     <bibliography>
         <title>Works cited</title>
-        <bibliomixed xml:id="ttx-intro" xreflabel="An intro to FontTools"><quote>An intro to
-                FontTools.</quote>
+        <bibliomixed xml:id="ttx-intro" xreflabel="An intro to FontTools">Nixon, Stephen. <quote>An
+                intro to FontTools.</quote>
             <link>https://github.com/arrowtype/fonttools-intro</link></bibliomixed>
-        <bibliomixed xml:id="bellamy-royds2017" xreflabel="Bellamy-Royds 2017"><quote>How to scale
-                SVG.</quote> Updated on Jun 27, 2017.
-            <link>https://css-tricks.com/scale-svg/</link></bibliomixed>
+        <bibliomixed xml:id="bellamy-royds2017" xreflabel="Bellamy-Royds 2017">Bellamy-Royds,
+            Amelia. <quote>How to scale SVG.</quote> Updated on Jun 27, 2017.
+                <link>https://css-tricks.com/scale-svg/</link></bibliomixed>
         <bibliomixed xml:id="chase2019" xreflabel="Chase 2019">Chase, William R. <quote>Font height
                 differences between Windows and Mac.</quote> 2019.
                 <link>https://www.williamrchase.com/post/font-height-differences-between-windows-and-mac/</link></bibliomixed>
