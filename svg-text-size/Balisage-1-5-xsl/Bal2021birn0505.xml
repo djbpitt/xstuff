@@ -331,7 +331,7 @@
                     attribute (although support for kerning is slated for removal from SVG 2<footnote>
                         <para>See <xref linkend="svg-2-kerning"/>.</para>
                     </footnote>) and CSS supports a <code>font-kerning</code> property. Browser
-                    support for both of these features too inconsistent and unpredictable to be useful.<footnote>
+                    support for both of these features is too inconsistent and unpredictable to be useful.<footnote>
                         <para>With no SVG <code>@kerning</code> attribute, with an SVG
                                 <code>@kerning</code> attribute value of <code>"auto"</code> (the
                             default, which enables kerning), and with an SVG <code>@kerning</code>
