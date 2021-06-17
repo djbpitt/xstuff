@@ -7,7 +7,6 @@
     <!-- ================================================================ -->
     <!-- Variables: data                                                  -->
     <!-- ================================================================ -->
-    <!-- Data                                                             -->
     <xsl:variable name="texts" as="xs:string+"
         select="('There', 'is', 'nothing', 'so', 'practical', 'as', 'a', 'good', 'theory')"/>
     <xsl:variable name="text-lengths" as="xs:double+" select="$texts ! djb:get-text-length(.)"/>
@@ -24,6 +23,7 @@
     <!-- ================================================================ -->
     <xsl:variable name="inter-ellipse-spacing" as="xs:integer" select="20"/>
     <xsl:variable name="text-x-padding" as="xs:integer" select="10"/>
+    <xsl:variable name="y-pos" as="xs:double" select="$font-size div 2"/>
     <!-- ================================================================ -->
     <!-- Functions                                                        -->
     <!-- ================================================================ -->
@@ -34,7 +34,7 @@
         <!-- Parameters:                                                  -->
         <!--   $in as xs:string : input text string                       -->
         <!--                                                              -->
-        <!-- Returns: length of string as xs:double                       -->
+        <!-- Returns: length of text string as xs:double                  -->
         <!-- ============================================================ -->
         <xsl:param name="in" as="xs:string"/>
         <xsl:sequence select="
@@ -49,36 +49,61 @@
         <!--                                                              -->
         <!-- Parameters:                                                  -->
         <!--   $text-offset as xs:integer : offset of string in sequence  -->
-        <!--   $x-padding as xs:integer : padding on both sides of string -->
-        <!--   $inter-ellipse as xs:integer : space between ellipses      -->
+        <!--                                                              -->
+        <!-- Stylesheet variables used:                                   -->
+        <!--   $inter-ellipse-spacing as xs:integer : between edges       -->
+        <!--   $text-x-padding as xs:integer : padding on each side       -->
         <!--                                                              -->
         <!-- Returns: x position for center of ellipse and text           -->
+        <!--   sum of: all preceding string widths                        -->
+        <!--           2 * padding for all preceding                      -->
+        <!--           inter-ellipse-spacing for all preceding            -->
+        <!--           half width of current                              -->
+        <!--           padding left of current                            -->
         <!-- ============================================================ -->
-        <xsl:param name="_in" as="xs:integer"/>
-        <xsl:param name="_text-x-padding" as="xs:integer"/>
-        <xsl:param name="_inter-ellipse-spacing" as="xs:integer"/>
-        <xsl:message select="$_in"/>
+        <xsl:param name="in" as="xs:integer"/>
         <xsl:sequence select="
-                $texts[position() lt $_in] ! djb:get-text-length(.) => sum() +
-                $_inter-ellipse-spacing * $_in +
-                $_text-x-padding * $_in * 2"/>
+                $text-lengths[position() lt $in] => sum() +
+                $inter-ellipse-spacing * ($in - 1) +
+                $text-x-padding * ($in - 1) * 2 +
+                $text-lengths[$in] div 2 +
+                $text-x-padding"/>
     </xsl:function>
     <!-- ================================================================ -->
     <!-- Main                                                             -->
     <!-- ================================================================ -->
     <xsl:template name="xsl:initial-template">
-        <svg viewBox="40 0 620 50">
+        <!-- ============================================================ -->
+        <!-- Compute X values for @viewBox                                -->
+        <!-- ============================================================ -->
+        <xsl:variable name="text-count" as="xs:integer" select="count($texts)"/>
+        <xsl:variable name="left-edge" as="xs:double" select="
+                djb:get-text-length($texts[1]) div 2 +
+                $text-x-padding +
+                $inter-ellipse-spacing (: extra padding at start :)"/>
+        <xsl:variable name="total-width" as="xs:double" select="
+                sum($text-lengths) +
+                $text-x-padding * 2 * $text-count +
+                $inter-ellipse-spacing * ($text-count - 1) +
+                $left-edge"/>
+        <xsl:variable name="padding" as="xs:integer" select="$inter-ellipse-spacing div 2"/>
+        <!-- ============================================================ -->
+        <!-- Create SVG                                                   -->
+        <!-- ============================================================ -->
+        <svg viewBox="
+            -{$left-edge + $padding} 
+            -{$font-size + $padding} 
+            {$total-width + 2 * $padding} 
+            {($font-size + $padding) * 2}">
             <g>
                 <xsl:for-each select="$texts">
                     <xsl:variable name="text-offset" as="xs:integer" select="position()"/>
                     <xsl:variable name="x-pos" as="xs:double" select="
-                            djb:x-pos($text-offset, $text-x-padding, $inter-ellipse-spacing) +
-                            $inter-ellipse-spacing +
-                            0.5 * $text-lengths[$text-offset]"/>
-                    <ellipse cx="{$x-pos}" cy="10"
+                            djb:x-pos($text-offset) (: x center of ellipse :)"/>
+                    <ellipse cx="{$x-pos}" cy="{$y-pos}"
                         rx="{$text-lengths[$text-offset] div 2 + $text-x-padding}" ry="{$font-size}"
                         fill="none" stroke="black" stroke-width="1"/>
-                    <text x="{$x-pos}" y="10" dominant-baseline="middle" text-anchor="middle"
+                    <text x="{$x-pos}" y="{$y-pos}" dominant-baseline="middle" text-anchor="middle"
                         font-family="Times New Roman" font-size="{$font-size}">
                         <xsl:value-of select="."/>
                     </text>

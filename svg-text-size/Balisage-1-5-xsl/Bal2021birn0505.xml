@@ -4,6 +4,7 @@
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
     version="5.0-subset Balisage-1.5">
     <title>How long is my SVG <code>&lt;text&gt;</code> element?</title>
+    <!-- TODO: Autosize ellipse to contained text, cf. graphviz -->
     <info>
         <abstract>
             <para>SVG layout requires that the developer be in control of the dimensions of the
@@ -801,6 +802,31 @@ function init() {
         </section>
     </section>
     <section>
+        <title>Centering text in an ellipse</title>
+        <para>Centering text inside an SVG ellipse is easy because the SVG
+                <code>&lt;ellipse&gt;</code> element includes a specification of its center
+                (<code>@cx</code> and <code>@cy</code>), and those same values can be repurposed as
+            the <code>@x</code> and <code>@y</code> values of a contained <code>&lt;text&gt;</code>
+            element, which will center the text inside the ellipse if the <code>&lt;text&gt;</code>
+            element also specifies the value of both <code>@dominant-baseline</code> and
+                <code>@text-anchor</code> as <code>"middle"</code>. If the length of the ellipse on
+            the X axis needs to adapt to the length of the text the ellipse will contain, we can use
+            the XSLT method described above to compute the <code>@rx</code> value of the ellipse
+            (half of the length of the contained text plus however much padding we want to include
+            between the sides of the text and the surrounding ellipse), and also to position a row
+            of ellipses with even spacing. The code in <xref linkend="space-ellipses"/> takes a
+            sequence of words that will be familiar to a Balisage audience, surrounds each with an
+            ellipse that is sized according to the length of the word, and spaces the ellipses
+            evenly, producing the following output:</para>
+        <figure xml:id="figure-ellipses" xreflabel="Ellipses">
+            <mediaobject>
+                <imageobject>
+                    <imagedata width="100%" fileref="includes/ellipses.svg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+    </section>
+    <section>
         <title>Loose ends and future directions</title>
         <para>Our XSLT approach assumes that the font metrics that can be extracted from the font
             files are sufficient to compute the length of an SVG line of text. Our implementation
@@ -1147,9 +1173,124 @@ print(xml_str)</programlisting>
       &lt;/div>
     &lt;/section>
   &lt;/body>
-&lt;/html>
-
-        </programlisting>
+&lt;/html></programlisting>
+    </appendix>
+    <appendix xml:id="space-ellipses" xreflabel="Appendix C">
+        <title>XSLT to size ellipses according to contained text</title>
+        <programlisting language="xml" xml:space="preserve">&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:djb="http://www.obdurodon.org"
+    xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="#all"
+    xmlns="http://www.w3.org/2000/svg" version="3.0">
+    &lt;xsl:output method="xml" indent="yes"/>
+    &lt;!-- ================================================================ -->
+    &lt;!-- Variables: data                                                  -->
+    &lt;!-- ================================================================ -->
+    &lt;xsl:variable name="texts" as="xs:string+"
+        select="('There', 'is', 'nothing', 'so', 'practical', 'as', 'a', 'good', 'theory')"/>
+    &lt;xsl:variable name="text-lengths" as="xs:double+" select="$texts ! djb:get-text-length(.)"/>
+    &lt;!-- ================================================================ -->
+    &lt;!-- Variables: font                                                  -->
+    &lt;!-- ================================================================ -->
+    &lt;xsl:variable name="times-new-roman-16-mapping" as="document-node()"
+        select="doc('times-new-roman-16.xml')"/>
+    &lt;xsl:key name="lengthByChar" match="character" use="@str"/>
+    &lt;xsl:variable name="font-size" as="xs:double"
+        select="$times-new-roman-16-mapping/descendant::metadata/@fontSize"/>
+    &lt;!-- ================================================================ -->
+    &lt;!-- Constants                                                        -->
+    &lt;!-- ================================================================ -->
+    &lt;xsl:variable name="inter-ellipse-spacing" as="xs:integer" select="20"/>
+    &lt;xsl:variable name="text-x-padding" as="xs:integer" select="10"/>
+    &lt;xsl:variable name="y-pos" as="xs:double" select="$font-size div 2"/>
+    &lt;!-- ================================================================ -->
+    &lt;!-- Functions                                                        -->
+    &lt;!-- ================================================================ -->
+    &lt;xsl:function name="djb:get-text-length" as="xs:double" cache="yes">
+        &lt;!-- ============================================================ -->
+        &lt;!-- djb:get-text-length                                          -->
+        &lt;!--                                                              -->
+        &lt;!-- Parameters:                                                  -->
+        &lt;!--   $in as xs:string : input text string                       -->
+        &lt;!--                                                              -->
+        &lt;!-- Returns: length of text string as xs:double                  -->
+        &lt;!-- ============================================================ -->
+        &lt;xsl:param name="in" as="xs:string"/>
+        &lt;xsl:sequence select="
+                string-to-codepoints($in)
+                ! codepoints-to-string(.)
+                ! key('lengthByChar', ., $times-new-roman-16-mapping)/@width
+                => sum()"/>
+    &lt;/xsl:function>
+    &lt;xsl:function name="djb:x-pos" as="xs:double">
+        &lt;!-- ============================================================ -->
+        &lt;!-- djb:x-pos                                                    -->
+        &lt;!--                                                              -->
+        &lt;!-- Parameters:                                                  -->
+        &lt;!--   $text-offset as xs:integer : offset of string in sequence  -->
+        &lt;!--                                                              -->
+        &lt;!-- Stylesheet variables used:                                   -->
+        &lt;!--   $inter-ellipse-spacing as xs:integer : between edges       -->
+        &lt;!--   $text-x-padding as xs:integer : padding on each side       -->
+        &lt;!--                                                              -->
+        &lt;!-- Returns: x position for center of ellipse and text           -->
+        &lt;!--   sum of: all preceding string widths                        -->
+        &lt;!--           2 * padding for all preceding                      -->
+        &lt;!--           inter-ellipse-spacing for all preceding            -->
+        &lt;!--           half width of current                              -->
+        &lt;!--           padding left of current                            -->
+        &lt;!-- ============================================================ -->
+        &lt;xsl:param name="in" as="xs:integer"/>
+        &lt;xsl:sequence select="
+                $text-lengths[position() lt $in] => sum() +
+                $inter-ellipse-spacing * ($in - 1) +
+                $text-x-padding * ($in - 1) * 2 +
+                $text-lengths[$in] div 2 +
+                $text-x-padding"/>
+    &lt;/xsl:function>
+    &lt;!-- ================================================================ -->
+    &lt;!-- Main                                                             -->
+    &lt;!-- ================================================================ -->
+    &lt;xsl:template name="xsl:initial-template">
+        &lt;!-- ============================================================ -->
+        &lt;!-- Compute X values for @viewBox                                -->
+        &lt;!-- ============================================================ -->
+        &lt;xsl:variable name="text-count" as="xs:integer" select="count($texts)"/>
+        &lt;xsl:variable name="left-edge" as="xs:double" select="
+                djb:get-text-length($texts[1]) div 2 +
+                $text-x-padding +
+                $inter-ellipse-spacing (: extra padding at start :)"/>
+        &lt;xsl:variable name="total-width" as="xs:double" select="
+                sum($text-lengths) +
+                $text-x-padding * 2 * $text-count +
+                $inter-ellipse-spacing * ($text-count - 1) +
+                $left-edge"/>
+        &lt;xsl:variable name="padding" as="xs:integer" select="$inter-ellipse-spacing div 2"/>
+        &lt;!-- ============================================================ -->
+        &lt;!-- Create SVG                                                   -->
+        &lt;!-- ============================================================ -->
+        &lt;svg viewBox="
+            -{$left-edge + $padding} 
+            -{$font-size + $padding} 
+            {$total-width + 2 * $padding} 
+            {($font-size + $padding) * 2}">
+            &lt;g>
+                &lt;xsl:for-each select="$texts">
+                    &lt;xsl:variable name="text-offset" as="xs:integer" select="position()"/>
+                    &lt;xsl:variable name="x-pos" as="xs:double" select="
+                            djb:x-pos($text-offset) (: x center of ellipse :)"/>
+                    &lt;ellipse cx="{$x-pos}" cy="{$y-pos}"
+                        rx="{$text-lengths[$text-offset] div 2 + $text-x-padding}" ry="{$font-size}"
+                        fill="none" stroke="black" stroke-width="1"/>
+                    &lt;text x="{$x-pos}" y="{$y-pos}" dominant-baseline="middle" text-anchor="middle"
+                        font-family="Times New Roman" font-size="{$font-size}">
+                        &lt;xsl:value-of select="."/>
+                    &lt;/text>
+                &lt;/xsl:for-each>
+            &lt;/g>
+        &lt;/svg>
+    &lt;/xsl:template>
+&lt;/xsl:stylesheet></programlisting>
     </appendix>
     <bibliography>
         <title>Works cited</title>
