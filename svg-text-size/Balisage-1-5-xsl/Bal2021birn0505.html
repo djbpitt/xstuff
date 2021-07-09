@@ -470,7 +470,7 @@
                                  before undertaking the transformation that outputs the SVG bar graph, create a
                                  mapping between characters and their individual widths by querying the font metrics.<sup class="fn-label"><a href="#d3e118" class="footnoteref" id="d3e118-ref">[5]</a></sup> Font metrics are not accessible by default to an XSLT processor, but
                                  we can extract and format them in a preprocessing step and then import a
-                                 machine-accessing mapping from glyph to width into the XSLT that generates the
+                                 machine-accessible mapping from glyph to width into the XSLT that generates the
                                  SVG. With this approach, the length of a <code class="code">&lt;text&gt;</code> element is
                                  presumed to be the sum of the widths of its constituent characters. If the text
                                  strings are horizontal or vertical, the length is one of the dimensions of the
@@ -616,10 +616,11 @@
                         <div class="section" id="implementation-xslt">
                            <h4 class="title" style="clear: both">Implementation</h4>
                            <p id="d3e297">Because this method requires knowing the widths of the individual glyphs while
-                              constructing the SVG, we first extract width information from TrueType TTF files
-                              and format them as XML. We do this with the script in <a class="xref" href="#extract-widths" id="d3e299">Appendix A</a>, but that particular script is not a requirement,
-                              and any method of reading, exporting, and formatting the font metric information
-                              can be used.<sup class="fn-label"><a href="#d3e301" class="footnoteref" id="d3e301-ref">[12]</a></sup> The output of our extraction process is an XML document that looks
+                              constructing the SVG, we first extract width information from TrueType TTF
+                              files, which we format as XML for ease of access during subsequent processing.
+                              We do this with the script in <a class="xref" href="#extract-widths" id="d3e299">Appendix A</a>, but that
+                              particular script is not a requirement, and any method of reading, exporting,
+                              and formatting the font metric information can be used.<sup class="fn-label"><a href="#d3e301" class="footnoteref" id="d3e301-ref">[12]</a></sup> The output of our extraction process is an XML document that looks
                               like the following:</p>
                            <pre class="programlisting" id="d3e304"><!--language: xml-->&lt;metrics&gt;
   &lt;metadata 
@@ -855,7 +856,8 @@
                               alongside the <code class="code">@height</code> attributes discussed above, and once the
                               JavaScript has created those attributes, the <code class="code">&lt;div&gt;</code> elements
                               will occupy the horizontal space required for their SVG contents, overriding the
-                              default width that would otherwise have been supplied by the browser.</p>
+                              default width values that would otherwise have been supplied by the
+                              browser.</p>
                            <p id="d3e566">The JavaScript that supplies explicit <code class="code">@width</code> and
                               <code class="code">@height</code> values to the <code class="code">&lt;svg&gt;</code> elements
                               is:</p>
@@ -868,11 +870,11 @@ function init() {
         divs[i].querySelector('svg').setAttribute('width', bb.width);
     }
 }</pre>
-                           <p id="d3e576">Our sample takes advantage of use of <code class="code">&lt;div&gt;</code> elements only as
-                              wrappers for SVG content, and of our placement of only a single SVG
-                              <code class="code">&lt;g&gt;</code> element inside each <code class="code">&lt;svg&gt;</code> element.
-                              HTML structured differently may require fine-tuning, but the general principle
-                              would be the same:</p>
+                           <p id="d3e576">Our sample uses <code class="code">&lt;div&gt;</code> elements only as wrappers for SVG
+                              content (not elsewhere) and we place only a single SVG <code class="code">&lt;g&gt;</code>
+                              element inside each <code class="code">&lt;svg&gt;</code> element, which simplifies our
+                              subsequent processing. HTML structured differently may require fine-tuning, but
+                              the general principle would be the same:</p>
                            <div class="itemizedlist" id="d3e584">
                               <ul>
                                  <li id="d3e585">
@@ -908,10 +910,10 @@ function init() {
                            <p id="d3e625">The visualizations of the Van Gogh data below were created with our JavaScript
                               method, and have the same content as those created with the XSLT method above.
                               For inclusion in the Balisage <span class="ital">Proceedings</span> we
-                              opened them in Firefox and captured the screen as a PNG image with a transparent
-                              background. The position of the Y axis label at the right of the first image,
-                              and of the X axis label at the bottom of the second and third, is controlled by
-                              our JavaScript function.</p>
+                              opened each of them in Firefox and captured the screen as a PNG image with a
+                              transparent background. The position of the Y axis label at the right of the
+                              first image, and of the X axis label at the bottom of the second and third, is
+                              controlled by our JavaScript function.</p>
                            <figure id="horizontal-js">
                               <p class="title">Horizontal graph, JavaScript method</p>
                               <div class="figure-contents">
@@ -1018,15 +1020,14 @@ function init() {
                         <code class="code">@text-anchor</code> as <code class="code">"middle"</code>. If the length of the ellipse on
                         the X axis needs to adapt to the length of the text the ellipse will contain, we can
                         use
-                        the XSLT method described above to compute the <code class="code">@rx</code> value of the ellipse
-                        (half of the length of the contained text plus however much padding we want to include
-                        between the sides of the text and the surrounding ellipse), and also to position a
-                        row
-                        of ellipses with even spacing. The code in <a class="xref" href="#space-ellipses" id="d3e708">Appendix C</a> takes a
-                        sequence of words that will be familiar to a Balisage audience, surrounds each with
-                        an
-                        ellipse that is sized according to the length of the word, and spaces the ellipses
-                        evenly, producing the following output:</p>
+                        the XSLT method described above as input into computing the horizontal radius
+                        (<code class="code">@rx</code> value) of the ellipse (half of the length of the contained text
+                        plus however much padding we want to include between the sides of the text and the
+                        surrounding ellipse), and also to position a row of ellipses with even spacing. The
+                        code
+                        in <a class="xref" href="#space-ellipses" id="d3e708">Appendix C</a> takes a sequence of words that will be familiar to a
+                        Balisage audience, surrounds each with an ellipse that is sized according to the length
+                        of the word, and spaces the ellipses evenly, producing the following output:</p>
                      <figure id="figure-ellipses">
                         <p class="title">Ellipses</p>
                         <div class="figure-contents">
@@ -1048,7 +1049,7 @@ function init() {
                         used for testing and illustration.</p>
                      <p id="d3e717">Saxon-JS relies on a JavaScript implementation of the Saxon XSLT engine that is
                         designed to perform transformations inside the browser. Insofar as Saxon-JS incorporates
-                        both XSLT and JavaScript functionality, it may provide a cleaner integration of our
+                        both XSLT and JavaScript functionality, it may support a cleaner integration of our
                         two
                         approaches. We do not explore a Saxon-JS strategy here.</p>
                      <p id="d3e718">Our definition of the problem to be solved presumes that an algorithmic solution is
