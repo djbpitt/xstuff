@@ -95,14 +95,34 @@
             -{$font-size + $padding} 
             {$total-width + 2 * $padding} 
             {($font-size + $padding) * 2}">
+            <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3"
+                    orient="auto" markerUnits="strokeWidth">
+                    <!--
+                    arrowhead is 9 x 6
+                    refy = 3 centers short side on center of line
+                    refx = 6 backs up from contact point
+                    set line length 2 x 3 short of contact point
+                -->
+                    <path d="M0,0 L0,6 L9,3 z" fill="black"/>
+                </marker>
+            </defs>
             <g>
                 <xsl:for-each select="$texts">
                     <xsl:variable name="text-offset" as="xs:integer" select="position()"/>
                     <xsl:variable name="x-pos" as="xs:double" select="
                             djb:x-pos($text-offset) (: x center of ellipse :)"/>
+                    <!-- draw arrow from left center to right edge -->
+                    <xsl:if test="position() ne last()">
+                        <xsl:variable name="x2" as="xs:double"
+                            select="djb:x-pos($text-offset + 1) - $text-lengths[$text-offset + 1] div 2 - $text-x-padding - 3"/>
+                        <line x1="{$x-pos}" y1="{$y-pos}" x2="{$x2}" y2="{$y-pos}" stroke="black"
+                            stroke-width="1" marker-end="url(#arrow)"/>
+                    </xsl:if>
+                    <!-- draw ellipse -->
                     <ellipse cx="{$x-pos}" cy="{$y-pos}"
                         rx="{$text-lengths[$text-offset] div 2 + $text-x-padding}" ry="{$font-size}"
-                        fill="none" stroke="black" stroke-width="1"/>
+                        fill="white" stroke="black" stroke-width="1"/>
                     <text x="{$x-pos}" y="{$y-pos}" dominant-baseline="middle" text-anchor="middle"
                         font-family="Times New Roman" font-size="{$font-size}">
                         <xsl:value-of select="."/>
