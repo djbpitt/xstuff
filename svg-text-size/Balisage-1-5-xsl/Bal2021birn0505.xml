@@ -342,8 +342,14 @@
                             but not in Safari. The CSS <code>font-kerning</code> property worked as
                             advertised in horizontal text in all three browsers, and had no effect
                             on vertical text in any of them: kerning was always applied to vertical
-                            text in Firefox and Chrome and never applied to vertical text in
-                            Safari.</para>
+                            text in Firefox and Chrome and never applied to vertical text in Safari.<footnote>
+                                <para>Kerning can be either positive or negative, a common example
+                                    of negative kerning being the string "rn". For this reason, we
+                                    cannot simply treat the sum of glyph widths in the string as the
+                                    maximum width of the bounding box, as some
+                                        <code>&lt;text&gt;</code> elements may become longer when
+                                    kerning is applied.</para>
+                            </footnote></para>
                     </footnote>
                 </para>
             </section>
@@ -384,7 +390,15 @@
 &lt;/xsl:function></programlisting>
                 <para>This function explodes the string into a sequence of single-character strings,
                     looks up the widths of each of them in the mapping table extracted from the font
-                    metrics, and sums the widths.</para>
+                    metrics, and sums the widths.<footnote>
+                        <para>The function can be used the same way to find the bounding box of
+                            multiline text. Since SVG renders multiline text by wrapping each line
+                            in a <code>&lt;tspan&gt;</code> child, the developer must know where
+                            each line starts and ends. Provided information about line breaks is
+                            already provided in the source element, we can find the string that will
+                            be longest once transformed into a <code>&lt;tspan&gt;</code> element,
+                            and treat this as the dimension of our bounding box.</para>
+                    </footnote></para>
             </section>
             <section>
                 <title>Illustrations</title>
@@ -706,7 +720,14 @@ function init() {
                     opened each of them in Firefox and captured the screen as a PNG image with a
                     transparent background. The position of the Y axis label at the right of the
                     first image, and of the X axis label at the bottom of the second and third, is
-                    controlled by our JavaScript function.</para>
+                    controlled by our JavaScript function.<footnote>
+                        <para>It is also possible to apply the JavaScript <code>getBBox()</code>
+                            function to individual <code>&lt;text&gt;</code> elements, arranging
+                            those using CSS Flexbox. However, because we were interested only in
+                            placing the axis lables slightly below or to the right of the bar
+                            labels, we found the approach of anly arranging the axis labels more
+                            elegant.</para>
+                    </footnote></para>
                 <figure xml:id="horizontal-js" xreflabel="Horizontal graph, JavaScript method">
                     <mediaobject>
                         <imageobject>
