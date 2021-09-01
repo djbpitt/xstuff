@@ -343,14 +343,25 @@
                             but not in Safari. The CSS <code>font-kerning</code> property worked as
                             advertised in horizontal text in all three browsers, and had no effect
                             on vertical text in any of them: kerning was always applied to vertical
-                            text in Firefox and Chrome and never applied to vertical text in Safari.<footnote>
-                                <para>Kerning can be either positive or negative, a common example
-                                    of negative kerning being the string "rn". For this reason, we
-                                    cannot simply treat the sum of glyph widths in the string as the
-                                    maximum width of the bounding box, as some
-                                        <code>&lt;text&gt;</code> elements may become longer when
-                                    kerning is applied.</para>
-                            </footnote></para>
+                            text in Firefox and Chrome and never applied to vertical text in
+                            Safari.</para>
+                        <para>Kerning can be either positive or negative. Negative kerning decreases
+                            the space between glyphs, and is used where allowing the bounding boxes
+                            around two characters to overlap makes them appear more evenly spaced to
+                            a human, as is the case with the sequence <quote>AV</quote>. Positive
+                            kerning increases the space between glyphs, and may be used when rounded
+                            letters would otherwise look too close together (e.g.,
+                            <quote>OC</quote>). Because kerning contributes, positively or
+                            negatively, to the overall length of the text, we cannot simply treat
+                            the sum of glyph widths in the string as the width of the bounding box,
+                            as some <code>&lt;text&gt;</code> elements may become longer or (less
+                            commonly) shorter when kerning is applied. It is possible to extract
+                            kerning information from a font file, as we already do with glyph
+                            widths, but because, for reasons described above, it is not possible to
+                            control kerrning reliably in the rendering, we cannot be confident that
+                            our computed widths would match the rendered widths even if we did
+                            incorporate kerning values into our measurements.</para>
+
                     </footnote>
                 </para>
             </section>
