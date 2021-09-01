@@ -352,15 +352,15 @@
                             kerning increases the space between glyphs, and may be used when rounded
                             letters would otherwise look too close together (e.g.,
                             <quote>OC</quote>). Because kerning contributes, positively or
-                            negatively, to the overall length of the text, we cannot simply treat
-                            the sum of glyph widths in the string as the width of the bounding box,
-                            as some <code>&lt;text&gt;</code> elements may become longer or (less
+                            negatively, to the overall length of the text, the sum of glyph widths
+                            in the string may only approximate the actual width of the bounding box,
+                            since some <code>&lt;text&gt;</code> elements may become longer or (less
                             commonly) shorter when kerning is applied. It is possible to extract
                             kerning information from a font file, as we already do with glyph
                             widths, but because, for reasons described above, it is not possible to
-                            control kerrning reliably in the rendering, we cannot be confident that
-                            our computed widths would match the rendered widths even if we did
-                            incorporate kerning values into our measurements.</para>
+                            control kerning reliably in the rendering, we cannot be confident that
+                            our computed widths would match the rendered widths even with that
+                            additional adjustment.</para>
 
                     </footnote>
                 </para>
@@ -403,13 +403,23 @@
                 <para>This function explodes the string into a sequence of single-character strings,
                     looks up the widths of each of them in the mapping table extracted from the font
                     metrics, and sums the widths.<footnote>
-                        <para>The function can be used the same way to find the bounding box of
-                            multiline text. Since SVG renders multiline text by wrapping each line
-                            in a <code>&lt;tspan&gt;</code> child, the developer must know where
-                            each line starts and ends. Provided information about line breaks is
-                            already provided in the source element, we can find the string that will
-                            be longest once transformed into a <code>&lt;tspan&gt;</code> element,
-                            and treat this as the dimension of our bounding box.</para>
+                        <para>The function can also help find the bounding box of multiline text
+                            where each line is a <code>&lt;tspan&gt;</code> child of the
+                                <code>&lt;text&gt;</code> element. The length of the
+                                <code>&lt;text&gt;</code> element then becomes the length of its
+                            longest child <code>&lt;tspan&gt;</code> element, and the height of the
+                                <code>&lt;text&gt;</code> element becomes the sum of the heights of
+                            all <code>&lt;tspan&gt;</code> child elements.</para>
+                        <para>For that matter, we could reverse our perspective and instead of
+                            letting the text length tell us the length of the SVG
+                                <code>&lt;text&gt;</code> element, we could use our function to
+                            compute the lengths of individual words as input into a line-wrapping
+                            routine that breaks a single text string into <code>&lt;tspan&gt;</code>
+                            elements that fit within a predetermined <code>&lt;text&gt;</code> size.
+                            We have not attempted these enhancements in this report, but they are
+                            natural next steps insofar as they depend on the same type of
+                            information as the <code>&lt;text&gt;</code> handling that we do
+                            implement.</para>
                     </footnote></para>
             </section>
             <section>
@@ -440,19 +450,23 @@
                 </figure>
                 <para>The strategy for positioning objects at a specific distance from rotated text
                     is similar to the strategy for vertical text, except that instead of using the
-                    length of the diagonal text, we need to compute the vertical space it occupies.
-                    We again start with vertical text and transform it by rotating it away from the
-                    vertical with <code>transform="rotate()"</code>. <code>rotate()</code> takes
-                    three arguments: the angle of rotation (in degrees) and the X and Y coordinates
-                    of the center of rotation, which we map to the X and Y coordinates of the
-                        <code>&lt;text&gt;</code> element.<footnote>
+                    length of the diagonal text directly, we use it as input to compute the vertical
+                    space the rotated text occupies. We again start with vertical text and transform
+                    it by rotating it away from the vertical with <code>transform="rotate()"</code>.
+                        <code>rotate()</code> takes three arguments: the angle of rotation (in
+                    degrees) and the X and Y coordinates of the center of rotation, which we map to
+                    the X and Y coordinates of the <code>&lt;text&gt;</code> element.<footnote>
                         <para>This approach rotates the text around its starting position (left edge
                             and vertical center in this left-to-right example), so that the upper
                             left corner of the diagonal rendering protrudes slightly to the left and
                             top of the center of rotation. Because we do not require high precision,
                             we ignore these protrusions in positioning our elements, and we set the
                             CSS <code>overflow</code> property to <code>visible</code> where needed
-                            to ensure that the image is not cropped.</para>
+                            to ensure that the image is not cropped. An alternative approach might
+                            be to add single space characters at the beginning and end of the string
+                            before performing our computation, so that any overlap after rotation
+                            would affect only the invisible space characters, and not the visible
+                            text.</para>
                     </footnote> If we regard the length of the text as the hypotenuse of a right
                     angle that has been rotated counter-clockwise away from true vertical, the
                     vertical height of the rotated text is the adjacent side of the right triangle,
@@ -485,8 +499,8 @@
                                 positioning values that produce acceptable layout and then
                                 hard-coding them. This means that adopting the XSLT approach
                                 described here does not require changing how we work with the
-                                resulting SVG (which is not the case with the JavaScript approach
-                                described below).</para>
+                                resulting SVG, which is not the case with the JavaScript approach
+                                described below.</para>
                         </listitem>
                         <listitem>
                             <para>SVG created in this way does not depend on specific browser (or
@@ -584,18 +598,18 @@
                     </footnote></para>
                 <para>Because the JavaScript approach relies on JavaScript applied in the browser
                     after the document loads, and on CSS that we specify, this method can be used
-                    only where the developer has file system or server permissions needed to control
-                    these features. Because we cannot rely on being able to apply our own CSS and
-                    JavaScript in the context of the Balisage <emphasis role="ital"
+                    only where the developer has the file system or server permissions needed to
+                    control these features. Because we cannot rely on being able to apply our own
+                    CSS and JavaScript in the context of the Balisage <emphasis role="ital"
                         >Proceedings</emphasis> in which this report is being published, the output
                     of the JavaScript method is illustrated below with PNG screen captures.<footnote>
                         <para>Our screen captures in this case are taken from the Firefox version
                             identified above, but we have verified that the method yields a
                             comparable rendering (except for cosmetic differences in browser
                             defaults) in Chrome and Safari.</para>
-                    </footnote> The raw HTML for the mockup immediately below, with embedded CSS and
-                    JavaScript, can be found in <xref linkend="javascript-mockup"/>. All of the raw
-                    files used to create the examples based on the authentic Van Gogh data,
+                    </footnote> The raw HTML+SVG for the mockup immediately below, with embedded CSS
+                    and JavaScript, can be found in <xref linkend="javascript-mockup"/>. All of the
+                    raw files used to create the examples based on the authentic Van Gogh data,
                     illustrated below, are available in our GitHub repository at
                         <link>https://github.com/djbpitt/xstuff/tree/master/svg-text-size</link>.</para>
                 <figure xml:id="js-mockup" xreflabel="Sample output of JavaScript method">
@@ -607,7 +621,7 @@
                             <para>Sample output of the JavaScript method. Colored outlines and
                                 borders have been added to illustrate the positions of the otherwise
                                 invisible bounding elements. Note that rotated text that crosses the
-                                bounding box is rendered correctly (that is, not cropped).</para>
+                                bounding box is not cropped.</para>
                         </caption>
                     </mediaobject>
                 </figure>
@@ -647,7 +661,16 @@
                     multiple SVG documents, each wrapped in an HTML <code>&lt;div&gt;</code> or
                     other block-level element. We use CSS Flexbox to render the
                         <code>&lt;div&gt;</code> elements where they would have been rendered in a
-                    single, unified SVG document.</para>
+                    single, unified SVG document.<footnote>
+                        <para>The <code>&lt;div&gt;</code> wrappers are not strictly necessary
+                            because we could, alternatively, have applied CSS rules to the
+                                <code>&lt;svg&gt;</code> elements directly. For that matter, we
+                            could even have applied the JavaScript <code>getBBox()</code> function
+                            to individual SVG <code>&lt;text&gt;</code> elements and arranged those
+                            using CSS Flexbox. The hierarchical level at which to manage the
+                            in-browser positioning is a matter of preference, and we found our
+                            approach the simplest for us to understand and implement.</para>
+                    </footnote></para>
                 <para>We illustrate our positioning strategy in the image above. In that image the
                         <code>&lt;body&gt;</code> contains three <code>&lt;section&gt;</code>
                     elements, one for each of the horizontal rows (outlined in red). The
@@ -732,14 +755,7 @@ function init() {
                     opened each of them in Firefox and captured the screen as a PNG image with a
                     transparent background. The position of the Y axis label at the right of the
                     first image, and of the X axis label at the bottom of the second and third, is
-                    controlled by our JavaScript function.<footnote>
-                        <para>It is also possible to apply the JavaScript <code>getBBox()</code>
-                            function to individual <code>&lt;text&gt;</code> elements, arranging
-                            those using CSS Flexbox. However, because we were interested only in
-                            placing the axis lables slightly below or to the right of the bar
-                            labels, we found the approach of anly arranging the axis labels more
-                            elegant.</para>
-                    </footnote></para>
+                    controlled by our JavaScript function.</para>
                 <figure xml:id="horizontal-js" xreflabel="Horizontal graph, JavaScript method">
                     <mediaobject>
                         <imageobject>
@@ -890,8 +906,8 @@ function init() {
             data, e.g., by labeling an axis in a way that is closer than the distance dictated by
             the longest data label, but that happens not to overlap that label. We have mocked up
             the following example to illustrate the possible placement of an axis label with
-            coordinates that overlap those of the longest data label, but that happen not to overlap
-            with it because the longest data label is conveniently out of way:</para>
+            coordinates that would lead to overlap with the longest data label except that the
+            longest data label happens to be conveniently out of the way:</para>
         <figure xml:id="overlap-sample" xreflabel="Sample graph with overlapping label placement">
             <mediaobject>
                 <imageobject>
@@ -899,8 +915,8 @@ function init() {
                 </imageobject>
             </mediaobject>
         </figure>
-        <para>This sort of detail is computable in principle, although it would require taking more
-            information into consideration.</para>
+        <para>This sort of detail is also computable in principle, although it would require taking
+            more information into consideration, and we have not attempted to do that here.</para>
     </section>
     <section>
         <title>Conclusion</title>
