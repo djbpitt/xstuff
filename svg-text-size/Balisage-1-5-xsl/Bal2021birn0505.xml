@@ -122,15 +122,15 @@
             general label with a combination of guesswork and trial and error and then hard-code a
             magic number, which—predictably and understandably—breaks as soon as you try to reuse
             the code with new input.<footnote>
-                <para>Placing that general horizontal X axis label more precisely in a way that
-                    takes into account the lengths and positions of each of the bar labels (and not
-                    only the length of the longest one) is a more complicated version of the same
-                    task. For example, if the leftmost and rightmost bar labels are the longest, a
-                    human designer might choose to place the general X axis label, if it is short
-                    enough, between them, instead of fully below them. Similarly, a human designer
-                    might choose, if the bar labels happen to be longer on one side of the graph
-                    than the other, to place the general X axis label on the shorter side, below the
-                    bar labels on that side, instead of centering it.</para>
+                <para>Placing the general horizontal X axis label more precisely in a way that takes
+                    into account the lengths and positions of all of the bar labels (and not only
+                    the length of the longest one) is a more complicated version of the same task.
+                    For example, if the leftmost and rightmost bar labels are the longest, a human
+                    designer might choose to place the general X axis label, if it is short enough,
+                    between them, instead of fully below them. Similarly, a human designer might
+                    choose, if the bar labels happen to be longer on one side of the graph than the
+                    other, to place the general X axis label on the shorter side, below the bar
+                    labels on that side, instead of centering it.</para>
                 <para>Our modest goal is simply to place the general label for the X axis with
                     reliable precision below the longest bar label. Whether the more exact placement
                     described above would be worth the extra effort cannot be determined in any
@@ -142,8 +142,8 @@
     </section>
     <section xml:id="solutions">
         <title>Solutions</title>
-        <para> This presentation explores two strategies for working around the difficulty of
-            knowing the length of an SVG <code>&lt;text></code> element:</para>
+        <para> This report explores two strategies for working around the difficulty of knowing the
+            length of an SVG <code>&lt;text></code> element:</para>
         <orderedlist>
             <listitem>
                 <para><emphasis role="bold">The XSLT approach:</emphasis> As a preprocessing step
@@ -162,23 +162,23 @@
                             the base character <code>"a"</code> (U+0061 <quote>Latin Small Letter
                                 A</quote>) and one for the combining diacritic (U+0308
                                 <quote>Combining Diaeresis</quote>). Whether a writing unit is
-                            represented as two characters informationally or as one is independent
-                            of whether it is rendered in a browser or other platform as two glyphs
-                            or as one.</para>
+                            represented as two (or more) characters informationally or as one is
+                            independent of whether it is rendered in a browser or other platform as
+                            two (or more) glyphs or as one.</para>
                         <para>In this report we use both terms because we focus on situations where
                             the mapping between characters and glyphs is one to one, or where the
                             distinction does not affect the computation of text length.</para>
                     </footnote> Font metrics are not accessible by default to an XSLT processor, but
-                    we can extract and format them in a preprocessing step and then import a
-                    machine-accessible mapping from glyph to width into the XSLT that generates the
-                    SVG. With this approach, the length of a <code>&lt;text&gt;</code> element is
-                    presumed to be the sum of the widths of its constituent characters. If the text
-                    strings are horizontal or vertical, the length is one of the dimensions of the
-                    bounding box, and the other dimension is (approximately) the font size. If the
-                    text is rotated, we can apply trigonometric functions to the length of the text
-                    (which functions as the hypotenuse) and the angle of rotation to compute the
-                    dimensions (the adjacent and opposites sides of a right triangle) of the
-                    bounding box.</para>
+                    we can extract from the font file and format them in a preprocessing step and
+                    then import a machine-accessible mapping from glyph to width into the XSLT that
+                    generates the SVG. With this approach, the length of a <code>&lt;text&gt;</code>
+                    element is presumed to be the sum of the widths of its constituent characters.
+                    If the text strings are horizontal or vertical, the length is one of the
+                    dimensions of the bounding box, and the other dimension is (approximately) the
+                    font size. If the text is rotated, we can apply trigonometric functions to the
+                    length of the text (which functions as the hypotenuse) and the angle of rotation
+                    to compute the dimensions (the adjacent and opposites sides of a right triangle)
+                    of the bounding box.</para>
             </listitem>
             <listitem>
                 <para><emphasis role="bold">The JavaScript approach:</emphasis> Output SVG
@@ -222,12 +222,13 @@
                                 linkend="gudehus2021"/> for discussion, an interactive diagnostic
                             interface, and a suggested work-around, which we have adopted where
                             needed in this report.</para>
-                    </footnote> (That is, the lines are not created as a font effect; the lines are
-                    drawn independently of the text.) In the case of diagonal text we draw a
-                    bounding rectangle. The third of the four examples in each figure is a null
-                    string, so we expect to see no text and no line. The images below are in SVG
-                    that is rendered in the browser, which means that the exact appearance may vary
-                    depending on browser features:</para>
+                    </footnote> (That is, the lines are not created as an underlining font effect;
+                    the lines are drawn independently of the text as SVG <code>&lt;line&gt;</code>
+                    elements.) In the case of diagonal text we draw a bounding rectangle. The third
+                    of the four examples in each figure is a null string, so we expect to see no
+                    text and no line. The images below are in SVG that is rendered in the browser,
+                    which means that the exact appearance may vary depending on browser
+                    features:</para>
                 <figure xml:id="horizontal-sample" xreflabel="Sample horizontal text">
                     <mediaobject>
                         <imageobject>
