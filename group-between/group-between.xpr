@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <meta>
+        <filters directoryPatterns="" filePatterns="\Qgroup-between.xpr\E" positiveFilePatterns="" showHiddenFiles="false"/>
+        <options>
+            <serialized xml:space="preserve">
+                <serializableOrderedMap>
+                    <entry>
+                        <String>key.xquery.option.pane.group</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>xquery.options.transformation.engine.v9</String>
+                        <String>Saxon-EE XQuery</String>
+                    </entry>
+                </serializableOrderedMap>
+            </serialized>
+        </options>
+    </meta>
+    <projectTree name="group-between.xpr">
+        <folder path="."/>
+    </projectTree>
+</project>
