@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div>
+  <p>This is a paragraph that contains just text.</p>
+  <p>
+    <q>This one contains just a quote.</q>
+  </p>
+  <p>The following paragraph should not contain a quote, but the next two should</p>
+  <p> </p>
+  <p><q></q></p>
+  <p><q> </q></p>
+  <p>This one contains <q>a quote</q>, some intervening text, and then <q>another quote</q>.</p>
+  <p>This one contains <q>two</q>
+    <q>adjacent</q> quotes with intervening whitespace.</p>
+  <p>This one contains <q>two</q><q>adjacent</q> quotes with no intervening whitespace.</p>
+  <p>This one contains <q>quote</q>immediate text<q>another quote</q></p>
+  <p>This <q>one</q> contains <q>a</q>
+    <q>bunch</q>
+    <q>of</q>
+    <q>quotes</q>, <q>some</q>
+    <q>adjacent</q> and <q>some</q>
+    <q>not</q>.</p>
+</div>
